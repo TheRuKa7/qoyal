@@ -11,9 +11,10 @@
 <meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
 <meta property="og:url" content="https://theruka7.github.io/qoyal/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#EEE7D8">
+<meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%23D9232D'/%3E%3Ccircle cx='17' cy='24' r='7' fill='%23fff'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4.6' stroke-linecap='round'%3E%3Cpath d='M23 13.6A12 12 0 0 1 23 34.4' opacity='.8'/%3E%3Cpath d='M28.5 7.6A20 20 0 0 1 28.5 40.4' opacity='.5'/%3E%3C/g%3E%3C/svg%3E">
-<script>try{document.documentElement.className='js'}catch(e){}</script>
+<script>try{document.documentElement.className='js'}catch(e){}try{var t=null;try{t=localStorage.getItem('echo-theme')}catch(e){}if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=Eczar:wght@400..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -1119,6 +1120,112 @@ body{color:var(--ink)}
 
 .btn.txt{padding:12px 6px;font-weight:600;color:var(--ink2)}.btn.txt:hover{color:var(--red2)}
 .fb .bdiv{background:rgba(255,255,255,.2)}.fb .wm{color:#fff}
+
+/* ================= v14: receipt printer ================= */
+.outs .head.hc .lede{margin:18px auto 0;text-align:center}
+.prn{position:relative;max-width:1180px;margin:0 auto}
+.prn-body{position:relative;z-index:3;display:flex;align-items:center;gap:14px;height:64px;padding:0 24px;border-radius:18px 18px 10px 10px;background:linear-gradient(180deg,#2B2622 0%,#1B1815 100%);box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 24px 40px -24px rgba(0,0,0,.6);color:#CFC6BA;font:600 11.5px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.prn-led{width:9px;height:9px;border-radius:50%;background:#5BC48C;box-shadow:0 0 0 3px rgba(91,196,140,.18),0 0 10px rgba(91,196,140,.8)}
+.prn.busy .prn-led{animation:blink .5s steps(2) infinite;background:#F7CB3A;box-shadow:0 0 0 3px rgba(247,203,58,.18),0 0 10px rgba(247,203,58,.8)}
+.prn-name{color:#fff}
+.prn-dest{margin-left:auto;color:#8C8378;letter-spacing:.08em}
+.prn-slot{position:relative;z-index:3;height:12px;margin:-4px 22px 0;border-radius:0 0 10px 10px;background:#0B0A09;box-shadow:inset 0 3px 5px rgba(0,0,0,.9)}
+.prn-row{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding:0 44px;margin-top:-6px}
+.rcw{overflow:hidden;padding:0 10px 46px;margin:0 -10px}
+.rcp{position:relative;background:#FCFBF7;color:#1B1612;font:500 12px/1.6 'IBM Plex Mono',monospace;padding:22px 18px 30px;box-shadow:0 22px 30px -20px rgba(27,22,18,.5);transform-origin:50% 0;
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/12px 8px repeat-x;
+  mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/12px 8px repeat-x;
+  background-image:linear-gradient(180deg,rgba(0,0,0,.05),transparent 26px)}
+.rcp header{display:flex;justify-content:space-between;align-items:baseline;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:11px}
+.rcp header .rl{color:#D9232D}
+.rcp .rt{color:#77706A;font-size:11px;margin:2px 0 10px}
+.rk{display:flex;justify-content:space-between;gap:10px}
+.rk span:first-child{color:#77706A}
+.rk span:last-child{text-align:right}
+.rcp hr{border:0;border-top:1px dashed #BDB5AA;margin:10px 0}
+.ro{font:800 22px/1 'Archivo',sans-serif;font-variation-settings:"wdth" 76;letter-spacing:.02em;margin:2px 0 8px}
+.ro.v{color:#3D33A0}.ro.g{color:#1F7A4D}.ro.r{color:#B41B24}
+.rk.tot{font-weight:600}
+.rk.tot span:last-child{color:#1F7A4D}
+.rcp .bars{display:block;width:100%;height:34px;margin-top:12px}
+.rcp .rf{font-size:10px;color:#8B847C;text-align:center;letter-spacing:.06em;margin-top:6px}
+.rs{position:absolute;right:16px;bottom:60px;font:800 13px 'Archivo',sans-serif;letter-spacing:.1em;padding:4px 9px;border:2.5px solid currentColor;border-radius:6px;transform:rotate(-12deg);opacity:.85;mix-blend-mode:multiply}
+.rs.v{color:#3D33A0}.rs.g{color:#1F7A4D}.rs.r{color:#B41B24}
+/* printing */
+.js .prn .rcp{transform:translateY(-103%)}
+.js .prn .rcp .ln{opacity:0}
+.js .prn .rcp .rs{opacity:0;transform:rotate(-12deg) scale(1.8)}
+.js .prn.go .rcp{animation:feed 2s cubic-bezier(.35,.05,.25,1) var(--d) both,settle .6s var(--ease) calc(var(--d) + 2s) forwards}
+.js .prn.go .rcp .ln{animation:fade .2s linear both;animation-delay:calc(var(--d) + var(--i) * 120ms + .15s)}
+.js .prn.go .rcp .rs{animation:stampIn .32s cubic-bezier(.3,1.6,.5,1) calc(var(--d) + 2.2s) forwards}
+@keyframes feed{0%{transform:translateY(-103%)}15%{transform:translateY(-85%)}22%{transform:translateY(-85%)}40%{transform:translateY(-58%)}46%{transform:translateY(-58%)}66%{transform:translateY(-30%)}72%{transform:translateY(-30%)}100%{transform:translateY(0)}}
+@keyframes settle{to{transform:translateY(0) rotate(var(--tilt,0deg))}}
+@keyframes stampIn{to{opacity:.85;transform:rotate(-12deg) scale(1)}}
+.prn-again{display:block;margin:6px auto 0;font:600 12px var(--mono);letter-spacing:.06em;text-decoration:underline;text-underline-offset:3px;color:var(--ink2)}
+.prn-again:hover{color:var(--red2)}
+@media (max-width:1000px){.prn-row{grid-template-columns:repeat(2,minmax(0,1fr));padding:0 24px}}
+@media (max-width:760px){.prn-body{padding:0 16px;height:54px}.prn-dest{display:none}.prn-row{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:80%;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 16px}.rcw{scroll-snap-align:center}}
+@media (prefers-reduced-motion:reduce){.js .prn .rcp,.js .prn .rcp .ln,.js .prn .rcp .rs{animation:none!important;transform:none;opacity:1}.js .prn .rcp .rs{transform:rotate(-12deg)}}
+
+/* ================= v14: theme toggle ================= */
+.thm{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink2);transition:border-color .2s,color .2s,transform .4s var(--ease)}
+.thm:hover{border-color:var(--ink);color:var(--ink);transform:rotate(-15deg)}
+.thm svg{width:17px;height:17px}
+.thm .mo{display:none}
+[data-theme=dark] .thm .su{display:none}[data-theme=dark] .thm .mo{display:block}
+html.theming *,html.theming *:before,html.theming *:after{transition:background-color .35s ease,border-color .35s ease,color .35s ease!important}
+
+/* ================= v14: dark mode ================= */
+[data-theme=dark]{color-scheme:dark;
+  --paper:#11100F;--paper2:#171513;--card:#1C1A17;--ink:#F3EFE9;--ink2:#CFC8BE;--mute:#9D958B;
+  --line:rgba(255,255,255,.11);--rule:rgba(255,255,255,.1);
+  --red:#E5484D;--red2:#FF7E7A;--deep:#9E1A22;--green:#5BC48C;--violet:#A29CFF;--yellow:#F4C21B;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -18px rgba(0,0,0,.7);--shadow2:0 2px 4px rgba(0,0,0,.45),0 26px 50px -22px rgba(0,0,0,.8)}
+[data-theme=dark] body{background:var(--paper)}
+[data-theme=dark] .nav{background:rgba(17,16,15,.82);border-bottom-color:var(--line)}
+[data-theme=dark] .loader{background:var(--paper)}
+[data-theme=dark] :is(.player,.tm,.agc,.cl-demo,.flow li,.stats>div,.dv-teams,.ev,.ev-card,.dash,.btn.alt,.slip,.ph-card,.fs-row,.rc-f,.ph-langs span,.ev-tab,.atab,.cl-st,.ia-b,.ia-tag,.peek,.cl-demo .key,.try-chips button,.dv-win){background-color:var(--card)}
+[data-theme=dark] .tl-list button{background:var(--paper2)}
+[data-theme=dark] .tl-list button:hover{background:#24211E}
+[data-theme=dark] .badge .disc{background:var(--card);box-shadow:0 0 0 1px var(--line),var(--shadow2)}
+[data-theme=dark] .ev{background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1.2px)}
+[data-theme=dark] .ev-wave b{background:var(--ink)}
+[data-theme=dark] .ev-ok,[data-theme=dark] .rc-h .ok,[data-theme=dark] .cl-st.down{background:rgba(91,196,140,.14);border-color:rgba(91,196,140,.3)}
+[data-theme=dark] .cl-st.hover{background:rgba(244,194,27,.12);border-color:rgba(244,194,27,.3);color:#F4C96B}
+[data-theme=dark] .fs-row.g{background:rgba(229,72,77,.14);border-color:rgba(229,72,77,.35)}
+[data-theme=dark] :is(.ag-steps b,.fs-tag,.rail button span,.cap){background:var(--ink);color:var(--paper)}
+[data-theme=dark] .cl-demo .tx p:not(.q){background:#F3EFE9;color:#16130F}
+[data-theme=dark] .cl-demo .tx p:not(.q) b{color:#6B645C}
+[data-theme=dark] .btn.alt:hover,[data-theme=dark] .atab[aria-selected=true]{background:var(--ink);color:var(--paper)}
+[data-theme=dark] .av[style*="--c:var(--ink)"],[data-theme=dark] .tm-av i[style*="--c:var(--ink)"]{--c:#3B352F!important}
+[data-theme=dark] .try-out pre{background:#0D0C0B;color:#E7DDCF;box-shadow:inset 0 0 0 1px var(--line)}
+[data-theme=dark] #tryAv[style*="--c:var(--ink)"]{--c:#3B352F!important}
+[data-theme=dark] .tm-av i{border-color:var(--card)}
+[data-theme=dark] .tm-art,[data-theme=dark] .ia{background:color-mix(in srgb,var(--tint) 13%,#1C1A17)}
+[data-theme=dark] .ia-b{color:var(--ink)}
+[data-theme=dark] .layered .head>*,[data-theme=dark] .layered .ag-intro>div:first-child,[data-theme=dark] .layered .dial,[data-theme=dark] .layered .trust>div:not(.pack){background:rgba(17,16,15,.72)}
+[data-theme=dark] .layered .stats>div{background:rgba(28,26,23,.85)}
+[data-theme=dark] .dl:hover,[data-theme=dark] .dl[aria-expanded=true]{background:#24211E;color:var(--ink)}
+[data-theme=dark] .ex{background:#24211E;color:var(--ink)}
+[data-theme=dark] .trust .pack{background:#24211E;box-shadow:inset 0 0 0 1px var(--line)}
+[data-theme=dark] .dv-win{background:#0D0C0B;box-shadow:inset 0 0 0 1px var(--line),0 30px 60px -30px #000}
+[data-theme=dark] .dv-bar{background:#141210}
+[data-theme=dark] .dv-log{background:#0A0908}
+[data-theme=dark] .cl-rec{background:var(--paper2)}
+[data-theme=dark] .fa{background:var(--paper2)}
+[data-theme=dark] .ph-wave i:nth-child(3n){background:var(--ink)}
+[data-theme=dark] footer{background:#0A0908}
+[data-theme=dark] .apk-box,[data-theme=dark] .try-box{background:var(--paper2)}
+[data-theme=dark] :is(.try-in input,.try-end input,.try-end select,.pilot input,.pilot select){background:var(--card);color:var(--ink);border-color:var(--line)}
+[data-theme=dark] .pilot{background:var(--card);color:var(--ink)}
+[data-theme=dark] .mic{background:var(--ink);color:var(--paper)}
+[data-theme=dark] .tf.new span:last-child{color:#16130F}
+[data-theme=dark] .key small,[data-theme=dark] .dl .no{color:var(--mute)}
+[data-theme=dark] .slip .tag{filter:brightness(1.6)}
+[data-theme=dark] input[type=range]::-webkit-slider-runnable-track{background:linear-gradient(90deg,var(--ink) 0 var(--fill,20%),rgba(255,255,255,.15) var(--fill,20%))}
+[data-theme=dark] input[type=range]::-webkit-slider-thumb{background:var(--card);border-color:var(--ink);box-shadow:0 4px 0 var(--ink)}
+[data-theme=dark] .rcp{box-shadow:0 22px 34px -18px rgba(0,0,0,.9)}
+[data-theme=dark] .finale{background:#8E1720}
 </style>
 </head>
 <body>
@@ -1152,13 +1259,14 @@ body{color:var(--ink)}
 <header class="nav">
   <a class="brand" href="#top" aria-label="Moglix Echo, back to top"><img class="mlx" src="moglix.png" alt="Moglix" width="64" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
   <div class="pill" id="pill" aria-hidden="true"><i></i><span id="clock">00:00</span><span class="st" id="status">Connecting</span></div>
-  <nav class="links" aria-label="Sections"><a href="#how">How it works</a><a href="#agents">Agents</a><a href="#industries">Use cases</a><a href="#dev">Developers</a><a href="#trust">Security</a></nav>
+  <nav class="links" aria-label="Sections"><a href="#how">How it works</a><a href="#agents">Agents</a><a href="#industries">Use cases</a><a href="#outcomes">Outcomes</a><a href="#dev">Developers</a><a href="#trust">Security</a></nav>
   <button class="snd" id="snd" aria-pressed="false" aria-label="Sound"><svg aria-hidden="true"><use href="#qm"/></svg><span>Sound off</span></button>
+  <button class="thm" id="thm" type="button" aria-label="Switch to dark mode"><svg class="su" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M4.2 12H2.5M21.5 12h-1.7M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M5.3 18.7l1.5-1.5M17.2 6.8l1.5-1.5"/></g></svg><svg class="mo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></button>
   <a class="dash" href="https://voice-ai-platform.cognilix.com/overview" data-dash target="_blank" rel="noopener"><span>Dashboard</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
   <a class="cta" href="#pilot" data-open-pilot>Book a pilot</a>
 </header>
 
-<nav class="rail" id="rail" aria-label="Chapters"><button type="button" data-go="evis" aria-label="Listen"><span>01 · Listen</span></button><button type="button" data-go="noise" aria-label="Understand"><span>02 · Understand</span></button><button type="button" data-go="close" aria-label="Confirm"><span>03 · Confirm</span></button><button type="button" data-go="how" aria-label="Act"><span>04 · Act</span></button><button type="button" data-go="agents" aria-label="Try"><span>05 · Try</span></button><button type="button" data-go="industries" aria-label="Everywhere"><span>06 · Everywhere</span></button><button type="button" data-go="dev" aria-label="Build"><span>07 · Build</span></button><button type="button" data-go="trust" aria-label="Trust"><span>08 · Trust</span></button><button type="button" data-go="pilot" aria-label="Begin"><span>09 · Begin</span></button></nav>
+<nav class="rail" id="rail" aria-label="Chapters"><button type="button" data-go="evis" aria-label="Listen"><span>01 · Listen</span></button><button type="button" data-go="noise" aria-label="Understand"><span>02 · Understand</span></button><button type="button" data-go="close" aria-label="Confirm"><span>03 · Confirm</span></button><button type="button" data-go="how" aria-label="Act"><span>04 · Act</span></button><button type="button" data-go="outcomes" aria-label="Record"><span>05 · Record</span></button><button type="button" data-go="agents" aria-label="Try"><span>06 · Try</span></button><button type="button" data-go="industries" aria-label="Everywhere"><span>07 · Everywhere</span></button><button type="button" data-go="dev" aria-label="Build"><span>08 · Build</span></button><button type="button" data-go="trust" aria-label="Trust"><span>09 · Trust</span></button><button type="button" data-go="pilot" aria-label="Begin"><span>10 · Begin</span></button></nav>
 <canvas id="tape" aria-hidden="true"></canvas>
 <div class="cap" id="cap" aria-hidden="true"></div>
 <div class="peek" id="peek" aria-hidden="true"></div>
@@ -1293,10 +1401,19 @@ body{color:var(--ink)}
     </ol>
   </div>
 </section>
+<section class="sec outs" id="outcomes" data-sec>
+  <div class="wrap">
+    <div class="head hc"><p class="kick rv"><b>05</b> Record</p><h2 class="rv">Every call ends in a receipt.</h2><p class="lede rv">Not a transcript someone has to read. A clear outcome with the recording attached, written to the system that owns it.</p></div>
+    <div class="prn" id="prn"><div class="prn-body"><span class="prn-led" aria-hidden="true"></span><span class="prn-name">Outcome printer</span><span class="prn-dest">ERP · Helpdesk · Loan system · ATS</span></div><div class="prn-slot" aria-hidden="true"></div>
+      <div class="prn-row"><div class="rcw"><article class="rcp" style="--d:0.0s;--tilt:-1.2deg"><header style="--i:0" class="ln"><span class="rl">Moglix Echo</span><span>#A-20931</span></header><p style="--i:1" class="rt ln">10:04 · Hindi · 1m 52s</p><div style="--i:2" class="rk ln"><span>Desk</span><span>Operations</span></div><div style="--i:3" class="rk ln"><span>With</span><span>Mehta Packaging</span></div><hr style="--i:4" class="ln"><p style="--i:5" class="ro v ln">PARTIAL</p><div style="--i:6" class="rk ln"><span>Line 3/6</span><span>14 of 20 · 28 Sep</span></div><div style="--i:7" class="rk ln"><span>Line 5/6</span><span>ready · 30 Sep</span></div><div style="--i:8" class="rk ln"><span>Next</span><span>follow-up 27 Sep</span></div><hr style="--i:9" class="ln"><div style="--i:10" class="rk tot ln"><span>Written to</span><span>ERP ✓</span></div><svg style="--i:11" class="bars ln" viewBox="0 0 200 34" preserveAspectRatio="none" aria-hidden="true"></svg><p style="--i:12" class="rf ln">Recording attached · read back confirmed</p><span class="rs v" aria-hidden="true">ERP</span></article></div><div class="rcw"><article class="rcp" style="--d:0.35s;--tilt:.8deg"><header style="--i:0" class="ln"><span class="rl">Moglix Echo</span><span>#S-88213</span></header><p style="--i:1" class="rt ln">11:20 · English · 58s</p><div style="--i:2" class="rk ln"><span>Desk</span><span>Support · inbound</span></div><div style="--i:3" class="rk ln"><span>With</span><span>R. Nair</span></div><hr style="--i:4" class="ln"><p style="--i:5" class="ro g ln">RESOLVED</p><div style="--i:6" class="rk ln"><span>Order</span><span>out for delivery</span></div><div style="--i:7" class="rk ln"><span>ETA</span><span>today, 6 pm</span></div><div style="--i:8" class="rk ln"><span>Sent</span><span>tracking link</span></div><hr style="--i:9" class="ln"><div style="--i:10" class="rk tot ln"><span>Written to</span><span>Helpdesk ✓</span></div><svg style="--i:11" class="bars ln" viewBox="0 0 200 34" preserveAspectRatio="none" aria-hidden="true"></svg><p style="--i:12" class="rf ln">Recording attached · read back confirmed</p><span class="rs g" aria-hidden="true">CLOSED</span></article></div><div class="rcw"><article class="rcp" style="--d:0.7s;--tilt:-.6deg"><header style="--i:0" class="ln"><span class="rl">Moglix Echo</span><span>#C-41730</span></header><p style="--i:1" class="rt ln">12:41 · Hindi · 2m 10s</p><div style="--i:2" class="rk ln"><span>Desk</span><span>Collections</span></div><div style="--i:3" class="rk ln"><span>With</span><span>A. Khan</span></div><hr style="--i:4" class="ln"><p style="--i:5" class="ro r ln">PROMISE TO PAY</p><div style="--i:6" class="rk ln"><span>Amount</span><span>₹12,400</span></div><div style="--i:7" class="rk ln"><span>Date</span><span>21 Sep · UPI</span></div><div style="--i:8" class="rk ln"><span>Reminder</span><span>20 Sep, 10 am</span></div><hr style="--i:9" class="ln"><div style="--i:10" class="rk tot ln"><span>Written to</span><span>Loan system ✓</span></div><svg style="--i:11" class="bars ln" viewBox="0 0 200 34" preserveAspectRatio="none" aria-hidden="true"></svg><p style="--i:12" class="rf ln">Recording attached · read back confirmed</p><span class="rs r" aria-hidden="true">PTP</span></article></div><div class="rcw"><article class="rcp" style="--d:1.0499999999999998s;--tilt:1.1deg"><header style="--i:0" class="ln"><span class="rl">Moglix Echo</span><span>#H-10457</span></header><p style="--i:1" class="rt ln">15:02 · English · 1m 05s</p><div style="--i:2" class="rk ln"><span>Desk</span><span>HR</span></div><div style="--i:3" class="rk ln"><span>With</span><span>P. Iyer</span></div><hr style="--i:4" class="ln"><p style="--i:5" class="ro g ln">SCHEDULED</p><div style="--i:6" class="rk ln"><span>Round</span><span>Interview 2</span></div><div style="--i:7" class="rk ln"><span>Slot</span><span>Thu 19 Sep, 11:00</span></div><div style="--i:8" class="rk ln"><span>Sent</span><span>calendar invite</span></div><hr style="--i:9" class="ln"><div style="--i:10" class="rk tot ln"><span>Written to</span><span>ATS ✓</span></div><svg style="--i:11" class="bars ln" viewBox="0 0 200 34" preserveAspectRatio="none" aria-hidden="true"></svg><p style="--i:12" class="rf ln">Recording attached · read back confirmed</p><span class="rs g" aria-hidden="true">BOOKED</span></article></div></div>
+    </div>
+    <button class="prn-again" id="prnAgain" type="button">Print again</button>
+  </div>
+</section>
 <section class="sec agents" id="agents" data-layer="0">
   <div class="wrap ag-intro">
     <div>
-      <p class="kick rv"><b>05</b> Try</p>
+      <p class="kick rv"><b>06</b> Try</p>
       <h2 class="rv">Talk to an agent. It takes a minute.</h2>
       <p class="lede rv">Twelve agents, one for every desk. Pick a team, speak or type your replies, and watch the outcome get written back.</p>
       <ol class="ag-steps rv"><li><b>1</b>Pick a team</li><li><b>2</b>Talk for up to a minute</li><li><b>3</b>See what gets saved</li></ol>
@@ -1309,7 +1426,7 @@ body{color:var(--ink)}
 <section class="sec industries" id="industries" data-sec data-layer="2">
   <div class="wrap">
     <div class="head">
-      <div><p class="kick rv"><b>06</b> Everywhere</p><h2 class="rv">If it runs on phone calls, it runs on Echo.</h2></div>
+      <div><p class="kick rv"><b>07</b> Everywhere</p><h2 class="rv">If it runs on phone calls, it runs on Echo.</h2></div>
       <p class="lede rv">Every industry has the same shape: someone needs an answer from someone else, and that answer has to land in a system. Open a line to hear the call.</p>
     </div>
     <ol class="dial rv" id="dial"></ol>
@@ -1317,7 +1434,7 @@ body{color:var(--ink)}
 </section>
 <section class="sec dev" id="dev" data-sec>
   <div class="wrap">
-    <div class="head"><div><p class="kick rv"><b>07</b> Build</p><h2 class="rv">One engine. Every desk.</h2></div><p class="lede rv">Business teams pick a use case and we set it up. Developers get the same agents, calls and outcomes through an API.</p></div>
+    <div class="head"><div><p class="kick rv"><b>08</b> Build</p><h2 class="rv">One engine. Every desk.</h2></div><p class="lede rv">Business teams pick a use case and we set it up. Developers get the same agents, calls and outcomes through an API.</p></div>
     <div class="dv-grid">
       <div class="dv-teams rv">
         <p class="dv-lbl">For business teams · no code</p>
@@ -1353,7 +1470,7 @@ body{color:var(--ink)}
 </section>
 <section class="sec trusts" id="trust" data-sec data-layer="3">
   <div class="wrap">
-    <div class="head"><div><p class="kick rv"><b>08</b> Trust</p><h2 class="rv">Running at Moglix, every day.</h2></div><p class="lede rv">Before Echo called anyone else’s suppliers, it called ours. It still does.</p></div>
+    <div class="head"><div><p class="kick rv"><b>09</b> Trust</p><h2 class="rv">Running at Moglix, every day.</h2></div><p class="lede rv">Before Echo called anyone else’s suppliers, it called ours. It still does.</p></div>
     <div class="stats">
       <div><b data-to="240" data-suf="K+">240K+</b><span>calls a month</span></div>
       <div><b data-to="8" data-suf="K+ hrs">8K+ hrs</b><span>of talk time a month</span></div>
@@ -1377,7 +1494,7 @@ body{color:var(--ink)}
 
 <section class="sec finale" id="pilot" data-layer="4">
   <div class="wrap">
-    <p class="kick rv"><b>09</b> Begin</p>
+    <p class="kick rv"><b>10</b> Begin</p>
     <h2 class="rv">Start with the call your team dreads most.</h2>
     <p class="lede rv">One use case, one team, your own numbers as the baseline. We run it on your book; you watch the outcomes land.</p>
     <div class="holdw rv">
@@ -2027,6 +2144,7 @@ d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest(
 $$('[data-apk-close]',apk).forEach(function(b){b.addEventListener('click',closeApk)});
 apk.addEventListener('keydown',function(e){if(e.key==='Escape')closeApk()});
 
+function DKT(){return root.getAttribute('data-theme')==='dark'}
 /* ================= v7 motion system ================= */
 var canHov=matchMedia('(hover:hover) and (pointer:fine)').matches,dpr2=Math.min(1.5,window.devicePixelRatio||1);
 
@@ -2079,14 +2197,18 @@ function build(L){var W3=L.sec.clientWidth,H3=L.sec.offsetHeight,c=L.cell;if(W3<
   var gs=18,gw=Math.ceil(L.cols/gs)+3,gh=Math.ceil(L.rows/gs)+3,G=new Float32Array(gw*gh);for(var q=0;q<G.length;q++)G[q]=Math.random();
   function sm(t){return t*t*(3-2*t)}function nzz(i,j){var x=i/gs,y=j/gs,x0=Math.floor(x),y0=Math.floor(y),fx=sm(x-x0),fy=sm(y-y0),a=G[y0*gw+x0],b=G[y0*gw+x0+1],c2=G[(y0+1)*gw+x0],d2=G[(y0+1)*gw+x0+1];return a+(b-a)*fx+(c2-a)*fy+(a-b-c2+d2)*fx*fy}
   var sx=V.x*L.cols,sy=V.y*L.rows,sig=Math.min(L.cols,L.rows)*V.s*.55;
-  g.fillStyle=L.fin?'rgba(0,0,0,.14)':'rgba(120,108,95,.20)';
+  g.fillStyle=L.fin?'rgba(0,0,0,.14)':(DKT()?'rgba(255,255,255,.085)':'rgba(120,108,95,.20)');
   for(var j=0;j<L.rows;j++)for(var i=0;i<L.cols;i++){var k=j*L.cols+i;if(mask[k*4+3]>40)continue;var pr=Math.exp(-(Math.pow(i-sx,2)+Math.pow(j-sy,2))/(2*sig*sig)),v=nzz(i,j)*.14+pr*.66*(.55+.45*nzz(i+50,j+50));if(v>BAY[(j&3)*4+(i&3)])g.fillRect(i*c+1.6,j*c+1.6,c*.46,c*.46)}
-  g.strokeStyle=L.fin?'rgba(0,0,0,.08)':'#F0EDE7';glides(g,1);L.built=true}
+  g.strokeStyle=L.fin?'rgba(0,0,0,.08)':(DKT()?'#1B1917':'#F0EDE7');glides(g,1);L.built=true}
 function drawLayers(){for(var n=0;n<LAYERS.length;n++){var L=LAYERS[n];if(!L.built||!L.vis||(!L.act.length&&!L.dirty))continue;var g=L.top.getContext('2d'),c=L.cell;g.setTransform(dpr2,0,0,dpr2,0,0);g.clearRect(0,0,L.cols*c,L.rows*c);L.dirty=L.act.length>0;
-  var rgb=L.fin?'255,236,228':'236,120,108',keep=[];for(var q=0;q<L.act.length;q++){var k=L.act[q],t=L.T[k]*.955;L.T[k]=t;if(t<.03){L.T[k]=0;continue}keep.push(k);var i=k%L.cols,j=(k/L.cols)|0;if(t*1.25>BAY[(j&3)*4+(i&3)]){var sz=c*(.35+t*.6);g.fillStyle='rgba('+rgb+','+Math.min(.6,.15+t*.5).toFixed(2)+')';g.fillRect(i*c+(c-sz)/2,j*c+(c-sz)/2,sz,sz)}}L.act=keep}}
+  var rgb=L.fin?'255,236,228':(DKT()?'242,98,92':'236,120,108'),keep=[];for(var q=0;q<L.act.length;q++){var k=L.act[q],t=L.T[k]*.955;L.T[k]=t;if(t<.03){L.T[k]=0;continue}keep.push(k);var i=k%L.cols,j=(k/L.cols)|0;if(t*1.25>BAY[(j&3)*4+(i&3)]){var sz=c*(.35+t*.6);g.fillStyle='rgba('+rgb+','+Math.min(.6,.15+t*.5).toFixed(2)+')';g.fillRect(i*c+(c-sz)/2,j*c+(c-sz)/2,sz,sz)}}L.act=keep}}
 $$('[data-layer]').forEach(Layer);
 var rb;function rebuildLayers(){clearTimeout(rb);rb=setTimeout(function(){LAYERS.forEach(function(L){L.built=false;if(L.vis)build(L)})},200)}
-addEventListener('resize',rebuildLayers);addEventListener('load',rebuildLayers);if(d.fonts&&d.fonts.ready)d.fonts.ready.then(rebuildLayers);
+addEventListener('resize',rebuildLayers);
+var thm=$('#thm');function setThm(t,save){root.classList.add('theming');root.setAttribute('data-theme',t);thm.setAttribute('aria-label',t==='dark'?'Switch to light mode':'Switch to dark mode');if(save){try{localStorage.setItem('echo-theme',t)}catch(e){}}LAYERS.forEach(function(L){L.built=false;if(L.vis)build(L)});setTimeout(function(){root.classList.remove('theming')},450);track('theme',{theme:t})}
+thm.setAttribute('aria-label',DKT()?'Switch to light mode':'Switch to dark mode');thm.addEventListener('click',function(){setThm(DKT()?'light':'dark',true)});
+try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(e){var sv=null;try{sv=localStorage.getItem('echo-theme')}catch(x){}if(!sv)setThm(e.matches?'dark':'light',false)})}catch(e){}
+addEventListener('load',rebuildLayers);if(d.fonts&&d.fonts.ready)d.fonts.ready.then(rebuildLayers);
 
 /* one loop for everything that reacts to motion */
 var fr=0;(function loop(){fr++;var sy=window.scrollY;vel+=((sy-lastSY)-vel)*.18;lastSY=sy;
@@ -2180,6 +2302,13 @@ var rail=$('#rail');if(rail&&'IntersectionObserver' in window){var items=$$('but
   secs.forEach(function(s){if(s)io.observe(s)});
   new IntersectionObserver(function(es){if(es[0].isIntersecting)rail.classList.remove('show')},{threshold:.3}).observe($('#top'))}
 })();
+
+/* ================= v14: receipt printer ================= */
+(function(){var prn=document.getElementById('prn');if(!prn)return;
+[].slice.call(prn.querySelectorAll('.bars')).forEach(function(sv,k){var x=2,h='',sd=97+k*13;function r(){sd=(sd*9301+49297)%233280;return sd/233280}while(x<196){var w=1+(r()*3|0);if(r()>.35)h+='<rect x="'+x+'" y="0" width="'+w+'" height="34" fill="#1B1612"/>';x+=w+1}sv.innerHTML=h});
+var busyT;function go(){prn.classList.remove('go');void prn.offsetWidth;prn.classList.add('go','busy');clearTimeout(busyT);busyT=setTimeout(function(){prn.classList.remove('busy')},3400)}
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){go();io.disconnect()}},{threshold:.35});io.observe(prn)}else prn.classList.add('go');
+var a=document.getElementById('prnAgain');if(a)a.addEventListener('click',go)})();
 </script>
 </body>
 </html>
