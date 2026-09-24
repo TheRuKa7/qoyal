@@ -1226,6 +1226,143 @@ html.theming *,html.theming *:before,html.theming *:after{transition:background-
 [data-theme=dark] input[type=range]::-webkit-slider-thumb{background:var(--card);border-color:var(--ink);box-shadow:0 4px 0 var(--ink)}
 [data-theme=dark] .rcp{box-shadow:0 22px 34px -18px rgba(0,0,0,.9)}
 [data-theme=dark] .finale{background:#8E1720}
+
+/* ================= v15: one background, glass surfaces ================= */
+#bgf{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main,footer{position:relative;z-index:1}
+.sec,.close,.proof,.how,.dev,.trusts,.outs,.agents,.industries,.noise,.evis,.finale{background:transparent!important}
+:root{--glass:rgba(255,255,255,.56);--glass-hi:rgba(255,255,255,.75);--glass-line:rgba(22,19,15,.09);--glass-txt:rgba(247,246,242,.5)}
+[data-theme=dark]{--glass:rgba(32,30,27,.55);--glass-hi:rgba(255,255,255,.06);--glass-line:rgba(255,255,255,.1);--glass-txt:rgba(17,16,15,.45)}
+:is(.player,.tm,.agc,.cl-demo,.flow li,.stats>div,.ev,.slip,.trust>div:not(.pack),.sm-win,.dial,.ev-card,.cl-rec,.fa,.mode button,.dash,.btn.alt,.tl-list button,.cl-demo .key,.ph-card,.fs-row,.rc-f,.ev-tab,.atab,.sm-drop,.sm-map,.sm-run>div,.sm-kpis>div,.sm-feed li){
+  background-color:var(--glass)!important;-webkit-backdrop-filter:blur(14px) saturate(1.35);backdrop-filter:blur(14px) saturate(1.35);border:1px solid var(--glass-line)!important;box-shadow:inset 0 1px 0 var(--glass-hi),var(--shadow)}
+:is(.tl-list button,.fs-row,.rc-f,.ph-card,.cl-demo .key,.ev-tab,.atab,.sm-feed li,.sm-map,.sm-drop,.sm-run>div,.sm-kpis>div,.fa,.cl-rec,.ev-card){box-shadow:inset 0 1px 0 var(--glass-hi)}
+.atab[aria-selected=true],.ev-tab[aria-selected=true]{background-color:var(--ink)!important;color:var(--paper)!important;border-color:var(--ink)!important}
+.btn.alt:hover{background-color:var(--ink)!important;color:var(--paper)!important}
+.fs-row.g{background-color:rgba(217,35,45,.1)!important;border-color:rgba(217,35,45,.3)!important}
+.fs-row.h{background:none!important;border-color:transparent!important;box-shadow:none!important;backdrop-filter:none}
+.tl-list button:hover,.cl-demo .key:hover,.tm:hover,.agc:hover{border-color:var(--ink)!important}
+/* soft glass behind text so the dots blur under it */
+.head>*,.ag-intro>div:first-child,.cl-copy,.hero>div:first-child{background:var(--glass-txt);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:22px;padding:18px 22px;margin:-18px -22px}
+.head.hc>*{margin:0 auto;padding:6px 18px}
+.hero>div:first-child{padding:24px 28px;margin:-24px -28px}
+.lay,.lay:after{display:none}
+footer{background:#16130F}
+
+/* ================= v15: finale ================= */
+.finale .wrap{text-align:left}
+.fin-panel{position:relative;overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(28px,4.5vw,64px);border-radius:32px;color:#fff;
+  background:linear-gradient(140deg,rgba(222,40,50,.94),rgba(165,20,30,.94));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 40px 90px -40px rgba(160,20,30,.7)}
+[data-theme=dark] .fin-panel{background:linear-gradient(140deg,rgba(190,30,40,.9),rgba(120,14,22,.92))}
+.fin-rings{position:absolute;left:-120px;bottom:-160px;width:520px;height:520px;pointer-events:none}
+.fin-rings i{position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(255,255,255,.14)}
+.fin-rings i:nth-child(2){inset:70px}.fin-rings i:nth-child(3){inset:140px}
+.fin-l{position:relative;z-index:1}
+.finale .kick{color:#FFE3D8;justify-content:flex-start}
+.finale .kick:before{background:#fff}
+.finale .kick b{color:#fff}
+.finale h2{margin:0;max-width:13ch;font-size:clamp(38px,4.6vw,76px);color:#fff}
+.finale .lede{color:#FFE9E3;margin:18px 0 0;max-width:34ch}
+.holdw{margin:34px 0 0;display:flex;flex-direction:row;align-items:center;gap:20px;text-align:left}
+.hold{position:relative;width:96px;height:96px;flex:none;border-radius:50%;background:#fff;color:var(--red2);display:grid;place-items:center;touch-action:none;-webkit-user-select:none;user-select:none;transition:transform .25s var(--ease),background .3s,color .3s;box-shadow:0 14px 30px -12px rgba(0,0,0,.45)}
+.hold:hover{transform:scale(1.04)}
+.hold.holding{transform:scale(.94)}
+.hold>svg.hs{width:38px;height:38px;position:relative;z-index:2;animation:ringing 2.6s var(--ease) infinite;transform-origin:50% 60%}
+.hold.holding>svg.hs{animation:buzz .12s linear infinite}
+@keyframes buzz{50%{transform:rotate(-10deg) translateX(-1px)}}
+.hold .rg{position:absolute;inset:-9px;width:calc(100% + 18px);height:calc(100% + 18px);transform:rotate(-90deg);z-index:1}
+.hold .rg circle{fill:none;stroke-width:5;stroke-linecap:round}
+.hold .rg .bgc{stroke:rgba(255,255,255,.25)!important}
+.hold #hring{stroke:#fff!important}
+.hw{position:absolute;inset:0;pointer-events:none}
+.hw i{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,255,255,.7);opacity:0;animation:ripple 2.4s cubic-bezier(.2,.6,.3,1) infinite}
+.hw i:nth-child(2){animation-delay:.8s}.hw i:nth-child(3){animation-delay:1.6s}
+.hold.holding .hw i{animation-duration:.9s}
+.hold.done{background:#16130F;color:#fff}
+.hold.done>svg.hs{animation:none}
+.hold.done .hw i{display:none}
+.hl{font:650 17px var(--grot);letter-spacing:-.01em;text-transform:none;color:#fff}
+.hsub{font:500 13.5px var(--grot);color:#FFD9D1;margin-top:2px}
+.fin-alt{margin-top:34px;padding-top:20px;border-top:1px solid rgba(255,255,255,.22)}
+.fin-alt p{font:600 14px var(--grot);color:#FFE3D8;margin-bottom:12px}
+.btn.wht{background:#fff;color:#16130F}.btn.wht:hover{background:#16130F;color:#fff}
+.btn.gh{border:1px solid rgba(255,255,255,.55);color:#fff}.btn.gh:hover{background:rgba(255,255,255,.14)}
+.finale .pilot{position:relative;z-index:1;margin:0;max-width:none;grid-template-rows:1fr;visibility:visible;background:rgba(255,255,255,.96);color:#16130F;border-radius:22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.5);transition:transform .4s var(--ease)}
+[data-theme=dark] .finale .pilot{background:rgba(24,22,20,.94);color:var(--ink)}
+.finale .pilot.pulse{animation:formPulse .9s var(--ease)}
+@keyframes formPulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.8),0 30px 60px -30px rgba(0,0,0,.5)}100%{box-shadow:0 0 0 18px rgba(255,255,255,0),0 30px 60px -30px rgba(0,0,0,.5)}}
+.finale .pilot form{padding:26px}
+.finale .pilot h3{font:650 26px/1.1 var(--grot);letter-spacing:-.02em}
+.fsub{grid-column:1/-1;font:500 14px var(--grot);color:var(--mute);margin-top:-6px}
+.finale .pilot .go button{background:var(--red);color:#fff}
+.finale .pilot .go button:hover{background:#16130F}
+[data-theme=dark] .finale .pilot .go button:hover{background:#fff;color:#16130F}
+@media (max-width:1000px){.fin-panel{grid-template-columns:1fr}}
+
+/* ================= v15: simple mode / developer mode ================= */
+.mode{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:760px;margin:0 auto 22px}
+.mode button{text-align:left;border-radius:16px;padding:14px 18px;transition:border-color .25s,transform .25s var(--ease)}
+.mode button b{display:block;font:650 17px var(--grot);letter-spacing:-.01em}
+.mode button small{font:500 13px var(--grot);color:var(--mute)}
+.mode button[aria-selected=true]{border-color:var(--red)!important;box-shadow:inset 0 0 0 1px var(--red),var(--shadow)!important}
+.mode button[aria-selected=true] b{color:var(--red2)}
+.mpanel[hidden]{display:none}
+.mpanel .dv-feats{max-width:1000px;margin:16px auto 0}
+.dv-code{max-width:1000px;margin:0 auto}
+.sm-win{max-width:1000px;margin:0 auto;border-radius:20px;overflow:hidden}
+.sm-bar{display:flex;align-items:center;gap:14px;padding:11px 16px;border-bottom:1px solid var(--glass-line)}
+.sm-bar .dv-dots i{background:var(--line)}
+.sm-crumb{font:600 12.5px var(--grot);color:var(--ink2)}
+.sm-steps{display:flex;gap:6px;padding:12px 16px;border-bottom:1px solid var(--glass-line);overflow-x:auto;scrollbar-width:none}
+.sm-steps button{display:inline-flex;align-items:center;gap:8px;font:600 13.5px var(--grot);color:var(--mute);border-radius:10px;padding:8px 12px;white-space:nowrap;transition:background .25s,color .25s}
+.sm-steps button i{width:22px;height:22px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font:700 11px var(--grot);font-style:normal}
+.sm-steps button[aria-selected=true]{background:var(--ink);color:var(--paper)}
+.sm-steps button.done{color:var(--green)}
+.sm-steps button.done i{background:var(--green);border-color:var(--green);color:#fff}
+.sm-body{padding:22px;min-height:330px}
+.sm-pane{animation:lineIn .4s var(--ease)}
+.sm-f{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:start;padding:10px 0;border-bottom:1px dashed var(--line)}
+.sm-f>span:first-child{font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);padding-top:9px}
+.sm-in{display:block;min-height:40px;border:1px solid var(--line);border-radius:10px;padding:9px 12px;font:500 15px var(--grot);background:var(--glass)}
+.sm-in.ta{min-height:64px}
+.sm-in.typing:after{content:"";display:inline-block;width:2px;height:1.1em;background:var(--red);vertical-align:-3px;margin-left:1px;animation:blink .8s steps(2) infinite}
+.sm-chips{display:flex;gap:6px;flex-wrap:wrap;padding-top:4px}
+.sm-chips i{font:600 13px var(--grot);font-style:normal;border:1px solid var(--line);border-radius:99px;padding:6px 12px}
+.sm-chips i.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.sm-btn{display:inline-flex;margin-top:16px;background:var(--red);color:#fff;font:650 14px var(--grot);border-radius:10px;padding:10px 16px;transition:transform .15s,box-shadow .3s}
+.sm-btn.press{animation:press .5s var(--ease)}
+@keyframes press{40%{transform:scale(.94)}100%{box-shadow:0 0 0 10px rgba(217,35,45,0)}0%{box-shadow:0 0 0 0 rgba(217,35,45,.5)}}
+.sm-drop{display:flex;align-items:center;gap:16px;border:1.5px dashed var(--line)!important;border-radius:14px;padding:18px}
+.sm-xl{width:48px;height:56px;border-radius:8px;background:#1F7A4D;color:#fff;display:grid;place-items:end center;padding-bottom:8px;font:700 10px var(--mono);letter-spacing:.06em}
+.sm-file{flex:1;display:flex;flex-direction:column;gap:4px}
+.sm-file b{font:650 15px var(--grot)}
+.sm-file small{font:500 12.5px var(--grot);color:var(--mute)}
+.sm-pb{display:block;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.sm-pb i{display:block;height:100%;width:0;background:var(--green);transition:width 1.3s var(--ease)}
+.sm-file.up .sm-pb i{width:100%}
+.sm-map{margin-top:14px;border-radius:14px;padding:6px 14px}
+.sm-map p{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font:500 14px var(--grot)}
+.sm-map p:last-child{border-bottom:0}
+.sm-map p:first-child{font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.sm-map p:not(:first-child) span:last-child{opacity:.25;transition:opacity .3s}
+.sm-map p.on span:last-child{opacity:1;font-weight:650}
+.sm-map p.on span:last-child:after{content:" ✓";color:var(--green)}
+.sm-run{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap}
+.sm-run>div{border-radius:12px;padding:10px 14px}
+.sm-run small,.sm-kpis small{display:block;font:500 12px var(--grot);color:var(--mute)}
+.sm-run b{font:650 15px var(--grot)}
+.sm-run .sm-btn{margin:0 0 0 auto;align-self:center}
+.sm-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.sm-kpis>div{border-radius:12px;padding:12px 14px}
+.sm-kpis b{font:650 28px/1 var(--grot);letter-spacing:-.03em}
+.sm-pbar{height:6px;border-radius:3px;background:var(--line);overflow:hidden;margin-top:14px}
+.sm-pbar i{display:block;height:100%;width:0;background:var(--red);transition:width 2.6s cubic-bezier(.3,.1,.3,1)}
+.sm-pbar.run i{width:64%}
+.sm-feed{list-style:none;display:grid;gap:6px;margin-top:12px}
+.sm-feed li{display:flex;justify-content:space-between;gap:10px;border-radius:10px;padding:9px 12px;font:600 14px var(--grot);opacity:0;transform:translateY(8px);transition:opacity .4s,transform .45s var(--ease)}
+.sm-feed li.on{opacity:1;transform:none}
+.sm-feed em{font:600 12px var(--mono);font-style:normal;letter-spacing:.03em}
+.sm-feed .ok{color:var(--green)}.sm-feed .p{color:var(--violet)}.sm-feed .r{color:var(--red2)}
+@media (max-width:760px){.mode{grid-template-columns:1fr}.sm-f{grid-template-columns:1fr;gap:4px}.sm-f>span:first-child{padding-top:0}.sm-kpis b{font-size:22px}.head>*,.ag-intro>div:first-child,.cl-copy,.hero>div:first-child{margin:0;padding:14px 16px}}
 </style>
 </head>
 <body>
@@ -1288,7 +1425,7 @@ html.theming *,html.theming *:before,html.theming *:after{transition:background-
       <div class="player tryc" id="tryc" aria-label="Talk to an agent">
         <div class="ph"><span>Talk to an agent now</span><span class="rec"><i></i>Up to 1 minute</span></div>
         <ul class="tl-list"><li><button data-try="dispatch"><span class="av" style="--c:var(--red)">R</span><span class="at">Riya · Dispatch follow-up<small>Operations · Hinglish</small></span><span class="go"><svg aria-hidden="true"><use href="#phone"/></svg>Try</span></button></li><li><button data-try="wismo"><span class="av" style="--c:var(--violet)">M</span><span class="at">Meera · Where is my order<small>Support · English</small></span><span class="go"><svg aria-hidden="true"><use href="#phone"/></svg>Try</span></button></li><li><button data-try="collect"><span class="av" style="--c:var(--green)">K</span><span class="at">Kabir · Payment reminders<small>Collections · Hindi</small></span><span class="go"><svg aria-hidden="true"><use href="#phone"/></svg>Try</span></button></li><li><button data-try="lead"><span class="av" style="--c:var(--ink)">A</span><span class="at">Ananya · Lead qualification<small>Sales · English</small></span><span class="go"><svg aria-hidden="true"><use href="#phone"/></svg>Try</span></button></li></ul>
-        <a class="more" href="#agents" data-agents="all">All 12 agents, every desk ↓</a>
+        <a class="more" href="#agents" data-agents="all">Browse every agent ↓</a>
       </div>
     </div>
     <div class="story" id="story" data-s="0">
@@ -1410,20 +1547,20 @@ html.theming *,html.theming *:before,html.theming *:after{transition:background-
     <button class="prn-again" id="prnAgain" type="button">Print again</button>
   </div>
 </section>
-<section class="sec agents" id="agents" data-layer="0">
+<section class="sec agents" id="agents">
   <div class="wrap ag-intro">
     <div>
       <p class="kick rv"><b>06</b> Try</p>
       <h2 class="rv">Talk to an agent. It takes a minute.</h2>
-      <p class="lede rv">Twelve agents, one for every desk. Pick a team, speak or type your replies, and watch the outcome get written back.</p>
+      <p class="lede rv">An agent for every desk. Pick a team, speak or type your replies, and watch the outcome get written back.</p>
       <ol class="ag-steps rv"><li><b>1</b>Pick a team</li><li><b>2</b>Talk for up to a minute</li><li><b>3</b>See what gets saved</li></ol>
-      <div class="btns rv"><button class="btn pri" type="button" data-agents="all">Browse all 12 agents</button><button class="btn alt" type="button" data-try="dispatch"><i></i>Quick try with Riya</button></div>
+      <div class="btns rv"><button class="btn pri" type="button" data-agents="all">Browse the agents</button><button class="btn alt" type="button" data-try="dispatch"><i></i>Quick try with Riya</button></div>
       <p class="note rv">Live at Moglix today: operations and support. Every other agent runs on the same engine and is ready to pilot.</p>
     </div>
     <div class="teams" id="teams" aria-label="Agents by team"></div>
   </div>
 </section>
-<section class="sec industries" id="industries" data-sec data-layer="2">
+<section class="sec industries" id="industries" data-sec>
   <div class="wrap">
     <div class="head">
       <div><p class="kick rv"><b>07</b> Everywhere</p><h2 class="rv">If it runs on phone calls, it runs on Echo.</h2></div>
@@ -1434,25 +1571,45 @@ html.theming *,html.theming *:before,html.theming *:after{transition:background-
 </section>
 <section class="sec dev" id="dev" data-sec>
   <div class="wrap">
-    <div class="head"><div><p class="kick rv"><b>08</b> Build</p><h2 class="rv">One engine. Every desk.</h2></div><p class="lede rv">Business teams pick a use case and we set it up. Developers get the same agents, calls and outcomes through an API.</p></div>
-    <div class="dv-grid">
-      <div class="dv-teams rv">
-        <p class="dv-lbl">For business teams · no code</p>
-        <h3>Pick the call. We run it.</h3>
-        <ul class="dv-desks">
-          <li><b>Operations</b><span>Dispatch dates, delays, capacity</span></li>
-          <li><b>Support</b><span>Order status, refunds, escalations</span></li>
-          <li><b>Collections</b><span>Reminders, promise to pay</span></li>
-          <li><b>Sales</b><span>Lead qualification, renewals</span></li>
-          <li><b>HR</b><span>Interview scheduling</span></li>
-          <li><b>KYC</b><span>Contact and address checks</span></li>
-          <li><b>Accounts</b><span>Invoices, GST mismatches</span></li>
-        </ul>
-        <div class="btns"><a class="btn pri" href="#pilot" data-open-pilot>Book a pilot</a><button class="btn alt" type="button" data-agents="all"><i></i>Try an agent</button></div>
+    <div class="head"><div><p class="kick rv"><b>08</b> Build</p><h2 class="rv">One engine. Every desk.</h2></div><p class="lede rv">Business teams build in a few clicks. Developers get the same agents, campaigns and results over an API.</p></div>
+    <div class="mode rv" role="tablist" aria-label="Choose how you work">
+      <button type="button" role="tab" aria-selected="true" data-m="simple"><b>Simple mode</b><small>No code. Create an agent, upload a sheet, run.</small></button>
+      <button type="button" role="tab" aria-selected="false" data-m="dev"><b>Developer mode</b><small>The same agents and campaigns over an API.</small></button>
+    </div>
+    <div class="mpanel" data-p="simple">
+      <div class="sm-win rv" id="smWin">
+        <div class="sm-bar"><span class="dv-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sm-crumb">Echo · New campaign</span></div>
+        <div class="sm-steps" role="tablist" aria-label="Steps"><button type="button" role="tab" data-s="0" aria-selected="true"><i>1</i>Create an agent</button><button type="button" role="tab" data-s="1" aria-selected="false"><i>2</i>Upload a sheet</button><button type="button" role="tab" data-s="2" aria-selected="false"><i>3</i>Run the campaign</button></div>
+        <div class="sm-body">
+          <div class="sm-pane" data-s="0">
+            <div class="sm-f"><span>Agent name</span><span class="sm-in" data-type="Dispatch follow-up"></span></div>
+            <div class="sm-f"><span>Languages</span><span class="sm-chips"><i>Hindi</i><i class="on">Hinglish</i><i>English</i></span></div>
+            <div class="sm-f"><span>What should it do?</span><span class="sm-in ta" data-type="Confirm the dispatch date and quantity for each open PO line. Read both back before saving."></span></div>
+            <div class="sm-f"><span>Save results to</span><span class="sm-chips"><i class="on">ERP</i><i>Sheet</i><i>Webhook</i></span></div>
+            <span class="sm-btn">Save agent</span>
+          </div>
+          <div class="sm-pane" data-s="1" hidden>
+            <div class="sm-drop"><span class="sm-xl" aria-hidden="true">XLSX</span><span class="sm-file"><b>open_pos.xlsx</b><small class="sm-st">Uploading</small><i class="sm-pb"><i></i></i></span></div>
+            <div class="sm-map"><p><span>Column in your sheet</span><span>Echo uses it as</span></p><p><span>Supplier</span><span>Name</span></p><p><span>Contact no.</span><span>Phone</span></p><p><span>PO / line</span><span>Reference</span></p><p><span>Promised date</span><span>Date to confirm</span></p></div>
+          </div>
+          <div class="sm-pane" data-s="2" hidden>
+            <div class="sm-run"><div><small>Calling window</small><b>10:00 to 18:00</b></div><div><small>Retries</small><b>Up to 3</b></div><span class="sm-btn go">Start campaign</span></div>
+            <div class="sm-kpis"><div><b data-n="148">0</b><small>calls placed</small></div><div><b data-n="71" data-suf="%">0%</b><small>reached</small></div><div><b data-n="96">0</b><small>outcomes saved</small></div></div>
+            <div class="sm-pbar"><i></i></div>
+            <ul class="sm-feed"><li>Mehta Packaging<em class="ok">Confirmed · 28 Sep</em></li><li>Vijay Steel<em class="p">Partial · 10 of 14</em></li><li>R K Castings<em class="r">Call back · 4 pm</em></li></ul>
+          </div>
+        </div>
       </div>
-      <div class="dv-code rv">
-        <p class="dv-lbl">For developers · API</p>
-        <div class="dv-win">
+      <ul class="dv-feats">
+        <li><b>Templates</b>Start from common calls</li>
+        <li><b>Any sheet</b>Echo maps your columns</li>
+        <li><b>Your rules</b>Calling windows and retries</li>
+        <li><b>Results</b>As a sheet or in your system</li>
+      </ul>
+    </div>
+    <div class="mpanel" data-p="dev" hidden>
+      <div class="dv-code">
+                <div class="dv-win">
           <div class="dv-bar"><span class="dv-dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="dv-tabs" role="tablist" aria-label="Examples"><button class="dv-tab" role="tab" data-c="call" aria-selected="true">Start a call</button><button class="dv-tab" role="tab" data-c="campaign" aria-selected="false">Run a campaign</button><button class="dv-tab" role="tab" data-c="result" aria-selected="false">Read outcomes</button></div></div>
           <div class="dv-sub"><div class="dv-lang" aria-label="Language"><button data-l="curl" aria-pressed="true">cURL</button><button data-l="node" aria-pressed="false">Node</button><button data-l="py" aria-pressed="false">Python</button></div><button class="dv-copy" id="dvCopy" type="button">Copy</button></div>
           <pre class="dv-pre"><code id="dvCode"></code></pre>
@@ -1468,7 +1625,7 @@ html.theming *,html.theming *:before,html.theming *:after{transition:background-
     </div>
   </div>
 </section>
-<section class="sec trusts" id="trust" data-sec data-layer="3">
+<section class="sec trusts" id="trust" data-sec>
   <div class="wrap">
     <div class="head"><div><p class="kick rv"><b>09</b> Trust</p><h2 class="rv">Running at Moglix, every day.</h2></div><p class="lede rv">Before Echo called anyone else’s suppliers, it called ours. It still does.</p></div>
     <div class="stats">
@@ -1477,7 +1634,7 @@ html.theming *,html.theming *:before,html.theming *:after{transition:background-
       <div><b data-to="83" data-suf="%">83%</b><span>fewer calls, same answers</span></div>
       <div><b>Same day</b><span>outcomes written back</span></div>
     </div>
-    <p class="note rv">About 11,000 calls a working day at 2 minutes a call. 83% fewer calls because open lines for the same supplier and plant are grouped into one call.</p>
+    <p class="note rv">Figures from Moglix’s own operations.</p>
     <div class="trust">
       <div><b>Hosted in India</b>Calls, recordings and data stay in the country.</div>
       <div><b>Recordings, 90 days</b>Every call playable next to its outcome.</div>
@@ -1486,33 +1643,42 @@ html.theming *,html.theming *:before,html.theming *:after{transition:background-
       <div><b>Calling windows</b>Calls start only inside the hours you set.</div>
       <div><b>Read back, always</b>No date or amount is saved without a confirmed read-back.</div>
       <div><b>Signed webhooks</b>Callbacks are verified before they are trusted.</div>
-      <div class="pack"><b>Security pack</b>Architecture, data flow, retention and our certification roadmap, shared under NDA.<br><a href="#pilot" data-open-pilot>Request it →</a></div>
+      <div class="pack"><b>Security pack</b>Architecture, data flow and retention, shared under NDA.<br><a href="#pilot" data-open-pilot>Request it →</a></div>
     </div>
   </div>
 </section>
 
 
-<section class="sec finale" id="pilot" data-layer="4">
+<section class="sec finale" id="pilot" data-sec>
   <div class="wrap">
-    <p class="kick rv"><b>10</b> Begin</p>
-    <h2 class="rv">Start with the call your team dreads most.</h2>
-    <p class="lede rv">One use case, one team, your own numbers as the baseline. We run it on your book; you watch the outcomes land.</p>
-    <div class="holdw rv">
-      <button class="hold" id="hold"><svg class="rg" viewBox="0 0 100 100" aria-hidden="true"><circle class="bgc" cx="50" cy="50" r="47"/><circle id="hring" cx="50" cy="50" r="47" stroke-dasharray="295.3" stroke-dashoffset="295.3"/></svg><svg class="hs" aria-hidden="true"><use href="#phone"/></svg><span class="sr">Book a pilot</span></button>
-      <p class="hl" id="hl" aria-hidden="true">Press and hold to call us</p>
-      <p class="orform">or <button id="openForm" data-open-pilot>skip the ceremony and fill the form</button></p>
-    </div>
-    <div class="pilot" id="pilotBox">
-      <div>
-        <form id="pilotForm" novalidate>
-          <h3>Tell us the call. We’ll call you back.</h3>
-          <label>Your name<input name="name" autocomplete="name" required></label>
-          <label>Work email<input name="email" type="email" autocomplete="email" required></label>
-          <label>Company<input name="company" autocomplete="organization" required></label>
-          <label>Phone<input name="phone" type="tel" autocomplete="tel" inputmode="tel"></label>
-          <label class="full">The call your team dreads<select name="usecase"><option>Supplier follow-ups (PO, dispatch, delays)</option><option>Customer support (orders, refunds, escalations)</option><option>Sales and lead qualification</option><option>Collections and payment reminders</option><option>HR and hiring</option><option>KYC and verification</option><option>Something else</option></select></label>
-          <div class="go"><button type="submit">Request a pilot</button><p class="msg" id="pmsg" aria-live="polite"></p></div>
-        </form>
+    <div class="fin-panel rv">
+      <span class="fin-rings" aria-hidden="true"><i></i><i></i><i></i></span>
+      <div class="fin-l">
+        <p class="kick"><b>10</b> Begin</p>
+        <h2 class="rv">Start with the call your team dreads most.</h2>
+        <p class="lede">One use case, one team, your own numbers as the baseline.</p>
+        <div class="holdw">
+          <button class="hold" id="hold" type="button" aria-describedby="hl"><span class="hw" aria-hidden="true"><i></i><i></i><i></i></span><svg class="rg" viewBox="0 0 100 100" aria-hidden="true"><circle class="bgc" cx="50" cy="50" r="47"/><circle id="hring" cx="50" cy="50" r="47" stroke-dasharray="295.3" stroke-dashoffset="295.3"/></svg><svg class="hs" aria-hidden="true"><use href="#phone"/></svg><span class="sr">Ring our sales team</span></button>
+          <div><p class="hl" id="hl">Hold to ring sales</p><p class="hsub">Half a second. Then tell us where to call you.</p></div>
+        </div>
+        <div class="fin-alt">
+          <p>Rather explore on your own?</p>
+          <div class="btns"><a class="btn wht" href="https://voice-ai-platform.cognilix.com/overview" data-dash target="_blank" rel="noopener">Log in to the dashboard ↗</a><button class="btn gh" type="button" data-agents="all">Try an agent</button></div>
+        </div>
+      </div>
+      <div class="pilot open" id="pilotBox">
+        <div>
+          <form id="pilotForm" novalidate>
+            <h3>Talk to sales</h3>
+            <p class="fsub">Tell us the call. We’ll call you back.</p>
+            <label>Your name<input name="name" autocomplete="name" required></label>
+            <label>Work email<input name="email" type="email" autocomplete="email" required></label>
+            <label>Company<input name="company" autocomplete="organization" required></label>
+            <label>Phone<input name="phone" type="tel" autocomplete="tel" inputmode="tel"></label>
+            <label class="full">The call your team dreads<select name="usecase"><option>Supplier follow-ups (PO, dispatch, delays)</option><option>Customer support (orders, refunds, escalations)</option><option>Sales and lead qualification</option><option>Collections and payment reminders</option><option>HR and hiring</option><option>KYC and verification</option><option>Something else</option></select></label>
+            <div class="go"><button type="submit">Request a call back</button><p class="msg" id="pmsg" aria-live="polite"></p></div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -1874,10 +2040,10 @@ if(canHover&&!RM){addEventListener('pointermove',function(e){tx2=e.clientX+170;t
 var hold=$('#hold'),hring=$('#hring'),hl=$('#hl'),pilotBox=$('#pilotBox'),hs=null,hv=0,hraf=0,C=295.3;
 function openPilot(focus){pilotBox.classList.add('open');if(focus!==false)setTimeout(function(){var i=$('input[name=name]',pilotBox);if(i)i.focus({preventScroll:true})},450)}
 function hset(v){hv=v;hring.setAttribute('stroke-dashoffset',(C*(1-v)).toFixed(1))}
-function hdone(){if(hold.classList.contains('done')){openPilot();return}hset(1);hold.classList.add('done');hl.textContent='Line connected';sfx('ding');track('pilot_hold_complete');openPilot()}
-function hloop(){if(hs==null)return;hset(clamp((performance.now()-hs)/1100));if(hv>=1){hs=null;hdone();return}hraf=requestAnimationFrame(hloop)}
-hold.addEventListener('pointerdown',function(e){if(hold.classList.contains('done'))return;e.preventDefault();hs=performance.now();sfx('ring');hl.textContent='Keep holding…';hloop()});
-['pointerup','pointerleave','pointercancel'].forEach(function(n){hold.addEventListener(n,function(){if(hs==null)return;hs=null;cancelAnimationFrame(hraf);if(hv<1){hset(0);hl.textContent='Press and hold to call us'}})});
+function hdone(){if(hold.classList.contains('done')){openPilot();return}hset(1);hold.classList.add('done');hold.classList.remove('holding');hl.textContent='Connected. Where should we call you?';pilotBox.classList.remove('pulse');void pilotBox.offsetWidth;pilotBox.classList.add('pulse');sfx('ding');track('pilot_hold_complete');openPilot()}
+function hloop(){if(hs==null)return;hset(clamp((performance.now()-hs)/600));if(hv>=1){hs=null;hdone();return}hraf=requestAnimationFrame(hloop)}
+hold.addEventListener('pointerdown',function(e){if(hold.classList.contains('done'))return;e.preventDefault();hs=performance.now();sfx('ring');hl.textContent='Ringing…';hold.classList.add('holding');hloop()});
+['pointerup','pointerleave','pointercancel'].forEach(function(n){hold.addEventListener(n,function(){if(hs==null)return;hs=null;cancelAnimationFrame(hraf);hold.classList.remove('holding');if(hv<1){hset(0);hl.textContent='Hold to ring sales'}})});
 hold.addEventListener('click',function(e){if(e.detail===0||hold.classList.contains('done'))hdone()});
 $$('[data-open-pilot]').forEach(function(a){a.addEventListener('click',function(e){track('pilot_cta',{from:a.className||a.id});openPilot(a.id==='openForm');if(a.tagName==='A'){e.preventDefault();$('#pilot').scrollIntoView({behavior:RM?'auto':'smooth'})}})});
 var pf=$('#pilotForm'),pmsg=$('#pmsg');
@@ -2135,7 +2301,7 @@ if('speechSynthesis' in window)speechSynthesis.onvoiceschanged=function(){if(!T.
 /* ================= v12: team tiles + agents modal ================= */
 var TEAMS=[['ops','Operations','Dispatch · delays · capacity','i-truck','#FBEAE7','#D9232D'],['sup','Support','Order status · refunds · escalations','i-head','#EEECFB','#3D33A0'],['fin','Collections','Reminders · promise to pay','i-bank','#E6F1EB','#2A6247'],['sal,acc','Sales & accounts','Leads · renewals · check-ins','i-up','#FDF2DC','#B8740F'],['hr,kyc','HR & KYC','Interviews · verification','i-ppl','#F3EFE8','#6B6259'],['acct,cx','Finance & feedback','Invoices · GST · feedback','i-doc','#E8EFF7','#2F5E8C']];
 $('#teams').innerHTML=TEAMS.map(function(t){var ks=t[0].split(','),m=AG.filter(function(a){return ks.indexOf(a.team)>=0});
-  return '<button class="tm" type="button" data-agents="'+t[0]+'" style="--tint:'+t[4]+';--acc:'+t[5]+'"><span class="tm-art"><svg aria-hidden="true"><use class="off" href="#'+t[3]+'"/><use href="#'+t[3]+'"/></svg></span><span class="tm-t">'+esc(t[1])+'</span><span class="tm-s">'+esc(t[2])+'</span><span class="tm-f"><span class="tm-av">'+m.map(function(a){return '<i style="--c:'+a.c+'">'+a.nm[0]+'</i>'}).join('')+'</span><span>'+m.length+' agent'+(m.length>1?'s':'')+' →</span></span></button>'}).join('');
+  return '<button class="tm" type="button" data-agents="'+t[0]+'" style="--tint:'+t[4]+';--acc:'+t[5]+'"><span class="tm-art"><svg aria-hidden="true"><use class="off" href="#'+t[3]+'"/><use href="#'+t[3]+'"/></svg></span><span class="tm-t">'+esc(t[1])+'</span><span class="tm-s">'+esc(t[2])+'</span><span class="tm-f"><span class="tm-av">'+m.map(function(a){return '<i style="--c:'+a.c+'">'+a.nm[0]+'</i>'}).join('')+'</span><span>Try →</span></span></button>'}).join('');
 var apk=$('#apk'),apkTrig=null;
 function openApk(t,trig){apkTrig=trig||null;var tb=$$('.atab',apk).filter(function(x){return x.dataset.t===t})[0]||$$('.atab',apk)[0];tb.click();apk.hidden=false;root.style.overflow='hidden';setTimeout(function(){tb.focus({preventScroll:true})},40);track('agents_modal',{team:t})}
 function closeApk(){if(apk.hidden)return;apk.hidden=true;if(tryEl.hidden)root.style.overflow='';if(apkTrig&&apkTrig.focus)apkTrig.focus({preventScroll:true})}
@@ -2258,17 +2424,17 @@ var DASH=(window.ECHO_CONFIG&&ECHO_CONFIG.DASHBOARD_URL)||'';if(DASH)$$('[data-d
 
 var CODE={
  call:{
-  curl:'# Place one call with an agent you built in the dashboard\ncurl -X POST "$ECHO_API/ozonetel/start_call?token=$ECHO_TOKEN" \\\n  -H "Content-Type: application/json" \\\n  -d \'{\n    "to": "+919876543210",\n    "agent": "dispatch-followup",\n    "context": { "po_number": "4471", "line": 3, "qty": 14 }\n  }\'',
-  node:'// Place one call with an agent you built in the dashboard\nconst res = await fetch(`${ECHO_API}/ozonetel/start_call?token=${ECHO_TOKEN}`, {\n  method: "POST",\n  headers: { "Content-Type": "application/json" },\n  body: JSON.stringify({\n    to: "+919876543210",\n    agent: "dispatch-followup",\n    context: { po_number: "4471", line: 3, qty: 14 },\n  }),\n});\nconst { call_sid } = await res.json();',
-  py:'# Place one call with an agent you built in the dashboard\nimport requests\n\nres = requests.post(\n    f"{ECHO_API}/ozonetel/start_call",\n    params={"token": ECHO_TOKEN},\n    json={\n        "to": "+919876543210",\n        "agent": "dispatch-followup",\n        "context": {"po_number": "4471", "line": 3, "qty": 14},\n    },\n)\ncall_sid = res.json()["call_sid"]'},
+  curl:'# Place one call with an agent you built\ncurl -X POST "$ECHO_API/v1/calls" \\\n  -H "Authorization: Bearer $ECHO_API_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d \'{\n    "to": "+919876543210",\n    "agent": "dispatch-followup",\n    "context": { "po_number": "4471", "line": 3, "qty": 14 }\n  }\'',
+  node:'// Place one call with an agent you built\nconst res = await fetch(`${ECHO_API}/v1/calls`, {\n  method: "POST",\n  headers: {\n    Authorization: `Bearer ${ECHO_API_KEY}`,\n    "Content-Type": "application/json",\n  },\n  body: JSON.stringify({\n    to: "+919876543210",\n    agent: "dispatch-followup",\n    context: { po_number: "4471", line: 3, qty: 14 },\n  }),\n});\nconst { call_id } = await res.json();',
+  py:'# Place one call with an agent you built\nimport requests\n\nres = requests.post(\n    f"{ECHO_API}/v1/calls",\n    headers={"Authorization": f"Bearer {ECHO_API_KEY}"},\n    json={\n        "to": "+919876543210",\n        "agent": "dispatch-followup",\n        "context": {"po_number": "4471", "line": 3, "qty": 14},\n    },\n)\ncall_id = res.json()["call_id"]'},
  campaign:{
-  curl:'# 1. Create a campaign for an agent\ncurl -X POST "$ECHO_API/api/campaigns?token=$ECHO_TOKEN" \\\n  -H "Content-Type: application/json" \\\n  -d \'{ "agent": "dispatch-followup", "direction": "outbound",\n        "description": "Open POs, week 39" }\'\n\n# 2. Upload the sheet. Echo starts dialling.\ncurl -X POST "$ECHO_API/api/campaigns/$CAMPAIGN_ID/upload?token=$ECHO_TOKEN" \\\n  -F "file=@open_pos.xlsx"',
-  node:'// 1. Create a campaign for an agent\nconst c = await post("/api/campaigns", {\n  agent: "dispatch-followup",\n  direction: "outbound",\n  description: "Open POs, week 39",\n});\n\n// 2. Upload the sheet. Echo starts dialling.\nconst form = new FormData();\nform.append("file", sheet);\nawait fetch(`${ECHO_API}/api/campaigns/${c.campaign_id}/upload?token=${ECHO_TOKEN}`,\n  { method: "POST", body: form });',
-  py:'# 1. Create a campaign for an agent\nc = requests.post(f"{ECHO_API}/api/campaigns", params=auth, json={\n    "agent": "dispatch-followup",\n    "direction": "outbound",\n    "description": "Open POs, week 39",\n}).json()\n\n# 2. Upload the sheet. Echo starts dialling.\nwith open("open_pos.xlsx", "rb") as f:\n    requests.post(f"{ECHO_API}/api/campaigns/{c[\'campaign_id\']}/upload",\n                  params=auth, files={"file": f})'},
+  curl:'# 1. Create a campaign for an agent\ncurl -X POST "$ECHO_API/v1/campaigns" \\\n  -H "Authorization: Bearer $ECHO_API_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d \'{ "agent": "dispatch-followup", "name": "Open POs, week 39" }\'\n\n# 2. Add contacts from a sheet. Echo starts dialling.\ncurl -X POST "$ECHO_API/v1/campaigns/$CAMPAIGN_ID/contacts" \\\n  -H "Authorization: Bearer $ECHO_API_KEY" \\\n  -F "file=@open_pos.xlsx"',
+  node:'// 1. Create a campaign for an agent\nconst campaign = await echo.post("/v1/campaigns", {\n  agent: "dispatch-followup",\n  name: "Open POs, week 39",\n});\n\n// 2. Add contacts from a sheet. Echo starts dialling.\nconst form = new FormData();\nform.append("file", sheet);\nawait echo.post(`/v1/campaigns/${campaign.id}/contacts`, form);',
+  py:'# 1. Create a campaign for an agent\ncampaign = echo.post("/v1/campaigns", json={\n    "agent": "dispatch-followup",\n    "name": "Open POs, week 39",\n}).json()\n\n# 2. Add contacts from a sheet. Echo starts dialling.\nwith open("open_pos.xlsx", "rb") as f:\n    echo.post(f"/v1/campaigns/{campaign[\'id\']}/contacts", files={"file": f})'},
  result:{
-  curl:'# Read what every call captured\ncurl "$ECHO_API/api/campaigns/$CAMPAIGN_ID/responses?token=$ECHO_TOKEN"\n\n[\n  {\n    "contact": "Mehta Packaging",\n    "status": "PARTIAL",\n    "dispatch_date": "2026-09-28",\n    "qty_ready": 10,\n    "read_back_confirmed": true\n  }\n]',
-  node:'// Read what every call captured\nconst rows = await get(`/api/campaigns/${id}/responses`);\n\nfor (const r of rows) {\n  if (r.status === "PARTIAL") await erp.updateLine(r);\n}\n\n// Or pull everything at once: responses.xlsx, export.zip',
-  py:'# Read what every call captured\nrows = requests.get(\n    f"{ECHO_API}/api/campaigns/{campaign_id}/responses", params=auth\n).json()\n\npartial = [r for r in rows if r["status"] == "PARTIAL"]\n\n# Or pull everything at once: responses.xlsx, export.zip'}
+  curl:'# Read what every call captured\ncurl "$ECHO_API/v1/campaigns/$CAMPAIGN_ID/results" \\\n  -H "Authorization: Bearer $ECHO_API_KEY"\n\n[\n  {\n    "contact": "Mehta Packaging",\n    "outcome": "PARTIAL",\n    "dispatch_date": "2026-09-28",\n    "qty_ready": 10,\n    "read_back_confirmed": true\n  }\n]',
+  node:'// Read what every call captured\nconst results = await echo.get(`/v1/campaigns/${id}/results`);\n\nfor (const r of results) {\n  if (r.outcome === "PARTIAL") await erp.updateLine(r);\n}\n\n// Or subscribe to a webhook and get each outcome as it lands',
+  py:'# Read what every call captured\nresults = echo.get(f"/v1/campaigns/{campaign_id}/results").json()\n\npartial = [r for r in results if r["outcome"] == "PARTIAL"]\n\n# Or subscribe to a webhook and get each outcome as it lands'}
 };
 function hl(src){var h=src.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]});
   return h.split('\n').map(function(l){var m=l.match(/^(\s*)(#|\/\/)(.*)$/);if(m)return m[1]+'<span class="c">'+m[2]+m[3]+'</span>';
@@ -2309,6 +2475,64 @@ var rail=$('#rail');if(rail&&'IntersectionObserver' in window){var items=$$('but
 var busyT;function go(){prn.classList.remove('go');void prn.offsetWidth;prn.classList.add('go','busy');clearTimeout(busyT);busyT=setTimeout(function(){prn.classList.remove('busy')},3400)}
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){go();io.disconnect()}},{threshold:.35});io.observe(prn)}else prn.classList.add('go');
 var a=document.getElementById('prnAgain');if(a)a.addEventListener('click',go)})();
+
+/* ================= v15: one interactive background for the whole page ================= */
+(function(){
+var d=document,root=d.documentElement,RMb=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var cv=d.createElement('canvas');cv.id='bgf';cv.setAttribute('aria-hidden','true');d.body.insertBefore(cv,d.body.firstChild);
+var ctx=cv.getContext('2d'),dpr=Math.min(1.5,window.devicePixelRatio||1),W=0,H=0,C=7,PER=1400,cols=0,rows=0,T=null,act=[],fc=null,lx=null,ly=null,dirty=true,lastY=-1;
+var BAY=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5].map(function(v){return (v+.5)/16});
+function dark(){return root.getAttribute('data-theme')==='dark'}
+function build(){W=root.clientWidth||innerWidth;H=innerHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);cols=Math.ceil(W/C);rows=Math.ceil(H/C);T=new Float32Array(cols*rows);act=[];
+  var fr=Math.round(PER/C);fc=d.createElement('canvas');fc.width=Math.round(W*dpr);fc.height=Math.round(fr*C*dpr);var g=fc.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);
+  var gs=20,gw=Math.ceil(cols/gs)+2,gh=Math.round(fr/gs),G=new Float32Array(gw*gh);for(var q=0;q<G.length;q++)G[q]=Math.random();
+  function sm(t){return t*t*(3-2*t)}
+  function nz(i,j){var x=i/gs,y=j/gs,x0=Math.floor(x),y0=Math.floor(y),fx=sm(x-x0),fy=sm(y-y0),ya=((y0%gh)+gh)%gh,yb=(ya+1)%gh,a=G[ya*gw+x0],b=G[ya*gw+x0+1],c=G[yb*gw+x0],e=G[yb*gw+x0+1];return a+(b-a)*fx+(c-a)*fy+(a-b-c+e)*fx*fy}
+  var blobs=[];for(var k=0;k<5;k++)blobs.push([Math.random()*cols,Math.random()*fr,(.16+Math.random()*.16)*Math.min(cols,fr)]);
+  g.fillStyle=dark()?'rgba(255,255,255,.075)':'rgba(120,108,95,.19)';
+  for(var j=0;j<fr;j++)for(var i=0;i<cols;i++){var v=nz(i,j)*.16;for(k=0;k<blobs.length;k++){var bl=blobs[k],dy=Math.abs(j-bl[1]);dy=Math.min(dy,fr-dy);var dx=i-bl[0];v+=.5*Math.exp(-(dx*dx+dy*dy)/(2*bl[2]*bl[2]))*(.55+.45*nz(i+60,j))}
+    if(v>BAY[(j&3)*4+(i&3)])g.fillRect(i*C+1.8,j*C+1.8,C*.42,C*.42)}
+  PER=fr*C;dirty=true}
+function stamp(x,y){if(!T)return;var cx=x/C,cy=y/C,R=6.5;for(var j=Math.floor(cy-R);j<=cy+R;j++){if(j<0||j>=rows)continue;for(var i=Math.floor(cx-R);i<=cx+R;i++){if(i<0||i>=cols)continue;var dd=Math.hypot(i-cx,j-cy);if(dd>R)continue;var k=j*cols+i;if(T[k]<.02)act.push(k);T[k]=Math.min(1,T[k]+(1-dd/R)*.55)}}}
+function move(x,y){if(RMb)return;if(lx!=null){var dx=x-lx,dy=y-ly,n=Math.min(40,Math.ceil(Math.hypot(dx,dy)/(C*2)));for(var s=1;s<=n;s++)stamp(lx+dx*s/n,ly+dy*s/n)}else stamp(x,y);lx=x;ly=y}
+addEventListener('pointermove',function(e){move(e.clientX,e.clientY)},{passive:true});
+addEventListener('pointerleave',function(){lx=ly=null});d.addEventListener('mouseleave',function(){lx=ly=null});
+addEventListener('touchmove',function(e){var t=e.touches[0];if(t)move(t.clientX,t.clientY)},{passive:true});addEventListener('touchend',function(){lx=ly=null},{passive:true});
+var rz;addEventListener('resize',function(){clearTimeout(rz);rz=setTimeout(build,150)});
+new MutationObserver(build).observe(root,{attributes:true,attributeFilter:['data-theme']});
+function frame(){var y=window.scrollY;if(y!==lastY){dirty=true;lastY=y}
+  if(dirty||act.length){ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,cv.width,cv.height);
+    var off=((RMb?0:y*.3)%PER+PER)%PER,oh=off*dpr,fh=fc.height;ctx.drawImage(fc,0,-oh);if(fh-oh<cv.height)ctx.drawImage(fc,0,fh-oh);
+    if(act.length){ctx.setTransform(dpr,0,0,dpr,0,0);var rgb=dark()?'242,98,92':'236,120,108',keep=[];
+      for(var q=0;q<act.length;q++){var k=act[q],t=T[k]*.955;T[k]=t;if(t<.03){T[k]=0;continue}keep.push(k);var i=k%cols,j=(k/cols)|0;if(t*1.25>BAY[(j&3)*4+(i&3)]){var sz=C*(.32+t*.55);ctx.fillStyle='rgba('+rgb+','+Math.min(.5,.12+t*.45).toFixed(2)+')';ctx.fillRect(i*C+(C-sz)/2,j*C+(C-sz)/2,sz,sz)}}act=keep}
+    dirty=false}
+  requestAnimationFrame(frame)}
+build();requestAnimationFrame(frame);
+})();
+
+/* ================= v15: simple mode vs developer mode ================= */
+(function(){
+var d=document;function $(s,c){return (c||d).querySelector(s)}function $$(s,c){return [].slice.call((c||d).querySelectorAll(s))}
+var RMs=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function setMode(m){$$('.mode button').forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.m===m))});$$('.mpanel').forEach(function(p){p.hidden=p.dataset.p!==m})}
+$$('.mode button').forEach(function(b){b.addEventListener('click',function(){setMode(b.dataset.m)})});
+$$('a[href="#dev"]').forEach(function(a){a.addEventListener('click',function(){setMode('dev')})});
+var win=$('#smWin');if(!win)return;
+var tabs=$$('.sm-steps button',win),panes=$$('.sm-pane',win),timers=[],run=0,vis=false,step=0,hold=0;
+function T(f,ms){timers.push(setTimeout(f,ms))}
+function clear(){timers.forEach(clearTimeout);timers=[]}
+function type(el,txt,speed,r){el.textContent='';el.classList.add('typing');var i=0;(function t(){if(r!==run)return;if(i<=txt.length){el.textContent=txt.slice(0,i++);timers.push(setTimeout(t,speed))}else el.classList.remove('typing')})()}
+function show(s,auto){clear();run++;var r=run;step=s;tabs.forEach(function(t,i){t.setAttribute('aria-selected',String(i===s));t.classList.toggle('done',i<s)});panes.forEach(function(p,i){p.hidden=i!==s});var p=panes[s];
+  if(s===0){$$('.sm-in',p).forEach(function(el,i){if(RMs){el.textContent=el.dataset.type;return}el.textContent='';T(function(){type(el,el.dataset.type,i?22:60,r)},250+i*1000)});var b=$('.sm-btn',p);b.classList.remove('press');T(function(){b.classList.add('press')},RMs?0:3900)}
+  if(s===1){var f=$('.sm-file',p),st=$('.sm-st',p),rows=$$('.sm-map p',p).slice(1);f.classList.remove('up');st.textContent='Uploading';rows.forEach(function(x){x.classList.remove('on')});
+    T(function(){f.classList.add('up')},RMs?0:200);T(function(){st.textContent='Columns detected'},RMs?0:1600);rows.forEach(function(x,i){T(function(){x.classList.add('on')},RMs?0:1700+i*380)})}
+  if(s===2){var go=$('.sm-btn',p),bar=$('.sm-pbar',p),li=$$('.sm-feed li',p),ks=$$('.sm-kpis b',p);go.classList.remove('press');bar.classList.remove('run');li.forEach(function(x){x.classList.remove('on')});ks.forEach(function(k){k.textContent='0'+(k.dataset.suf||'')});
+    T(function(){go.classList.add('press');bar.classList.add('run');var t0=performance.now();(function c(n){if(r!==run)return;var q=RMs?1:Math.min(1,(n-t0)/2600),e=1-Math.pow(1-q,3);ks.forEach(function(k){k.textContent=Math.round(+k.dataset.n*e)+(k.dataset.suf||'')});if(q<1)requestAnimationFrame(c)})(t0)},RMs?0:500);
+    li.forEach(function(x,i){T(function(){x.classList.add('on')},RMs?0:1100+i*700)})}
+  if(auto!==false&&!RMs)T(function(){if(vis&&r===run)show((s+1)%3)},s===0?5200:s===1?4200:5200)}
+tabs.forEach(function(t,i){t.addEventListener('click',function(){show(i,false);clearTimeout(hold);hold=setTimeout(function(){if(vis)show((step+1)%3)},9000)})});
+if('IntersectionObserver' in window)new IntersectionObserver(function(es){var v=es[0].isIntersecting;if(v&&!vis){vis=true;show(step)}else if(!v&&vis){vis=false;clear()}},{threshold:.3}).observe(win);else show(0,false);
+})();
 </script>
 </body>
 </html>
