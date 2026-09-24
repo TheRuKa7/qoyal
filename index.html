@@ -758,6 +758,79 @@ footer{position:relative;z-index:1;background:var(--ink);color:#D6CCBF;padding:4
   .loader{display:none}
   *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* ================= v9: minimal enterprise skin (animations untouched) ================= */
+:root{--paper:#F7F6F2;--paper2:#EFEDE7;--card:#FFFFFF;--ink:#16130F;--ink2:#4A4540;--mute:#5E5850;--rule:rgba(22,19,15,.10);--line:rgba(22,19,15,.14);
+  --display:'Archivo','Eczar',system-ui,sans-serif;--shadow:0 1px 2px rgba(22,19,15,.05),0 14px 34px -18px rgba(22,19,15,.22);--shadow2:0 2px 4px rgba(22,19,15,.06),0 26px 50px -22px rgba(22,19,15,.3)}
+.grain{display:none}
+h1{font-weight:650;font-size:clamp(44px,5.7vw,98px);line-height:.95;letter-spacing:-.04em}
+h2{font-weight:650;letter-spacing:-.035em;line-height:1}
+.lede,.sub{font-weight:400;letter-spacing:-.005em}
+.story p{font-weight:650;letter-spacing:-.03em;border-radius:16px;background:rgba(255,255,255,.94);box-shadow:var(--shadow2)}
+.nav{background:rgba(247,246,242,.9);-webkit-backdrop-filter:saturate(1.3) blur(12px);backdrop-filter:saturate(1.3) blur(12px);border-bottom:1px solid var(--line)}
+.pill,.snd{border-color:var(--line)}
+.cta{border-radius:8px}
+.btn{border-radius:10px}
+.btn.alt{border-color:var(--line);background:#fff}
+.btn.alt:hover{background:var(--ink);color:#fff}
+.player{border:1px solid var(--line);box-shadow:var(--shadow2);border-radius:16px;background:#fff}
+.tl-list button{background:var(--paper)}
+.badge .disc{background:#fff;box-shadow:0 0 0 1px var(--line),var(--shadow2)}
+/* calls section: clean cards instead of tilted torn slips */
+.slipw{--r:0deg;filter:none}
+.js .slipw.rv{transform:translateY(26px)}.js .slipw.rv.in{transform:none}.js .slipw.rv.in:hover,.slipw:hover{transform:translateY(-3px)}
+.slip{-webkit-mask:none;mask:none;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:18px}
+.slip .h{font-weight:600;letter-spacing:-.01em}
+.tag{transform:none;border-width:1px;border-radius:99px;padding:3px 8px}
+.fader{border-color:var(--line)}
+/* desk */
+.form{transform:none;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow2);background:#fff}
+.form.shake{animation:none}
+.key{background:var(--paper);border:1px solid var(--line);border-bottom-width:1px;box-shadow:0 1px 2px rgba(22,19,15,.06)}
+.key:active{border-bottom-width:1px}
+.key span{font-weight:600}
+/* how it works */
+.console{border:1px solid var(--line);box-shadow:var(--shadow2);border-radius:16px;background:#fff}
+.cbar{background:var(--paper);border-bottom-color:var(--line)}
+.steps{border-top-color:var(--line)}
+.spec{border-top-color:var(--line)}
+/* agents */
+.agc{border:1px solid var(--line);box-shadow:var(--shadow);background:#fff}
+.agc:hover,.js .agc.rv.in:hover{transform:translateY(-3px);box-shadow:var(--shadow2)}
+.atab{background:#fff;border-color:var(--line)}
+.atab[aria-selected=true]{border-color:var(--ink)}
+/* industries: no matchbox pop-ups */
+.peek{display:none!important}
+.ex .in .mbx{display:none}
+.ex .in{grid-template-columns:56px 1fr auto}.ex .q{grid-column:2}
+.dial{background:rgba(247,246,242,.9);border-top-color:var(--line)}
+.dial li{border-bottom-color:var(--line)}
+.dl .nm{font-weight:650;letter-spacing:-.03em}
+/* calmer marquees */
+.marq{padding:12px 0 14px}
+.marq span{font-size:clamp(26px,3.6vw,52px);font-weight:600;letter-spacing:-.03em}
+.marq.red{background:var(--paper2);color:var(--ink);border-color:var(--line)}
+.marq.red i{color:var(--red)}
+/* layered backgrounds: same trail, quieter field */
+.lay canvas:first-child{opacity:.55}
+.lay:after{opacity:.55}
+.trust div{background:transparent;border-top-color:var(--line)}
+/* try-out and pilot */
+.try-box{border-color:var(--line);box-shadow:0 40px 90px -30px rgba(0,0,0,.45)}
+.try-h,.try-out{border-color:var(--line)}
+.pilot{box-shadow:var(--shadow2)}
+.hold .rg circle{stroke:#fff}.hold .rg .bgc{stroke:rgba(255,255,255,.25)}
+/* enterprise footer */
+footer{padding:64px max(16px,5vw) 28px}
+.fcols{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:32px}
+.fcols .fb p{font:400 15px/1.5 var(--grot);color:#BDB3A6;max-width:34ch;margin:14px 0 18px}
+.fcols h4{font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#8F877C;margin-bottom:12px}
+.fcols div>a:not(.brand):not(.cta){display:block;font:500 14px/2 var(--grot);color:#D6CCBF;text-decoration:none}
+.fcols div>a:not(.brand):not(.cta):hover{color:#fff}
+.fcols .cta{display:inline-block}
+.fbot{max-width:1320px;margin:40px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font:500 12px var(--mono);letter-spacing:.04em;color:#9C9387}
+@media (max-width:760px){.fcols{grid-template-columns:1fr 1fr}.fcols .fb{grid-column:1/-1}}
+.agc-t .st.live,.dl .stt.live{background:none;grid-column:auto}
 </style>
 </head>
 <body>
@@ -977,7 +1050,6 @@ footer{position:relative;z-index:1;background:var(--ink);color:#D6CCBF;padding:4
 
 <section class="sec proof" id="proof" data-sec>
   <div class="wrap">
-    <div class="pco rv" role="img" aria-label="STD, ISD, PCO crossed out, Echo"><span>STD</span><i></i><span>ISD</span><i></i><span class="x">PCO</span><span class="q">echo</span></div>
     <div class="head">
       <div><p class="kick rv"><b data-k>03:58</b> Meter running</p><h2 class="rv">We were our own first customer.</h2></div>
       <p class="lede rv">Before Echo called anyone else’s suppliers, it called ours. These are the meters from Moglix’s own operations.</p>
@@ -1094,13 +1166,13 @@ footer{position:relative;z-index:1;background:var(--ink);color:#D6CCBF;padding:4
 </div>
 
 <footer>
-  <div class="fgrid">
-    <div>
-      <a class="brand" href="#top"><svg aria-hidden="true"><use href="#qm"/></svg><span class="wm">echo</span></a>
-      <p style="margin-top:14px">इको · A Moglix platform · Made in India · © 2026</p>
-    </div>
-    <nav aria-label="Footer"><a href="#agents">Agents</a><a href="#noise">Calls</a><a href="#how">How it works</a><a href="#desks">Teams</a><a href="#industries">Industries</a><a href="#outcomes">Security</a><a href="#pilot">Pilot</a></nav>
+  <div class="fcols">
+    <div class="fb"><a class="brand" href="#top"><svg aria-hidden="true"><use href="#qm"/></svg><span class="wm">echo</span></a><p>Voice agents for Indian enterprise. Hindi, English and Hinglish, written back the same day.</p><a class="cta" href="#pilot" data-open-pilot>Book a pilot</a></div>
+    <div><h4>Product</h4><a href="#agents">Agents</a><a href="#how">How it works</a><a href="#proof">Results</a><a href="#outcomes">Security</a></div>
+    <div><h4>Use cases</h4><a href="#desks">Operations</a><a href="#desks">Customer support</a><a href="#desks">Collections</a><a href="#desks">Sales</a><a href="#desks">HR and KYC</a></div>
+    <div><h4>Industries</h4><a href="#industries">Manufacturing</a><a href="#industries">Distribution</a><a href="#industries">Banking and NBFC</a><a href="#industries">Retail and D2C</a><a href="#industries">Logistics</a></div>
   </div>
+  <div class="fbot"><span>इको · A Moglix platform · Made in India</span><span>© 2026 Echo</span></div>
 </footer>
 
 <script>
@@ -1252,7 +1324,7 @@ STEPS.push(function(){
 var tapeC=d.createElement('canvas'),ready=false,img,px,LUT;
 tapeC.width=W;tapeC.height=B;var tctx=tapeC.getContext('2d');
 STEPS.push(function(){img=tctx.createImageData(W,B);px=img.data;
-  var ST=[[0,238,231,216],[.2,234,210,170],[.4,238,155,47],[.62,217,35,45],[.84,110,14,20],[1,27,22,18]];LUT=new Uint8ClampedArray(768);
+  var ST=[[0,247,246,242],[.2,234,210,170],[.4,238,155,47],[.62,217,35,45],[.84,110,14,20],[1,27,22,18]];LUT=new Uint8ClampedArray(768);
   for(var i=0;i<256;i++){var v=i/255,k=0;while(k<ST.length-2&&v>ST[k+1][0])k++;var a=ST[k],b=ST[k+1],t=(v-a[0])/(b[0]-a[0]);for(var j=0;j<3;j++)LUT[i*3+j]=a[j+1]+(b[j+1]-a[j+1])*t}});
 var CM=Math.ceil(E.length/10);
 for(q=0;q<10;q++)(function(q){STEPS.push(function(){for(var i=q*CM,e=Math.min(E.length,(q+1)*CM);i<e;i++){var z=Math.min(255,(1-Math.exp(-E[i]*1.7))*255|0);px[i*4]=LUT[z*3];px[i*4+1]=LUT[z*3+1];px[i*4+2]=LUT[z*3+2];px[i*4+3]=255}})})(q);
@@ -1282,7 +1354,7 @@ function size(){dpr=Math.min(2,window.devicePixelRatio||1);vw=root.clientWidth||
   measure();frame()}
 function bandFor(p){var st=mob?46:56;if(RM)return p<.95?baseBand:st;
   var mx=vh*(mob?.7:.8);if(p<.08)return baseBand;if(p<.3)return lerp(baseBand,mx,ease((p-.08)/.22));if(p<.74)return mx;if(p<.92)return lerp(mx,st,ease((p-.74)/.18));return st}
-var PAPER='#EEE7D8',INK='#1B1612',RED='#D9232D';
+var PAPER='#F7F6F2',INK='#1B1612',RED='#D9232D';
 function fmt(s){s=Math.max(0,Math.round(s));var m=Math.floor(s/60),r=s%60;return(m<10?'0':'')+m+':'+(r<10?'0':'')+r}
 function draw(h,col){
   cx.setTransform(dpr,0,0,dpr,0,0);
@@ -1805,7 +1877,7 @@ function build(L){var W3=L.sec.clientWidth,H3=L.sec.offsetHeight,c=L.cell;if(W3<
   var sx=V.x*L.cols,sy=V.y*L.rows,sig=Math.min(L.cols,L.rows)*V.s*.55;
   g.fillStyle=L.fin?'rgba(27,22,18,.34)':'rgba(27,22,18,.34)';
   for(var j=0;j<L.rows;j++)for(var i=0;i<L.cols;i++){var k=j*L.cols+i;if(mask[k*4+3]>40)continue;var pr=Math.exp(-(Math.pow(i-sx,2)+Math.pow(j-sy,2))/(2*sig*sig)),v=nzz(i,j)*.14+pr*.66*(.55+.45*nzz(i+50,j+50));if(v>BAY[(j&3)*4+(i&3)])g.fillRect(i*c+1.6,j*c+1.6,c*.46,c*.46)}
-  g.strokeStyle=L.fin?'rgba(0,0,0,.14)':'#DDD1B9';glides(g,1);L.built=true}
+  g.strokeStyle=L.fin?'rgba(0,0,0,.14)':'#E6E1D6';glides(g,1);L.built=true}
 function drawLayers(){for(var n=0;n<LAYERS.length;n++){var L=LAYERS[n];if(!L.built||!L.vis||(!L.act.length&&!L.dirty))continue;var g=L.top.getContext('2d'),c=L.cell;g.setTransform(dpr2,0,0,dpr2,0,0);g.clearRect(0,0,L.cols*c,L.rows*c);L.dirty=L.act.length>0;
   var rgb=L.fin?'255,246,238':'217,35,45',keep=[];for(var q=0;q<L.act.length;q++){var k=L.act[q],t=L.T[k]*.955;L.T[k]=t;if(t<.03){L.T[k]=0;continue}keep.push(k);var i=k%L.cols,j=(k/L.cols)|0;if(t*1.25>BAY[(j&3)*4+(i&3)]){var sz=c*(.35+t*.6);g.fillStyle='rgba('+rgb+','+Math.min(1,.35+t).toFixed(2)+')';g.fillRect(i*c+(c-sz)/2,j*c+(c-sz)/2,sz,sz)}}L.act=keep}}
 $$('[data-layer]').forEach(Layer);
