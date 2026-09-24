@@ -839,6 +839,58 @@ footer{padding:64px max(16px,5vw) 28px}
 .lay:after{display:none}
 .steps{border-top:0}
 .spec{border-top:0}
+
+/* ================= v11: no scroll intro; hero is a normal section ================= */
+.intro{height:auto!important}
+.stage{position:relative!important;height:auto!important;overflow:visible!important}
+.hero{position:relative!important;top:0!important;height:auto!important;overflow:visible!important;min-height:min(88svh,760px);padding-top:110px!important;padding-bottom:0!important}
+.story,#tape,.cap{display:none!important}
+@media (max-width:900px){.hero{min-height:0;padding-top:90px!important}}
+
+/* ================= v11: echo visual ================= */
+.evis{background:var(--paper);padding-top:56px}
+.ev-head{text-align:center;margin-bottom:36px}.ev-head .kick{justify-content:center}.ev-head h2{margin:0 auto;max-width:none}
+.ev{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 300px minmax(0,1fr);align-items:center;gap:0;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow2);padding:44px 40px;overflow:hidden;
+  background-image:radial-gradient(rgba(22,19,15,.07) 1px,transparent 1.2px);background-size:18px 18px}
+.ev-col{position:relative;z-index:2}
+.ev-lbl{font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.ev-card{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:18px 20px}
+.ev-who{display:flex;align-items:center;gap:10px;font:600 13px var(--grot);color:var(--ink2);margin-bottom:10px}
+.ev-who i{width:30px;height:30px;border-radius:50%;background:var(--paper2);display:grid;place-items:center;font:700 13px var(--grot);font-style:normal;color:var(--ink)}
+.ev-said{font:600 clamp(18px,1.6vw,23px)/1.35 var(--grot);letter-spacing:-.01em;min-height:2.7em}
+.ev-said .wd{opacity:.12;transition:opacity .15s}.ev-said .wd.on{opacity:1}
+.ev-wave{display:flex;align-items:center;gap:3px;height:34px;margin-top:14px}
+.ev-wave b{flex:1;max-width:5px;height:12%;border-radius:3px;background:var(--ink);opacity:.18;transition:height .12s,opacity .3s}
+.talk .ev-wave b{opacity:.85}
+.ev-core{position:relative;height:300px;display:grid;place-items:center}
+.ev-core .ring{position:absolute;left:50%;top:50%;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:50%;border:1.5px solid var(--red);opacity:0}
+.ev.echo .ev-core .ring{animation:ripple 2.4s cubic-bezier(.2,.6,.3,1) infinite}
+.ev.echo .ev-core .r2{animation-delay:.8s}.ev.echo .ev-core .r3{animation-delay:1.6s}
+@keyframes ripple{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(3.1)}}
+.ev-mark{position:relative;width:92px;height:92px;border-radius:50%;background:var(--red);display:grid;place-items:center;box-shadow:0 18px 40px -14px rgba(217,35,45,.6);transition:transform .5s var(--ease)}
+.ev.echo .ev-mark{transform:scale(1.06)}
+.ev-mark svg{width:54%;height:54%;color:#fff}
+.ev-rb{position:absolute;bottom:6px;left:50%;transform:translate(-50%,8px);width:280px;text-align:center;font:600 14px/1.35 var(--grot);color:var(--red2);opacity:0;transition:opacity .4s,transform .5s var(--ease)}
+.ev-rb small{display:block;font:600 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.ev.echo .ev-rb,.ev.saved .ev-rb{opacity:1;transform:translate(-50%,0)}
+.ev-line{position:absolute;top:50%;height:2px;z-index:1;background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:0;transform:scaleX(0);transition:opacity .4s,transform .7s var(--ease)}
+.ev-line.l{left:calc(50% - 400px);width:260px;transform-origin:left}.ev-line.r{right:calc(50% - 400px);width:260px;transform-origin:left}
+.ev.echo .ev-line.l,.ev.saved .ev-line.r{opacity:.5;transform:none}
+.ev-rh{display:flex;justify-content:space-between;align-items:center;gap:8px;font:600 12px var(--mono);letter-spacing:.06em;color:var(--ink2);border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:6px}
+.ev-ok{font:700 11px var(--mono);letter-spacing:.08em;color:var(--green);background:#E3F0E8;border-radius:99px;padding:4px 9px;opacity:0;transform:scale(.7);transition:opacity .3s,transform .4s cubic-bezier(.3,1.6,.5,1)}
+.ev.saved .ev-ok{opacity:1;transform:none}
+.ev-f{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font:500 14px var(--grot)}
+.ev-f:last-child{border-bottom:0}
+.ev-f span:first-child{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:2px}
+.ev-f span:last-child{font-weight:650;opacity:0;transform:translateX(8px);transition:opacity .35s,transform .45s var(--ease);border-radius:4px;padding:0 4px}
+.ev-f.on span:last-child{opacity:1;transform:none;animation:flash 1.2s var(--ease)}
+.ev-tabs{display:flex;justify-content:center;gap:8px;margin-top:22px}
+.ev-tab{font:600 12px var(--mono);letter-spacing:.06em;border:1px solid var(--line);background:#fff;border-radius:99px;padding:8px 14px;position:relative;overflow:hidden}
+.ev-tab[aria-selected=true]{border-color:var(--ink);color:var(--ink)}
+.ev-tab[aria-selected=true]:after{content:"";position:absolute;left:0;bottom:0;height:2px;background:var(--red);width:0;animation:evprog var(--dur,7s) linear forwards}
+@keyframes evprog{to{width:100%}}
+@media (max-width:1000px){.ev{grid-template-columns:1fr;padding:26px 20px;gap:10px}.ev-core{height:220px}.ev-line{display:none}.ev-rb{bottom:0}}
+@media (prefers-reduced-motion:reduce){.ev .ring{display:none}}
 </style>
 </head>
 <body>
@@ -907,6 +959,18 @@ footer{padding:64px max(16px,5vw) 28px}
   </div>
 </section>
 
+<section class="sec evis" id="evis" aria-label="How a call becomes a record">
+  <div class="wrap">
+    <div class="ev-head"><p class="kick rv">What was said · what was saved</p><h2 class="rv">Heard once. Echoed back. Saved.</h2></div>
+    <div class="ev rv" id="ev">
+      <span class="ev-line l" aria-hidden="true"></span><span class="ev-line r" aria-hidden="true"></span>
+      <div class="ev-col"><p class="ev-lbl">On the call</p><div class="ev-card"><p class="ev-who"><i id="evInit">S</i><span id="evWho">Supplier · Pune plant</span></p><p class="ev-said" id="evSaid"></p><div class="ev-wave" id="evWave" aria-hidden="true"></div></div></div>
+      <div class="ev-core" aria-hidden="true"><span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span><span class="ev-mark"><svg viewBox="0 0 48 48"><circle cx="17" cy="24" r="7" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round"><path d="M23 13.6A12 12 0 0 1 23 34.4" opacity=".72"/><path d="M28.5 7.6A20 20 0 0 1 28.5 40.4" opacity=".4"/></g></svg></span><p class="ev-rb"><small>Echo reads it back</small><span id="evRb"></span></p></div>
+      <div class="ev-col"><p class="ev-lbl">In your system</p><div class="ev-card"><div class="ev-rh"><span id="evSys"></span><span class="ev-ok" id="evOk"></span></div><div id="evFields"></div></div></div>
+    </div>
+    <div class="ev-tabs" role="tablist" aria-label="Example calls"><button class="ev-tab" role="tab" aria-selected="true" data-e="0">Supplier</button><button class="ev-tab" role="tab" aria-selected="false" data-e="1">Customer</button><button class="ev-tab" role="tab" aria-selected="false" data-e="2">Collections</button></div>
+  </div>
+</section>
 <div class="marq" data-dir="-1" aria-hidden="true"><div class="track"><span>Hello?<i>·</i>हाँ जी<i>·</i>Bolo<i>·</i>Go ahead<i>·</i>हेलो हेलो<i>·</i>Kya bol rahe ho?<i>·</i>Ek minute<i>·</i>Sahi hai<i>·</i></span><span>Hello?<i>·</i>हाँ जी<i>·</i>Bolo<i>·</i>Go ahead<i>·</i>हेलो हेलो<i>·</i>Kya bol rahe ho?<i>·</i>Ek minute<i>·</i>Sahi hai<i>·</i></span></div></div>
 <section class="sec agents" id="agents" data-layer="0">
   <div class="wrap">
@@ -1392,7 +1456,7 @@ function frame(){
   ticking=false;
   var y=window.scrollY||window.pageYOffset,it=introEl.offsetTop,p=clamp((y-it)/(introEl.offsetHeight-vh)),h=bandFor(p),col=colAt(y);
   draw(h,col);crossings(col);
-  var hp=clamp((p-.06)/.14);hero.style.opacity=1-hp;hero.style.transform='translateY('+(-hp*70)+'px)';hero.style.visibility=hp>=1?'hidden':'visible';
+  var hp=0;hero.style.opacity=1-hp;hero.style.transform='translateY('+(-hp*70)+'px)';hero.style.visibility=hp>=1?'hidden':'visible';
   story.dataset.s=p<.3?'0':'1';
   clock.textContent=fmt(timeAt(col));
   var st=col<PAD+215?'Connecting':col>S(NS)-60?'Call ended':'On call';statusEl.textContent=st;pill.classList.toggle('on',st==='On call');
@@ -1401,7 +1465,7 @@ function req(){if(!ticking){ticking=true;requestAnimationFrame(frame)}}
 addEventListener('scroll',req,{passive:true});
 var rz;addEventListener('resize',function(){clearTimeout(rz);rz=setTimeout(size,80)});
 size();
-setTimeout(runSteps,120);
+
 addEventListener('load',function(){measure();frame()});
 if(d.fonts&&d.fonts.ready)d.fonts.ready.then(function(){measure();frame()});
 
@@ -1894,6 +1958,36 @@ var fr=0;(function loop(){fr++;var sy=window.scrollY;vel+=((sy-lastSY)-vel)*.18;
   drawLayers();
   requestAnimationFrame(loop)})();
 
+})();
+
+/* ================= v11: echo visual ================= */
+(function(){
+var EX=[
+ {init:'S',who:'Supplier · Pune plant · Hinglish',said:'Is hafte nahi. 28 ko nikal denge, sirf 10 cartons.',rb:'“10 cartons, 28 September. Sahi hai?”',sys:'ERP · PO 4471 · line 3',ok:'PARTIAL',f:[['Dispatch date','28 Sep'],['Quantity','10 of 14'],['Read back','Confirmed']]},
+ {init:'C',who:'Customer · inbound · English',said:'My order 88213 hasn’t arrived yet.',rb:'“Order 8-8-2-1-3 reaches you by 6 pm today.”',sys:'Helpdesk · ticket #S-88213',ok:'RESOLVED',f:[['Order','88213'],['ETA','Today, 6 pm'],['Tracking link','Sent on WhatsApp']]},
+ {init:'B',who:'Borrower · Hindi',said:'EMI 21 tarikh ko UPI se kar dunga.',rb:'“₹12,400 on 21 September, by UPI. Sahi hai?”',sys:'Loan system · A. Khan',ok:'PROMISE TO PAY',f:[['Promise date','21 Sep'],['Amount','₹12,400'],['Mode','UPI link sent']]}];
+var ev=document.getElementById('ev');if(!ev)return;
+var said=document.getElementById('evSaid'),wave=document.getElementById('evWave'),rb=document.getElementById('evRb'),sys=document.getElementById('evSys'),ok=document.getElementById('evOk'),fl=document.getElementById('evFields'),who=document.getElementById('evWho'),ini=document.getElementById('evInit'),tabs=[].slice.call(document.querySelectorAll('.ev-tab'));
+var RMv=matchMedia('(prefers-reduced-motion: reduce)').matches,bars=[],timers=[],cur=0,vis=false,run=0,talking=false;
+for(var i=0;i<32;i++){var b=document.createElement('b');wave.appendChild(b);bars.push(b)}
+function T(fn,ms){timers.push(setTimeout(fn,ms))}
+function clear(){timers.forEach(clearTimeout);timers=[]}
+function show(k){clear();run++;var r=run,e=EX[k];cur=k;ev.classList.remove('echo','saved','talk');talking=false;
+  tabs.forEach(function(t,j){t.setAttribute('aria-selected',String(j===k));t.style.setProperty('--dur','7.5s')});
+  who.textContent=e.who;ini.textContent=e.init;rb.textContent=e.rb;sys.textContent=e.sys;ok.textContent=e.ok;
+  said.innerHTML='';var ws=e.said.split(' ').map(function(w,j){var s=document.createElement('span');s.className='wd';s.textContent=(j?' ':'')+w;said.appendChild(s);return s});
+  fl.innerHTML=e.f.map(function(f){return '<div class="ev-f"><span>'+f[0]+'</span><span>'+f[1]+'</span></div>'}).join('');var fs=[].slice.call(fl.children);
+  if(RMv){ws.forEach(function(w){w.classList.add('on')});fs.forEach(function(f){f.classList.add('on')});ev.classList.add('saved');return}
+  ev.classList.add('talk');talking=true;
+  ws.forEach(function(w,j){T(function(){w.classList.add('on')},300+j*170)});
+  var tEnd=300+ws.length*170+250;
+  T(function(){talking=false;ev.classList.remove('talk');ev.classList.add('echo')},tEnd);
+  fs.forEach(function(f,j){T(function(){f.classList.add('on')},tEnd+1300+j*450)});
+  T(function(){ev.classList.remove('echo');ev.classList.add('saved')},tEnd+1300+fs.length*450+200);
+  T(function(){if(vis&&r===run)show((cur+1)%EX.length)},7500)}
+(function wv(){bars.forEach(function(b,j){var h=talking?15+Math.random()*85*Math.sin((j/bars.length)*Math.PI):10+4*Math.sin(Date.now()/400+j/2);b.style.height=h.toFixed(0)+'%'});setTimeout(wv,110)})();
+tabs.forEach(function(t,j){t.addEventListener('click',function(){show(j)})});
+if('IntersectionObserver' in window)new IntersectionObserver(function(es){var v=es[0].isIntersecting;if(v&&!vis){vis=true;show(cur)}else if(!v){vis=false;clear()}},{threshold:.3}).observe(ev);else{vis=true;show(0)}
 })();
 </script>
 </body>
