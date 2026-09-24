@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://theruka7.github.io/qoyal/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#EEE7D8">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%23D9232D'/%3E%3Cg fill='none' stroke='%23EEE7D8' stroke-width='5.2' stroke-linecap='round'%3E%3Cpath d='M5 40C10.4 40 12.6 37.6 14 32'/%3E%3Cpath d='M18 40C24 40 26.5 34.9 28 23'/%3E%3Cpath d='M32 40C38.6 40 41.4 31 43 10'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%23D9232D'/%3E%3Ccircle cx='17' cy='24' r='7' fill='%23fff'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4.6' stroke-linecap='round'%3E%3Cpath d='M23 13.6A12 12 0 0 1 23 34.4' opacity='.8'/%3E%3Cpath d='M28.5 7.6A20 20 0 0 1 28.5 40.4' opacity='.5'/%3E%3C/g%3E%3C/svg%3E">
 <script>try{document.documentElement.className='js'}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -474,7 +474,9 @@ footer{position:relative;z-index:1;background:var(--ink);color:#D6CCBF;padding:4
 .badge text{font:600 11.2px var(--display);fill:var(--ink);letter-spacing:.04em}
 .badge .core{position:absolute;inset:28%;border-radius:50%;background:var(--red);display:grid;place-items:center;transition:transform .45s var(--ease),background .3s}
 .badge .core svg{width:58%;height:58%;color:#fff;overflow:visible}
-.badge .core path{stroke-dasharray:60;stroke-dashoffset:60;animation:draw .5s var(--ease) .35s forwards}
+.badge .core path{stroke-dasharray:70;stroke-dashoffset:70;animation:draw .55s var(--ease) .45s forwards}
+.badge .core circle{transform-origin:17px 24px;animation:dotIn .4s cubic-bezier(.3,1.6,.5,1) .3s both}
+@keyframes dotIn{from{transform:scale(0)}}
 .badge .core path:nth-child(2){animation-delay:.5s}.badge .core path:nth-child(3){animation-delay:.65s}
 .badge:hover .disc{transform:scale(1.09);background:var(--card)}
 .badge:hover .core{transform:scale(1.12) rotate(-8deg)}
@@ -800,7 +802,6 @@ h2{font-weight:650;letter-spacing:-.035em;line-height:1}
 .atab{background:#fff;border-color:var(--line)}
 .atab[aria-selected=true]{border-color:var(--ink)}
 /* industries: no matchbox pop-ups */
-.peek{display:none!important}
 .ex .in .mbx{display:none}
 .ex .in{grid-template-columns:56px 1fr auto}.ex .q{grid-column:2}
 .dial{background:rgba(247,246,242,.9);border-top-color:var(--line)}
@@ -831,6 +832,13 @@ footer{padding:64px max(16px,5vw) 28px}
 .fbot{max-width:1320px;margin:40px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font:500 12px var(--mono);letter-spacing:.04em;color:#9C9387}
 @media (max-width:760px){.fcols{grid-template-columns:1fr 1fr}.fcols .fb{grid-column:1/-1}}
 .agc-t .st.live,.dl .stt.live{background:none;grid-column:auto}
+
+/* ================= v10: fixes ================= */
+:root{--strip:0px}
+@media (max-width:760px){:root{--strip:0px}}
+.lay:after{display:none}
+.steps{border-top:0}
+.spec{border-top:0}
 </style>
 </head>
 <body>
@@ -838,7 +846,7 @@ footer{padding:64px max(16px,5vw) 28px}
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="qm" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="5.2" stroke-linecap="round"><path d="M5 40C10.4 40 12.6 37.6 14 32"/><path d="M18 40C24 40 26.5 34.9 28 23"/><path d="M32 40C38.6 40 41.4 31 43 10"/></g></symbol>
+    <symbol id="qm" viewBox="0 0 48 48"><circle cx="17" cy="24" r="7" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round"><path d="M23 13.6A12 12 0 0 1 23 34.4" opacity=".72"/><path d="M28.5 7.6A20 20 0 0 1 28.5 40.4" opacity=".4"/></g></symbol>
     <symbol id="phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.12.37 2.33.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
     <symbol id="i-fac" viewBox="0 0 64 64"><path d="M5 58V32l13-9v9l13-9v9l13-9V10h9v48z"/><circle cx="48" cy="5" r="3"/><circle cx="56" cy="2" r="2"/></symbol>
     <symbol id="i-box" viewBox="0 0 64 64"><path d="M5 36h25v22H5zM34 36h25v22H34zM19 10h26v22H19z"/></symbol>
@@ -856,7 +864,7 @@ footer{padding:64px max(16px,5vw) 28px}
 </svg>
 
 <div class="loader" aria-hidden="true"><small>Dialling · हेलो?</small></div>
-<button class="badge" id="badge" aria-pressed="false" aria-label="Sound"><span class="disc"></span><span class="rot"><svg class="ring" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="bp" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#bp" textLength="280" lengthAdjust="spacing">HELLO? · हाँ जी · BOLO · हेलो हेलो · GO AHEAD ·</textPath></text></svg></span><span class="core"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="5.2" stroke-linecap="round"><path d="M5 40C10.4 40 12.6 37.6 14 32"/><path d="M18 40C24 40 26.5 34.9 28 23"/><path d="M32 40C38.6 40 41.4 31 43 10"/></g></svg></span><span class="tip">Tap for sound</span></button>
+<button class="badge" id="badge" aria-pressed="false" aria-label="Sound"><span class="disc"></span><span class="rot"><svg class="ring" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="bp" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#bp" textLength="280" lengthAdjust="spacing">HELLO? · हाँ जी · BOLO · हेलो हेलो · GO AHEAD ·</textPath></text></svg></span><span class="core"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="24" r="7" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round"><path d="M23 13.6A12 12 0 0 1 23 34.4" opacity=".72"/><path d="M28.5 7.6A20 20 0 0 1 28.5 40.4" opacity=".4"/></g></svg></span><span class="tip">Tap for sound</span></button>
 <div class="grain" aria-hidden="true"></div>
 
 <header class="nav">
@@ -1352,8 +1360,8 @@ function size(){dpr=Math.min(2,window.devicePixelRatio||1);vw=root.clientWidth||
   cv.width=Math.round(vw*dpr);cv.height=Math.round(vh*dpr);prevY0=null;
   baseBand=mob||vw<900?0:clamp(vh-60-520,0,vh*.3);root.style.setProperty('--band',baseBand+'px');
   measure();frame()}
-function bandFor(p){var st=mob?46:56;if(RM)return p<.95?baseBand:st;
-  var mx=vh*(mob?.7:.8);if(p<.08)return baseBand;if(p<.3)return lerp(baseBand,mx,ease((p-.08)/.22));if(p<.74)return mx;if(p<.92)return lerp(mx,st,ease((p-.74)/.18));return st}
+function bandFor(p){var st=0;if(RM)return p<.95?baseBand:st;
+  var mx=vh*(mob?.7:.8);if(p<.08)return baseBand;if(p<.3)return lerp(baseBand,mx,ease((p-.08)/.22));if(p<.74)return mx;if(p<.9)return lerp(mx,0,ease((p-.74)/.16));return 0}
 var PAPER='#F7F6F2',INK='#1B1612',RED='#D9232D';
 function fmt(s){s=Math.max(0,Math.round(s));var m=Math.floor(s/60),r=s%60;return(m<10?'0':'')+m+':'+(r<10?'0':'')+r}
 function draw(h,col){
@@ -1364,14 +1372,8 @@ function draw(h,col){
   var ppc=1.5+(h/vh)*1.1,sw=vw/ppc,PH=mob?.26:.28,phx=vw*PH,s0=col-phx/ppc,c0=Math.max(0,s0),c1=Math.min(W,s0+sw);
   cx.fillStyle=PAPER;cx.fillRect(0,y0,vw,h);
   if(ready&&c1>c0){cx.imageSmoothingEnabled=true;cx.drawImage(tapeC,c0,0,c1-c0,B,(c0-s0)*ppc,y0,(c1-c0)*ppc,h)}
-  cx.fillStyle=INK;cx.fillRect(0,y0,vw,1);
-  var cps=(SEG*NS)/347,big=h>120;
-  cx.globalAlpha=.6;cx.font='500 10px "IBM Plex Mono", monospace';cx.textBaseline='top';
-  var firstSec=Math.floor((s0-PAD)/cps),lastSec=Math.ceil((s0+sw-PAD)/cps);
-  for(var s=firstSec;s<=lastSec;s++){var x=(PAD+s*cps-s0)*ppc,maj=s%5===0;cx.fillRect(x,y0+1,1,maj?(big?10:7):(big?5:3));if(big&&maj&&s>=0&&s<=347)cx.fillText(fmt(s),x+3,y0+5)}
-  if(big){cx.textBaseline='middle';[1,2,3].forEach(function(k){var y=y0+h-(k*50/B)*h;cx.fillRect(0,y,6,1);cx.fillText(k+' kHz',9,y)})}
-  cx.globalAlpha=1;
-  cx.fillStyle=RED;cx.fillRect(phx-1,y0,2,h);cx.beginPath();cx.moveTo(phx-6,y0);cx.lineTo(phx+6,y0);cx.lineTo(phx,y0+8);cx.fill();
+  var fg=cx.createLinearGradient(0,y0,0,y0+Math.min(90,h*.35));fg.addColorStop(0,PAPER);fg.addColorStop(1,'rgba(247,246,242,0)');cx.fillStyle=fg;cx.fillRect(0,y0,vw,Math.min(90,h*.35));
+  var pg=cx.createLinearGradient(0,y0,0,y0+80);pg.addColorStop(0,'rgba(217,35,45,0)');pg.addColorStop(1,'rgba(217,35,45,.9)');cx.fillStyle=pg;cx.fillRect(phx-1,y0,2,80);cx.fillStyle='rgba(217,35,45,.9)';cx.fillRect(phx-1,y0+80,2,h-80);
   var lab='';
   for(var i=0;i<EV.length;i++){var e=EV[i];if(e.label&&col>=e.c0-8&&col<=e.c1+12){lab=e.label;break}}
   if(!lab)for(i=0;i<REG.length;i++){if(col>=REG[i].c0&&col<=REG[i].c1){lab=REG[i].label;break}}
@@ -1870,7 +1872,7 @@ function build(L){var W3=L.sec.clientWidth,H3=L.sec.offsetHeight,c=L.cell;if(W3<
   [L.base,L.top].forEach(function(cv2){cv2.width=Math.round(W3*dpr2);cv2.height=Math.round(H3*dpr2)});
   var g=L.base.getContext('2d');g.setTransform(dpr2,0,0,dpr2,0,0);g.clearRect(0,0,W3,H3);
   var mk=d.createElement('canvas');mk.width=L.cols;mk.height=L.rows;var mg=mk.getContext('2d'),V=L.v,sc=Math.min(W3,H3)*V.s/30;
-  function glides(ctx,k){ctx.save();ctx.translate(V.x*W3*k,V.y*H3*k);ctx.rotate(V.r*Math.PI/180);ctx.scale(sc*k,sc*k);ctx.translate(-24,-25);ctx.lineCap='round';ctx.lineWidth=5.2;ctx.beginPath();ctx.moveTo(5,40);ctx.bezierCurveTo(10.4,40,12.6,37.6,14,32);ctx.moveTo(18,40);ctx.bezierCurveTo(24,40,26.5,34.9,28,23);ctx.moveTo(32,40);ctx.bezierCurveTo(38.6,40,41.4,31,43,10);ctx.stroke();ctx.restore()}
+  function glides(ctx,k){ctx.save();ctx.translate(V.x*W3*k,V.y*H3*k);ctx.rotate(V.r*Math.PI/180);ctx.scale(sc*k,sc*k);ctx.translate(-27,-24);ctx.fillStyle=ctx.strokeStyle;ctx.lineCap='round';ctx.lineWidth=4.6;ctx.beginPath();ctx.arc(17,24,7,0,Math.PI*2);ctx.fill();ctx.globalAlpha=.72;ctx.beginPath();ctx.arc(17,24,12,-1.05,1.05);ctx.stroke();ctx.globalAlpha=.4;ctx.beginPath();ctx.arc(17,24,20,-.96,.96);ctx.stroke();ctx.restore()}
   mg.strokeStyle='#000';glides(mg,1/c);var mask=mg.getImageData(0,0,L.cols,L.rows).data;
   var gs=18,gw=Math.ceil(L.cols/gs)+3,gh=Math.ceil(L.rows/gs)+3,G=new Float32Array(gw*gh);for(var q=0;q<G.length;q++)G[q]=Math.random();
   function sm(t){return t*t*(3-2*t)}function nzz(i,j){var x=i/gs,y=j/gs,x0=Math.floor(x),y0=Math.floor(y),fx=sm(x-x0),fy=sm(y-y0),a=G[y0*gw+x0],b=G[y0*gw+x0+1],c2=G[(y0+1)*gw+x0],d2=G[(y0+1)*gw+x0+1];return a+(b-a)*fx+(c2-a)*fy+(a-b-c2+d2)*fx*fy}
