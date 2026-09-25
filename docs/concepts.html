@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Core concepts · Moglix Echo docs</title>
+<meta name="description" content="The handful of ideas behind every screen in Echo.">
+<link rel="canonical" href="https://theruka7.github.io/qoyal/docs/concepts.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moglix Echo">
+<meta property="og:title" content="Core concepts · Moglix Echo docs">
+<meta property="og:description" content="The handful of ideas behind every screen in Echo.">
+<meta property="og:url" content="https://theruka7.github.io/qoyal/docs/concepts.html">
+<meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
+<script>try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/page.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%23D9232D'/%3E%3Ccircle cx='17' cy='24' r='7' fill='%23fff'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4.6' stroke-linecap='round'%3E%3Cpath d='M23 13.6A12 12 0 0 1 23 34.4' opacity='.8'/%3E%3Cpath d='M28.5 7.6A20 20 0 0 1 28.5 40.4' opacity='.5'/%3E%3C/g%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Core concepts", "description": "The handful of ideas behind every screen in Echo.", "datePublished": "2026-09-25", "dateModified": "2026-09-25", "author": {"@type": "Organization", "name": "Moglix Echo"}, "inLanguage": "en-IN"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "Core concepts", "item": "https://theruka7.github.io/qoyal/docs/concepts.html"}]}</script>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="../" aria-label="Moglix Echo home"><img src="../moglix.png" alt="Moglix" width="64" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
+  <nav class="links" aria-label="Site"><a href="../#agents">Agents</a><a href="../#industries">Use cases</a><a href="../#roi">ROI</a><a href="../docs/" aria-current="page">Docs</a><a href="../blog/">Blog</a></nav>
+  <a class="cta" href="../#pilot">Book a pilot</a>
+</header>
+<main class="docs">
+<nav class="dside" aria-label="Docs"><h4>Get started</h4><a href="./">Overview</a><a href="quickstart.html">Quickstart</a><a href="concepts.html" aria-current="page">Core concepts</a><h4>Build</h4><a href="agents.html">Agents</a><a href="variables.html">Inputs and outputs</a><h4>Test</h4><a href="testing.html">Call console</a><h4>Launch</h4><a href="campaigns.html">Campaigns</a><h4>Monitor</h4><a href="monitoring.html">Dashboard and call log</a><a href="analysis.html">Call analysis</a><h4>Manage</h4><a href="team.html">Team and access</a><h4>Scale</h4><a href="automation.html">Automation and reports</a><h4>Playbooks</h4><a href="use-cases.html">Use-case playbooks</a><a href="best-practices.html">Prompt best practices</a><h4>Developers</h4><a href="api.html">API preview</a></nav><div class="dmain"><details class="dmenu"><summary>Docs menu · Core concepts</summary><nav class="dside" aria-label="Docs"><h4>Get started</h4><a href="./">Overview</a><a href="quickstart.html">Quickstart</a><a href="concepts.html" aria-current="page">Core concepts</a><h4>Build</h4><a href="agents.html">Agents</a><a href="variables.html">Inputs and outputs</a><h4>Test</h4><a href="testing.html">Call console</a><h4>Launch</h4><a href="campaigns.html">Campaigns</a><h4>Monitor</h4><a href="monitoring.html">Dashboard and call log</a><a href="analysis.html">Call analysis</a><h4>Manage</h4><a href="team.html">Team and access</a><h4>Scale</h4><a href="automation.html">Automation and reports</a><h4>Playbooks</h4><a href="use-cases.html">Use-case playbooks</a><a href="best-practices.html">Prompt best practices</a><h4>Developers</h4><a href="api.html">API preview</a></nav></details><header class="dhead"><p class="crumb"><a href="../">Home</a> / <a href="./">Docs</a> / Get started</p><p class="kick">Get started</p><h1>Core concepts</h1><p class="lede">The handful of ideas behind every screen in Echo.</p></header><article class="prose card"><h2 id="model">The model in one picture</h2>
+<p>An <strong>agent</strong> knows how to have one kind of call. A <strong>campaign</strong> runs that agent against one list of <strong>contacts</strong>. Each contact gets a <strong>call</strong>, and each call ends in an <strong>outcome</strong>: the values the agent was asked to capture, with the transcript and recording attached.</p>
+<pre><code>Agent  ──►  Campaign  ──►  Contacts  ──►  Calls  ──►  Outcomes
+(how to talk)  (one list)    (one row each)  (the conversation)  (the answers)</code></pre>
+<h2 id="agent">Agent</h2>
+<p>An agent owns everything about how a call sounds and what it is for: the <strong>prompt</strong>, the <strong>voice</strong>, the <strong>calling line</strong> it dials from, and its <strong>variables</strong>. Change the agent and every campaign that uses it follows on its next call, with no restart.</p>
+<h2 id="vars">Inputs and outputs</h2>
+<p><strong>Input variables</strong> are what the agent knows before it dials: a name, an order number, an amount due. They come from the columns of your sheet and fill the <code>{{tokens}}</code> in the prompt.</p>
+<p><strong>Output variables</strong> are what the agent must find out and report before it hangs up: a status, a date, a quantity, a reason. They become the columns of your results.</p>
+<p>One input can be the <strong>primary id</strong>, such as an order or PO number. It identifies each row in results and exports.</p>
+<h2 id="campaign">Campaign</h2>
+<p>A campaign is <strong>one agent run against one list</strong>. It is named after the agent and the time it was created, and you can add a description to say which list it was. A campaign can be outbound or inbound.</p>
+<p>A campaign takes one upload. To call another list, create another campaign. This keeps every result tied to exactly the list that produced it.</p>
+<h2 id="call">Call and outcome</h2>
+<p>Every call is logged with its time, number, agent, length, transcript and recording. When the agent has what it needs, it reports its output variables. Those values are saved against the contact and shown in results. Later, <a href="analysis.html">call analysis</a> can add a summary, a priority and action items.</p>
+<h2 id="workspace">Workspace</h2>
+<p>Everything lives in a workspace for your organisation. Admins decide who can use it, and <a href="team.html">groups</a> decide who sees which campaigns.</p>
+<h2 id="life">Lifecycle of a contact</h2>
+<table><thead><tr><th>Status</th><th>What it means</th></tr></thead><tbody><tr><td>Pending</td><td>Uploaded, not called yet.</td></tr><tr><td>Dialled</td><td>A call has been placed. Waiting for it to finish and report.</td></tr><tr><td>Captured</td><td>The call finished and the agent reported its outputs.</td></tr><tr><td>No answer</td><td>The call ended without any outputs, for example nobody picked up.</td></tr><tr><td>Disconnected, partial</td><td>The line dropped before the end. Whatever was captured is kept.</td></tr><tr><td>Input validation failed</td><td>Something in the row was wrong, such as a missing required value. It is stored but not called. Hover the status to see why.</td></tr></tbody></table></article><nav class="pager" aria-label="Pages"><a class="card" href="quickstart.html"><small>Previous</small><b>← Quickstart</b></a><a class="card nx" href="agents.html"><small>Next</small><b>Agents →</b></a></nav></div><aside class="dtoc"><b>On this page</b><a href="#model">The model in one picture</a><a href="#agent">Agent</a><a href="#vars">Inputs and outputs</a><a href="#campaign">Campaign</a><a href="#call">Call and outcome</a><a href="#workspace">Workspace</a><a href="#life">Lifecycle of a contact</a></aside>
+</main>
+<footer><span>Moglix Echo · AI voice agents for Indian business</span><nav><a href="../">Home</a><a href="../docs/">Docs</a><a href="../blog/">Blog</a><a href="../#faq">FAQ</a><a href="../#trust">Security</a></nav><span>© 2026 Echo</span></footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prompt best practices · Moglix Echo docs</title>
+<meta name="description" content="How to write prompts that sound human, stay on task and capture reliable data.">
+<link rel="canonical" href="https://theruka7.github.io/qoyal/docs/best-practices.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moglix Echo">
+<meta property="og:title" content="Prompt best practices · Moglix Echo docs">
+<meta property="og:description" content="How to write prompts that sound human, stay on task and capture reliable data.">
+<meta property="og:url" content="https://theruka7.github.io/qoyal/docs/best-practices.html">
+<meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
+<script>try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/page.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%23D9232D'/%3E%3Ccircle cx='17' cy='24' r='7' fill='%23fff'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4.6' stroke-linecap='round'%3E%3Cpath d='M23 13.6A12 12 0 0 1 23 34.4' opacity='.8'/%3E%3Cpath d='M28.5 7.6A20 20 0 0 1 28.5 40.4' opacity='.5'/%3E%3C/g%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Prompt best practices", "description": "How to write prompts that sound human, stay on task and capture reliable data.", "datePublished": "2026-09-25", "dateModified": "2026-09-25", "author": {"@type": "Organization", "name": "Moglix Echo"}, "inLanguage": "en-IN"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "Prompt best practices", "item": "https://theruka7.github.io/qoyal/docs/best-practices.html"}]}</script>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="../" aria-label="Moglix Echo home"><img src="../moglix.png" alt="Moglix" width="64" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
+  <nav class="links" aria-label="Site"><a href="../#agents">Agents</a><a href="../#industries">Use cases</a><a href="../#roi">ROI</a><a href="../docs/" aria-current="page">Docs</a><a href="../blog/">Blog</a></nav>
+  <a class="cta" href="../#pilot">Book a pilot</a>
+</header>
+<main class="docs">
+<nav class="dside" aria-label="Docs"><h4>Get started</h4><a href="./">Overview</a><a href="quickstart.html">Quickstart</a><a href="concepts.html">Core concepts</a><h4>Build</h4><a href="agents.html">Agents</a><a href="variables.html">Inputs and outputs</a><h4>Test</h4><a href="testing.html">Call console</a><h4>Launch</h4><a href="campaigns.html">Campaigns</a><h4>Monitor</h4><a href="monitoring.html">Dashboard and call log</a><a href="analysis.html">Call analysis</a><h4>Manage</h4><a href="team.html">Team and access</a><h4>Scale</h4><a href="automation.html">Automation and reports</a><h4>Playbooks</h4><a href="use-cases.html">Use-case playbooks</a><a href="best-practices.html" aria-current="page">Prompt best practices</a><h4>Developers</h4><a href="api.html">API preview</a></nav><div class="dmain"><details class="dmenu"><summary>Docs menu · Prompt best practices</summary><nav class="dside" aria-label="Docs"><h4>Get started</h4><a href="./">Overview</a><a href="quickstart.html">Quickstart</a><a href="concepts.html">Core concepts</a><h4>Build</h4><a href="agents.html">Agents</a><a href="variables.html">Inputs and outputs</a><h4>Test</h4><a href="testing.html">Call console</a><h4>Launch</h4><a href="campaigns.html">Campaigns</a><h4>Monitor</h4><a href="monitoring.html">Dashboard and call log</a><a href="analysis.html">Call analysis</a><h4>Manage</h4><a href="team.html">Team and access</a><h4>Scale</h4><a href="automation.html">Automation and reports</a><h4>Playbooks</h4><a href="use-cases.html">Use-case playbooks</a><a href="best-practices.html" aria-current="page">Prompt best practices</a><h4>Developers</h4><a href="api.html">API preview</a></nav></details><header class="dhead"><p class="crumb"><a href="../">Home</a> / <a href="./">Docs</a> / Playbooks</p><p class="kick">Playbooks</p><h1>Prompt best practices</h1><p class="lede">How to write prompts that sound human, stay on task and capture reliable data.</p></header><article class="prose card"><h2 id="structure">A structure that works</h2>
+<ol><li><strong>Role and goal</strong>: who the agent is, who it calls for, and the one thing the call must achieve.</li><li><strong>Opening</strong>: name, company and reason in the first sentence.</li><li><strong>Flow</strong>: the questions, in order, one at a time.</li><li><strong>Rules</strong>: read-back, what counts as a yes, what never to say.</li><li><strong>Common moments</strong>: how to handle each, briefly.</li><li><strong>Closing</strong>: thank them, say what happens next, end the call.</li></ol>
+<p>Keep each section short. Several small sections are easier to test and switch off than one long one.</p>
+<h2 id="confirm">Confirm, don’t assume</h2>
+<ul><li>Read back every date, amount, quantity and reference before reporting it.</li><li>Treat “ok”, “hmm” and similar as “go on”, never as agreement.</li><li>When the caller corrects a value, replace it and read it back again.</li><li>Read reference numbers digit by digit (use the <strong>Spell digits</strong> transform).</li></ul>
+<p>More in our guide <a href="../blog/confirm-dont-assume-voice-agents.html">Confirm, don’t assume</a>.</p>
+<h2 id="moments">Handle the common moments</h2>
+<table><thead><tr><th>Moment</th><th>A good rule</th></tr></thead><tbody><tr><td>“Who is this?”</td><td>Give name, company and reason. Offer to stop calling.</td></tr><tr><td>Busy</td><td>Ask for a better time, capture it as a call-back, end politely.</td></tr><tr><td>Wrong person</td><td>Ask for the right contact, capture it, do not share details.</td></tr><tr><td>Bad line</td><td>Slow down, repeat once, shorter.</td></tr><tr><td>Dispute or objection</td><td>Note it and the reference; do not argue.</td></tr><tr><td>Wants a human</td><td>Offer a call back from the team, capture a time.</td></tr></tbody></table>
+<h2 id="language">Language and tone</h2>
+<p>Say which languages to use and to follow the caller if they switch. Ask for short sentences and one question at a time. Use the caller’s name sparingly. Avoid jargon the caller would not use.</p>
+<h2 id="iterate">Iterate with evidence</h2>
+<ol><li>Test each change in the <a href="testing.html">call console</a> with the test script.</li><li>Run a small list first and listen to ten calls.</li><li>Look at <strong>Inconclusive</strong> and <strong>No audio</strong> in the <a href="monitoring.html">funnel</a>; they show where calls go wrong.</li><li>Change one section at a time so you know what helped.</li></ol></article><nav class="pager" aria-label="Pages"><a class="card" href="use-cases.html"><small>Previous</small><b>← Use-case playbooks</b></a><a class="card nx" href="api.html"><small>Next</small><b>API preview →</b></a></nav></div><aside class="dtoc"><b>On this page</b><a href="#structure">A structure that works</a><a href="#confirm">Confirm, don’t assume</a><a href="#moments">Handle the common moments</a><a href="#language">Language and tone</a><a href="#iterate">Iterate with evidence</a></aside>
+</main>
+<footer><span>Moglix Echo · AI voice agents for Indian business</span><nav><a href="../">Home</a><a href="../docs/">Docs</a><a href="../blog/">Blog</a><a href="../#faq">FAQ</a><a href="../#trust">Security</a></nav><span>© 2026 Echo</span></footer>
+</body>
+</html>

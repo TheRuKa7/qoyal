@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>API preview · Moglix Echo docs</title>
+<meta name="description" content="Run the same agents from your own systems: place calls, run campaigns, read results and receive webhooks.">
+<link rel="canonical" href="https://theruka7.github.io/qoyal/docs/api.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moglix Echo">
+<meta property="og:title" content="API preview · Moglix Echo docs">
+<meta property="og:description" content="Run the same agents from your own systems: place calls, run campaigns, read results and receive webhooks.">
+<meta property="og:url" content="https://theruka7.github.io/qoyal/docs/api.html">
+<meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
+<script>try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/page.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%23D9232D'/%3E%3Ccircle cx='17' cy='24' r='7' fill='%23fff'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4.6' stroke-linecap='round'%3E%3Cpath d='M23 13.6A12 12 0 0 1 23 34.4' opacity='.8'/%3E%3Cpath d='M28.5 7.6A20 20 0 0 1 28.5 40.4' opacity='.5'/%3E%3C/g%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "API preview", "description": "Run the same agents from your own systems: place calls, run campaigns, read results and receive webhooks.", "datePublished": "2026-09-25", "dateModified": "2026-09-25", "author": {"@type": "Organization", "name": "Moglix Echo"}, "inLanguage": "en-IN"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "API preview", "item": "https://theruka7.github.io/qoyal/docs/api.html"}]}</script>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="../" aria-label="Moglix Echo home"><img src="../moglix.png" alt="Moglix" width="64" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
+  <nav class="links" aria-label="Site"><a href="../#agents">Agents</a><a href="../#industries">Use cases</a><a href="../#roi">ROI</a><a href="../docs/" aria-current="page">Docs</a><a href="../blog/">Blog</a></nav>
+  <a class="cta" href="../#pilot">Book a pilot</a>
+</header>
+<main class="docs">
+<nav class="dside" aria-label="Docs"><h4>Get started</h4><a href="./">Overview</a><a href="quickstart.html">Quickstart</a><a href="concepts.html">Core concepts</a><h4>Build</h4><a href="agents.html">Agents</a><a href="variables.html">Inputs and outputs</a><h4>Test</h4><a href="testing.html">Call console</a><h4>Launch</h4><a href="campaigns.html">Campaigns</a><h4>Monitor</h4><a href="monitoring.html">Dashboard and call log</a><a href="analysis.html">Call analysis</a><h4>Manage</h4><a href="team.html">Team and access</a><h4>Scale</h4><a href="automation.html">Automation and reports</a><h4>Playbooks</h4><a href="use-cases.html">Use-case playbooks</a><a href="best-practices.html">Prompt best practices</a><h4>Developers</h4><a href="api.html" aria-current="page">API preview</a></nav><div class="dmain"><details class="dmenu"><summary>Docs menu · API preview</summary><nav class="dside" aria-label="Docs"><h4>Get started</h4><a href="./">Overview</a><a href="quickstart.html">Quickstart</a><a href="concepts.html">Core concepts</a><h4>Build</h4><a href="agents.html">Agents</a><a href="variables.html">Inputs and outputs</a><h4>Test</h4><a href="testing.html">Call console</a><h4>Launch</h4><a href="campaigns.html">Campaigns</a><h4>Monitor</h4><a href="monitoring.html">Dashboard and call log</a><a href="analysis.html">Call analysis</a><h4>Manage</h4><a href="team.html">Team and access</a><h4>Scale</h4><a href="automation.html">Automation and reports</a><h4>Playbooks</h4><a href="use-cases.html">Use-case playbooks</a><a href="best-practices.html">Prompt best practices</a><h4>Developers</h4><a href="api.html" aria-current="page">API preview</a></nav></details><header class="dhead"><p class="crumb"><a href="../">Home</a> / <a href="./">Docs</a> / Developers</p><p class="kick">Developers</p><h1>API preview</h1><p class="lede">Run the same agents from your own systems: place calls, run campaigns, read results and receive webhooks.</p></header><article class="prose card"><h2 id="overview">Overview</h2>
+<p>Everything you can do in the Echo dashboard, you can do over the API. The model is small:</p>
+<ul><li><strong>Agents</strong> hold the script, language and the fields to capture. Create them in the dashboard, then refer to them by id.</li>
+<li><strong>Calls</strong> are single conversations with one person.</li>
+<li><strong>Campaigns</strong> run an agent over a list of contacts, inside your calling window, with retries.</li>
+<li><strong>Results</strong> are the structured outcome of each call, with the recording attached.</li></ul>
+<div class="note">This is a developer preview. Endpoints and fields may change before general availability. API keys are issued to pilot customers. <a href="../#pilot">Request access.</a></div>
+<h2 id="auth">Authentication</h2>
+<p>Send your API key as a bearer token on every request. Keep keys on your server, never in a browser or app.</p>
+<pre><code>Authorization: Bearer $ECHO_API_KEY
+Content-Type: application/json</code></pre>
+<h2 id="agents">Agents</h2>
+<p>Build and test agents in the dashboard (see <a href="agents.html">Agents</a>). Each agent has an id you use in API calls, for example <code>dispatch-followup</code>. The agent defines what it asks, what it reads back, and which outcome fields it returns.</p>
+<h2 id="calls">Place a call</h2>
+<p><span class="method">POST</span><code>/v1/calls</code></p>
+<p>Starts one call with an agent. Pass anything the agent needs to know in <code>context</code>.</p>
+<pre><code>curl -X POST "$ECHO_API/v1/calls" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "to": "+919876543210",
+    "agent": "dispatch-followup",
+    "context": { "po_number": "4471", "line": 3, "qty": 14 }
+  }'</code></pre>
+<pre><code>{ "call_id": "call_8f2k", "status": "queued" }</code></pre>
+<h2 id="campaigns">Campaigns</h2>
+<p><span class="method">POST</span><code>/v1/campaigns</code></p>
+<pre><code>{ "agent": "dispatch-followup", "name": "Open POs, week 39" }</code></pre>
+<p>Calling windows, retries and call backs follow the settings on the campaign. Calls only start inside the hours you set.</p>
+<h2 id="contacts">Add contacts</h2>
+<p><span class="method">POST</span><code>/v1/campaigns/{id}/contacts</code></p>
+<p>Upload a sheet (CSV or XLSX) or send JSON rows. Columns are mapped to the fields the agent expects. Rows for the same phone number become one call.</p>
+<pre><code>curl -X POST "$ECHO_API/v1/campaigns/$CAMPAIGN_ID/contacts" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -F "file=@open_pos.xlsx"</code></pre>
+<h2 id="results">Results</h2>
+<p><span class="method get">GET</span><code>/v1/campaigns/{id}/results</code></p>
+<pre><code>[
+  {
+    "contact": "Mehta Packaging",
+    "outcome": "PARTIAL",
+    "dispatch_date": "2026-09-28",
+    "qty_ready": 10,
+    "read_back_confirmed": true,
+    "recording_url": "https://…"
+  }
+]</code></pre>
+<h2 id="webhooks">Webhooks</h2>
+<p>Subscribe a URL and receive each outcome as it lands, instead of polling. Every webhook is signed. Verify the signature before you trust the payload, and respond with a 2xx status within a few seconds.</p>
+<pre><code>POST https://your-app.example.com/echo/outcomes
+X-Echo-Signature: t=1727251200,v1=…
+
+{ "event": "call.completed", "call_id": "call_8f2k", "outcome": "CONFIRMED", "fields": { … } }</code></pre>
+<h2 id="fields">Outcome fields</h2>
+<table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>outcome</code></td><td>string</td><td>Status such as CONFIRMED, PARTIAL, NEW_DATE, CALL_BACK, NOT_REACHED.</td></tr>
+<tr><td><code>read_back_confirmed</code></td><td>boolean</td><td>True when the caller confirmed the read-back with a clear yes.</td></tr>
+<tr><td><code>fields</code></td><td>object</td><td>The values your agent captures, such as dates, amounts and reasons.</td></tr>
+<tr><td><code>next_step</code></td><td>object</td><td>A call back time or follow-up, when there is one.</td></tr>
+<tr><td><code>recording_url</code></td><td>string</td><td>Link to the call recording.</td></tr></tbody></table></article><nav class="pager" aria-label="Pages"><a class="card" href="best-practices.html"><small>Previous</small><b>← Prompt best practices</b></a></nav></div><aside class="dtoc"><b>On this page</b><a href="#overview">Overview</a><a href="#auth">Authentication</a><a href="#agents">Agents</a><a href="#calls">Place a call</a><a href="#campaigns">Campaigns</a><a href="#contacts">Add contacts</a><a href="#results">Results</a><a href="#webhooks">Webhooks</a><a href="#fields">Outcome fields</a></aside>
+</main>
+<footer><span>Moglix Echo · AI voice agents for Indian business</span><nav><a href="../">Home</a><a href="../docs/">Docs</a><a href="../blog/">Blog</a><a href="../#faq">FAQ</a><a href="../#trust">Security</a></nav><span>© 2026 Echo</span></footer>
+</body>
+</html>

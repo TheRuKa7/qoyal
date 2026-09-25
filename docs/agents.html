@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agents · Moglix Echo docs</title>
+<meta name="description" content="Create an agent, write its prompt in sections, choose its voice and calling line, and keep it in step with its variables.">
+<link rel="canonical" href="https://theruka7.github.io/qoyal/docs/agents.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moglix Echo">
+<meta property="og:title" content="Agents · Moglix Echo docs">
+<meta property="og:description" content="Create an agent, write its prompt in sections, choose its voice and calling line, and keep it in step with its variables.">
+<meta property="og:url" content="https://theruka7.github.io/qoyal/docs/agents.html">
+<meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
+<script>try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/page.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%23D9232D'/%3E%3Ccircle cx='17' cy='24' r='7' fill='%23fff'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4.6' stroke-linecap='round'%3E%3Cpath d='M23 13.6A12 12 0 0 1 23 34.4' opacity='.8'/%3E%3Cpath d='M28.5 7.6A20 20 0 0 1 28.5 40.4' opacity='.5'/%3E%3C/g%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Agents", "description": "Create an agent, write its prompt in sections, choose its voice and calling line, and keep it in step with its variables.", "datePublished": "2026-09-25", "dateModified": "2026-09-25", "author": {"@type": "Organization", "name": "Moglix Echo"}, "inLanguage": "en-IN"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "Agents", "item": "https://theruka7.github.io/qoyal/docs/agents.html"}]}</script>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="../" aria-label="Moglix Echo home"><img src="../moglix.png" alt="Moglix" width="64" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
+  <nav class="links" aria-label="Site"><a href="../#agents">Agents</a><a href="../#industries">Use cases</a><a href="../#roi">ROI</a><a href="../docs/" aria-current="page">Docs</a><a href="../blog/">Blog</a></nav>
+  <a class="cta" href="../#pilot">Book a pilot</a>
+</header>
+<main class="docs">
+<nav class="dside" aria-label="Docs"><h4>Get started</h4><a href="./">Overview</a><a href="quickstart.html">Quickstart</a><a href="concepts.html">Core concepts</a><h4>Build</h4><a href="agents.html" aria-current="page">Agents</a><a href="variables.html">Inputs and outputs</a><h4>Test</h4><a href="testing.html">Call console</a><h4>Launch</h4><a href="campaigns.html">Campaigns</a><h4>Monitor</h4><a href="monitoring.html">Dashboard and call log</a><a href="analysis.html">Call analysis</a><h4>Manage</h4><a href="team.html">Team and access</a><h4>Scale</h4><a href="automation.html">Automation and reports</a><h4>Playbooks</h4><a href="use-cases.html">Use-case playbooks</a><a href="best-practices.html">Prompt best practices</a><h4>Developers</h4><a href="api.html">API preview</a></nav><div class="dmain"><details class="dmenu"><summary>Docs menu · Agents</summary><nav class="dside" aria-label="Docs"><h4>Get started</h4><a href="./">Overview</a><a href="quickstart.html">Quickstart</a><a href="concepts.html">Core concepts</a><h4>Build</h4><a href="agents.html" aria-current="page">Agents</a><a href="variables.html">Inputs and outputs</a><h4>Test</h4><a href="testing.html">Call console</a><h4>Launch</h4><a href="campaigns.html">Campaigns</a><h4>Monitor</h4><a href="monitoring.html">Dashboard and call log</a><a href="analysis.html">Call analysis</a><h4>Manage</h4><a href="team.html">Team and access</a><h4>Scale</h4><a href="automation.html">Automation and reports</a><h4>Playbooks</h4><a href="use-cases.html">Use-case playbooks</a><a href="best-practices.html">Prompt best practices</a><h4>Developers</h4><a href="api.html">API preview</a></nav></details><header class="dhead"><p class="crumb"><a href="../">Home</a> / <a href="./">Docs</a> / Build</p><p class="kick">Build</p><h1>Agents</h1><p class="lede">Create an agent, write its prompt in sections, choose its voice and calling line, and keep it in step with its variables.</p></header><article class="prose card"><h2 id="list">The agents list</h2>
+<p><strong>Agents</strong> shows every agent in your workspace with how many inputs and outputs it has and which input is its primary id. Click a row to open it. Access to this page is given per person by an admin, because it shows and edits every prompt.</p>
+<h2 id="create">Create an agent</h2>
+<ol class="steps">
+<li><b>Name and description</b>Use a name that says what the call is for, such as “COD confirmation”. The description is for your team.</li>
+<li><b>Start from</b>Choose <strong>Blank agent</strong>, or <strong>Copy of</strong> an existing agent to inherit its prompt, inputs and outputs. Copying a working agent is the fastest way to a new one.</li>
+<li><b>Calling line</b>Pick the line this agent’s calls go out on. Campaigns that use the agent inherit it. Until an agent has a line, its campaigns cannot upload a list or place calls.</li></ol>
+<h2 id="editor">The prompt editor</h2>
+<p>An agent’s prompt is a list of <strong>sections</strong>, joined in order. Each section has a title and a body, and a small toolbar:</p>
+<ul><li><strong>↑ ↓</strong> move it up or down.</li><li><strong>On / Off</strong> skips a section without deleting it, useful when testing a change.</li><li><strong>Copy</strong> copies the text in use.</li><li><strong>Delete</strong> removes it. <strong>Add section</strong> adds a new one at the end.</li></ul>
+<figure class="ui"><div class="ui-bar"><i></i><i></i><i></i><span>Echo · Agents · Dispatch follow-up</span></div><div class="ui-b"><div class="ui-tabs"><span class="on">Prompt</span><span>Input variables (5)</span><span>Output variables (4)</span></div><div class="ui-row"><span class="ui-kv"><b>Voice</b><span>Default · Female</span><b>Calling line</b><span>Outbound · Operations</span></span></div><div class="ui-sec"><div class="ui-sh">Role and goal<em>On · ↑ ↓ · Copy</em></div><div class="ui-code">You are Riya, calling from the purchase team of <u>{{company}}</u>. Your goal is to confirm the dispatch date and quantity for PO <u>{{po_number}}</u>.</div></div><div class="ui-sec"><div class="ui-sh">Read-back rules<em>On · ↑ ↓ · Copy</em></div><div class="ui-code">Repeat every date and quantity back. Save only on a clear yes. A filler is not a yes.</div></div><div class="ui-sec gen"><div class="ui-sh">Call details<em>auto · inputs · Refresh</em></div><div class="ui-code">- Supplier: <u>{{supplier_name}}</u>
+- PO number: <u>{{po_number}}</u>
+- Open quantity: <u>{{open_qty}}</u></div></div><div class="ui-sec gen"><div class="ui-sh">Outcome reporting<em>auto · outputs · Refresh</em></div><div class="ui-code">Before ending the call, report: dispatch_date, qty_ready, status, next_step.</div></div><div class="ui-row"><span class="ui-btn">+ Add section</span><span class="ui-btn p">Save prompt</span><span class="ui-btn">Preview full prompt</span></div></div><figcaption>The prompt is built from sections. Dashed sections are written for you from the agent’s variables.</figcaption></figure>
+<p>A good agent usually has these sections: role and goal, opening line, conversation flow, read-back and confirmation rules, handling of common moments (busy, wrong person, call back, bad line), language rules, and closing. See <a href="best-practices.html">prompt best practices</a>.</p>
+<h2 id="auto">Automatic sections</h2>
+<p>Two sections are written for you from the agent’s variables, and marked <strong>auto</strong>:</p>
+<ul><li><strong>Call details</strong> lists each input the agent may talk about, with its token.</li>
+<li><strong>Outcome reporting</strong> tells the agent which outputs to report before hanging up, with their types, options and descriptions.</li></ul>
+<p>You can edit their wording. When the variables change later, <strong>Refresh</strong> adds lines for new variables and removes lines for deleted ones, and leaves the rest of your wording alone. <strong>Reset</strong> goes back to the generated text. A section you never edited keeps following the variables automatically.</p>
+<h2 id="tokens">Tokens and checks</h2>
+<p>Write <code>{{order_id}}</code> wherever a value from the contact’s row belongs. At call time Echo replaces each token with that row’s value. If the prompt uses a token that is not declared as an input, the editor lists it as missing so you can fix it before any call goes out.</p>
+<h2 id="voice">Voice and calling line</h2>
+<p>Pick a voice from the list; each shows its gender. Leave it on <strong>Default</strong> to use the standard voice. Voice and calling line apply as soon as you change them, with no save needed, and do not disturb a prompt you are part-way through editing.</p>
+<h2 id="save">Saving, preview and changes</h2>
+<p><strong>Preview full prompt</strong> shows the whole prompt exactly as the agent will get it, including unsaved edits, with its length. <strong>Save prompt</strong> stores it. The change is live on the next call, for every campaign that uses the agent.</p>
+<div class="note">Change prompts between runs where you can. A campaign that is already calling picks up the new prompt on its next call, so results from one list may come from two versions.</div>
+<h2 id="sync">Connected platforms</h2>
+<p>If your workspace has a partner platform connected, the agents list shows a <strong>Sync</strong> action. Syncing is permanent once it succeeds. While it is being delivered the row shows <strong>Syncing</strong>; if it fails after retries it shows <strong>Failed</strong> with the reason, and you can try again.</p>
+<h2 id="delete">Deleting an agent</h2>
+<p>Delete removes the agent and cannot be undone. Past campaigns keep their results and show the agent as no longer defined.</p></article><nav class="pager" aria-label="Pages"><a class="card" href="concepts.html"><small>Previous</small><b>← Core concepts</b></a><a class="card nx" href="variables.html"><small>Next</small><b>Inputs and outputs →</b></a></nav></div><aside class="dtoc"><b>On this page</b><a href="#list">The agents list</a><a href="#create">Create an agent</a><a href="#editor">The prompt editor</a><a href="#auto">Automatic sections</a><a href="#tokens">Tokens and checks</a><a href="#voice">Voice and calling line</a><a href="#save">Saving, preview and changes</a><a href="#sync">Connected platforms</a><a href="#delete">Deleting an agent</a></aside>
+</main>
+<footer><span>Moglix Echo · AI voice agents for Indian business</span><nav><a href="../">Home</a><a href="../docs/">Docs</a><a href="../blog/">Blog</a><a href="../#faq">FAQ</a><a href="../#trust">Security</a></nav><span>© 2026 Echo</span></footer>
+</body>
+</html>
