@@ -1,5 +1,5 @@
-# Moglix Echo docs
-> AI voice agents for Indian business: build agents, run campaigns, read outcomes.
+# Cognilix Echo docs
+> Enterprise voice AI for revenue workflows: build agents, run campaigns, write outcomes back to your systems.
 
 ## Platform guide
 - [Overview](https://theruka7.github.io/qoyal/docs/)
