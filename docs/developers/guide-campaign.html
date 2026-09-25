@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Run a campaign from code · Moglix Echo API</title>
+<meta name="description" content="Create a campaign, check the column mapping with a dry run, upload, and collect results.">
+<link rel="canonical" href="https://theruka7.github.io/qoyal/docs/developers/guide-campaign.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moglix Echo">
+<meta property="og:title" content="Run a campaign from code · Moglix Echo API">
+<meta property="og:description" content="Create a campaign, check the column mapping with a dry run, upload, and collect results.">
+<meta property="og:url" content="https://theruka7.github.io/qoyal/docs/developers/guide-campaign.html">
+<meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
+<script>try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/page.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%23D9232D'/%3E%3Ccircle cx='17' cy='24' r='7' fill='%23fff'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4.6' stroke-linecap='round'%3E%3Cpath d='M23 13.6A12 12 0 0 1 23 34.4' opacity='.8'/%3E%3Cpath d='M28.5 7.6A20 20 0 0 1 28.5 40.4' opacity='.5'/%3E%3C/g%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Run a campaign from code", "description": "Create a campaign, check the column mapping with a dry run, upload, and collect results.", "datePublished": "2026-09-25", "dateModified": "2026-09-25", "author": {"@type": "Organization", "name": "Moglix Echo"}, "inLanguage": "en-IN"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "Developers", "item": "https://theruka7.github.io/qoyal/docs/developers/"}, {"@type": "ListItem", "position": 4, "name": "Run a campaign from code", "item": "https://theruka7.github.io/qoyal/docs/developers/guide-campaign.html"}]}</script>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="../../" aria-label="Moglix Echo home"><img src="../../moglix.png" alt="Moglix" width="64" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
+  <nav class="links" aria-label="Site"><a href="../../#agents">Agents</a><a href="../../#industries">Use cases</a><a href="../../#roi">ROI</a><a href="../../docs/" aria-current="page">Docs</a><a href="../../blog/">Blog</a></nav>
+  <a class="cta" href="../../#pilot">Book a pilot</a>
+</header>
+<main class="docs">
+<nav class="dtabs" aria-label="Documentation"><a href="../"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.5 6h13" stroke="currentColor" stroke-width="1.5"/></svg>Platform guide <small>no code</small></a><a href="../developers/" aria-current="page"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Developers <small>API</small></a><span class="dt-r"><a href="../../llms.txt">llms.txt</a></span></nav><nav class="dside" aria-label="Developer docs"><h4>Get started</h4><a href="./">Introduction</a><a href="quickstart.html">Quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html" aria-current="page">Run a campaign from code</a><a href="webhooks.html">Webhooks</a><a href="guide-exports.html">Recordings and exports</a><h4>API reference</h4><a href="agents.html">Agents</a><a href="calls.html">Calls</a><a href="campaigns.html">Campaigns</a><a href="analytics.html">Analytics</a><a href="webhooks-api.html">Webhooks API</a><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></nav><div class="dmain"><details class="dmenu"><summary>Developer menu · Run a campaign from code</summary><nav class="dside" aria-label="Developer docs"><h4>Get started</h4><a href="./">Introduction</a><a href="quickstart.html">Quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html" aria-current="page">Run a campaign from code</a><a href="webhooks.html">Webhooks</a><a href="guide-exports.html">Recordings and exports</a><h4>API reference</h4><a href="agents.html">Agents</a><a href="calls.html">Calls</a><a href="campaigns.html">Campaigns</a><a href="analytics.html">Analytics</a><a href="webhooks-api.html">Webhooks API</a><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></nav></details><header class="dhead"><p class="crumb"><a href="../../">Home</a> / <a href="../">Docs</a> / <a href="./">Developers</a> / Guides</p><p class="kick">Guides</p><h1>Run a campaign from code</h1><p class="lede">Create a campaign, check the column mapping with a dry run, upload, and collect results.</p></header><article class="prose card"><h2 id="flow">The flow</h2><ol class="steps"><li><b>Create</b><code>POST /v1/campaigns</code> with the agent.</li><li><b>Dry run</b>Upload with <code>dry_run=true</code> and check the proposed mapping.</li><li><b>Upload</b>Upload again with the confirmed <code>mapping</code>. Dialling starts.</li><li><b>Follow</b>Poll the campaign or listen for <code>contact.captured</code> and <code>campaign.completed</code>.</li><li><b>Collect</b>Read <code>/results</code>, or download CSV, XLSX or the transcripts and audio archive.</li></ol>
+<h2 id="script">A complete script</h2><div class="ct"><div class="ct-h"><span>Python</span></div><pre><code>import os, json, time, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+H = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+# 1. Create the campaign
+c = requests.post(f&quot;{API}/v1/campaigns&quot;, headers=H, json={
+    &quot;agent&quot;: &quot;dispatch-followup&quot;,
+    &quot;description&quot;: &quot;Week 39 open POs&quot;,
+}).json()
+
+# 2. Dry run: see how Echo maps your columns, without storing anything
+with open(&quot;open_pos.xlsx&quot;, &quot;rb&quot;) as f:
+    plan = requests.post(f&quot;{API}/v1/campaigns/{c[&#x27;id&#x27;]}/contacts&quot;, headers=H,
+                         files={&quot;file&quot;: f}, data={&quot;dry_run&quot;: &quot;true&quot;}).json()
+for m in plan[&quot;mapping&quot;]:
+    print(m[&quot;input&quot;], &quot;&lt;-&quot;, m[&quot;header&quot;], &quot;(by&quot;, m[&quot;matched_by&quot;] + &quot;)&quot;)
+
+# 3. Upload for real with the mapping you checked. Dialling starts now.
+mapping = {m[&quot;input&quot;]: m[&quot;column&quot;] for m in plan[&quot;mapping&quot;]}
+with open(&quot;open_pos.xlsx&quot;, &quot;rb&quot;) as f:
+    requests.post(f&quot;{API}/v1/campaigns/{c[&#x27;id&#x27;]}/contacts&quot;, headers=H,
+                  files={&quot;file&quot;: f}, data={&quot;mapping&quot;: json.dumps(mapping)})
+
+# 4. Wait for the campaign to finish (or use webhooks)
+while requests.get(f&quot;{API}/v1/campaigns/{c[&#x27;id&#x27;]}&quot;, headers=H).json()[&quot;status&quot;] == &quot;running&quot;:
+    time.sleep(60)
+
+# 5. Read the results
+rows = requests.get(f&quot;{API}/v1/campaigns/{c[&#x27;id&#x27;]}/results&quot;, headers=H).json()[&quot;data&quot;]
+for r in rows:
+    print(r[&quot;primary_id&quot;], r[&quot;status&quot;], r[&quot;outputs&quot;])</code></pre></div>
+<h2 id="mapping">Checking the mapping</h2><p>Each mapping entry says how the column was matched. <code>matched_by: "position"</code> means Echo guessed from column order because no header matched; check those. Required inputs must be mapped or the upload is rejected with <code>422 missing_required_mapping</code>.</p>
+<h2 id="status">Following progress</h2><table><thead><tr><th>Campaign status</th><th>Meaning</th></tr></thead><tbody><tr><td>created</td><td>No list yet</td></tr><tr><td>ready</td><td>List stored, not dialled</td></tr><tr><td>running</td><td>Calls going out</td></tr><tr><td>completed</td><td>Dialling finished</td></tr><tr><td>failed</td><td>Dialling could not complete; see <code>error</code></td></tr></tbody></table>
+<h2 id="rules">Rules to know</h2><ul><li>One campaign takes one upload. Create a new campaign for each list.</li><li>An agent without a calling line cannot dial: <code>422 no_calling_line</code>.</li><li>Rows with bad data are stored as <code>input_validation_failed</code> with a reason, and are not dialled.</li><li>Deleting a campaign deletes its results.</li></ul></article><nav class="pager" aria-label="Pages"><a class="card" href="guide-call.html"><small>Previous</small><b>← Call on an event</b></a><a class="card nx" href="webhooks.html"><small>Next</small><b>Webhooks →</b></a></nav></div><aside class="dtoc"><b>On this page</b><a href="#flow">The flow</a><a href="#script">A complete script</a><a href="#mapping">Checking the mapping</a><a href="#status">Following progress</a><a href="#rules">Rules to know</a></aside><script>
+(function(){var d=document,K='echo-lang',pref=null;try{pref=localStorage.getItem(K)}catch(e){}
+function pick(l){d.querySelectorAll('.ct').forEach(function(ct){var bs=ct.querySelectorAll('.ct-h button');if(!bs.length)return;var has=[].some.call(bs,function(b){return b.dataset.lang===l});if(!has)return;
+  bs.forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.lang===l))});ct.querySelectorAll('pre[data-lang]').forEach(function(p){p.hidden=p.dataset.lang!==l})})}
+d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.ct-h button');if(b){pick(b.dataset.lang);try{localStorage.setItem(K,b.dataset.lang)}catch(x){}}});
+if(pref)pick(pref);
+d.querySelectorAll('.prose pre').forEach(function(p){var c=d.createElement('button');c.type='button';c.className='cp';c.textContent='Copy';c.addEventListener('click',function(){var t=p.querySelector('code')?p.querySelector('code').innerText:p.innerText;
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){c.textContent='Copied';c.classList.add('ok');setTimeout(function(){c.textContent='Copy';c.classList.remove('ok')},1400)}).catch(function(){})});p.appendChild(c)})})();
+</script>
+</main>
+<footer><span>Moglix Echo · AI voice agents for Indian business</span><nav><a href="../../">Home</a><a href="../../docs/">Docs</a><a href="../../blog/">Blog</a><a href="../../#faq">FAQ</a><a href="../../#trust">Security</a></nav><span>© 2026 Echo</span></footer>
+</body>
+</html>

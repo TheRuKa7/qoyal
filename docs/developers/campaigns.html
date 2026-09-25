@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Campaigns · Moglix Echo API</title>
+<meta name="description" content="A campaign is one agent run against one list. Create it, upload contacts (first as a dry run to check the column mapping), and read results as calls finish.">
+<link rel="canonical" href="https://theruka7.github.io/qoyal/docs/developers/campaigns.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moglix Echo">
+<meta property="og:title" content="Campaigns · Moglix Echo API">
+<meta property="og:description" content="A campaign is one agent run against one list. Create it, upload contacts (first as a dry run to check the column mapping), and read results as calls finish.">
+<meta property="og:url" content="https://theruka7.github.io/qoyal/docs/developers/campaigns.html">
+<meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
+<script>try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/page.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%23D9232D'/%3E%3Ccircle cx='17' cy='24' r='7' fill='%23fff'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4.6' stroke-linecap='round'%3E%3Cpath d='M23 13.6A12 12 0 0 1 23 34.4' opacity='.8'/%3E%3Cpath d='M28.5 7.6A20 20 0 0 1 28.5 40.4' opacity='.5'/%3E%3C/g%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Campaigns", "description": "A campaign is one agent run against one list. Create it, upload contacts (first as a dry run to check the column mapping), and read results as calls finish.", "datePublished": "2026-09-25", "dateModified": "2026-09-25", "author": {"@type": "Organization", "name": "Moglix Echo"}, "inLanguage": "en-IN"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "Developers", "item": "https://theruka7.github.io/qoyal/docs/developers/"}, {"@type": "ListItem", "position": 4, "name": "Campaigns", "item": "https://theruka7.github.io/qoyal/docs/developers/campaigns.html"}]}</script>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="../../" aria-label="Moglix Echo home"><img src="../../moglix.png" alt="Moglix" width="64" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
+  <nav class="links" aria-label="Site"><a href="../../#agents">Agents</a><a href="../../#industries">Use cases</a><a href="../../#roi">ROI</a><a href="../../docs/" aria-current="page">Docs</a><a href="../../blog/">Blog</a></nav>
+  <a class="cta" href="../../#pilot">Book a pilot</a>
+</header>
+<main class="docs ref">
+<nav class="dtabs" aria-label="Documentation"><a href="../"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.5 6h13" stroke="currentColor" stroke-width="1.5"/></svg>Platform guide <small>no code</small></a><a href="../developers/" aria-current="page"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Developers <small>API</small></a><span class="dt-r"><a href="../../llms.txt">llms.txt</a></span></nav><nav class="dside" aria-label="Developer docs"><h4>Get started</h4><a href="./">Introduction</a><a href="quickstart.html">Quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html">Run a campaign from code</a><a href="webhooks.html">Webhooks</a><a href="guide-exports.html">Recordings and exports</a><h4>API reference</h4><a href="agents.html">Agents</a><a href="calls.html">Calls</a><a href="campaigns.html" aria-current="page">Campaigns</a><div class="sub"><a href="#create-campaign"><span class="m post">POST</span>Create a campaign</a><a href="#list-campaigns"><span class="m get">GET</span>List campaigns</a><a href="#get-campaign"><span class="m get">GET</span>Retrieve a campaign</a><a href="#upload-contacts"><span class="m post">POST</span>Upload contacts</a><a href="#start-campaign"><span class="m post">POST</span>Start dialling</a><a href="#list-contacts"><span class="m get">GET</span>List contacts</a><a href="#get-contact"><span class="m get">GET</span>Retrieve a contact</a><a href="#get-results"><span class="m get">GET</span>Retrieve results</a><a href="#export-campaign"><span class="m get">GET</span>Export transcripts and audio</a><a href="#delete-campaign"><span class="m delete">DELETE</span>Delete a campaign</a></div><a href="analytics.html">Analytics</a><a href="webhooks-api.html">Webhooks API</a><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></nav><div class="dmain"><details class="dmenu"><summary>Developer menu · Campaigns</summary><nav class="dside" aria-label="Developer docs"><h4>Get started</h4><a href="./">Introduction</a><a href="quickstart.html">Quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html">Run a campaign from code</a><a href="webhooks.html">Webhooks</a><a href="guide-exports.html">Recordings and exports</a><h4>API reference</h4><a href="agents.html">Agents</a><a href="calls.html">Calls</a><a href="campaigns.html" aria-current="page">Campaigns</a><div class="sub"><a href="#create-campaign"><span class="m post">POST</span>Create a campaign</a><a href="#list-campaigns"><span class="m get">GET</span>List campaigns</a><a href="#get-campaign"><span class="m get">GET</span>Retrieve a campaign</a><a href="#upload-contacts"><span class="m post">POST</span>Upload contacts</a><a href="#start-campaign"><span class="m post">POST</span>Start dialling</a><a href="#list-contacts"><span class="m get">GET</span>List contacts</a><a href="#get-contact"><span class="m get">GET</span>Retrieve a contact</a><a href="#get-results"><span class="m get">GET</span>Retrieve results</a><a href="#export-campaign"><span class="m get">GET</span>Export transcripts and audio</a><a href="#delete-campaign"><span class="m delete">DELETE</span>Delete a campaign</a></div><a href="analytics.html">Analytics</a><a href="webhooks-api.html">Webhooks API</a><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></nav></details><header class="dhead"><p class="crumb"><a href="../../">Home</a> / <a href="../">Docs</a> / <a href="./">Developers</a> / API reference</p><p class="kick">API reference</p><h1>Campaigns</h1><p class="lede">A campaign is one agent run against one list. Create it, upload contacts (first as a dry run to check the column mapping), and read results as calls finish.</p></header><article class="prose card"><section class="ep" id="create-campaign"><div class="ep-h"><span class="m post">POST</span><code>/v1/campaigns</code></div><h3>Create a campaign</h3><div class="ep-g"><div><p>Creates an empty campaign for an agent. It is named after the agent and the time.</p><h4>Body</h4><div class="params"><div><code>agent</code><span class="ty">string</span><span class="rq">required</span><p></p></div><div><code>direction</code><span class="ty">string</span><p><code>outbound</code> (default) or <code>inbound</code>.</p></div><div><code>description</code><span class="ty">string</span><p>Which list this is.</p></div><div><code>metadata</code><span class="ty">object</span><p>Your own references.</p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl -X POST &quot;$ECHO_API/v1/campaigns&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;agent&quot;: &quot;dispatch-followup&quot;,
+    &quot;direction&quot;: &quot;outbound&quot;,
+    &quot;description&quot;: &quot;Week 39 open POs&quot;
+  }&#x27;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.post(
+    f&quot;{API}/v1/campaigns&quot;,
+    headers=HEADERS,
+    json={
+  &quot;agent&quot;: &quot;dispatch-followup&quot;,
+  &quot;direction&quot;: &quot;outbound&quot;,
+  &quot;description&quot;: &quot;Week 39 open POs&quot;
+},
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns`, {
+  method: &quot;POST&quot;,
+  headers: { Authorization: `Bearer ${KEY}`, &quot;Content-Type&quot;: &quot;application/json&quot; },
+  body: JSON.stringify({
+    &quot;agent&quot;: &quot;dispatch-followup&quot;,
+    &quot;direction&quot;: &quot;outbound&quot;,
+    &quot;description&quot;: &quot;Week 39 open POs&quot;
+  }),
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 201</span></div><pre><code>{
+  &quot;id&quot;: &quot;cmp_7Hq2&quot;,
+  &quot;name&quot;: &quot;Dispatch follow-up - 2026-09-25 10:00&quot;,
+  &quot;agent&quot;: &quot;dispatch-followup&quot;,
+  &quot;direction&quot;: &quot;outbound&quot;,
+  &quot;description&quot;: &quot;Week 39 open POs&quot;,
+  &quot;status&quot;: &quot;created&quot;,
+  &quot;source&quot;: &quot;api&quot;,
+  &quot;contacts_count&quot;: 0,
+  &quot;dialled_count&quot;: 0,
+  &quot;captured_count&quot;: 0,
+  &quot;created_at&quot;: &quot;2026-09-25T10:00:03Z&quot;
+}</code></pre></div></div></div></section><section class="ep" id="list-campaigns"><div class="ep-h"><span class="m get">GET</span><code>/v1/campaigns</code></div><h3>List campaigns</h3><div class="ep-g"><div><p>Newest first.</p><h4>Query parameters</h4><div class="params"><div><code>agent</code><span class="ty">string</span><p></p></div><div><code>status</code><span class="ty">string</span><p><code>created</code>, <code>ready</code>, <code>running</code>, <code>completed</code>, <code>failed</code>.</p></div><div><code>limit</code><span class="ty">integer</span><p></p></div><div><code>cursor</code><span class="ty">string</span><p></p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/campaigns&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/campaigns&quot;,
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;cmp_7Hq2&quot;,
+      &quot;name&quot;: &quot;Dispatch follow-up - 2026-09-25 10:00&quot;,
+      &quot;agent&quot;: &quot;dispatch-followup&quot;,
+      &quot;direction&quot;: &quot;outbound&quot;,
+      &quot;description&quot;: &quot;Week 39 open POs&quot;,
+      &quot;status&quot;: &quot;running&quot;,
+      &quot;source&quot;: &quot;api&quot;,
+      &quot;contacts_count&quot;: 148,
+      &quot;dialled_count&quot;: 120,
+      &quot;captured_count&quot;: 96,
+      &quot;created_at&quot;: &quot;2026-09-25T10:00:03Z&quot;
+    }
+  ],
+  &quot;next_cursor&quot;: null
+}</code></pre></div></div></div></section><section class="ep" id="get-campaign"><div class="ep-h"><span class="m get">GET</span><code>/v1/campaigns/{campaign_id}</code></div><h3>Retrieve a campaign</h3><div class="ep-g"><div><p>Counts and status.</p><h4>Path parameters</h4><div class="params"><div><code>campaign_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/campaigns/cmp_7Hq2&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/campaigns/cmp_7Hq2&quot;,
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;id&quot;: &quot;cmp_7Hq2&quot;,
+  &quot;name&quot;: &quot;Dispatch follow-up - 2026-09-25 10:00&quot;,
+  &quot;agent&quot;: &quot;dispatch-followup&quot;,
+  &quot;direction&quot;: &quot;outbound&quot;,
+  &quot;description&quot;: &quot;Week 39 open POs&quot;,
+  &quot;status&quot;: &quot;running&quot;,
+  &quot;source&quot;: &quot;api&quot;,
+  &quot;contacts_count&quot;: 148,
+  &quot;dialled_count&quot;: 120,
+  &quot;captured_count&quot;: 96,
+  &quot;created_at&quot;: &quot;2026-09-25T10:00:03Z&quot;
+}</code></pre></div></div></div></section><section class="ep" id="upload-contacts"><div class="ep-h"><span class="m post">POST</span><code>/v1/campaigns/{campaign_id}/contacts</code></div><h3>Upload contacts</h3><div class="ep-g"><div><p>Uploads the list. With <code>dry_run=true</code> nothing is stored: you get the proposed column mapping and sample values to check. Without it, the list is stored and dialling starts.</p><h4>Path parameters</h4><div class="params"><div><code>campaign_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div><h4>Body</h4><div class="params"><div><code>file</code><span class="ty">file</span><span class="rq">required</span><p>.xlsx or .csv, one row per contact.</p></div><div><code>dry_run</code><span class="ty">boolean</span><p>Default <code>false</code>.</p></div><div><code>mapping</code><span class="ty">object</span><p>Input key to column index, as confirmed from a dry run. Omit to accept the proposal.</p></div></div><div class="callout"><b>Note</b><span>A campaign takes one upload. A second upload returns <code>409 contacts_exist</code>; create a new campaign for another list. Rows that fail validation are stored with status <code>input_validation_failed</code> and are not dialled.</span></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl -X POST &quot;$ECHO_API/v1/campaigns/cmp_7Hq2/contacts&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -F &quot;file=@open_pos.xlsx&quot; \
+  -F &quot;dry_run=true&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.post(
+    f&quot;{API}/v1/campaigns/cmp_7Hq2/contacts&quot;,
+    headers=HEADERS,
+    files={&quot;file&quot;: open(&quot;open_pos.xlsx&quot;, &quot;rb&quot;)},
+    data={&quot;dry_run&quot;: &quot;true&quot;},
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>import fs from &quot;node:fs&quot;;
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const form = new FormData();
+form.append(&quot;file&quot;, new Blob([await fs.promises.readFile(&quot;open_pos.xlsx&quot;)]), &quot;open_pos.xlsx&quot;);
+form.append(&quot;dry_run&quot;, &quot;true&quot;);
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2/contacts`, {
+  method: &quot;POST&quot;,
+  headers: { Authorization: `Bearer ${KEY}` },
+  body: form,
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;dry_run&quot;: true,
+  &quot;sheet_headers&quot;: [
+    &quot;Contact no.&quot;,
+    &quot;Supplier&quot;,
+    &quot;PO No&quot;,
+    &quot;Qty&quot;
+  ],
+  &quot;mapping&quot;: [
+    {
+      &quot;input&quot;: &quot;phone&quot;,
+      &quot;column&quot;: 0,
+      &quot;header&quot;: &quot;Contact no.&quot;,
+      &quot;matched_by&quot;: &quot;name&quot;,
+      &quot;required&quot;: true
+    },
+    {
+      &quot;input&quot;: &quot;supplier_name&quot;,
+      &quot;column&quot;: 1,
+      &quot;header&quot;: &quot;Supplier&quot;,
+      &quot;matched_by&quot;: &quot;name&quot;,
+      &quot;required&quot;: true
+    },
+    {
+      &quot;input&quot;: &quot;po_number&quot;,
+      &quot;column&quot;: 2,
+      &quot;header&quot;: &quot;PO No&quot;,
+      &quot;matched_by&quot;: &quot;name&quot;,
+      &quot;required&quot;: true
+    },
+    {
+      &quot;input&quot;: &quot;open_qty&quot;,
+      &quot;column&quot;: 3,
+      &quot;header&quot;: &quot;Qty&quot;,
+      &quot;matched_by&quot;: &quot;position&quot;,
+      &quot;required&quot;: false
+    }
+  ],
+  &quot;sample_rows&quot;: [
+    [
+      &quot;9876543210&quot;,
+      &quot;Mehta Packaging&quot;,
+      &quot;4471&quot;,
+      &quot;14&quot;
+    ]
+  ],
+  &quot;rows&quot;: 148
+}</code></pre></div></div></div></section><section class="ep" id="start-campaign"><div class="ep-h"><span class="m post">POST</span><code>/v1/campaigns/{campaign_id}/start</code></div><h3>Start dialling</h3><div class="ep-g"><div><p>Dials a stored list that has not been dialled. Real numbers are called; this cannot be undone.</p><h4>Path parameters</h4><div class="params"><div><code>campaign_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl -X POST &quot;$ECHO_API/v1/campaigns/cmp_7Hq2/start&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{}&#x27;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.post(
+    f&quot;{API}/v1/campaigns/cmp_7Hq2/start&quot;,
+    headers=HEADERS,
+    json={},
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2/start`, {
+  method: &quot;POST&quot;,
+  headers: { Authorization: `Bearer ${KEY}`, &quot;Content-Type&quot;: &quot;application/json&quot; },
+  body: JSON.stringify({}),
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;campaign_id&quot;: &quot;cmp_7Hq2&quot;,
+  &quot;dialled&quot;: 148,
+  &quot;status&quot;: &quot;running&quot;
+}</code></pre></div></div></div></section><section class="ep" id="list-contacts"><div class="ep-h"><span class="m get">GET</span><code>/v1/campaigns/{campaign_id}/contacts</code></div><h3>List contacts</h3><div class="ep-g"><div><p>Every row with its call status.</p><h4>Path parameters</h4><div class="params"><div><code>campaign_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div><h4>Query parameters</h4><div class="params"><div><code>status</code><span class="ty">string</span><p><code>pending</code>, <code>dialled</code>, <code>captured</code>, <code>no_outputs</code>, <code>disconnected_early</code>, <code>input_validation_failed</code>.</p></div><div><code>limit</code><span class="ty">integer</span><p></p></div><div><code>cursor</code><span class="ty">string</span><p></p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/campaigns/cmp_7Hq2/contacts&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/campaigns/cmp_7Hq2/contacts&quot;,
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2/contacts`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;data&quot;: [
+    {
+      &quot;primary_id&quot;: &quot;4471&quot;,
+      &quot;name&quot;: &quot;Mehta Packaging&quot;,
+      &quot;phone&quot;: &quot;+919876543210&quot;,
+      &quot;status&quot;: &quot;captured&quot;,
+      &quot;call_id&quot;: &quot;call_8f2k1q&quot;
+    },
+    {
+      &quot;primary_id&quot;: &quot;5208&quot;,
+      &quot;name&quot;: &quot;R K Castings&quot;,
+      &quot;phone&quot;: &quot;+919811122233&quot;,
+      &quot;status&quot;: &quot;input_validation_failed&quot;,
+      &quot;validation_error&quot;: &quot;open_qty is not a number&quot;
+    }
+  ],
+  &quot;next_cursor&quot;: null
+}</code></pre></div></div></div></section><section class="ep" id="get-contact"><div class="ep-h"><span class="m get">GET</span><code>/v1/campaigns/{campaign_id}/contacts/{primary_id}</code></div><h3>Retrieve a contact</h3><div class="ep-g"><div><p>One contact’s outputs, transcript and recording availability.</p><h4>Path parameters</h4><div class="params"><div><code>campaign_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div><div><code>primary_id</code><span class="ty">string</span><span class="rq">required</span><p>The value of the agent’s primary id input.</p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/campaigns/cmp_7Hq2/contacts/4471&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/campaigns/cmp_7Hq2/contacts/4471&quot;,
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2/contacts/4471`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;primary_id&quot;: &quot;4471&quot;,
+  &quot;status&quot;: &quot;captured&quot;,
+  &quot;outputs&quot;: {
+    &quot;status&quot;: &quot;PARTIAL&quot;,
+    &quot;dispatch_date&quot;: &quot;2026-09-28&quot;,
+    &quot;qty_ready&quot;: 10
+  },
+  &quot;call_id&quot;: &quot;call_8f2k1q&quot;,
+  &quot;transcript&quot;: [
+    {
+      &quot;role&quot;: &quot;agent&quot;,
+      &quot;text&quot;: &quot;Namaste, PO 4471: 14 cartons. Dispatch kab tak ho jayega?&quot;
+    },
+    {
+      &quot;role&quot;: &quot;contact&quot;,
+      &quot;text&quot;: &quot;28 ko, par abhi sirf 10 ready hain.&quot;
+    }
+  ],
+  &quot;recording_available&quot;: true
+}</code></pre></div></div></div></section><section class="ep" id="get-results"><div class="ep-h"><span class="m get">GET</span><code>/v1/campaigns/{campaign_id}/results</code></div><h3>Retrieve results</h3><div class="ep-g"><div><p>One row per contact with every output as a field. Ask for <code>format=csv</code> or <code>xlsx</code> to download a file.</p><h4>Path parameters</h4><div class="params"><div><code>campaign_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div><h4>Query parameters</h4><div class="params"><div><code>format</code><span class="ty">string</span><p><code>json</code> (default), <code>csv</code> or <code>xlsx</code>.</p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/campaigns/cmp_7Hq2/results&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/campaigns/cmp_7Hq2/results&quot;,
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2/results`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;data&quot;: [
+    {
+      &quot;primary_id&quot;: &quot;4471&quot;,
+      &quot;name&quot;: &quot;Mehta Packaging&quot;,
+      &quot;phone&quot;: &quot;+919876543210&quot;,
+      &quot;status&quot;: &quot;captured&quot;,
+      &quot;captured_at&quot;: &quot;2026-09-25T10:06:04Z&quot;,
+      &quot;call_id&quot;: &quot;call_8f2k1q&quot;,
+      &quot;outputs&quot;: {
+        &quot;status&quot;: &quot;PARTIAL&quot;,
+        &quot;dispatch_date&quot;: &quot;2026-09-28&quot;,
+        &quot;qty_ready&quot;: 10
+      }
+    }
+  ]
+}</code></pre></div></div></div></section><section class="ep" id="export-campaign"><div class="ep-h"><span class="m get">GET</span><code>/v1/campaigns/{campaign_id}/export</code></div><h3>Export transcripts and audio</h3><div class="ep-g"><div><p>Every transcript and recording from the campaign in one archive.</p><h4>Path parameters</h4><div class="params"><div><code>campaign_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div><h4>Query parameters</h4><div class="params"><div><code>include</code><span class="ty">string</span><p><code>transcripts</code>, <code>audio</code> or both, comma separated.</p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/campaigns/cmp_7Hq2/export?include=transcripts,audio&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -o campaign.zip</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/campaigns/cmp_7Hq2/export&quot;,
+    headers=HEADERS,
+    params={&quot;include&quot;: &quot;transcripts,audio&quot;},
+)
+res.raise_for_status()
+open(&quot;campaign.zip&quot;, &quot;wb&quot;).write(res.content)</code></pre><pre data-lang="Node.js" hidden><code>import fs from &quot;node:fs&quot;;
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2/export?include=transcripts,audio`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+await fs.promises.writeFile(&quot;campaign.zip&quot;, Buffer.from(await res.arrayBuffer()));</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>Binary .zip file</code></pre></div></div></div></section><section class="ep" id="delete-campaign"><div class="ep-h"><span class="m delete">DELETE</span><code>/v1/campaigns/{campaign_id}</code></div><h3>Delete a campaign</h3><div class="ep-g"><div><p>Deletes the campaign, its contacts and every captured result. This cannot be undone.</p><h4>Path parameters</h4><div class="params"><div><code>campaign_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl -X DELETE &quot;$ECHO_API/v1/campaigns/cmp_7Hq2&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.delete(
+    f&quot;{API}/v1/campaigns/cmp_7Hq2&quot;,
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2`, {
+  method: &quot;DELETE&quot;,
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;id&quot;: &quot;cmp_7Hq2&quot;,
+  &quot;deleted&quot;: true
+}</code></pre></div></div></div></section></article><nav class="pager" aria-label="Pages"><a class="card" href="calls.html"><small>Previous</small><b>← Calls</b></a><a class="card nx" href="analytics.html"><small>Next</small><b>Analytics →</b></a></nav></div><script>
+(function(){var d=document,K='echo-lang',pref=null;try{pref=localStorage.getItem(K)}catch(e){}
+function pick(l){d.querySelectorAll('.ct').forEach(function(ct){var bs=ct.querySelectorAll('.ct-h button');if(!bs.length)return;var has=[].some.call(bs,function(b){return b.dataset.lang===l});if(!has)return;
+  bs.forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.lang===l))});ct.querySelectorAll('pre[data-lang]').forEach(function(p){p.hidden=p.dataset.lang!==l})})}
+d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.ct-h button');if(b){pick(b.dataset.lang);try{localStorage.setItem(K,b.dataset.lang)}catch(x){}}});
+if(pref)pick(pref);
+d.querySelectorAll('.prose pre').forEach(function(p){var c=d.createElement('button');c.type='button';c.className='cp';c.textContent='Copy';c.addEventListener('click',function(){var t=p.querySelector('code')?p.querySelector('code').innerText:p.innerText;
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){c.textContent='Copied';c.classList.add('ok');setTimeout(function(){c.textContent='Copy';c.classList.remove('ok')},1400)}).catch(function(){})});p.appendChild(c)})})();
+</script>
+</main>
+<footer><span>Moglix Echo · AI voice agents for Indian business</span><nav><a href="../../">Home</a><a href="../../docs/">Docs</a><a href="../../blog/">Blog</a><a href="../../#faq">FAQ</a><a href="../../#trust">Security</a></nav><span>© 2026 Echo</span></footer>
+</body>
+</html>

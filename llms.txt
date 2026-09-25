@@ -1,0 +1,40 @@
+# Moglix Echo docs
+> AI voice agents for Indian business: build agents, run campaigns, read outcomes.
+
+## Platform guide
+- [Overview](https://theruka7.github.io/qoyal/docs/)
+- [Quickstart](https://theruka7.github.io/qoyal/docs/quickstart.html)
+- [Core concepts](https://theruka7.github.io/qoyal/docs/concepts.html)
+- [Agents](https://theruka7.github.io/qoyal/docs/agents.html)
+- [Inputs and outputs](https://theruka7.github.io/qoyal/docs/variables.html)
+- [Call console](https://theruka7.github.io/qoyal/docs/testing.html)
+- [Campaigns](https://theruka7.github.io/qoyal/docs/campaigns.html)
+- [Dashboard and call log](https://theruka7.github.io/qoyal/docs/monitoring.html)
+- [Call analysis](https://theruka7.github.io/qoyal/docs/analysis.html)
+- [Team and access](https://theruka7.github.io/qoyal/docs/team.html)
+- [Automation and reports](https://theruka7.github.io/qoyal/docs/automation.html)
+- [Use-case playbooks](https://theruka7.github.io/qoyal/docs/use-cases.html)
+- [Prompt best practices](https://theruka7.github.io/qoyal/docs/best-practices.html)
+
+## Developers
+- [Introduction](https://theruka7.github.io/qoyal/docs/developers/)
+- [Quickstart](https://theruka7.github.io/qoyal/docs/developers/quickstart.html)
+- [Authentication](https://theruka7.github.io/qoyal/docs/developers/authentication.html)
+- [Core objects](https://theruka7.github.io/qoyal/docs/developers/objects.html)
+- [Call on an event](https://theruka7.github.io/qoyal/docs/developers/guide-call.html)
+- [Run a campaign from code](https://theruka7.github.io/qoyal/docs/developers/guide-campaign.html)
+- [Webhooks](https://theruka7.github.io/qoyal/docs/developers/webhooks.html)
+- [Recordings and exports](https://theruka7.github.io/qoyal/docs/developers/guide-exports.html)
+- [Agents](https://theruka7.github.io/qoyal/docs/developers/agents.html)
+- [Calls](https://theruka7.github.io/qoyal/docs/developers/calls.html)
+- [Campaigns](https://theruka7.github.io/qoyal/docs/developers/campaigns.html)
+- [Analytics](https://theruka7.github.io/qoyal/docs/developers/analytics.html)
+- [Webhooks API](https://theruka7.github.io/qoyal/docs/developers/webhooks-api.html)
+- [Errors](https://theruka7.github.io/qoyal/docs/developers/errors.html)
+- [Rate limits](https://theruka7.github.io/qoyal/docs/developers/limits.html)
+- [Changelog](https://theruka7.github.io/qoyal/docs/developers/changelog.html)
+
+## Blog
+- [AI voice agents in India: a practical guide for business teams](https://theruka7.github.io/qoyal/blog/ai-voice-agents-india-guide.html)
+- [30 phone calls your team can hand to a voice agent](https://theruka7.github.io/qoyal/blog/calls-to-automate-with-voice-ai.html)
+- [Confirm, don’t assume: how voice agents get answers you can trust](https://theruka7.github.io/qoyal/blog/confirm-dont-assume-voice-agents.html)

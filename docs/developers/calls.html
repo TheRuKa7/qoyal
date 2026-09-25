@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calls · Moglix Echo API</title>
+<meta name="description" content="A call is one conversation with one person. Place single calls from your own events, such as a new order, and read back transcripts, outcomes and recordings for any call.">
+<link rel="canonical" href="https://theruka7.github.io/qoyal/docs/developers/calls.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moglix Echo">
+<meta property="og:title" content="Calls · Moglix Echo API">
+<meta property="og:description" content="A call is one conversation with one person. Place single calls from your own events, such as a new order, and read back transcripts, outcomes and recordings for any call.">
+<meta property="og:url" content="https://theruka7.github.io/qoyal/docs/developers/calls.html">
+<meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
+<script>try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/page.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%23D9232D'/%3E%3Ccircle cx='17' cy='24' r='7' fill='%23fff'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4.6' stroke-linecap='round'%3E%3Cpath d='M23 13.6A12 12 0 0 1 23 34.4' opacity='.8'/%3E%3Cpath d='M28.5 7.6A20 20 0 0 1 28.5 40.4' opacity='.5'/%3E%3C/g%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Calls", "description": "A call is one conversation with one person. Place single calls from your own events, such as a new order, and read back transcripts, outcomes and recordings for any call.", "datePublished": "2026-09-25", "dateModified": "2026-09-25", "author": {"@type": "Organization", "name": "Moglix Echo"}, "inLanguage": "en-IN"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "Developers", "item": "https://theruka7.github.io/qoyal/docs/developers/"}, {"@type": "ListItem", "position": 4, "name": "Calls", "item": "https://theruka7.github.io/qoyal/docs/developers/calls.html"}]}</script>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="../../" aria-label="Moglix Echo home"><img src="../../moglix.png" alt="Moglix" width="64" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
+  <nav class="links" aria-label="Site"><a href="../../#agents">Agents</a><a href="../../#industries">Use cases</a><a href="../../#roi">ROI</a><a href="../../docs/" aria-current="page">Docs</a><a href="../../blog/">Blog</a></nav>
+  <a class="cta" href="../../#pilot">Book a pilot</a>
+</header>
+<main class="docs ref">
+<nav class="dtabs" aria-label="Documentation"><a href="../"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.5 6h13" stroke="currentColor" stroke-width="1.5"/></svg>Platform guide <small>no code</small></a><a href="../developers/" aria-current="page"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Developers <small>API</small></a><span class="dt-r"><a href="../../llms.txt">llms.txt</a></span></nav><nav class="dside" aria-label="Developer docs"><h4>Get started</h4><a href="./">Introduction</a><a href="quickstart.html">Quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html">Run a campaign from code</a><a href="webhooks.html">Webhooks</a><a href="guide-exports.html">Recordings and exports</a><h4>API reference</h4><a href="agents.html">Agents</a><a href="calls.html" aria-current="page">Calls</a><div class="sub"><a href="#create-call"><span class="m post">POST</span>Place a call</a><a href="#get-call"><span class="m get">GET</span>Retrieve a call</a><a href="#list-calls"><span class="m get">GET</span>List calls</a><a href="#live-calls"><span class="m get">GET</span>List live calls</a><a href="#get-recording"><span class="m get">GET</span>Download a recording</a><a href="#analyze-call"><span class="m post">POST</span>Analyse a call</a><a href="#export-calls"><span class="m get">GET</span>Export the call log</a></div><a href="campaigns.html">Campaigns</a><a href="analytics.html">Analytics</a><a href="webhooks-api.html">Webhooks API</a><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></nav><div class="dmain"><details class="dmenu"><summary>Developer menu · Calls</summary><nav class="dside" aria-label="Developer docs"><h4>Get started</h4><a href="./">Introduction</a><a href="quickstart.html">Quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html">Run a campaign from code</a><a href="webhooks.html">Webhooks</a><a href="guide-exports.html">Recordings and exports</a><h4>API reference</h4><a href="agents.html">Agents</a><a href="calls.html" aria-current="page">Calls</a><div class="sub"><a href="#create-call"><span class="m post">POST</span>Place a call</a><a href="#get-call"><span class="m get">GET</span>Retrieve a call</a><a href="#list-calls"><span class="m get">GET</span>List calls</a><a href="#live-calls"><span class="m get">GET</span>List live calls</a><a href="#get-recording"><span class="m get">GET</span>Download a recording</a><a href="#analyze-call"><span class="m post">POST</span>Analyse a call</a><a href="#export-calls"><span class="m get">GET</span>Export the call log</a></div><a href="campaigns.html">Campaigns</a><a href="analytics.html">Analytics</a><a href="webhooks-api.html">Webhooks API</a><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></nav></details><header class="dhead"><p class="crumb"><a href="../../">Home</a> / <a href="../">Docs</a> / <a href="./">Developers</a> / API reference</p><p class="kick">API reference</p><h1>Calls</h1><p class="lede">A call is one conversation with one person. Place single calls from your own events, such as a new order, and read back transcripts, outcomes and recordings for any call.</p></header><article class="prose card"><section class="ep" id="create-call"><div class="ep-h"><span class="m post">POST</span><code>/v1/calls</code></div><h3>Place a call</h3><div class="ep-g"><div><p>Dials one number with an agent. Values in <code>context</code> fill the agent’s inputs for this call only.</p><h4>Body</h4><div class="params"><div><code>agent</code><span class="ty">string</span><span class="rq">required</span><p>Agent id.</p></div><div><code>to</code><span class="ty">string</span><span class="rq">required</span><p>Number to call. E.164, or 10 digits for India (+91 is added).</p></div><div><code>context</code><span class="ty">object</span><p>Input values by key. Missing required inputs are passed as “(not provided)”.</p></div><div><code>voice</code><span class="ty">string</span><p>Override the agent’s voice for this call.</p></div><div><code>metadata</code><span class="ty">object</span><p>Your own references, returned on the call and in webhooks.</p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl -X POST &quot;$ECHO_API/v1/calls&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;agent&quot;: &quot;dispatch-followup&quot;,
+    &quot;to&quot;: &quot;+919876543210&quot;,
+    &quot;context&quot;: {
+      &quot;supplier_name&quot;: &quot;Mehta Packaging&quot;,
+      &quot;po_number&quot;: &quot;4471&quot;,
+      &quot;open_qty&quot;: 14
+    },
+    &quot;metadata&quot;: {
+      &quot;erp_line_id&quot;: &quot;L-44713&quot;
+    }
+  }&#x27;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.post(
+    f&quot;{API}/v1/calls&quot;,
+    headers=HEADERS,
+    json={
+  &quot;agent&quot;: &quot;dispatch-followup&quot;,
+  &quot;to&quot;: &quot;+919876543210&quot;,
+  &quot;context&quot;: {
+    &quot;supplier_name&quot;: &quot;Mehta Packaging&quot;,
+    &quot;po_number&quot;: &quot;4471&quot;,
+    &quot;open_qty&quot;: 14
+  },
+  &quot;metadata&quot;: {
+    &quot;erp_line_id&quot;: &quot;L-44713&quot;
+  }
+},
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls`, {
+  method: &quot;POST&quot;,
+  headers: { Authorization: `Bearer ${KEY}`, &quot;Content-Type&quot;: &quot;application/json&quot; },
+  body: JSON.stringify({
+    &quot;agent&quot;: &quot;dispatch-followup&quot;,
+    &quot;to&quot;: &quot;+919876543210&quot;,
+    &quot;context&quot;: {
+      &quot;supplier_name&quot;: &quot;Mehta Packaging&quot;,
+      &quot;po_number&quot;: &quot;4471&quot;,
+      &quot;open_qty&quot;: 14
+    },
+    &quot;metadata&quot;: {
+      &quot;erp_line_id&quot;: &quot;L-44713&quot;
+    }
+  }),
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 202</span></div><pre><code>{
+  &quot;id&quot;: &quot;call_8f2k1q&quot;,
+  &quot;status&quot;: &quot;queued&quot;
+}</code></pre></div></div></div></section><section class="ep" id="get-call"><div class="ep-h"><span class="m get">GET</span><code>/v1/calls/{call_id}</code></div><h3>Retrieve a call</h3><div class="ep-g"><div><p>Returns the call with its context, reported outputs, transcript, recording link and analysis when it exists.</p><h4>Path parameters</h4><div class="params"><div><code>call_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div><div class="callout"><b>Note</b><span><code>status</code> is <code>queued</code>, <code>in_progress</code> or <code>completed</code>. A completed call with <code>turns: 0</code> was answered but had no audio.</span></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/calls/call_8f2k1q&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/calls/call_8f2k1q&quot;,
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls/call_8f2k1q`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;id&quot;: &quot;call_8f2k1q&quot;,
+  &quot;agent&quot;: &quot;dispatch-followup&quot;,
+  &quot;campaign_id&quot;: &quot;cmp_7Hq2&quot;,
+  &quot;direction&quot;: &quot;outbound&quot;,
+  &quot;to&quot;: &quot;+919876543210&quot;,
+  &quot;status&quot;: &quot;completed&quot;,
+  &quot;started_at&quot;: &quot;2026-09-25T10:04:12Z&quot;,
+  &quot;duration_seconds&quot;: 112,
+  &quot;turns&quot;: 14,
+  &quot;context&quot;: {
+    &quot;supplier_name&quot;: &quot;Mehta Packaging&quot;,
+    &quot;po_number&quot;: &quot;4471&quot;,
+    &quot;open_qty&quot;: 14
+  },
+  &quot;outputs&quot;: {
+    &quot;status&quot;: &quot;PARTIAL&quot;,
+    &quot;dispatch_date&quot;: &quot;2026-09-28&quot;,
+    &quot;qty_ready&quot;: 10
+  },
+  &quot;summary&quot;: &quot;Supplier confirmed 10 of 14 cartons for 28 Sep.&quot;,
+  &quot;transcript&quot;: [
+    {
+      &quot;role&quot;: &quot;agent&quot;,
+      &quot;text&quot;: &quot;Namaste, PO 4471: 14 cartons. Dispatch kab tak ho jayega?&quot;
+    },
+    {
+      &quot;role&quot;: &quot;contact&quot;,
+      &quot;text&quot;: &quot;28 ko, par abhi sirf 10 ready hain.&quot;
+    }
+  ],
+  &quot;recording_url&quot;: &quot;$ECHO_API/v1/calls/call_8f2k1q/recording&quot;,
+  &quot;analysis&quot;: null
+}</code></pre></div></div></div></section><section class="ep" id="list-calls"><div class="ep-h"><span class="m get">GET</span><code>/v1/calls</code></div><h3>List calls</h3><div class="ep-g"><div><p>The call log, newest first, with the same filters as the dashboard.</p><h4>Query parameters</h4><div class="params"><div><code>agent</code><span class="ty">string</span><p></p></div><div><code>campaign_id</code><span class="ty">string</span><p></p></div><div><code>q</code><span class="ty">string</span><p>Search by name or number.</p></div><div><code>since</code><span class="ty">timestamp</span><p>ISO 8601.</p></div><div><code>until</code><span class="ty">timestamp</span><p></p></div><div><code>min_duration</code><span class="ty">integer</span><p>Seconds.</p></div><div><code>max_duration</code><span class="ty">integer</span><p>Seconds.</p></div><div><code>limit</code><span class="ty">integer</span><p>1 to 100.</p></div><div><code>cursor</code><span class="ty">string</span><p></p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/calls?agent=dispatch-followup&amp;since=2026-09-18T00:00:00Z&amp;limit=50&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/calls&quot;,
+    headers=HEADERS,
+    params={&quot;agent&quot;: &quot;dispatch-followup&quot;, &quot;since&quot;: &quot;2026-09-18T00:00:00Z&quot;, &quot;limit&quot;: &quot;50&quot;},
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls?agent=dispatch-followup&amp;since=2026-09-18T00:00:00Z&amp;limit=50`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;call_8f2k1q&quot;,
+      &quot;agent&quot;: &quot;dispatch-followup&quot;,
+      &quot;to&quot;: &quot;+919876543210&quot;,
+      &quot;status&quot;: &quot;completed&quot;,
+      &quot;started_at&quot;: &quot;2026-09-25T10:04:12Z&quot;,
+      &quot;duration_seconds&quot;: 112,
+      &quot;turns&quot;: 14,
+      &quot;summary&quot;: &quot;Supplier confirmed 10 of 14 cartons for 28 Sep.&quot;
+    }
+  ],
+  &quot;next_cursor&quot;: &quot;eyJvZmZzZXQiOjUwfQ&quot;
+}</code></pre></div></div></div></section><section class="ep" id="live-calls"><div class="ep-h"><span class="m get">GET</span><code>/v1/calls/live</code></div><h3>List live calls</h3><div class="ep-g"><div><p>Calls in progress right now, each with the transcript so far.</p></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/calls/live&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/calls/live&quot;,
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls/live`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;call_9a1&quot;,
+      &quot;agent&quot;: &quot;wismo&quot;,
+      &quot;to&quot;: &quot;+919123456789&quot;,
+      &quot;started_at&quot;: &quot;2026-09-25T11:20:02Z&quot;,
+      &quot;transcript&quot;: [
+        {
+          &quot;role&quot;: &quot;agent&quot;,
+          &quot;text&quot;: &quot;Hi, this is Meera from support...&quot;
+        }
+      ]
+    }
+  ]
+}</code></pre></div></div></div></section><section class="ep" id="get-recording"><div class="ep-h"><span class="m get">GET</span><code>/v1/calls/{call_id}/recording</code></div><h3>Download a recording</h3><div class="ep-g"><div><p>The call audio.</p><h4>Path parameters</h4><div class="params"><div><code>call_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/calls/call_8f2k1q/recording&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -o call.wav</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/calls/call_8f2k1q/recording&quot;,
+    headers=HEADERS,
+)
+res.raise_for_status()
+open(&quot;call.wav&quot;, &quot;wb&quot;).write(res.content)</code></pre><pre data-lang="Node.js" hidden><code>import fs from &quot;node:fs&quot;;
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls/call_8f2k1q/recording`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+await fs.promises.writeFile(&quot;call.wav&quot;, Buffer.from(await res.arrayBuffer()));</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>Binary audio file</code></pre></div></div></div></section><section class="ep" id="analyze-call"><div class="ep-h"><span class="m post">POST</span><code>/v1/calls/{call_id}/analyze</code></div><h3>Analyse a call</h3><div class="ep-g"><div><p>Runs or re-runs analysis on the transcript and saves it on the call.</p><h4>Path parameters</h4><div class="params"><div><code>call_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl -X POST &quot;$ECHO_API/v1/calls/call_8f2k1q/analyze&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{}&#x27;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.post(
+    f&quot;{API}/v1/calls/call_8f2k1q/analyze&quot;,
+    headers=HEADERS,
+    json={},
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls/call_8f2k1q/analyze`, {
+  method: &quot;POST&quot;,
+  headers: { Authorization: `Bearer ${KEY}`, &quot;Content-Type&quot;: &quot;application/json&quot; },
+  body: JSON.stringify({}),
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;call_id&quot;: &quot;call_8f2k1q&quot;,
+  &quot;executive_summary&quot;: &quot;Supplier confirmed 10 of 14 cartons for 28 Sep; remaining 4 depend on raw material.&quot;,
+  &quot;priority&quot;: &quot;medium&quot;,
+  &quot;issue_resolved&quot;: &quot;partial&quot;,
+  &quot;action_items&quot;: [
+    &quot;Update PO 4471 line 3 to 10 cartons, 28 Sep&quot;,
+    &quot;Follow up on 27 Sep&quot;
+  ]
+}</code></pre></div></div></div></section><section class="ep" id="export-calls"><div class="ep-h"><span class="m get">GET</span><code>/v1/calls/export</code></div><h3>Export the call log</h3><div class="ep-g"><div><p>The filtered call log as a spreadsheet. Takes the same filters as <a href="#list-calls">List calls</a>.</p></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/calls/export?since=2026-09-01T00:00:00Z&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -o calls.xlsx</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/calls/export&quot;,
+    headers=HEADERS,
+    params={&quot;since&quot;: &quot;2026-09-01T00:00:00Z&quot;},
+)
+res.raise_for_status()
+open(&quot;calls.xlsx&quot;, &quot;wb&quot;).write(res.content)</code></pre><pre data-lang="Node.js" hidden><code>import fs from &quot;node:fs&quot;;
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls/export?since=2026-09-01T00:00:00Z`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+await fs.promises.writeFile(&quot;calls.xlsx&quot;, Buffer.from(await res.arrayBuffer()));</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>Binary .xlsx file</code></pre></div></div></div></section></article><nav class="pager" aria-label="Pages"><a class="card" href="agents.html"><small>Previous</small><b>← Agents</b></a><a class="card nx" href="campaigns.html"><small>Next</small><b>Campaigns →</b></a></nav></div><script>
+(function(){var d=document,K='echo-lang',pref=null;try{pref=localStorage.getItem(K)}catch(e){}
+function pick(l){d.querySelectorAll('.ct').forEach(function(ct){var bs=ct.querySelectorAll('.ct-h button');if(!bs.length)return;var has=[].some.call(bs,function(b){return b.dataset.lang===l});if(!has)return;
+  bs.forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.lang===l))});ct.querySelectorAll('pre[data-lang]').forEach(function(p){p.hidden=p.dataset.lang!==l})})}
+d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.ct-h button');if(b){pick(b.dataset.lang);try{localStorage.setItem(K,b.dataset.lang)}catch(x){}}});
+if(pref)pick(pref);
+d.querySelectorAll('.prose pre').forEach(function(p){var c=d.createElement('button');c.type='button';c.className='cp';c.textContent='Copy';c.addEventListener('click',function(){var t=p.querySelector('code')?p.querySelector('code').innerText:p.innerText;
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){c.textContent='Copied';c.classList.add('ok');setTimeout(function(){c.textContent='Copy';c.classList.remove('ok')},1400)}).catch(function(){})});p.appendChild(c)})})();
+</script>
+</main>
+<footer><span>Moglix Echo · AI voice agents for Indian business</span><nav><a href="../../">Home</a><a href="../../docs/">Docs</a><a href="../../blog/">Blog</a><a href="../../#faq">FAQ</a><a href="../../#trust">Security</a></nav><span>© 2026 Echo</span></footer>
+</body>
+</html>

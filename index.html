@@ -1540,6 +1540,14 @@ footer{background:#16130F}
 @media (max-width:640px){.lc-m,.lc-eq{display:none}.lc-t button{grid-template-columns:40px minmax(0,1fr) auto;gap:10px}.lc-v{--rh:60px}}
 /* the sheet in "Act" now mixes desks */
 .fa-sheet .fs-row{grid-template-columns:1.25fr 1fr .8fr}
+
+/* ================= v18: contrast fixes for selected and hover states ================= */
+html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;color:var(--paper)!important;border-color:var(--ink)!important}
+[data-theme=dark] .trust .pack b{color:var(--ink)}
+[data-theme=dark] .cta:hover,[data-theme=dark] .btn.pri:hover{color:var(--paper)}
+[data-theme=dark] .av{color:#16130F}
+[data-theme=dark] .av[style*="--c:var(--ink)"]{color:#F3EFE9}
+.trust>div{padding:14px 16px!important;border-radius:14px}
 </style>
 </head>
 <body>
@@ -1877,7 +1885,8 @@ footer{background:#16130F}
       <h2 class="rv">Questions teams ask first.</h2>
       <p class="lede rv">The docs and guides go deeper.</p>
       <div class="res rv">
-        <a class="res-c" href="docs/"><small>Docs</small><b>Product guide</b><span>Build, test and run agents, read results, and the API.</span></a>
+        <a class="res-c" href="docs/"><small>Docs</small><b>Platform guide</b><span>Build, test and run agents, and read the results.</span></a>
+        <a class="res-c" href="docs/developers/"><small>Developers</small><b>API reference</b><span>Calls, campaigns, results and webhooks, with code samples.</span></a>
         <a class="res-c" href="blog/"><small>Blog</small><b>Guides to voice automation</b><span>What to automate first, how to buy, how to measure.</span></a>
       </div>
     </div>

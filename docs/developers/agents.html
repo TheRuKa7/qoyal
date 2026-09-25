@@ -1,0 +1,947 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agents · Moglix Echo API</title>
+<meta name="description" content="An agent owns the prompt, voice, calling line and the variables for one kind of call. Most teams build agents in the dashboard and use these endpoints to read them, clone them, or keep prompts in version control.">
+<link rel="canonical" href="https://theruka7.github.io/qoyal/docs/developers/agents.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moglix Echo">
+<meta property="og:title" content="Agents · Moglix Echo API">
+<meta property="og:description" content="An agent owns the prompt, voice, calling line and the variables for one kind of call. Most teams build agents in the dashboard and use these endpoints to read them, clone them, or keep prompts in version control.">
+<meta property="og:url" content="https://theruka7.github.io/qoyal/docs/developers/agents.html">
+<meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
+<script>try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/page.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%23D9232D'/%3E%3Ccircle cx='17' cy='24' r='7' fill='%23fff'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4.6' stroke-linecap='round'%3E%3Cpath d='M23 13.6A12 12 0 0 1 23 34.4' opacity='.8'/%3E%3Cpath d='M28.5 7.6A20 20 0 0 1 28.5 40.4' opacity='.5'/%3E%3C/g%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Agents", "description": "An agent owns the prompt, voice, calling line and the variables for one kind of call. Most teams build agents in the dashboard and use these endpoints to read them, clone them, or keep prompts in version control.", "datePublished": "2026-09-25", "dateModified": "2026-09-25", "author": {"@type": "Organization", "name": "Moglix Echo"}, "inLanguage": "en-IN"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "Developers", "item": "https://theruka7.github.io/qoyal/docs/developers/"}, {"@type": "ListItem", "position": 4, "name": "Agents", "item": "https://theruka7.github.io/qoyal/docs/developers/agents.html"}]}</script>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="../../" aria-label="Moglix Echo home"><img src="../../moglix.png" alt="Moglix" width="64" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
+  <nav class="links" aria-label="Site"><a href="../../#agents">Agents</a><a href="../../#industries">Use cases</a><a href="../../#roi">ROI</a><a href="../../docs/" aria-current="page">Docs</a><a href="../../blog/">Blog</a></nav>
+  <a class="cta" href="../../#pilot">Book a pilot</a>
+</header>
+<main class="docs ref">
+<nav class="dtabs" aria-label="Documentation"><a href="../"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.5 6h13" stroke="currentColor" stroke-width="1.5"/></svg>Platform guide <small>no code</small></a><a href="../developers/" aria-current="page"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Developers <small>API</small></a><span class="dt-r"><a href="../../llms.txt">llms.txt</a></span></nav><nav class="dside" aria-label="Developer docs"><h4>Get started</h4><a href="./">Introduction</a><a href="quickstart.html">Quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html">Run a campaign from code</a><a href="webhooks.html">Webhooks</a><a href="guide-exports.html">Recordings and exports</a><h4>API reference</h4><a href="agents.html" aria-current="page">Agents</a><div class="sub"><a href="#list-agents"><span class="m get">GET</span>List agents</a><a href="#get-agent"><span class="m get">GET</span>Retrieve an agent</a><a href="#create-agent"><span class="m post">POST</span>Create an agent</a><a href="#update-agent"><span class="m patch">PATCH</span>Update an agent</a><a href="#get-prompt"><span class="m get">GET</span>Retrieve the prompt</a><a href="#update-prompt"><span class="m put">PUT</span>Replace the prompt</a><a href="#preview-prompt"><span class="m post">POST</span>Preview the full prompt</a><a href="#update-inputs"><span class="m put">PUT</span>Replace input variables</a><a href="#update-outputs"><span class="m put">PUT</span>Replace output variables</a><a href="#agent-template"><span class="m get">GET</span>Download the upload template</a><a href="#list-options"><span class="m get">GET</span>List options</a><a href="#delete-agent"><span class="m delete">DELETE</span>Delete an agent</a></div><a href="calls.html">Calls</a><a href="campaigns.html">Campaigns</a><a href="analytics.html">Analytics</a><a href="webhooks-api.html">Webhooks API</a><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></nav><div class="dmain"><details class="dmenu"><summary>Developer menu · Agents</summary><nav class="dside" aria-label="Developer docs"><h4>Get started</h4><a href="./">Introduction</a><a href="quickstart.html">Quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html">Run a campaign from code</a><a href="webhooks.html">Webhooks</a><a href="guide-exports.html">Recordings and exports</a><h4>API reference</h4><a href="agents.html" aria-current="page">Agents</a><div class="sub"><a href="#list-agents"><span class="m get">GET</span>List agents</a><a href="#get-agent"><span class="m get">GET</span>Retrieve an agent</a><a href="#create-agent"><span class="m post">POST</span>Create an agent</a><a href="#update-agent"><span class="m patch">PATCH</span>Update an agent</a><a href="#get-prompt"><span class="m get">GET</span>Retrieve the prompt</a><a href="#update-prompt"><span class="m put">PUT</span>Replace the prompt</a><a href="#preview-prompt"><span class="m post">POST</span>Preview the full prompt</a><a href="#update-inputs"><span class="m put">PUT</span>Replace input variables</a><a href="#update-outputs"><span class="m put">PUT</span>Replace output variables</a><a href="#agent-template"><span class="m get">GET</span>Download the upload template</a><a href="#list-options"><span class="m get">GET</span>List options</a><a href="#delete-agent"><span class="m delete">DELETE</span>Delete an agent</a></div><a href="calls.html">Calls</a><a href="campaigns.html">Campaigns</a><a href="analytics.html">Analytics</a><a href="webhooks-api.html">Webhooks API</a><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></nav></details><header class="dhead"><p class="crumb"><a href="../../">Home</a> / <a href="../">Docs</a> / <a href="./">Developers</a> / API reference</p><p class="kick">API reference</p><h1>Agents</h1><p class="lede">An agent owns the prompt, voice, calling line and the variables for one kind of call. Most teams build agents in the dashboard and use these endpoints to read them, clone them, or keep prompts in version control.</p></header><article class="prose card"><section class="ep" id="list-agents"><div class="ep-h"><span class="m get">GET</span><code>/v1/agents</code></div><h3>List agents</h3><div class="ep-g"><div><p>Returns the agents in your workspace, newest first.</p><h4>Query parameters</h4><div class="params"><div><code>limit</code><span class="ty">integer</span><p>1 to 100. Default 25.</p></div><div><code>cursor</code><span class="ty">string</span><p>The <code>next_cursor</code> from the previous page.</p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/agents?limit=25&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/agents&quot;,
+    headers=HEADERS,
+    params={&quot;limit&quot;: &quot;25&quot;},
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents?limit=25`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;dispatch-followup&quot;,
+      &quot;name&quot;: &quot;Dispatch follow-up&quot;,
+      &quot;inputs_count&quot;: 4,
+      &quot;outputs_count&quot;: 3,
+      &quot;primary_id&quot;: &quot;po_number&quot;,
+      &quot;calling_line&quot;: &quot;ops-outbound&quot;
+    }
+  ],
+  &quot;next_cursor&quot;: null
+}</code></pre></div></div></div></section><section class="ep" id="get-agent"><div class="ep-h"><span class="m get">GET</span><code>/v1/agents/{agent_id}</code></div><h3>Retrieve an agent</h3><div class="ep-g"><div><p>Returns one agent with its inputs, outputs and settings. The prompt is returned by <a href="#get-prompt">Retrieve the prompt</a>.</p><h4>Path parameters</h4><div class="params"><div><code>agent_id</code><span class="ty">string</span><span class="rq">required</span><p>The agent id, such as <code>dispatch-followup</code>.</p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/agents/dispatch-followup&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/agents/dispatch-followup&quot;,
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;id&quot;: &quot;dispatch-followup&quot;,
+  &quot;name&quot;: &quot;Dispatch follow-up&quot;,
+  &quot;description&quot;: &quot;Confirms dispatch dates on open PO lines&quot;,
+  &quot;voice&quot;: null,
+  &quot;calling_line&quot;: &quot;ops-outbound&quot;,
+  &quot;primary_id&quot;: &quot;po_number&quot;,
+  &quot;inputs&quot;: [
+    {
+      &quot;key&quot;: &quot;supplier_name&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: null,
+      &quot;sample&quot;: &quot;Mehta Packaging&quot;,
+      &quot;share_on_call&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;po_number&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: &quot;spell_digits&quot;,
+      &quot;sample&quot;: &quot;4471&quot;,
+      &quot;share_on_call&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;open_qty&quot;,
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;transform&quot;: null,
+      &quot;sample&quot;: &quot;14&quot;,
+      &quot;share_on_call&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;supplier_code&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: null,
+      &quot;sample&quot;: &quot;V-20931&quot;,
+      &quot;share_on_call&quot;: false
+    }
+  ],
+  &quot;outputs&quot;: [
+    {
+      &quot;key&quot;: &quot;status&quot;,
+      &quot;label&quot;: &quot;Status&quot;,
+      &quot;type&quot;: &quot;enum&quot;,
+      &quot;options&quot;: [
+        &quot;CONFIRMED&quot;,
+        &quot;PARTIAL&quot;,
+        &quot;NEW_DATE&quot;,
+        &quot;CALL_BACK&quot;
+      ],
+      &quot;description&quot;: &quot;Outcome after read-back&quot;,
+      &quot;required&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;dispatch_date&quot;,
+      &quot;label&quot;: &quot;Dispatch date&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;options&quot;: [],
+      &quot;description&quot;: &quot;Date confirmed after read-back&quot;,
+      &quot;required&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;qty_ready&quot;,
+      &quot;label&quot;: &quot;Quantity ready&quot;,
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;options&quot;: [],
+      &quot;description&quot;: &quot;Cartons ready on that date&quot;,
+      &quot;required&quot;: true
+    }
+  ],
+  &quot;created_at&quot;: &quot;2026-09-18T10:02:11Z&quot;,
+  &quot;updated_at&quot;: &quot;2026-09-24T16:40:05Z&quot;
+}</code></pre></div></div></div></section><section class="ep" id="create-agent"><div class="ep-h"><span class="m post">POST</span><code>/v1/agents</code></div><h3>Create an agent</h3><div class="ep-g"><div><p>Creates an agent. Start blank or copy an existing agent’s prompt, inputs and outputs.</p><h4>Body</h4><div class="params"><div><code>name</code><span class="ty">string</span><span class="rq">required</span><p>Shown to your team. The id is derived from it.</p></div><div><code>description</code><span class="ty">string</span><p>What the agent is for.</p></div><div><code>copy_from</code><span class="ty">string</span><p>Id of an agent to copy.</p></div><div><code>calling_line</code><span class="ty">string</span><p>Line the agent dials from. Campaigns cannot dial until this is set.</p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl -X POST &quot;$ECHO_API/v1/agents&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;name&quot;: &quot;COD confirmation&quot;,
+    &quot;description&quot;: &quot;Confirms cash on delivery orders before dispatch&quot;,
+    &quot;copy_from&quot;: &quot;wismo&quot;,
+    &quot;calling_line&quot;: &quot;cx-outbound&quot;
+  }&#x27;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.post(
+    f&quot;{API}/v1/agents&quot;,
+    headers=HEADERS,
+    json={
+  &quot;name&quot;: &quot;COD confirmation&quot;,
+  &quot;description&quot;: &quot;Confirms cash on delivery orders before dispatch&quot;,
+  &quot;copy_from&quot;: &quot;wismo&quot;,
+  &quot;calling_line&quot;: &quot;cx-outbound&quot;
+},
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents`, {
+  method: &quot;POST&quot;,
+  headers: { Authorization: `Bearer ${KEY}`, &quot;Content-Type&quot;: &quot;application/json&quot; },
+  body: JSON.stringify({
+    &quot;name&quot;: &quot;COD confirmation&quot;,
+    &quot;description&quot;: &quot;Confirms cash on delivery orders before dispatch&quot;,
+    &quot;copy_from&quot;: &quot;wismo&quot;,
+    &quot;calling_line&quot;: &quot;cx-outbound&quot;
+  }),
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 201</span></div><pre><code>{
+  &quot;id&quot;: &quot;cod-confirmation&quot;,
+  &quot;name&quot;: &quot;COD confirmation&quot;,
+  &quot;description&quot;: &quot;Confirms dispatch dates on open PO lines&quot;,
+  &quot;voice&quot;: null,
+  &quot;calling_line&quot;: &quot;ops-outbound&quot;,
+  &quot;primary_id&quot;: &quot;po_number&quot;,
+  &quot;inputs&quot;: [
+    {
+      &quot;key&quot;: &quot;supplier_name&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: null,
+      &quot;sample&quot;: &quot;Mehta Packaging&quot;,
+      &quot;share_on_call&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;po_number&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: &quot;spell_digits&quot;,
+      &quot;sample&quot;: &quot;4471&quot;,
+      &quot;share_on_call&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;open_qty&quot;,
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;transform&quot;: null,
+      &quot;sample&quot;: &quot;14&quot;,
+      &quot;share_on_call&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;supplier_code&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: null,
+      &quot;sample&quot;: &quot;V-20931&quot;,
+      &quot;share_on_call&quot;: false
+    }
+  ],
+  &quot;outputs&quot;: [
+    {
+      &quot;key&quot;: &quot;status&quot;,
+      &quot;label&quot;: &quot;Status&quot;,
+      &quot;type&quot;: &quot;enum&quot;,
+      &quot;options&quot;: [
+        &quot;CONFIRMED&quot;,
+        &quot;PARTIAL&quot;,
+        &quot;NEW_DATE&quot;,
+        &quot;CALL_BACK&quot;
+      ],
+      &quot;description&quot;: &quot;Outcome after read-back&quot;,
+      &quot;required&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;dispatch_date&quot;,
+      &quot;label&quot;: &quot;Dispatch date&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;options&quot;: [],
+      &quot;description&quot;: &quot;Date confirmed after read-back&quot;,
+      &quot;required&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;qty_ready&quot;,
+      &quot;label&quot;: &quot;Quantity ready&quot;,
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;options&quot;: [],
+      &quot;description&quot;: &quot;Cartons ready on that date&quot;,
+      &quot;required&quot;: true
+    }
+  ],
+  &quot;created_at&quot;: &quot;2026-09-18T10:02:11Z&quot;,
+  &quot;updated_at&quot;: &quot;2026-09-24T16:40:05Z&quot;
+}</code></pre></div></div></div></section><section class="ep" id="update-agent"><div class="ep-h"><span class="m patch">PATCH</span><code>/v1/agents/{agent_id}</code></div><h3>Update an agent</h3><div class="ep-g"><div><p>Changes settings. Each change applies to the next call, with no restart.</p><h4>Path parameters</h4><div class="params"><div><code>agent_id</code><span class="ty">string</span><span class="rq">required</span><p>The agent id.</p></div></div><h4>Body</h4><div class="params"><div><code>name</code><span class="ty">string</span><p></p></div><div><code>description</code><span class="ty">string</span><p></p></div><div><code>voice</code><span class="ty">string</span><p>A voice from <a href="#list-options">options</a>. <code>null</code> uses the default.</p></div><div><code>calling_line</code><span class="ty">string</span><p></p></div><div><code>primary_id</code><span class="ty">string</span><p>Key of the input that identifies each contact.</p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl -X PATCH &quot;$ECHO_API/v1/agents/dispatch-followup&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;voice&quot;: &quot;meera&quot;,
+    &quot;primary_id&quot;: &quot;po_number&quot;
+  }&#x27;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.patch(
+    f&quot;{API}/v1/agents/dispatch-followup&quot;,
+    headers=HEADERS,
+    json={
+  &quot;voice&quot;: &quot;meera&quot;,
+  &quot;primary_id&quot;: &quot;po_number&quot;
+},
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup`, {
+  method: &quot;PATCH&quot;,
+  headers: { Authorization: `Bearer ${KEY}`, &quot;Content-Type&quot;: &quot;application/json&quot; },
+  body: JSON.stringify({
+    &quot;voice&quot;: &quot;meera&quot;,
+    &quot;primary_id&quot;: &quot;po_number&quot;
+  }),
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;id&quot;: &quot;dispatch-followup&quot;,
+  &quot;name&quot;: &quot;Dispatch follow-up&quot;,
+  &quot;description&quot;: &quot;Confirms dispatch dates on open PO lines&quot;,
+  &quot;voice&quot;: null,
+  &quot;calling_line&quot;: &quot;ops-outbound&quot;,
+  &quot;primary_id&quot;: &quot;po_number&quot;,
+  &quot;inputs&quot;: [
+    {
+      &quot;key&quot;: &quot;supplier_name&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: null,
+      &quot;sample&quot;: &quot;Mehta Packaging&quot;,
+      &quot;share_on_call&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;po_number&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: &quot;spell_digits&quot;,
+      &quot;sample&quot;: &quot;4471&quot;,
+      &quot;share_on_call&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;open_qty&quot;,
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;transform&quot;: null,
+      &quot;sample&quot;: &quot;14&quot;,
+      &quot;share_on_call&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;supplier_code&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: null,
+      &quot;sample&quot;: &quot;V-20931&quot;,
+      &quot;share_on_call&quot;: false
+    }
+  ],
+  &quot;outputs&quot;: [
+    {
+      &quot;key&quot;: &quot;status&quot;,
+      &quot;label&quot;: &quot;Status&quot;,
+      &quot;type&quot;: &quot;enum&quot;,
+      &quot;options&quot;: [
+        &quot;CONFIRMED&quot;,
+        &quot;PARTIAL&quot;,
+        &quot;NEW_DATE&quot;,
+        &quot;CALL_BACK&quot;
+      ],
+      &quot;description&quot;: &quot;Outcome after read-back&quot;,
+      &quot;required&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;dispatch_date&quot;,
+      &quot;label&quot;: &quot;Dispatch date&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;options&quot;: [],
+      &quot;description&quot;: &quot;Date confirmed after read-back&quot;,
+      &quot;required&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;qty_ready&quot;,
+      &quot;label&quot;: &quot;Quantity ready&quot;,
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;options&quot;: [],
+      &quot;description&quot;: &quot;Cartons ready on that date&quot;,
+      &quot;required&quot;: true
+    }
+  ],
+  &quot;created_at&quot;: &quot;2026-09-18T10:02:11Z&quot;,
+  &quot;updated_at&quot;: &quot;2026-09-24T16:40:05Z&quot;
+}</code></pre></div></div></div></section><section class="ep" id="get-prompt"><div class="ep-h"><span class="m get">GET</span><code>/v1/agents/{agent_id}/prompt</code></div><h3>Retrieve the prompt</h3><div class="ep-g"><div><p>Returns the prompt as ordered sections. Sections of kind <code>inputs</code> and <code>outputs</code> are generated from the variables unless you have overridden their text.</p><h4>Path parameters</h4><div class="params"><div><code>agent_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/agents/dispatch-followup/prompt&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/agents/dispatch-followup/prompt&quot;,
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup/prompt`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;sections&quot;: [
+    {
+      &quot;id&quot;: &quot;sec_1&quot;,
+      &quot;title&quot;: &quot;Role and goal&quot;,
+      &quot;kind&quot;: &quot;text&quot;,
+      &quot;enabled&quot;: true,
+      &quot;body&quot;: &quot;You are Riya from the purchase team. Confirm the dispatch date for PO {{po_number}}.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;sec_2&quot;,
+      &quot;title&quot;: &quot;Call details&quot;,
+      &quot;kind&quot;: &quot;inputs&quot;,
+      &quot;enabled&quot;: true,
+      &quot;body&quot;: &quot;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;sec_3&quot;,
+      &quot;title&quot;: &quot;Outcome reporting&quot;,
+      &quot;kind&quot;: &quot;outputs&quot;,
+      &quot;enabled&quot;: true,
+      &quot;body&quot;: &quot;&quot;
+    }
+  ],
+  &quot;missing_tokens&quot;: []
+}</code></pre></div></div></div></section><section class="ep" id="update-prompt"><div class="ep-h"><span class="m put">PUT</span><code>/v1/agents/{agent_id}/prompt</code></div><h3>Replace the prompt</h3><div class="ep-g"><div><p>Replaces all sections. The new prompt is live on the next call for every campaign that uses the agent.</p><h4>Path parameters</h4><div class="params"><div><code>agent_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div><h4>Body</h4><div class="params"><div><code>sections</code><span class="ty">array</span><span class="rq">required</span><p>Ordered list of <code>{title, body, kind, enabled}</code>. <code>kind</code> is <code>text</code>, <code>inputs</code> or <code>outputs</code>. An empty body on a generated section keeps it following the variables.</p></div></div><div class="callout"><b>Note</b><span>If a section uses a <code>{{token}}</code> that is not an input, it is listed in <code>missing_tokens</code>. Fix these before calling.</span></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl -X PUT &quot;$ECHO_API/v1/agents/dispatch-followup/prompt&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;sections&quot;: [
+      {
+        &quot;title&quot;: &quot;Role and goal&quot;,
+        &quot;kind&quot;: &quot;text&quot;,
+        &quot;enabled&quot;: true,
+        &quot;body&quot;: &quot;You are Riya from the purchase team...&quot;
+      },
+      {
+        &quot;title&quot;: &quot;Read-back rules&quot;,
+        &quot;kind&quot;: &quot;text&quot;,
+        &quot;enabled&quot;: true,
+        &quot;body&quot;: &quot;Repeat every date and quantity back. Save only on a clear yes.&quot;
+      },
+      {
+        &quot;title&quot;: &quot;Call details&quot;,
+        &quot;kind&quot;: &quot;inputs&quot;,
+        &quot;enabled&quot;: true,
+        &quot;body&quot;: &quot;&quot;
+      },
+      {
+        &quot;title&quot;: &quot;Outcome reporting&quot;,
+        &quot;kind&quot;: &quot;outputs&quot;,
+        &quot;enabled&quot;: true,
+        &quot;body&quot;: &quot;&quot;
+      }
+    ]
+  }&#x27;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.put(
+    f&quot;{API}/v1/agents/dispatch-followup/prompt&quot;,
+    headers=HEADERS,
+    json={
+  &quot;sections&quot;: [
+    {
+      &quot;title&quot;: &quot;Role and goal&quot;,
+      &quot;kind&quot;: &quot;text&quot;,
+      &quot;enabled&quot;: True,
+      &quot;body&quot;: &quot;You are Riya from the purchase team...&quot;
+    },
+    {
+      &quot;title&quot;: &quot;Read-back rules&quot;,
+      &quot;kind&quot;: &quot;text&quot;,
+      &quot;enabled&quot;: True,
+      &quot;body&quot;: &quot;Repeat every date and quantity back. Save only on a clear yes.&quot;
+    },
+    {
+      &quot;title&quot;: &quot;Call details&quot;,
+      &quot;kind&quot;: &quot;inputs&quot;,
+      &quot;enabled&quot;: True,
+      &quot;body&quot;: &quot;&quot;
+    },
+    {
+      &quot;title&quot;: &quot;Outcome reporting&quot;,
+      &quot;kind&quot;: &quot;outputs&quot;,
+      &quot;enabled&quot;: True,
+      &quot;body&quot;: &quot;&quot;
+    }
+  ]
+},
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup/prompt`, {
+  method: &quot;PUT&quot;,
+  headers: { Authorization: `Bearer ${KEY}`, &quot;Content-Type&quot;: &quot;application/json&quot; },
+  body: JSON.stringify({
+    &quot;sections&quot;: [
+      {
+        &quot;title&quot;: &quot;Role and goal&quot;,
+        &quot;kind&quot;: &quot;text&quot;,
+        &quot;enabled&quot;: true,
+        &quot;body&quot;: &quot;You are Riya from the purchase team...&quot;
+      },
+      {
+        &quot;title&quot;: &quot;Read-back rules&quot;,
+        &quot;kind&quot;: &quot;text&quot;,
+        &quot;enabled&quot;: true,
+        &quot;body&quot;: &quot;Repeat every date and quantity back. Save only on a clear yes.&quot;
+      },
+      {
+        &quot;title&quot;: &quot;Call details&quot;,
+        &quot;kind&quot;: &quot;inputs&quot;,
+        &quot;enabled&quot;: true,
+        &quot;body&quot;: &quot;&quot;
+      },
+      {
+        &quot;title&quot;: &quot;Outcome reporting&quot;,
+        &quot;kind&quot;: &quot;outputs&quot;,
+        &quot;enabled&quot;: true,
+        &quot;body&quot;: &quot;&quot;
+      }
+    ]
+  }),
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;saved&quot;: true,
+  &quot;missing_tokens&quot;: []
+}</code></pre></div></div></div></section><section class="ep" id="preview-prompt"><div class="ep-h"><span class="m post">POST</span><code>/v1/agents/{agent_id}/prompt/preview</code></div><h3>Preview the full prompt</h3><div class="ep-g"><div><p>Returns the prompt exactly as the agent receives it, with tokens left as written. Send <code>sections</code> to preview a draft without saving it.</p><h4>Path parameters</h4><div class="params"><div><code>agent_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div><h4>Body</h4><div class="params"><div><code>sections</code><span class="ty">array</span><p>Draft sections. Omit to preview the saved prompt.</p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl -X POST &quot;$ECHO_API/v1/agents/dispatch-followup/prompt/preview&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{}&#x27;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.post(
+    f&quot;{API}/v1/agents/dispatch-followup/prompt/preview&quot;,
+    headers=HEADERS,
+    json={},
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup/prompt/preview`, {
+  method: &quot;POST&quot;,
+  headers: { Authorization: `Bearer ${KEY}`, &quot;Content-Type&quot;: &quot;application/json&quot; },
+  body: JSON.stringify({}),
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;prompt&quot;: &quot;# ROLE AND GOAL\nYou are Riya from the purchase team...&quot;,
+  &quot;characters&quot;: 2841,
+  &quot;draft&quot;: false
+}</code></pre></div></div></div></section><section class="ep" id="update-inputs"><div class="ep-h"><span class="m put">PUT</span><code>/v1/agents/{agent_id}/inputs</code></div><h3>Replace input variables</h3><div class="ep-g"><div><p>Sets what the agent knows before each call. Each input is a column in the upload template and a <code>{{token}}</code> in the prompt.</p><h4>Path parameters</h4><div class="params"><div><code>agent_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div><h4>Body</h4><div class="params"><div><code>variables</code><span class="ty">array</span><span class="rq">required</span><p>List of <code>{key, type, transform, sample, share_on_call}</code>. <code>transform: "spell_digits"</code> reads a value digit by digit. <code>share_on_call: false</code> gives the value to the agent but it is never spoken.</p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl -X PUT &quot;$ECHO_API/v1/agents/dispatch-followup/inputs&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;variables&quot;: [
+      {
+        &quot;key&quot;: &quot;supplier_name&quot;,
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;transform&quot;: null,
+        &quot;sample&quot;: &quot;Mehta Packaging&quot;,
+        &quot;share_on_call&quot;: true
+      },
+      {
+        &quot;key&quot;: &quot;po_number&quot;,
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;transform&quot;: &quot;spell_digits&quot;,
+        &quot;sample&quot;: &quot;4471&quot;,
+        &quot;share_on_call&quot;: true
+      },
+      {
+        &quot;key&quot;: &quot;open_qty&quot;,
+        &quot;type&quot;: &quot;number&quot;,
+        &quot;transform&quot;: null,
+        &quot;sample&quot;: &quot;14&quot;,
+        &quot;share_on_call&quot;: true
+      },
+      {
+        &quot;key&quot;: &quot;supplier_code&quot;,
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;transform&quot;: null,
+        &quot;sample&quot;: &quot;V-20931&quot;,
+        &quot;share_on_call&quot;: false
+      }
+    ]
+  }&#x27;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.put(
+    f&quot;{API}/v1/agents/dispatch-followup/inputs&quot;,
+    headers=HEADERS,
+    json={
+  &quot;variables&quot;: [
+    {
+      &quot;key&quot;: &quot;supplier_name&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: None,
+      &quot;sample&quot;: &quot;Mehta Packaging&quot;,
+      &quot;share_on_call&quot;: True
+    },
+    {
+      &quot;key&quot;: &quot;po_number&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: &quot;spell_digits&quot;,
+      &quot;sample&quot;: &quot;4471&quot;,
+      &quot;share_on_call&quot;: True
+    },
+    {
+      &quot;key&quot;: &quot;open_qty&quot;,
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;transform&quot;: None,
+      &quot;sample&quot;: &quot;14&quot;,
+      &quot;share_on_call&quot;: True
+    },
+    {
+      &quot;key&quot;: &quot;supplier_code&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: None,
+      &quot;sample&quot;: &quot;V-20931&quot;,
+      &quot;share_on_call&quot;: False
+    }
+  ]
+},
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup/inputs`, {
+  method: &quot;PUT&quot;,
+  headers: { Authorization: `Bearer ${KEY}`, &quot;Content-Type&quot;: &quot;application/json&quot; },
+  body: JSON.stringify({
+    &quot;variables&quot;: [
+      {
+        &quot;key&quot;: &quot;supplier_name&quot;,
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;transform&quot;: null,
+        &quot;sample&quot;: &quot;Mehta Packaging&quot;,
+        &quot;share_on_call&quot;: true
+      },
+      {
+        &quot;key&quot;: &quot;po_number&quot;,
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;transform&quot;: &quot;spell_digits&quot;,
+        &quot;sample&quot;: &quot;4471&quot;,
+        &quot;share_on_call&quot;: true
+      },
+      {
+        &quot;key&quot;: &quot;open_qty&quot;,
+        &quot;type&quot;: &quot;number&quot;,
+        &quot;transform&quot;: null,
+        &quot;sample&quot;: &quot;14&quot;,
+        &quot;share_on_call&quot;: true
+      },
+      {
+        &quot;key&quot;: &quot;supplier_code&quot;,
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;transform&quot;: null,
+        &quot;sample&quot;: &quot;V-20931&quot;,
+        &quot;share_on_call&quot;: false
+      }
+    ]
+  }),
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;saved&quot;: true,
+  &quot;inputs&quot;: [
+    {
+      &quot;key&quot;: &quot;supplier_name&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: null,
+      &quot;sample&quot;: &quot;Mehta Packaging&quot;,
+      &quot;share_on_call&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;po_number&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: &quot;spell_digits&quot;,
+      &quot;sample&quot;: &quot;4471&quot;,
+      &quot;share_on_call&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;open_qty&quot;,
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;transform&quot;: null,
+      &quot;sample&quot;: &quot;14&quot;,
+      &quot;share_on_call&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;supplier_code&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;transform&quot;: null,
+      &quot;sample&quot;: &quot;V-20931&quot;,
+      &quot;share_on_call&quot;: false
+    }
+  ]
+}</code></pre></div></div></div></section><section class="ep" id="update-outputs"><div class="ep-h"><span class="m put">PUT</span><code>/v1/agents/{agent_id}/outputs</code></div><h3>Replace output variables</h3><div class="ep-g"><div><p>Sets what the agent must report before hanging up. Outputs become the columns of campaign results.</p><h4>Path parameters</h4><div class="params"><div><code>agent_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div><h4>Body</h4><div class="params"><div><code>variables</code><span class="ty">array</span><span class="rq">required</span><p>List of <code>{key, label, type, options, description, required}</code>. Use <code>type: "enum"</code> with <code>options</code> for statuses.</p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl -X PUT &quot;$ECHO_API/v1/agents/dispatch-followup/outputs&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;variables&quot;: [
+      {
+        &quot;key&quot;: &quot;status&quot;,
+        &quot;label&quot;: &quot;Status&quot;,
+        &quot;type&quot;: &quot;enum&quot;,
+        &quot;options&quot;: [
+          &quot;CONFIRMED&quot;,
+          &quot;PARTIAL&quot;,
+          &quot;NEW_DATE&quot;,
+          &quot;CALL_BACK&quot;
+        ],
+        &quot;description&quot;: &quot;Outcome after read-back&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;key&quot;: &quot;dispatch_date&quot;,
+        &quot;label&quot;: &quot;Dispatch date&quot;,
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;options&quot;: [],
+        &quot;description&quot;: &quot;Date confirmed after read-back&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;key&quot;: &quot;qty_ready&quot;,
+        &quot;label&quot;: &quot;Quantity ready&quot;,
+        &quot;type&quot;: &quot;number&quot;,
+        &quot;options&quot;: [],
+        &quot;description&quot;: &quot;Cartons ready on that date&quot;,
+        &quot;required&quot;: true
+      }
+    ]
+  }&#x27;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.put(
+    f&quot;{API}/v1/agents/dispatch-followup/outputs&quot;,
+    headers=HEADERS,
+    json={
+  &quot;variables&quot;: [
+    {
+      &quot;key&quot;: &quot;status&quot;,
+      &quot;label&quot;: &quot;Status&quot;,
+      &quot;type&quot;: &quot;enum&quot;,
+      &quot;options&quot;: [
+        &quot;CONFIRMED&quot;,
+        &quot;PARTIAL&quot;,
+        &quot;NEW_DATE&quot;,
+        &quot;CALL_BACK&quot;
+      ],
+      &quot;description&quot;: &quot;Outcome after read-back&quot;,
+      &quot;required&quot;: True
+    },
+    {
+      &quot;key&quot;: &quot;dispatch_date&quot;,
+      &quot;label&quot;: &quot;Dispatch date&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;options&quot;: [],
+      &quot;description&quot;: &quot;Date confirmed after read-back&quot;,
+      &quot;required&quot;: True
+    },
+    {
+      &quot;key&quot;: &quot;qty_ready&quot;,
+      &quot;label&quot;: &quot;Quantity ready&quot;,
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;options&quot;: [],
+      &quot;description&quot;: &quot;Cartons ready on that date&quot;,
+      &quot;required&quot;: True
+    }
+  ]
+},
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup/outputs`, {
+  method: &quot;PUT&quot;,
+  headers: { Authorization: `Bearer ${KEY}`, &quot;Content-Type&quot;: &quot;application/json&quot; },
+  body: JSON.stringify({
+    &quot;variables&quot;: [
+      {
+        &quot;key&quot;: &quot;status&quot;,
+        &quot;label&quot;: &quot;Status&quot;,
+        &quot;type&quot;: &quot;enum&quot;,
+        &quot;options&quot;: [
+          &quot;CONFIRMED&quot;,
+          &quot;PARTIAL&quot;,
+          &quot;NEW_DATE&quot;,
+          &quot;CALL_BACK&quot;
+        ],
+        &quot;description&quot;: &quot;Outcome after read-back&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;key&quot;: &quot;dispatch_date&quot;,
+        &quot;label&quot;: &quot;Dispatch date&quot;,
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;options&quot;: [],
+        &quot;description&quot;: &quot;Date confirmed after read-back&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;key&quot;: &quot;qty_ready&quot;,
+        &quot;label&quot;: &quot;Quantity ready&quot;,
+        &quot;type&quot;: &quot;number&quot;,
+        &quot;options&quot;: [],
+        &quot;description&quot;: &quot;Cartons ready on that date&quot;,
+        &quot;required&quot;: true
+      }
+    ]
+  }),
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;saved&quot;: true,
+  &quot;outputs&quot;: [
+    {
+      &quot;key&quot;: &quot;status&quot;,
+      &quot;label&quot;: &quot;Status&quot;,
+      &quot;type&quot;: &quot;enum&quot;,
+      &quot;options&quot;: [
+        &quot;CONFIRMED&quot;,
+        &quot;PARTIAL&quot;,
+        &quot;NEW_DATE&quot;,
+        &quot;CALL_BACK&quot;
+      ],
+      &quot;description&quot;: &quot;Outcome after read-back&quot;,
+      &quot;required&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;dispatch_date&quot;,
+      &quot;label&quot;: &quot;Dispatch date&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;options&quot;: [],
+      &quot;description&quot;: &quot;Date confirmed after read-back&quot;,
+      &quot;required&quot;: true
+    },
+    {
+      &quot;key&quot;: &quot;qty_ready&quot;,
+      &quot;label&quot;: &quot;Quantity ready&quot;,
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;options&quot;: [],
+      &quot;description&quot;: &quot;Cartons ready on that date&quot;,
+      &quot;required&quot;: true
+    }
+  ]
+}</code></pre></div></div></div></section><section class="ep" id="agent-template"><div class="ep-h"><span class="m get">GET</span><code>/v1/agents/{agent_id}/template</code></div><h3>Download the upload template</h3><div class="ep-g"><div><p>A spreadsheet with one column per input, ready to fill in.</p><h4>Path parameters</h4><div class="params"><div><code>agent_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/agents/dispatch-followup/template&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
+  -o template.xlsx</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/agents/dispatch-followup/template&quot;,
+    headers=HEADERS,
+)
+res.raise_for_status()
+open(&quot;template.xlsx&quot;, &quot;wb&quot;).write(res.content)</code></pre><pre data-lang="Node.js" hidden><code>import fs from &quot;node:fs&quot;;
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup/template`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+await fs.promises.writeFile(&quot;template.xlsx&quot;, Buffer.from(await res.arrayBuffer()));</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>Binary .xlsx file</code></pre></div></div></div></section><section class="ep" id="list-options"><div class="ep-h"><span class="m get">GET</span><code>/v1/agents/options</code></div><h3>List options</h3><div class="ep-g"><div><p>Voices, calling lines, variable types and transforms available to your workspace. Use it to build your own agent forms.</p></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/agents/options&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.get(
+    f&quot;{API}/v1/agents/options&quot;,
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/options`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;voices&quot;: [
+    {
+      &quot;id&quot;: &quot;default&quot;,
+      &quot;gender&quot;: &quot;female&quot;
+    },
+    {
+      &quot;id&quot;: &quot;meera&quot;,
+      &quot;gender&quot;: &quot;female&quot;
+    },
+    {
+      &quot;id&quot;: &quot;arjun&quot;,
+      &quot;gender&quot;: &quot;male&quot;
+    }
+  ],
+  &quot;calling_lines&quot;: [
+    {
+      &quot;id&quot;: &quot;ops-outbound&quot;,
+      &quot;direction&quot;: &quot;outbound&quot;
+    }
+  ],
+  &quot;input_types&quot;: [
+    &quot;string&quot;,
+    &quot;number&quot;,
+    &quot;phone&quot;,
+    &quot;date&quot;
+  ],
+  &quot;output_types&quot;: [
+    &quot;string&quot;,
+    &quot;number&quot;,
+    &quot;boolean&quot;,
+    &quot;enum&quot;
+  ],
+  &quot;transforms&quot;: [
+    &quot;spell_digits&quot;
+  ]
+}</code></pre></div></div></div></section><section class="ep" id="delete-agent"><div class="ep-h"><span class="m delete">DELETE</span><code>/v1/agents/{agent_id}</code></div><h3>Delete an agent</h3><div class="ep-g"><div><p>Deletes the agent. Past campaigns keep their results.</p><h4>Path parameters</h4><div class="params"><div><code>agent_id</code><span class="ty">string</span><span class="rq">required</span><p></p></div></div></div><div><div class="ct"><div class="ct-h" role="tablist"><span>Request</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl -X DELETE &quot;$ECHO_API/v1/agents/dispatch-followup&quot; \
+  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+
+API = os.environ[&quot;ECHO_API&quot;]
+HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+
+res = requests.delete(
+    f&quot;{API}/v1/agents/dispatch-followup&quot;,
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup`, {
+  method: &quot;DELETE&quot;,
+  headers: { Authorization: `Bearer ${KEY}` },
+}});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response · 200</span></div><pre><code>{
+  &quot;id&quot;: &quot;cod-confirmation&quot;,
+  &quot;deleted&quot;: true
+}</code></pre></div></div></div></section></article><nav class="pager" aria-label="Pages"><a class="card" href="guide-exports.html"><small>Previous</small><b>← Recordings and exports</b></a><a class="card nx" href="calls.html"><small>Next</small><b>Calls →</b></a></nav></div><script>
+(function(){var d=document,K='echo-lang',pref=null;try{pref=localStorage.getItem(K)}catch(e){}
+function pick(l){d.querySelectorAll('.ct').forEach(function(ct){var bs=ct.querySelectorAll('.ct-h button');if(!bs.length)return;var has=[].some.call(bs,function(b){return b.dataset.lang===l});if(!has)return;
+  bs.forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.lang===l))});ct.querySelectorAll('pre[data-lang]').forEach(function(p){p.hidden=p.dataset.lang!==l})})}
+d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.ct-h button');if(b){pick(b.dataset.lang);try{localStorage.setItem(K,b.dataset.lang)}catch(x){}}});
+if(pref)pick(pref);
+d.querySelectorAll('.prose pre').forEach(function(p){var c=d.createElement('button');c.type='button';c.className='cp';c.textContent='Copy';c.addEventListener('click',function(){var t=p.querySelector('code')?p.querySelector('code').innerText:p.innerText;
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){c.textContent='Copied';c.classList.add('ok');setTimeout(function(){c.textContent='Copy';c.classList.remove('ok')},1400)}).catch(function(){})});p.appendChild(c)})})();
+</script>
+</main>
+<footer><span>Moglix Echo · AI voice agents for Indian business</span><nav><a href="../../">Home</a><a href="../../docs/">Docs</a><a href="../../blog/">Blog</a><a href="../../#faq">FAQ</a><a href="../../#trust">Security</a></nav><span>© 2026 Echo</span></footer>
+</body>
+</html>
