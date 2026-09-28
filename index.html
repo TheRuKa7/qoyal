@@ -1870,17 +1870,7 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
 .faq-tg:after{content:" +";color:var(--red)}
 .faq-list.all .faq-tg:after{content:" \2212"}
 /* top 10: tighter */
-.t10{gap:6px;padding-bottom:12px}
-.t10-n{font-size:clamp(92px,7.6vw,124px);margin-right:-12px}
-.t10 .hx{width:178px;height:212px}
-.t10 .hx-f{padding:14px}
-.t10 .hx-g{width:30px;height:30px;margin:22px 0 auto}
-.t10 .hx h3{font-size:15.5px}
-.t10 .hx-s{font-size:11px}
-.t10 .hx-b{padding:14px;gap:6px}
-.t10 .hx-b h4{font-size:14px}
-.t10 .hx-d{font-size:12.5px;line-height:1.4}
-.t10 .hx-k{font-size:12px}
+/* top 10 tighter removed */
 .tu-more{margin-top:22px}
 /* how it works: one horizontal flow, steps light up in turn */
 .how .flow{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:8px 2px 16px;align-items:stretch}
@@ -1917,91 +1907,251 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
   .how .flow li:not(:last-child):before{right:-38px;width:34px}
 }
 
-/* --- Enhanced Use Cases Section (TopUC) Styles --- */
-.t10-filter-bar { margin: 18px 0 24px; }
-.t10-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
-.t10-tab {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  color: var(--ink2);
-  padding: 8px 16px;
-  border-radius: 99px;
-  font: 550 13px/1.2 var(--grot);
-  cursor: pointer;
-  transition: all .2s ease;
-}
-.t10-tab:hover { border-color: var(--ink); color: var(--ink); }
-.t10-tab.on {
-  background: var(--ink);
-  color: #FFF6EE;
-  border-color: var(--ink);
-}
-.t10-view-toggle {
-  display: inline-flex;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 99px;
-  padding: 2px;
-  gap: 2px;
-  margin-right: 6px;
-}
-.t10-vbtn {
-  background: transparent;
-  border: none;
-  padding: 5px 12px;
-  border-radius: 99px;
-  font: 550 12px/1 var(--grot);
-  color: var(--mute);
-  cursor: pointer;
-  transition: all .15s ease;
-}
-.t10-vbtn.on {
-  background: var(--ink);
-  color: #fff;
-}
-.t10-i.cat-hidden { display: none !important; }
+/* ================= Awwwards Kinetic Showcase: Top 10 Use Cases ================= */
+.topuc{position:relative;overflow:hidden;padding-top:clamp(76px,8.5vw,124px);padding-bottom:clamp(44px,5.5vw,80px)}
+.topuc .head{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;margin-bottom:clamp(32px,5vh,54px);flex-wrap:wrap}
+.topuc .t10-side{display:flex;flex-direction:column;gap:18px;align-items:flex-end;text-align:right}
+.topuc .lede{max-width:38ch;margin:0;font:450 16px/1.55 var(--grot);color:var(--mute)}
 
-/* Grid mode layout for Top 10 */
-.t10.grid-mode {
-  display: grid !important;
-  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-  gap: 16px !important;
-  overflow-x: visible !important;
-  padding: 10px 0 24px !important;
-  -webkit-mask-image: none !important;
-  mask-image: none !important;
+.t10-ctrls{display:flex;align-items:center;gap:16px}
+.t10-counter{font:650 13px var(--mono);letter-spacing:.08em;color:var(--mute);display:flex;align-items:center;gap:4px;user-select:none}
+.t10-counter b{color:var(--ink);font-weight:750;font-size:15px;min-width:20px;text-align:right}
+.t10-counter small{opacity:.4;margin:0 1px}
+.t10-nav{display:flex;gap:8px}
+.t10-b{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:var(--paper);
+  color:var(--ink);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  transition:all .25s var(--ease);
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
 }
-.t10.grid-mode .t10-i {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: stretch !important;
+.t10-b svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease}
+.t10-b:hover:not(:disabled){
+  border-color:var(--ink);
+  background:var(--ink);
+  color:var(--paper);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px -6px rgba(0,0,0,.2);
 }
-.t10.grid-mode .t10-n {
-  font-size: 32px !important;
-  line-height: 1 !important;
-  margin-bottom: 6px !important;
-  margin-right: 0 !important;
-  -webkit-text-stroke: 1px color-mix(in srgb, var(--ink) 35%, transparent) !important;
+.t10-b:hover:not(:disabled) svg{stroke:var(--paper)}
+.t10-b:active:not(:disabled){transform:scale(.94)}
+.t10-b:disabled{opacity:.22;cursor:not-allowed;transform:none;box-shadow:none}
+
+.t10w{
+  position:relative;
+  margin:0 calc(-1 * max(16px, 5vw));
+  padding:0 max(16px, 5vw);
+  -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 2.5%, #000 90%, transparent 100%);
+  mask-image:linear-gradient(90deg, transparent 0, #000 2.5%, #000 90%, transparent 100%);
 }
-.t10.grid-mode .hx {
-  width: 100% !important;
-  height: 290px !important;
+.t10{
+  list-style:none;
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  padding:20px 80px 32px 4px;
+  scrollbar-width:none;
+  cursor:grab;
+  -webkit-user-select:none;
+  user-select:none;
 }
-.t10w.grid-mode {
-  -webkit-mask-image: none !important;
-  mask-image: none !important;
+.t10:active{cursor:grabbing}
+.t10::-webkit-scrollbar{display:none}
+
+.t10-i{
+  flex:0 0 auto;
+  display:flex;
+  align-items:flex-end;
+  scroll-snap-align:start;
+  position:relative;
 }
 
-@media (max-width: 1200px) {
-  .t10.grid-mode { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+.t10-n{
+  font:850 clamp(118px,11vw,164px)/0.74 var(--grot);
+  letter-spacing:-.07em;
+  color:transparent;
+  -webkit-text-stroke:1.5px color-mix(in srgb,var(--ink) 22%,transparent);
+  margin-right:-16px;
+  padding-left:4px;
+  user-select:none;
+  pointer-events:none;
+  position:relative;
+  z-index:0;
+  transition:transform .4s var(--ease),-webkit-text-stroke .4s var(--ease),color .4s var(--ease);
 }
-@media (max-width: 800px) {
-  .t10.grid-mode { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-}
-@media (max-width: 550px) {
-  .t10.grid-mode { grid-template-columns: 1fr !important; }
+.t10-i:hover .t10-n{
+  transform:translateY(-8px);
+  -webkit-text-stroke:1.5px var(--red);
+  color:rgba(217,35,45,.05);
 }
 
+.t10 .hx{
+  position:relative;
+  z-index:1;
+  width:clamp(244px,22vw,276px);
+  height:334px;
+  min-height:0!important;
+  flex:0 0 auto;
+  border-radius:22px;
+  background:rgba(255,255,255,.85);
+  border:1px solid var(--line);
+  box-shadow:0 4px 20px -8px rgba(22,19,15,.08), 0 20px 42px -20px rgba(22,19,15,.14);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);
+}
+[data-theme=dark] .t10 .hx{
+  background:rgba(25,22,19,.88);
+  border-color:rgba(255,255,255,.12);
+  box-shadow:0 12px 34px -14px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.14);
+}
+.t10 .hx:hover{
+  transform:translateY(-6px);
+  border-color:color-mix(in srgb,var(--ink) 45%,transparent);
+  box-shadow:0 12px 32px -10px rgba(22,19,15,.18), 0 30px 64px -22px rgba(22,19,15,.25);
+}
+[data-theme=dark] .t10 .hx:hover{
+  border-color:rgba(255,255,255,.32);
+  box-shadow:0 20px 50px -16px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+.t10 .hx-f{
+  position:absolute!important;
+  inset:0!important;
+  padding:22px 20px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  box-sizing:border-box;
+  transition:opacity .35s var(--ease),transform .35s var(--ease);
+}
+.hx-top{display:flex;justify-content:space-between;align-items:center;width:100%;gap:8px}
+.hx-tag{
+  font:600 10.5px var(--mono);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--mute);
+  background:color-mix(in srgb,var(--ink) 6%,transparent);
+  border-radius:99px;
+  padding:3px 9px;
+}
+.t10 .hx-live{
+  position:static;
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  font:600 10px var(--mono);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--green);
+  background:rgba(46,125,82,.1);
+  border-radius:99px;
+  padding:3px 9px;
+}
+.t10 .hx-live:before{
+  content:"";
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:currentColor;
+  animation:pulseDot 1.8s ease infinite;
+}
+@keyframes pulseDot{0%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}100%{opacity:1;transform:scale(1)}}
+
+.t10 .hx-g{width:42px;height:42px;margin:32px 0 auto;color:var(--ink)}
+.t10 .hx h3{font:650 17.5px/1.22 var(--grot);letter-spacing:-.02em;color:var(--ink);margin:0 0 4px}
+.t10 .hx-s{font:500 12px/1.35 var(--mono);color:var(--mute);margin:0 0 14px}
+.hx-hint{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font:600 11px var(--mono);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--red);
+  opacity:0;
+  transform:translateX(-6px);
+  transition:all .25s var(--ease);
+}
+.t10 .hx:hover .hx-hint{opacity:1;transform:none}
+
+.t10 .hx-b{
+  position:absolute!important;
+  inset:0!important;
+  padding:22px 20px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:space-between!important;
+  box-sizing:border-box;
+  background:var(--card);
+  opacity:0;
+  transform:translateY(12px);
+  pointer-events:none;
+  transition:opacity .35s var(--ease),transform .35s var(--ease);
+}
+.t10 .hx:hover .hx-b,
+.t10 .hx.open .hx-b,
+.t10 .hx:focus-within .hx-b{
+  opacity:1;
+  transform:none;
+  pointer-events:auto;
+}
+.t10 .hx:hover .hx-f,
+.t10 .hx.open .hx-f,
+.t10 .hx:focus-within .hx-f{
+  opacity:0;
+  transform:translateY(-10px);
+}
+.t10 .hx-b h4{font:650 16px/1.2 var(--grot);color:var(--ink);margin:0 0 8px}
+.t10 .hx-d{font:450 13px/1.48 var(--grot);color:var(--ink2);margin:0 0 auto}
+.t10 .hx-k{
+  background:color-mix(in srgb,var(--ink) 4%,transparent);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:8px 11px;
+  margin:12px 0 14px;
+}
+.t10 .hx-k small{display:block;font:600 9.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:2px}
+.t10 .hx-k strong{display:block;font:600 12.5px/1.3 var(--grot);color:var(--ink)}
+.t10 .hx-a{margin:0}
+.t10 .hx-a .agk-go,.t10 .hx-a .tu-p{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  height:38px;
+  border-radius:99px;
+  font:650 13px var(--grot);
+  text-decoration:none;
+  box-sizing:border-box;
+  transition:all .2s ease;
+}
+.t10 .hx-a .agk-go{background:var(--red);color:#fff;border:none;cursor:pointer}
+.t10 .hx-a .agk-go:hover{background:var(--red2);transform:scale(1.02)}
+.t10 .hx-a .tu-p{background:var(--ink);color:var(--paper);border:none}
+.t10 .hx-a .tu-p:hover{background:var(--red);color:#fff;transform:scale(1.02)}
+
+@media (max-width:1000px){
+  .topuc .head{flex-direction:column;align-items:flex-start}
+  .topuc .t10-side{align-items:flex-start;text-align:left}
+}
+@media (max-width:700px){
+  .t10-n{font-size:84px;margin-right:-10px}
+  .t10 .hx{width:216px;height:304px}
+  .t10w{-webkit-mask-image:none;mask-image:none}
+  .t10{padding-right:20px}
+}
 </style>
 </head>
 <body>
@@ -2089,26 +2239,247 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
       </div>
       <div class="t10-side rv">
         <p class="lede">Ten battle-tested calls across enterprise supply chain, finance, and customer operations.</p>
-        <div class="t10-nav">
-          <div class="t10-view-toggle">
-            <button type="button" class="t10-vbtn on" id="t10ViewGrid" title="Grid view">Grid</button>
-            <button type="button" class="t10-vbtn" id="t10ViewScroll" title="Carousel view">Carousel</button>
+        <div class="t10-ctrls">
+          <span class="t10-counter" aria-label="Current use case"><b id="t10Cur">01</b><small>/</small><span>10</span></span>
+          <div class="t10-nav">
+            <button type="button" class="t10-b" data-d="-1" id="t10Prev" aria-label="Previous use cases">
+              <svg viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button type="button" class="t10-b" data-d="1" id="t10Next" aria-label="Next use cases">
+              <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
           </div>
-          <button type="button" class="t10-b" data-d="-1" aria-label="Previous use cases" id="t10Prev">&#8249;</button>
-          <button type="button" class="t10-b" data-d="1" aria-label="Next use cases" id="t10Next">&#8250;</button>
         </div>
       </div>
     </div>
-    <div class="t10-filter-bar rv">
-      <div class="t10-tabs" role="tablist" aria-label="Use case categories">
-        <button class="t10-tab on" data-cat="all" role="tab" aria-selected="true">All (10)</button>
-        <button class="t10-tab" data-cat="scm" role="tab" aria-selected="false">Supply Chain & Procurement (4)</button>
-        <button class="t10-tab" data-cat="collections" role="tab" aria-selected="false">Collections & Finance (2)</button>
-        <button class="t10-tab" data-cat="sales" role="tab" aria-selected="false">Commercial & Renewals (2)</button>
-        <button class="t10-tab" data-cat="support" role="tab" aria-selected="false">Support & Onboarding (2)</button>
-      </div>
+    <div class="t10w rv">
+      <ol class="t10" id="t10" aria-label="Top 10 use cases">
+        <li class="t10-i">
+          <span class="t10-n" aria-hidden="true">01</span>
+          <div class="hx gl16" tabindex="0">
+            <div class="hx-f">
+              <div class="hx-top">
+                <span class="hx-tag">Collections</span>
+              </div>
+              <svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="31" width="32" height="9" rx="2"/><path d="M18 35.5h12"/><g class="a-drop"><circle cx="24" cy="15" r="7"/><path d="M21 15h6M24 12v6"/></g></svg>
+              <div>
+                <h3>Loan and EMI collections</h3>
+                <p class="hx-s">Banks, NBFCs, lenders</p>
+              </div>
+              <div class="hx-hint"><span>View metrics</span><svg viewBox="0 0 16 16" width="12" height="12"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="hx-b">
+              <h4>Loan and EMI collections</h4>
+              <p class="hx-d">Reminds borrowers before and just after the due date, reads back the promised date and amount, and sends the payment link.</p>
+              <div class="hx-k"><small>Moves metric</small><strong>Roll rate · Promises kept</strong></div>
+              <div class="hx-a"><a class="tu-p" href="#pilot" data-open-pilot>Plan a pilot →</a></div>
+            </div>
+          </div>
+        </li>
+        <li class="t10-i">
+          <span class="t10-n" aria-hidden="true">02</span>
+          <div class="hx gl16" tabindex="0">
+            <div class="hx-f">
+              <div class="hx-top">
+                <span class="hx-tag">Growth</span>
+              </div>
+              <svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 9h5l3 8-3.5 2.5a17 17 0 0 0 9 9L31 25l8 3v5.5c0 1.2-1 2.5-2.4 2.4C22 35 13 26 12.1 11.4 12 10 13.3 9 15 9z"/><path class="a-wave" d="M29 9a10 10 0 0 1 10 10"/><path class="a-wave d2" d="M29 3a16 16 0 0 1 16 16"/></svg>
+              <div>
+                <h3>Lead qualification in minutes</h3>
+                <p class="hx-s">Insurance, lending, auto, education</p>
+              </div>
+              <div class="hx-hint"><span>View metrics</span><svg viewBox="0 0 16 16" width="12" height="12"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="hx-b">
+              <h4>Lead qualification in minutes</h4>
+              <p class="hx-d">Calls every new lead while intent is high, qualifies need, budget and timeline, and books the right rep.</p>
+              <div class="hx-k"><small>Moves metric</small><strong>Contact rate · Cost per qualified lead</strong></div>
+              <div class="hx-a"><a class="tu-p" href="#pilot" data-open-pilot>Plan a pilot →</a></div>
+            </div>
+          </div>
+        </li>
+        <li class="t10-i">
+          <span class="t10-n" aria-hidden="true">03</span>
+          <div class="hx gl16" tabindex="0">
+            <div class="hx-f">
+              <div class="hx-top">
+                <span class="hx-tag">Finance</span>
+              </div>
+              <svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="11" y="5" width="26" height="38" rx="2.5"/><path d="M17 13h14M17 19h10"/><path class="a-draw" d="M17 30l5 5 10-11"/></svg>
+              <div>
+                <h3>B2B receivables follow-up</h3>
+                <p class="hx-s">Manufacturers, distributors</p>
+              </div>
+              <div class="hx-hint"><span>View metrics</span><svg viewBox="0 0 16 16" width="12" height="12"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="hx-b">
+              <h4>B2B receivables follow-up</h4>
+              <p class="hx-d">Calls buyer accounts teams about due invoices and captures a payment date, a dispute or the missing document.</p>
+              <div class="hx-k"><small>Moves metric</small><strong>DSO · Overdue balance</strong></div>
+              <div class="hx-a"><a class="tu-p" href="#pilot" data-open-pilot>Plan a pilot →</a></div>
+            </div>
+          </div>
+        </li>
+        <li class="t10-i">
+          <span class="t10-n" aria-hidden="true">04</span>
+          <div class="hx gl16" tabindex="0">
+            <div class="hx-f">
+              <div class="hx-top">
+                <span class="hx-tag">Supply Chain</span>
+                <span class="hx-live">In production</span>
+              </div>
+              <svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-bob"><rect x="4" y="16" width="24" height="15" rx="1.5"/><path d="M28 21h8l6 6v4H28z"/><circle cx="12" cy="34" r="3"/><circle cx="34" cy="34" r="3"/></g><path class="a-road" d="M2 42h44"/></svg>
+              <div>
+                <h3>Supplier order confirmation</h3>
+                <p class="hx-s">Manufacturing, construction, EPC</p>
+              </div>
+              <div class="hx-hint"><span>View metrics</span><svg viewBox="0 0 16 16" width="12" height="12"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="hx-b">
+              <h4>Supplier order confirmation</h4>
+              <p class="hx-d">Gets new POs accepted, confirms delivery dates and quantities line by line, and chases delays for a new date.</p>
+              <div class="hx-k"><small>Moves metric</small><strong>On-time in full · Delay days</strong></div>
+              <div class="hx-a"><button class="agk-go" type="button" data-try="poacc"><svg aria-hidden="true"><use href="#phone"/></svg>Try live agent</button></div>
+            </div>
+          </div>
+        </li>
+        <li class="t10-i">
+          <span class="t10-n" aria-hidden="true">05</span>
+          <div class="hx gl16" tabindex="0">
+            <div class="hx-f">
+              <div class="hx-top">
+                <span class="hx-tag">Sourcing</span>
+                <span class="hx-live">In production</span>
+              </div>
+              <svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42h36"/><rect class="a-bar" x="10" y="24" width="7" height="18" rx="1"/><rect class="a-bar d2" x="21" y="16" width="7" height="26" rx="1"/><rect class="a-bar d3" x="32" y="8" width="7" height="34" rx="1"/></svg>
+              <div>
+                <h3>Quote, RFQ & auction chasing</h3>
+                <p class="hx-s">Procurement & buying teams</p>
+              </div>
+              <div class="hx-hint"><span>View metrics</span><svg viewBox="0 0 16 16" width="12" height="12"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="hx-b">
+              <h4>Quote, RFQ & auction chasing</h4>
+              <p class="hx-d">Chases suppliers to quote before the RFQ closes and confirms they will bid before an e-auction opens.</p>
+              <div class="hx-k"><small>Moves metric</small><strong>Quotes per RFQ · Award price</strong></div>
+              <div class="hx-a"><button class="agk-go" type="button" data-try="quote"><svg aria-hidden="true"><use href="#phone"/></svg>Try live agent</button></div>
+            </div>
+          </div>
+        </li>
+        <li class="t10-i">
+          <span class="t10-n" aria-hidden="true">06</span>
+          <div class="hx gl16" tabindex="0">
+            <div class="hx-f">
+              <div class="hx-top">
+                <span class="hx-tag">E-Commerce</span>
+              </div>
+              <svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-bounce"><path d="M8 17l16-8 16 8v18l-16 8-16-8z"/><path d="M8 17l16 8 16-8M24 25v18"/></g><path class="a-draw" d="M30 8l3 3 7-7"/></svg>
+              <div>
+                <h3>COD & address confirmation</h3>
+                <p class="hx-s">E-commerce, D2C, logistics</p>
+              </div>
+              <div class="hx-hint"><span>View metrics</span><svg viewBox="0 0 16 16" width="12" height="12"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="hx-b">
+              <h4>COD & address confirmation</h4>
+              <p class="hx-d">Confirms cash-on-delivery orders and addresses within minutes, before anything ships.</p>
+              <div class="hx-k"><small>Moves metric</small><strong>Return-to-origin (RTO) rate</strong></div>
+              <div class="hx-a"><a class="tu-p" href="#pilot" data-open-pilot>Plan a pilot →</a></div>
+            </div>
+          </div>
+        </li>
+        <li class="t10-i">
+          <span class="t10-n" aria-hidden="true">07</span>
+          <div class="hx gl16" tabindex="0">
+            <div class="hx-f">
+              <div class="hx-top">
+                <span class="hx-tag">Renewals</span>
+              </div>
+              <svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-spin"><path d="M38 22a14 14 0 0 0-25-8"/><path d="M13 6v8h8"/><path d="M10 26a14 14 0 0 0 25 8"/><path d="M35 42v-8h-8"/></g></svg>
+              <div>
+                <h3>Policy & contract renewals</h3>
+                <p class="hx-s">Insurers, durables, AMC services</p>
+              </div>
+              <div class="hx-hint"><span>View metrics</span><svg viewBox="0 0 16 16" width="12" height="12"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="hx-b">
+              <h4>Policy & contract renewals</h4>
+              <p class="hx-d">Reminds customers before expiry, answers the basic questions and takes a renewal commitment.</p>
+              <div class="hx-k"><small>Moves metric</small><strong>Renewal rate · Lapses rescued</strong></div>
+              <div class="hx-a"><a class="tu-p" href="#pilot" data-open-pilot>Plan a pilot →</a></div>
+            </div>
+          </div>
+        </li>
+        <li class="t10-i">
+          <span class="t10-n" aria-hidden="true">08</span>
+          <div class="hx gl16" tabindex="0">
+            <div class="hx-f">
+              <div class="hx-top">
+                <span class="hx-tag">Distribution</span>
+              </div>
+              <svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="30" width="15" height="12" rx="1"/><rect x="25" y="30" width="15" height="12" rx="1"/><rect class="a-drop2" x="16" y="16" width="16" height="12" rx="1"/></svg>
+              <div>
+                <h3>Dealer & distributor reorders</h3>
+                <p class="hx-s">FMCG, electricals, building materials</p>
+              </div>
+              <div class="hx-hint"><span>View metrics</span><svg viewBox="0 0 16 16" width="12" height="12"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="hx-b">
+              <h4>Dealer & distributor reorders</h4>
+              <p class="hx-d">Calls dealers on their reorder cycle, reads stock and schemes, and writes the order into your DMS or ERP.</p>
+              <div class="hx-k"><small>Moves metric</small><strong>Reorder rate · Order fill rate</strong></div>
+              <div class="hx-a"><a class="tu-p" href="#pilot" data-open-pilot>Plan a pilot →</a></div>
+            </div>
+          </div>
+        </li>
+        <li class="t10-i">
+          <span class="t10-n" aria-hidden="true">09</span>
+          <div class="hx gl16" tabindex="0">
+            <div class="hx-f">
+              <div class="hx-top">
+                <span class="hx-tag">Operations</span>
+                <span class="hx-live">In production</span>
+              </div>
+              <svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="38" height="28" rx="3"/><circle cx="16" cy="22" r="4"/><path d="M10 32c1.5-3 4-4.5 6-4.5s4.5 1.5 6 4.5M27 19h10M27 25h8"/><path class="a-scan" d="M5 14h38"/></svg>
+              <div>
+                <h3>KYC & plant onboarding</h3>
+                <p class="hx-s">Suppliers, dealers, plants</p>
+              </div>
+              <div class="hx-hint"><span>View metrics</span><svg viewBox="0 0 16 16" width="12" height="12"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="hx-b">
+              <h4>KYC & plant onboarding</h4>
+              <p class="hx-d">Calls whoever dropped off, says exactly what is missing, and verifies contacts, roles and emails.</p>
+              <div class="hx-k"><small>Moves metric</small><strong>Completion rate · Days to first order</strong></div>
+              <div class="hx-a"><button class="agk-go" type="button" data-try="kyc"><svg aria-hidden="true"><use href="#phone"/></svg>Try live agent</button></div>
+            </div>
+          </div>
+        </li>
+        <li class="t10-i">
+          <span class="t10-n" aria-hidden="true">10</span>
+          <div class="hx gl16" tabindex="0">
+            <div class="hx-f">
+              <div class="hx-top">
+                <span class="hx-tag">Support</span>
+                <span class="hx-live">In production</span>
+              </div>
+              <svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 27v-5a15 15 0 0 1 30 0v5"/><rect x="6" y="26" width="7" height="11" rx="2"/><rect x="35" y="26" width="7" height="11" rx="2"/><circle class="a-dot" cx="18" cy="42" r="1.6"/><circle class="a-dot d2" cx="24" cy="42" r="1.6"/><circle class="a-dot d3" cx="30" cy="42" r="1.6"/></svg>
+              <div>
+                <h3>Order & invoice support (WISMO)</h3>
+                <p class="hx-s">Inbound, helpdesk, post-order</p>
+              </div>
+              <div class="hx-hint"><span>View metrics</span><svg viewBox="0 0 16 16" width="12" height="12"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            </div>
+            <div class="hx-b">
+              <h4>Order & invoice support (WISMO)</h4>
+              <p class="hx-d">Answers where-is-my-order, invoice and payment questions from the record, and raises a ticket when needed.</p>
+              <div class="hx-k"><small>Moves metric</small><strong>Calls closed first time · FCR</strong></div>
+              <div class="hx-a"><button class="agk-go" type="button" data-try="invpay"><svg aria-hidden="true"><use href="#phone"/></svg>Try live agent</button></div>
+            </div>
+          </div>
+        </li>
+      </ol>
     </div>
-    <div class="t10w rv"><ol class="t10" id="t10" aria-label="Top 10 use cases"><li class="t10-i" data-cat="collections"><span class="t10-n" aria-hidden="true">1</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="31" width="32" height="9" rx="2"/><path d="M18 35.5h12"/><g class="a-drop"><circle cx="24" cy="15" r="7"/><path d="M21 15h6M24 12v6"/></g></svg><h3>Loan and EMI collections</h3><p class="hx-s">Banks, NBFCs, lenders</p></div><div class="hx-b"><h4>Loan and EMI collections</h4><p class="hx-d">Reminds borrowers before and just after the due date, reads back the promised date and amount, and sends the payment link.</p><p class="hx-k"><small>Moves</small>Roll rate, promises kept</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i" data-cat="sales"><span class="t10-n" aria-hidden="true">2</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 9h5l3 8-3.5 2.5a17 17 0 0 0 9 9L31 25l8 3v5.5c0 1.2-1 2.5-2.4 2.4C22 35 13 26 12.1 11.4 12 10 13.3 9 15 9z"/><path class="a-wave" d="M29 9a10 10 0 0 1 10 10"/><path class="a-wave d2" d="M29 3a16 16 0 0 1 16 16"/></svg><h3>Lead qualification in minutes</h3><p class="hx-s">Insurance, lending, auto, education</p></div><div class="hx-b"><h4>Lead qualification in minutes</h4><p class="hx-d">Calls every new lead while intent is high, qualifies need, budget and timeline, and books the right rep.</p><p class="hx-k"><small>Moves</small>Contact rate, cost per qualified lead</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i" data-cat="collections"><span class="t10-n" aria-hidden="true">3</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="11" y="5" width="26" height="38" rx="2.5"/><path d="M17 13h14M17 19h10"/><path class="a-draw" d="M17 30l5 5 10-11"/></svg><h3>B2B receivables follow-up</h3><p class="hx-s">Manufacturers, distributors</p></div><div class="hx-b"><h4>B2B receivables follow-up</h4><p class="hx-d">Calls buyer accounts teams about due invoices and captures a payment date, a dispute or the missing document.</p><p class="hx-k"><small>Moves</small>DSO, overdue value</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i" data-cat="scm"><span class="t10-n" aria-hidden="true">4</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-bob"><rect x="4" y="16" width="24" height="15" rx="1.5"/><path d="M28 21h8l6 6v4H28z"/><circle cx="12" cy="34" r="3"/><circle cx="34" cy="34" r="3"/></g><path class="a-road" d="M2 42h44"/></svg><span class="hx-live">In production</span><h3>Supplier order confirmation</h3><p class="hx-s">Manufacturing, construction, mining</p></div><div class="hx-b"><h4>Supplier order confirmation</h4><p class="hx-d">Gets new POs accepted, confirms delivery dates and quantities line by line, and chases delays for a new date.</p><p class="hx-k"><small>Moves</small>On-time in full, delay days</p><div class="hx-a"><button class="agk-go" type="button" data-try="poacc"><svg aria-hidden="true"><use href="#phone"/></svg>Try it</button></div></div></div></li><li class="t10-i" data-cat="scm"><span class="t10-n" aria-hidden="true">5</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42h36"/><rect class="a-bar" x="10" y="24" width="7" height="18" rx="1"/><rect class="a-bar d2" x="21" y="16" width="7" height="26" rx="1"/><rect class="a-bar d3" x="32" y="8" width="7" height="34" rx="1"/></svg><span class="hx-live">In production</span><h3>Quote, RFQ and auction response</h3><p class="hx-s">Procurement teams</p></div><div class="hx-b"><h4>Quote, RFQ and auction response</h4><p class="hx-d">Chases suppliers to quote before the RFQ closes and confirms they will bid before an e-auction opens.</p><p class="hx-k"><small>Moves</small>Quotes per RFQ, award price</p><div class="hx-a"><button class="agk-go" type="button" data-try="quote"><svg aria-hidden="true"><use href="#phone"/></svg>Try it</button></div></div></div></li><li class="t10-i" data-cat="sales"><span class="t10-n" aria-hidden="true">6</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-bounce"><path d="M8 17l16-8 16 8v18l-16 8-16-8z"/><path d="M8 17l16 8 16-8M24 25v18"/></g><path class="a-draw" d="M30 8l3 3 7-7"/></svg><h3>COD and delivery confirmation</h3><p class="hx-s">E-commerce, D2C, logistics</p></div><div class="hx-b"><h4>COD and delivery confirmation</h4><p class="hx-d">Confirms cash-on-delivery orders and addresses within minutes, before anything ships.</p><p class="hx-k"><small>Moves</small>Return-to-origin rate</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i" data-cat="sales"><span class="t10-n" aria-hidden="true">7</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-spin"><path d="M38 22a14 14 0 0 0-25-8"/><path d="M13 6v8h8"/><path d="M10 26a14 14 0 0 0 25 8"/><path d="M35 42v-8h-8"/></g></svg><h3>Policy and contract renewals</h3><p class="hx-s">Insurers, durables, services</p></div><div class="hx-b"><h4>Policy and contract renewals</h4><p class="hx-d">Reminds customers before expiry, answers the basic questions and takes a renewal commitment.</p><p class="hx-k"><small>Moves</small>Renewal rate, lapses</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i" data-cat="scm"><span class="t10-n" aria-hidden="true">8</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="30" width="15" height="12" rx="1"/><rect x="25" y="30" width="15" height="12" rx="1"/><rect class="a-drop2" x="16" y="16" width="16" height="12" rx="1"/></svg><h3>Dealer and distributor reorders</h3><p class="hx-s">FMCG, electricals, building materials</p></div><div class="hx-b"><h4>Dealer and distributor reorders</h4><p class="hx-d">Calls dealers on their reorder cycle, reads stock and schemes, and writes the order into your DMS or ERP.</p><p class="hx-k"><small>Moves</small>Reorder rate, fill rate</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i" data-cat="support"><span class="t10-n" aria-hidden="true">9</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="38" height="28" rx="3"/><circle cx="16" cy="22" r="4"/><path d="M10 32c1.5-3 4-4.5 6-4.5s4.5 1.5 6 4.5M27 19h10M27 25h8"/><path class="a-scan" d="M5 14h38"/></svg><span class="hx-live">In production</span><h3>KYC and onboarding</h3><p class="hx-s">Customers, suppliers, plants</p></div><div class="hx-b"><h4>KYC and onboarding</h4><p class="hx-d">Calls whoever dropped off, says exactly what is missing, and verifies contacts, roles and emails.</p><p class="hx-k"><small>Moves</small>Completion rate, days to first order</p><div class="hx-a"><button class="agk-go" type="button" data-try="kyc"><svg aria-hidden="true"><use href="#phone"/></svg>Try it</button></div></div></div></li><li class="t10-i" data-cat="support"><span class="t10-n" aria-hidden="true">10</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 27v-5a15 15 0 0 1 30 0v5"/><rect x="6" y="26" width="7" height="11" rx="2"/><rect x="35" y="26" width="7" height="11" rx="2"/><circle class="a-dot" cx="18" cy="42" r="1.6"/><circle class="a-dot d2" cx="24" cy="42" r="1.6"/><circle class="a-dot d3" cx="30" cy="42" r="1.6"/></svg><span class="hx-live">In production</span><h3>Order, invoice and service support</h3><p class="hx-s">Inbound, every sector</p></div><div class="hx-b"><h4>Order, invoice and service support</h4><p class="hx-d">Answers where-is-my-order, invoice and payment questions from the record, and raises a ticket when needed.</p><p class="hx-k"><small>Moves</small>Calls closed first time</p><div class="hx-a"><button class="agk-go" type="button" data-try="invpay"><svg aria-hidden="true"><use href="#phone"/></svg>Try it</button></div></div></div></li></ol></div>
     <div class="tu-more rv"><p class="tu-mh"><span>Also on the same engine</span><a href="#pilot">Tell us yours</a></p><div class="mq a"><div class="mq-t"><div class="mq-s"><span class="mq-i"><small>Healthcare</small>Appointment booking and reminders</span><span class="mq-i"><small>E-commerce</small>Abandoned cart recovery</span><span class="mq-i"><small>Retail</small>Frontline hiring and screening</span><span class="mq-i"><small>Logistics</small>Worker onboarding and documents</span><span class="mq-i"><small>Quick commerce</small>Rider and partner activation</span><span class="mq-i"><small>Travel</small>Feedback and NPS surveys</span><span class="mq-i"><small>Education</small>Admissions counselling</span><span class="mq-i"><small>Automobile</small>Test drive and service booking</span><span class="mq-i"><small>Real estate</small>Site visit booking</span><span class="mq-i"><small>Insurance</small>Claim intake</span><span class="mq-i"><small>Logistics</small>Delivery attempt and address checks</span><span class="mq-i"><small>Consumer durables</small>Field service and AMC visits</span><span class="mq-i"><small>Consumer durables</small>Warranty and complaint intake</span><span class="mq-i"><small>Every sector</small>Missed call call-back</span><span class="mq-i"><small>BFSI</small>Welcome and verification calls</span><span class="mq-i"><small>Consumer durables</small>Upsell and cross-sell</span><span class="mq-i"><small>Agri</small>Farmer outreach and input reminders</span><span class="mq-i"><small>Large employers</small>Employee helpdesk</span><span class="mq-i"><small>Hospitality</small>Reservations and bookings</span><span class="mq-i"><small>Healthtech</small>Refill and re-engagement</span></div><div class="mq-s" aria-hidden="true"><span class="mq-i"><small>Healthcare</small>Appointment booking and reminders</span><span class="mq-i"><small>E-commerce</small>Abandoned cart recovery</span><span class="mq-i"><small>Retail</small>Frontline hiring and screening</span><span class="mq-i"><small>Logistics</small>Worker onboarding and documents</span><span class="mq-i"><small>Quick commerce</small>Rider and partner activation</span><span class="mq-i"><small>Travel</small>Feedback and NPS surveys</span><span class="mq-i"><small>Education</small>Admissions counselling</span><span class="mq-i"><small>Automobile</small>Test drive and service booking</span><span class="mq-i"><small>Real estate</small>Site visit booking</span><span class="mq-i"><small>Insurance</small>Claim intake</span><span class="mq-i"><small>Logistics</small>Delivery attempt and address checks</span><span class="mq-i"><small>Consumer durables</small>Field service and AMC visits</span><span class="mq-i"><small>Consumer durables</small>Warranty and complaint intake</span><span class="mq-i"><small>Every sector</small>Missed call call-back</span><span class="mq-i"><small>BFSI</small>Welcome and verification calls</span><span class="mq-i"><small>Consumer durables</small>Upsell and cross-sell</span><span class="mq-i"><small>Agri</small>Farmer outreach and input reminders</span><span class="mq-i"><small>Large employers</small>Employee helpdesk</span><span class="mq-i"><small>Hospitality</small>Reservations and bookings</span><span class="mq-i"><small>Healthtech</small>Refill and re-engagement</span></div></div></div></div>
   </div>
 </section>
@@ -3248,51 +3619,6 @@ cards.forEach(function(c){c.addEventListener('click',function(e){if(e.target.clo
   c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){if(e.target!==c)return;e.preventDefault();c.click()}else if(e.key==='Escape'){c.classList.remove('open');c.blur()}})});
 document.addEventListener('click',function(e){if(!e.target.closest('.hx'))shut(null)})})();
 </script>
-<script>
-/* ================= TopUC Filter Tabs & Grid Mode ================= */
-(function(){
-  var t10 = document.getElementById('t10');
-  var t10w = document.querySelector('.t10w');
-  var tabs = document.querySelectorAll('.t10-tab');
-  var btnGrid = document.getElementById('t10ViewGrid');
-  var btnScroll = document.getElementById('t10ViewScroll');
-  var btnPrev = document.getElementById('t10Prev');
-  var btnNext = document.getElementById('t10Next');
-  
-  if(!t10) return;
 
-  // Set default view mode to Grid for instant visibility without scroll issues
-  function setView(isGrid) {
-    if(btnGrid) btnGrid.classList.toggle('on', isGrid);
-    if(btnScroll) btnScroll.classList.toggle('on', !isGrid);
-    t10.classList.toggle('grid-mode', isGrid);
-    if(t10w) t10w.classList.toggle('grid-mode', isGrid);
-    if(btnPrev) btnPrev.style.display = isGrid ? 'none' : 'grid';
-    if(btnNext) btnNext.style.display = isGrid ? 'none' : 'grid';
-  }
-
-  if(btnGrid) btnGrid.addEventListener('click', function(){ setView(true); });
-  if(btnScroll) btnScroll.addEventListener('click', function(){ setView(false); });
-  setView(true); // Default to grid view
-
-  // Category Filtering
-  tabs.forEach(function(tab){
-    tab.addEventListener('click', function(){
-      tabs.forEach(function(t){ t.classList.remove('on'); t.setAttribute('aria-selected', 'false'); });
-      tab.classList.add('on');
-      tab.setAttribute('aria-selected', 'true');
-      var cat = tab.dataset.cat;
-      var items = t10.querySelectorAll('.t10-i');
-      items.forEach(function(item){
-        if(cat === 'all' || item.dataset.cat === cat) {
-          item.classList.remove('cat-hidden');
-        } else {
-          item.classList.add('cat-hidden');
-        }
-      });
-    });
-  });
-})();
-</script>
 </body>
 </html>
