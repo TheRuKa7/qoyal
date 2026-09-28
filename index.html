@@ -455,8 +455,8 @@ input[type=range]::-moz-range-thumb{width:24px;height:38px;border-radius:4px;bor
 .pilot>div{overflow:hidden}
 .pilot form{padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .pilot h3{grid-column:1/-1;font:700 26px/1.1 var(--display)}
-.pilot label{display:flex;flex-direction:column;gap:6px;font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
-.pilot input,.pilot select{font:500 16px var(--grot);text-transform:none;letter-spacing:0;color:var(--ink);background:#fff;border:1.5px solid var(--ink);border-radius:6px;padding:10px 12px}
+.pilot label{display:flex;flex-direction:column;gap:6px;font:600 11px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);min-width:0}
+.pilot input,.pilot select{font:500 15px var(--grot);text-transform:none;letter-spacing:0;color:var(--ink);background:#fff;border:1.5px solid var(--ink);border-radius:8px;padding:10px 12px;min-width:0;box-sizing:border-box}
 .pilot input:focus,.pilot select:focus{outline:2px solid var(--red);outline-offset:1px}
 .pilot .full{grid-column:1/-1}
 .pilot .go{grid-column:1/-1;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
@@ -1261,7 +1261,7 @@ footer{background:#16130F}
 
 /* ================= v15: finale ================= */
 .finale .wrap{text-align:left}
-.fin-panel{position:relative;overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(28px,4.5vw,64px);border-radius:32px;color:#fff;
+.fin-panel{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(28px,4.5vw,64px);border-radius:32px;color:#fff;
   background:linear-gradient(140deg,rgba(222,40,50,.94),rgba(165,20,30,.94));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 40px 90px -40px rgba(160,20,30,.7)}
 [data-theme=dark] .fin-panel{background:linear-gradient(140deg,rgba(190,30,40,.9),rgba(120,14,22,.92))}
 .fin-rings{position:absolute;left:-120px;bottom:-160px;width:520px;height:520px;pointer-events:none}
@@ -1297,17 +1297,24 @@ footer{background:#16130F}
 .fin-alt p{font:600 14px var(--grot);color:#FFE3D8;margin-bottom:12px}
 .btn.wht{background:#fff;color:#16130F}.btn.wht:hover{background:#16130F;color:#fff}
 .btn.gh{border:1px solid rgba(255,255,255,.55);color:#fff}.btn.gh:hover{background:rgba(255,255,255,.14)}
-.finale .pilot{position:relative;z-index:1;margin:0;max-width:none;grid-template-rows:1fr;visibility:visible;background:rgba(255,255,255,.96);color:#16130F;border-radius:22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.5);transition:transform .4s var(--ease)}
-[data-theme=dark] .finale .pilot{background:rgba(24,22,20,.94);color:var(--ink)}
+.finale .pilot{position:relative;z-index:1;margin:0;max-width:540px;width:100%;grid-template-rows:1fr;visibility:visible;background:rgba(255,255,255,.96);color:#16130F;border-radius:24px;box-shadow:0 30px 60px -30px rgba(0,0,0,.5);transition:transform .4s var(--ease)}
+[data-theme=dark] .finale .pilot{background:rgba(24,22,20,.95);color:var(--ink)}
 .finale .pilot.pulse{animation:formPulse .9s var(--ease)}
 @keyframes formPulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.8),0 30px 60px -30px rgba(0,0,0,.5)}100%{box-shadow:0 0 0 18px rgba(255,255,255,0),0 30px 60px -30px rgba(0,0,0,.5)}}
-.finale .pilot form{padding:26px}
-.finale .pilot h3{font:650 26px/1.1 var(--grot);letter-spacing:-.02em}
-.fsub{grid-column:1/-1;font:500 14px var(--grot);color:var(--mute);margin-top:-6px}
-.finale .pilot .go button{background:var(--red);color:#fff}
-.finale .pilot .go button:hover{background:#16130F}
+.finale .pilot form{padding:28px 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 14px;box-sizing:border-box;width:100%}
+.finale .pilot h3{font:650 25px/1.15 var(--grot);letter-spacing:-.02em}
+.fsub{grid-column:1/-1;font:500 13.5px/1.45 var(--grot);color:var(--mute);margin-top:-6px;margin-bottom:2px}
+.finale .pilot label{display:flex;flex-direction:column;gap:6px;font:600 11px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);min-width:0}
+.finale .pilot input,.finale .pilot select{font:500 14.5px var(--grot);text-transform:none;letter-spacing:0;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;width:100%;box-sizing:border-box;min-width:0;max-width:100%;transition:border-color .2s,box-shadow .2s}
+.finale .pilot input:focus,.finale .pilot select:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 2px rgba(217,35,45,.2)}
+[data-theme=dark] .finale .pilot input,[data-theme=dark] .finale .pilot select{background:#1a1715;color:#fff;border-color:rgba(255,255,255,.15)}
+[data-theme=dark] .finale .pilot input:focus,[data-theme=dark] .finale .pilot select:focus{border-color:var(--red);box-shadow:0 0 0 2px rgba(217,35,45,.3)}
+.finale .pilot .go{grid-column:1/-1;display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:4px}
+.finale .pilot .go button{background:var(--red);color:#fff;padding:12px 24px;border-radius:99px;font:650 14.5px var(--grot);border:none;cursor:pointer;transition:transform .15s,background .2s}
+.finale .pilot .go button:hover{background:#16130F;transform:translateY(-1px)}
 [data-theme=dark] .finale .pilot .go button:hover{background:#fff;color:#16130F}
-@media (max-width:1000px){.fin-panel{grid-template-columns:1fr}}
+@media (max-width:1080px){.fin-panel{grid-template-columns:1fr;gap:36px}}
+@media (max-width:540px){.finale .pilot form{grid-template-columns:1fr;padding:22px 18px}}
 
 /* ================= v15: simple mode / developer mode ================= */
 .mode{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:760px;margin:0 auto 22px}
@@ -2288,54 +2295,29 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
         <div>
           <form id="pilotForm" novalidate>
             <h3>Talk to enterprise sales</h3>
-            <p class="fsub">Tell us your workflow and call scale. We’ll configure your pilot and call you back within 4 hours.</p>
+            <p class="fsub">Tell us your workflow and scale. We’ll configure your pilot and call you back within 4 hours.</p>
             <label>Your name<input name="name" autocomplete="name" placeholder="Full name" required></label>
             <label>Work email<input name="email" type="email" autocomplete="email" placeholder="name@company.com" required></label>
             <label>Company<input name="company" autocomplete="organization" placeholder="Enterprise / Plant name" required></label>
             <label>Phone / WhatsApp<input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+91 98765 43210" required></label>
-            <label>The workflow to start with
-              <select name="usecase">
-                <option value="Supplier PO acceptance and delivery dates">Supplier PO acceptance & delivery dates</option>
-                <option value="Quote, RFQ and auction response chasing">Quote, RFQ & auction response chasing</option>
-                <option value="Lead-time and material-ready follow-ups">Lead-time & material-ready follow-ups</option>
-                <option value="Loan, EMI and B2B receivables collections">Loan, EMI & B2B receivables collections</option>
-                <option value="Plant, dealer and vendor KYC onboarding">Plant, dealer & vendor KYC onboarding</option>
-                <option value="Inbound WISMO (order status) and ticket intake">Inbound WISMO (order status) & ticket intake</option>
-                <option value="COD and address confirmation">COD & address confirmation</option>
-                <option value="Dealer and distributor reorders">Dealer & distributor reorders</option>
-                <option value="Custom Enterprise Workflow">Custom Enterprise Workflow</option>
+            <label>Workflow to start
+              <select name="usecase" required>
+                <option value="Supplier PO acceptance & delivery dates">Supplier PO acceptance & delivery dates</option>
+                <option value="Quote, RFQ & auction chasing">Quote, RFQ & auction chasing</option>
+                <option value="Lead-time & material-ready checks">Lead-time & material-ready checks</option>
+                <option value="B2B receivables & collections">B2B receivables & collections</option>
+                <option value="Vendor KYC & onboarding">Vendor KYC & onboarding</option>
+                <option value="Inbound WISMO & order status">Inbound WISMO & order status</option>
+                <option value="Custom enterprise workflow">Custom enterprise workflow</option>
               </select>
             </label>
-            <label>Monthly call volume (Size of calls)
+            <label>Monthly call scale
               <select name="call_volume" required>
-                <option value="5,000 - 25,000 calls / month">5,000 – 25,000 calls / month</option>
-                <option value="25,000 - 100,000 calls / month">25,000 – 100,000 calls / month</option>
-                <option value="100,000 - 500,000 calls / month">100,000 – 500,000 calls / month</option>
-                <option value="500,000+ calls / month (High Enterprise)">500,000+ calls / month (High Enterprise)</option>
-                <option value="Pilot test (< 5,000 calls)">Pilot test (&lt; 5,000 calls)</option>
+                <option value="5,000 – 25,000 calls / month">5,000 – 25,000 calls / mo</option>
+                <option value="25,000 – 100,000 calls / month">25,000 – 100,000 calls / mo</option>
+                <option value="100,000+ calls / month">100,000+ calls / mo</option>
+                <option value="Pilot (< 5,000 calls / month)">Pilot (&lt; 5,000 calls / mo)</option>
               </select>
-            </label>
-            <label>Current ERP / System of Record
-              <select name="current_system">
-                <option value="SAP (ECC / S/4HANA)">SAP (ECC / S/4HANA)</option>
-                <option value="Oracle ERP Cloud / NetSuite">Oracle ERP Cloud / NetSuite</option>
-                <option value="Microsoft Dynamics 365">Microsoft Dynamics 365</option>
-                <option value="Moglix OMS / Supplier Portal">Moglix OMS / Supplier Portal</option>
-                <option value="Salesforce / HubSpot">Salesforce / HubSpot</option>
-                <option value="Custom Database / REST API">Custom Database / REST API</option>
-                <option value="Spreadsheet upload (.xlsx / .csv)">Spreadsheet upload (.xlsx / .csv)</option>
-              </select>
-            </label>
-            <label>Deployment timeline
-              <select name="timeline">
-                <option value="Immediate (< 2 weeks)">Immediate (&lt; 2 weeks)</option>
-                <option value="Within 1 month">Within 1 month</option>
-                <option value="Next quarter">Next quarter</option>
-                <option value="Evaluating / Planning">Evaluating / Planning</option>
-              </select>
-            </label>
-            <label class="full">Workflow details or specific requirements
-              <input name="notes" placeholder="e.g. 8,000 open PO lines per month, need Hindi/Hinglish agent with line-level ERP writeback" />
             </label>
             <div class="go">
               <button type="submit">Request enterprise pilot</button>
@@ -2710,12 +2692,12 @@ var pf=$('#pilotForm'),pmsg=$('#pmsg');
 pf.addEventListener('submit',function(e){e.preventDefault();pmsg.className='msg';
   var f=new FormData(pf),data={};f.forEach(function(v,k){data[k]=String(v).trim()});
   if(!data.name||!data.company||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email||'')){pmsg.className='msg err';pmsg.textContent='Please add your name, company and a valid work email.';return}
-  track('pilot_submit',{usecase:data.usecase,call_volume:data.call_volume,current_system:data.current_system});
+  track('pilot_submit',{usecase:data.usecase,call_volume:data.call_volume});
   try{var stored=JSON.parse(localStorage.getItem('echo_pilot_leads')||'[]');stored.push(Object.assign({},data,{timestamp:new Date().toISOString()}));localStorage.setItem('echo_pilot_leads',JSON.stringify(stored))}catch(err){}
   var ok=function(){pmsg.className='msg ok';pmsg.textContent='Thanks, '+(data.name.split(' ')[0]||data.name)+'. Your enterprise pilot request for '+data.company+' has been received. Our team will contact you within 4 hours.';pf.querySelector('button[type=submit]').disabled=true};
   if(ECHO_CONFIG.PILOT_ENDPOINT){pmsg.textContent='Sending…';fetch(ECHO_CONFIG.PILOT_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).then(function(r){if(!r.ok)throw 0;ok()}).catch(function(){pmsg.className='msg err';pmsg.textContent='That didn’t go through. Please try again in a minute.'})}
   else if(ECHO_CONFIG.PILOT_EMAIL){
-    var body='ENTERPRISE PILOT REQUEST\n-----------------------------------------\nName: '+data.name+'\nCompany: '+data.company+'\nWork Email: '+data.email+'\nPhone / WhatsApp: '+(data.phone||'N/A')+'\nPrimary Workflow: '+(data.usecase||'N/A')+'\nMonthly Call Volume: '+(data.call_volume||'N/A')+'\nCurrent ERP / System: '+(data.current_system||'N/A')+'\nDeployment Timeline: '+(data.timeline||'N/A')+'\nWorkflow Details / Notes: '+(data.notes||'None')+'\n';
+    var body='ENTERPRISE PILOT REQUEST\n-----------------------------------------\nName: '+data.name+'\nCompany: '+data.company+'\nWork Email: '+data.email+'\nPhone / WhatsApp: '+(data.phone||'N/A')+'\nPrimary Workflow: '+(data.usecase||'N/A')+'\nMonthly Call Volume: '+(data.call_volume||'N/A')+'\n';
     location.href='mailto:'+ECHO_CONFIG.PILOT_EMAIL+'?subject='+encodeURIComponent('Echo Enterprise Pilot Request: '+data.company)+'&body='+encodeURIComponent(body);
     ok();
   }
