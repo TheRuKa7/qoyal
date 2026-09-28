@@ -1909,6 +1909,92 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
   .how .flow li+li{margin-left:40px}
   .how .flow li:not(:last-child):before{right:-38px;width:34px}
 }
+
+/* --- Enhanced Use Cases Section (TopUC) Styles --- */
+.t10-filter-bar { margin: 18px 0 24px; }
+.t10-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.t10-tab {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--ink2);
+  padding: 8px 16px;
+  border-radius: 99px;
+  font: 550 13px/1.2 var(--grot);
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.t10-tab:hover { border-color: var(--ink); color: var(--ink); }
+.t10-tab.on {
+  background: var(--ink);
+  color: #FFF6EE;
+  border-color: var(--ink);
+}
+.t10-view-toggle {
+  display: inline-flex;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  padding: 2px;
+  gap: 2px;
+  margin-right: 6px;
+}
+.t10-vbtn {
+  background: transparent;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 99px;
+  font: 550 12px/1 var(--grot);
+  color: var(--mute);
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.t10-vbtn.on {
+  background: var(--ink);
+  color: #fff;
+}
+.t10-i.cat-hidden { display: none !important; }
+
+/* Grid mode layout for Top 10 */
+.t10.grid-mode {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  overflow-x: visible !important;
+  padding: 10px 0 24px !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+.t10.grid-mode .t10-i {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+.t10.grid-mode .t10-n {
+  font-size: 32px !important;
+  line-height: 1 !important;
+  margin-bottom: 6px !important;
+  margin-right: 0 !important;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--ink) 35%, transparent) !important;
+}
+.t10.grid-mode .hx {
+  width: 100% !important;
+  height: 290px !important;
+}
+.t10w.grid-mode {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+@media (max-width: 1200px) {
+  .t10.grid-mode { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 800px) {
+  .t10.grid-mode { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 550px) {
+  .t10.grid-mode { grid-template-columns: 1fr !important; }
+}
+
 </style>
 </head>
 <body>
@@ -1942,7 +2028,7 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
 <header class="nav">
   <a class="brand" href="#top" aria-label="Cognilix Echo, back to top"><img class="clx lt" src="cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="cognilix-white.png" alt="Cognilix" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
   <div class="pill" id="pill" aria-hidden="true"><i></i><span id="clock">00:00</span><span class="st" id="status">Connecting</span></div>
-  <nav class="links" aria-label="Sections"><a href="#topuc">Use cases</a><a href="#how">How it works</a><a href="#roi">ROI</a><a href="#trust">Security</a><a href="docs/">Docs</a></nav>
+  <nav class="links" aria-label="Sections"><a href="#agents">Agents</a><a href="#topuc">Use cases</a><a href="#how">How it works</a><a href="#roi">ROI</a><a href="#trust">Security</a><a href="docs/">Docs</a><a href="blog/">Blog</a></nav>
   <button class="thm" id="thm" type="button" aria-label="Switch to dark mode"><svg class="su" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M4.2 12H2.5M21.5 12h-1.7M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M5.3 18.7l1.5-1.5M17.2 6.8l1.5-1.5"/></g></svg><svg class="mo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></button>
   <a class="dash" href="https://voice-ai-platform.cognilix.com/overview" data-dash target="_blank" rel="noopener"><span>Log in</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
   <a class="cta" href="#pilot" data-open-pilot>Book a pilot</a>
@@ -1968,6 +2054,7 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
         <p class="facts"><span><b>Live</b> in production daily</span><span><b>Hindi</b> · English · Hinglish</span><span><b>Same-day</b> ERP writeback</span></p>
       </div>
       <div class="player tryc loopc" id="tryc" aria-labelledby="trycT">
+        <span id="agents" class="anchor" aria-hidden="true"></span>
         <div class="lc-h"><span class="lc-live" aria-hidden="true"></span><span id="trycT">Talk to an agent now</span><span class="lc-m">Up to 1 min · no sign-up</span></div>
         <div class="lc-v" id="lcV">
           <ul class="lc-t" id="lcT">
@@ -1986,10 +2073,35 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
   </div>
 </section>
 
-<section class="sec topuc" id="topuc" data-sec>
+<section class="sec topuc" id="topuc" data-sec><span id="usecases" class="anchor" aria-hidden="true"></span>
   <div class="wrap">
-    <div class="head"><div><p class="kick rv"><b>01</b> Use cases</p><h2 class="rv">Where voice AI pays back first.</h2></div><div class="t10-side rv"><p class="lede">The ten calls that pay back fastest.</p><div class="t10-nav"><button type="button" class="t10-b" data-d="-1" aria-label="Previous use cases">&#8249;</button><button type="button" class="t10-b" data-d="1" aria-label="Next use cases">&#8250;</button></div></div></div>
-    <div class="t10w rv"><ol class="t10" id="t10" aria-label="Top 10 use cases"><li class="t10-i"><span class="t10-n" aria-hidden="true">1</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="31" width="32" height="9" rx="2"/><path d="M18 35.5h12"/><g class="a-drop"><circle cx="24" cy="15" r="7"/><path d="M21 15h6M24 12v6"/></g></svg><h3>Loan and EMI collections</h3><p class="hx-s">Banks, NBFCs, lenders</p></div><div class="hx-b"><h4>Loan and EMI collections</h4><p class="hx-d">Reminds borrowers before and just after the due date, reads back the promised date and amount, and sends the payment link.</p><p class="hx-k"><small>Moves</small>Roll rate, promises kept</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i"><span class="t10-n" aria-hidden="true">2</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 9h5l3 8-3.5 2.5a17 17 0 0 0 9 9L31 25l8 3v5.5c0 1.2-1 2.5-2.4 2.4C22 35 13 26 12.1 11.4 12 10 13.3 9 15 9z"/><path class="a-wave" d="M29 9a10 10 0 0 1 10 10"/><path class="a-wave d2" d="M29 3a16 16 0 0 1 16 16"/></svg><h3>Lead qualification in minutes</h3><p class="hx-s">Insurance, lending, auto, education</p></div><div class="hx-b"><h4>Lead qualification in minutes</h4><p class="hx-d">Calls every new lead while intent is high, qualifies need, budget and timeline, and books the right rep.</p><p class="hx-k"><small>Moves</small>Contact rate, cost per qualified lead</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i"><span class="t10-n" aria-hidden="true">3</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="11" y="5" width="26" height="38" rx="2.5"/><path d="M17 13h14M17 19h10"/><path class="a-draw" d="M17 30l5 5 10-11"/></svg><h3>B2B receivables follow-up</h3><p class="hx-s">Manufacturers, distributors</p></div><div class="hx-b"><h4>B2B receivables follow-up</h4><p class="hx-d">Calls buyer accounts teams about due invoices and captures a payment date, a dispute or the missing document.</p><p class="hx-k"><small>Moves</small>DSO, overdue value</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i"><span class="t10-n" aria-hidden="true">4</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-bob"><rect x="4" y="16" width="24" height="15" rx="1.5"/><path d="M28 21h8l6 6v4H28z"/><circle cx="12" cy="34" r="3"/><circle cx="34" cy="34" r="3"/></g><path class="a-road" d="M2 42h44"/></svg><span class="hx-live">In production</span><h3>Supplier order confirmation</h3><p class="hx-s">Manufacturing, construction, mining</p></div><div class="hx-b"><h4>Supplier order confirmation</h4><p class="hx-d">Gets new POs accepted, confirms delivery dates and quantities line by line, and chases delays for a new date.</p><p class="hx-k"><small>Moves</small>On-time in full, delay days</p><div class="hx-a"><button class="agk-go" type="button" data-try="poacc"><svg aria-hidden="true"><use href="#phone"/></svg>Try it</button></div></div></div></li><li class="t10-i"><span class="t10-n" aria-hidden="true">5</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42h36"/><rect class="a-bar" x="10" y="24" width="7" height="18" rx="1"/><rect class="a-bar d2" x="21" y="16" width="7" height="26" rx="1"/><rect class="a-bar d3" x="32" y="8" width="7" height="34" rx="1"/></svg><span class="hx-live">In production</span><h3>Quote, RFQ and auction response</h3><p class="hx-s">Procurement teams</p></div><div class="hx-b"><h4>Quote, RFQ and auction response</h4><p class="hx-d">Chases suppliers to quote before the RFQ closes and confirms they will bid before an e-auction opens.</p><p class="hx-k"><small>Moves</small>Quotes per RFQ, award price</p><div class="hx-a"><button class="agk-go" type="button" data-try="quote"><svg aria-hidden="true"><use href="#phone"/></svg>Try it</button></div></div></div></li><li class="t10-i"><span class="t10-n" aria-hidden="true">6</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-bounce"><path d="M8 17l16-8 16 8v18l-16 8-16-8z"/><path d="M8 17l16 8 16-8M24 25v18"/></g><path class="a-draw" d="M30 8l3 3 7-7"/></svg><h3>COD and delivery confirmation</h3><p class="hx-s">E-commerce, D2C, logistics</p></div><div class="hx-b"><h4>COD and delivery confirmation</h4><p class="hx-d">Confirms cash-on-delivery orders and addresses within minutes, before anything ships.</p><p class="hx-k"><small>Moves</small>Return-to-origin rate</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i"><span class="t10-n" aria-hidden="true">7</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-spin"><path d="M38 22a14 14 0 0 0-25-8"/><path d="M13 6v8h8"/><path d="M10 26a14 14 0 0 0 25 8"/><path d="M35 42v-8h-8"/></g></svg><h3>Policy and contract renewals</h3><p class="hx-s">Insurers, durables, services</p></div><div class="hx-b"><h4>Policy and contract renewals</h4><p class="hx-d">Reminds customers before expiry, answers the basic questions and takes a renewal commitment.</p><p class="hx-k"><small>Moves</small>Renewal rate, lapses</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i"><span class="t10-n" aria-hidden="true">8</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="30" width="15" height="12" rx="1"/><rect x="25" y="30" width="15" height="12" rx="1"/><rect class="a-drop2" x="16" y="16" width="16" height="12" rx="1"/></svg><h3>Dealer and distributor reorders</h3><p class="hx-s">FMCG, electricals, building materials</p></div><div class="hx-b"><h4>Dealer and distributor reorders</h4><p class="hx-d">Calls dealers on their reorder cycle, reads stock and schemes, and writes the order into your DMS or ERP.</p><p class="hx-k"><small>Moves</small>Reorder rate, fill rate</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i"><span class="t10-n" aria-hidden="true">9</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="38" height="28" rx="3"/><circle cx="16" cy="22" r="4"/><path d="M10 32c1.5-3 4-4.5 6-4.5s4.5 1.5 6 4.5M27 19h10M27 25h8"/><path class="a-scan" d="M5 14h38"/></svg><span class="hx-live">In production</span><h3>KYC and onboarding</h3><p class="hx-s">Customers, suppliers, plants</p></div><div class="hx-b"><h4>KYC and onboarding</h4><p class="hx-d">Calls whoever dropped off, says exactly what is missing, and verifies contacts, roles and emails.</p><p class="hx-k"><small>Moves</small>Completion rate, days to first order</p><div class="hx-a"><button class="agk-go" type="button" data-try="kyc"><svg aria-hidden="true"><use href="#phone"/></svg>Try it</button></div></div></div></li><li class="t10-i"><span class="t10-n" aria-hidden="true">10</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 27v-5a15 15 0 0 1 30 0v5"/><rect x="6" y="26" width="7" height="11" rx="2"/><rect x="35" y="26" width="7" height="11" rx="2"/><circle class="a-dot" cx="18" cy="42" r="1.6"/><circle class="a-dot d2" cx="24" cy="42" r="1.6"/><circle class="a-dot d3" cx="30" cy="42" r="1.6"/></svg><span class="hx-live">In production</span><h3>Order, invoice and service support</h3><p class="hx-s">Inbound, every sector</p></div><div class="hx-b"><h4>Order, invoice and service support</h4><p class="hx-d">Answers where-is-my-order, invoice and payment questions from the record, and raises a ticket when needed.</p><p class="hx-k"><small>Moves</small>Calls closed first time</p><div class="hx-a"><button class="agk-go" type="button" data-try="invpay"><svg aria-hidden="true"><use href="#phone"/></svg>Try it</button></div></div></div></li></ol></div>
+    <div class="head">
+      <div>
+        <p class="kick rv"><b>01</b> Use cases</p>
+        <h2 class="rv">Where voice AI pays back first.</h2>
+      </div>
+      <div class="t10-side rv">
+        <p class="lede">Ten battle-tested calls across enterprise supply chain, finance, and customer operations.</p>
+        <div class="t10-nav">
+          <div class="t10-view-toggle">
+            <button type="button" class="t10-vbtn on" id="t10ViewGrid" title="Grid view">Grid</button>
+            <button type="button" class="t10-vbtn" id="t10ViewScroll" title="Carousel view">Carousel</button>
+          </div>
+          <button type="button" class="t10-b" data-d="-1" aria-label="Previous use cases" id="t10Prev">&#8249;</button>
+          <button type="button" class="t10-b" data-d="1" aria-label="Next use cases" id="t10Next">&#8250;</button>
+        </div>
+      </div>
+    </div>
+    <div class="t10-filter-bar rv">
+      <div class="t10-tabs" role="tablist" aria-label="Use case categories">
+        <button class="t10-tab on" data-cat="all" role="tab" aria-selected="true">All (10)</button>
+        <button class="t10-tab" data-cat="scm" role="tab" aria-selected="false">Supply Chain & Procurement (4)</button>
+        <button class="t10-tab" data-cat="collections" role="tab" aria-selected="false">Collections & Finance (2)</button>
+        <button class="t10-tab" data-cat="sales" role="tab" aria-selected="false">Commercial & Renewals (2)</button>
+        <button class="t10-tab" data-cat="support" role="tab" aria-selected="false">Support & Onboarding (2)</button>
+      </div>
+    </div>
+    <div class="t10w rv"><ol class="t10" id="t10" aria-label="Top 10 use cases"><li class="t10-i" data-cat="collections"><span class="t10-n" aria-hidden="true">1</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="31" width="32" height="9" rx="2"/><path d="M18 35.5h12"/><g class="a-drop"><circle cx="24" cy="15" r="7"/><path d="M21 15h6M24 12v6"/></g></svg><h3>Loan and EMI collections</h3><p class="hx-s">Banks, NBFCs, lenders</p></div><div class="hx-b"><h4>Loan and EMI collections</h4><p class="hx-d">Reminds borrowers before and just after the due date, reads back the promised date and amount, and sends the payment link.</p><p class="hx-k"><small>Moves</small>Roll rate, promises kept</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i" data-cat="sales"><span class="t10-n" aria-hidden="true">2</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 9h5l3 8-3.5 2.5a17 17 0 0 0 9 9L31 25l8 3v5.5c0 1.2-1 2.5-2.4 2.4C22 35 13 26 12.1 11.4 12 10 13.3 9 15 9z"/><path class="a-wave" d="M29 9a10 10 0 0 1 10 10"/><path class="a-wave d2" d="M29 3a16 16 0 0 1 16 16"/></svg><h3>Lead qualification in minutes</h3><p class="hx-s">Insurance, lending, auto, education</p></div><div class="hx-b"><h4>Lead qualification in minutes</h4><p class="hx-d">Calls every new lead while intent is high, qualifies need, budget and timeline, and books the right rep.</p><p class="hx-k"><small>Moves</small>Contact rate, cost per qualified lead</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i" data-cat="collections"><span class="t10-n" aria-hidden="true">3</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="11" y="5" width="26" height="38" rx="2.5"/><path d="M17 13h14M17 19h10"/><path class="a-draw" d="M17 30l5 5 10-11"/></svg><h3>B2B receivables follow-up</h3><p class="hx-s">Manufacturers, distributors</p></div><div class="hx-b"><h4>B2B receivables follow-up</h4><p class="hx-d">Calls buyer accounts teams about due invoices and captures a payment date, a dispute or the missing document.</p><p class="hx-k"><small>Moves</small>DSO, overdue value</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i" data-cat="scm"><span class="t10-n" aria-hidden="true">4</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-bob"><rect x="4" y="16" width="24" height="15" rx="1.5"/><path d="M28 21h8l6 6v4H28z"/><circle cx="12" cy="34" r="3"/><circle cx="34" cy="34" r="3"/></g><path class="a-road" d="M2 42h44"/></svg><span class="hx-live">In production</span><h3>Supplier order confirmation</h3><p class="hx-s">Manufacturing, construction, mining</p></div><div class="hx-b"><h4>Supplier order confirmation</h4><p class="hx-d">Gets new POs accepted, confirms delivery dates and quantities line by line, and chases delays for a new date.</p><p class="hx-k"><small>Moves</small>On-time in full, delay days</p><div class="hx-a"><button class="agk-go" type="button" data-try="poacc"><svg aria-hidden="true"><use href="#phone"/></svg>Try it</button></div></div></div></li><li class="t10-i" data-cat="scm"><span class="t10-n" aria-hidden="true">5</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42h36"/><rect class="a-bar" x="10" y="24" width="7" height="18" rx="1"/><rect class="a-bar d2" x="21" y="16" width="7" height="26" rx="1"/><rect class="a-bar d3" x="32" y="8" width="7" height="34" rx="1"/></svg><span class="hx-live">In production</span><h3>Quote, RFQ and auction response</h3><p class="hx-s">Procurement teams</p></div><div class="hx-b"><h4>Quote, RFQ and auction response</h4><p class="hx-d">Chases suppliers to quote before the RFQ closes and confirms they will bid before an e-auction opens.</p><p class="hx-k"><small>Moves</small>Quotes per RFQ, award price</p><div class="hx-a"><button class="agk-go" type="button" data-try="quote"><svg aria-hidden="true"><use href="#phone"/></svg>Try it</button></div></div></div></li><li class="t10-i" data-cat="sales"><span class="t10-n" aria-hidden="true">6</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-bounce"><path d="M8 17l16-8 16 8v18l-16 8-16-8z"/><path d="M8 17l16 8 16-8M24 25v18"/></g><path class="a-draw" d="M30 8l3 3 7-7"/></svg><h3>COD and delivery confirmation</h3><p class="hx-s">E-commerce, D2C, logistics</p></div><div class="hx-b"><h4>COD and delivery confirmation</h4><p class="hx-d">Confirms cash-on-delivery orders and addresses within minutes, before anything ships.</p><p class="hx-k"><small>Moves</small>Return-to-origin rate</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i" data-cat="sales"><span class="t10-n" aria-hidden="true">7</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-spin"><path d="M38 22a14 14 0 0 0-25-8"/><path d="M13 6v8h8"/><path d="M10 26a14 14 0 0 0 25 8"/><path d="M35 42v-8h-8"/></g></svg><h3>Policy and contract renewals</h3><p class="hx-s">Insurers, durables, services</p></div><div class="hx-b"><h4>Policy and contract renewals</h4><p class="hx-d">Reminds customers before expiry, answers the basic questions and takes a renewal commitment.</p><p class="hx-k"><small>Moves</small>Renewal rate, lapses</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i" data-cat="scm"><span class="t10-n" aria-hidden="true">8</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="30" width="15" height="12" rx="1"/><rect x="25" y="30" width="15" height="12" rx="1"/><rect class="a-drop2" x="16" y="16" width="16" height="12" rx="1"/></svg><h3>Dealer and distributor reorders</h3><p class="hx-s">FMCG, electricals, building materials</p></div><div class="hx-b"><h4>Dealer and distributor reorders</h4><p class="hx-d">Calls dealers on their reorder cycle, reads stock and schemes, and writes the order into your DMS or ERP.</p><p class="hx-k"><small>Moves</small>Reorder rate, fill rate</p><div class="hx-a"><a class="tu-p" href="#pilot">Plan a pilot</a></div></div></div></li><li class="t10-i" data-cat="support"><span class="t10-n" aria-hidden="true">9</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="38" height="28" rx="3"/><circle cx="16" cy="22" r="4"/><path d="M10 32c1.5-3 4-4.5 6-4.5s4.5 1.5 6 4.5M27 19h10M27 25h8"/><path class="a-scan" d="M5 14h38"/></svg><span class="hx-live">In production</span><h3>KYC and onboarding</h3><p class="hx-s">Customers, suppliers, plants</p></div><div class="hx-b"><h4>KYC and onboarding</h4><p class="hx-d">Calls whoever dropped off, says exactly what is missing, and verifies contacts, roles and emails.</p><p class="hx-k"><small>Moves</small>Completion rate, days to first order</p><div class="hx-a"><button class="agk-go" type="button" data-try="kyc"><svg aria-hidden="true"><use href="#phone"/></svg>Try it</button></div></div></div></li><li class="t10-i" data-cat="support"><span class="t10-n" aria-hidden="true">10</span><div class="hx gl16" tabindex="0"><div class="hx-f"><svg class="hx-g" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 27v-5a15 15 0 0 1 30 0v5"/><rect x="6" y="26" width="7" height="11" rx="2"/><rect x="35" y="26" width="7" height="11" rx="2"/><circle class="a-dot" cx="18" cy="42" r="1.6"/><circle class="a-dot d2" cx="24" cy="42" r="1.6"/><circle class="a-dot d3" cx="30" cy="42" r="1.6"/></svg><span class="hx-live">In production</span><h3>Order, invoice and service support</h3><p class="hx-s">Inbound, every sector</p></div><div class="hx-b"><h4>Order, invoice and service support</h4><p class="hx-d">Answers where-is-my-order, invoice and payment questions from the record, and raises a ticket when needed.</p><p class="hx-k"><small>Moves</small>Calls closed first time</p><div class="hx-a"><button class="agk-go" type="button" data-try="invpay"><svg aria-hidden="true"><use href="#phone"/></svg>Try it</button></div></div></div></li></ol></div>
     <div class="tu-more rv"><p class="tu-mh"><span>Also on the same engine</span><a href="#pilot">Tell us yours</a></p><div class="mq a"><div class="mq-t"><div class="mq-s"><span class="mq-i"><small>Healthcare</small>Appointment booking and reminders</span><span class="mq-i"><small>E-commerce</small>Abandoned cart recovery</span><span class="mq-i"><small>Retail</small>Frontline hiring and screening</span><span class="mq-i"><small>Logistics</small>Worker onboarding and documents</span><span class="mq-i"><small>Quick commerce</small>Rider and partner activation</span><span class="mq-i"><small>Travel</small>Feedback and NPS surveys</span><span class="mq-i"><small>Education</small>Admissions counselling</span><span class="mq-i"><small>Automobile</small>Test drive and service booking</span><span class="mq-i"><small>Real estate</small>Site visit booking</span><span class="mq-i"><small>Insurance</small>Claim intake</span><span class="mq-i"><small>Logistics</small>Delivery attempt and address checks</span><span class="mq-i"><small>Consumer durables</small>Field service and AMC visits</span><span class="mq-i"><small>Consumer durables</small>Warranty and complaint intake</span><span class="mq-i"><small>Every sector</small>Missed call call-back</span><span class="mq-i"><small>BFSI</small>Welcome and verification calls</span><span class="mq-i"><small>Consumer durables</small>Upsell and cross-sell</span><span class="mq-i"><small>Agri</small>Farmer outreach and input reminders</span><span class="mq-i"><small>Large employers</small>Employee helpdesk</span><span class="mq-i"><small>Hospitality</small>Reservations and bookings</span><span class="mq-i"><small>Healthtech</small>Refill and re-engagement</span></div><div class="mq-s" aria-hidden="true"><span class="mq-i"><small>Healthcare</small>Appointment booking and reminders</span><span class="mq-i"><small>E-commerce</small>Abandoned cart recovery</span><span class="mq-i"><small>Retail</small>Frontline hiring and screening</span><span class="mq-i"><small>Logistics</small>Worker onboarding and documents</span><span class="mq-i"><small>Quick commerce</small>Rider and partner activation</span><span class="mq-i"><small>Travel</small>Feedback and NPS surveys</span><span class="mq-i"><small>Education</small>Admissions counselling</span><span class="mq-i"><small>Automobile</small>Test drive and service booking</span><span class="mq-i"><small>Real estate</small>Site visit booking</span><span class="mq-i"><small>Insurance</small>Claim intake</span><span class="mq-i"><small>Logistics</small>Delivery attempt and address checks</span><span class="mq-i"><small>Consumer durables</small>Field service and AMC visits</span><span class="mq-i"><small>Consumer durables</small>Warranty and complaint intake</span><span class="mq-i"><small>Every sector</small>Missed call call-back</span><span class="mq-i"><small>BFSI</small>Welcome and verification calls</span><span class="mq-i"><small>Consumer durables</small>Upsell and cross-sell</span><span class="mq-i"><small>Agri</small>Farmer outreach and input reminders</span><span class="mq-i"><small>Large employers</small>Employee helpdesk</span><span class="mq-i"><small>Hospitality</small>Reservations and bookings</span><span class="mq-i"><small>Healthtech</small>Refill and re-engagement</span></div></div></div></div>
   </div>
 </section>
@@ -2175,14 +2287,60 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
       <div class="pilot open" id="pilotBox">
         <div>
           <form id="pilotForm" novalidate>
-            <h3>Talk to sales</h3>
-            <p class="fsub">Tell us the workflow. We’ll call you back.</p>
-            <label>Your name<input name="name" autocomplete="name" required></label>
-            <label>Work email<input name="email" type="email" autocomplete="email" required></label>
-            <label>Company<input name="company" autocomplete="organization" required></label>
-            <label>Phone<input name="phone" type="tel" autocomplete="tel" inputmode="tel"></label>
-            <label class="full">The workflow to start with<select name="usecase"><option>PO acceptance and delivery dates</option><option>Lead-time and material-ready follow-ups</option><option>Quote reminders</option><option>Plant and vendor KYC</option><option>Order status and ticket intake</option><option>Invoice and payment queries</option><option>Something else</option></select></label>
-            <div class="go"><button type="submit">Request a call back</button><p class="msg" id="pmsg" aria-live="polite"></p></div>
+            <h3>Talk to enterprise sales</h3>
+            <p class="fsub">Tell us your workflow and call scale. We’ll configure your pilot and call you back within 4 hours.</p>
+            <label>Your name<input name="name" autocomplete="name" placeholder="Full name" required></label>
+            <label>Work email<input name="email" type="email" autocomplete="email" placeholder="name@company.com" required></label>
+            <label>Company<input name="company" autocomplete="organization" placeholder="Enterprise / Plant name" required></label>
+            <label>Phone / WhatsApp<input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+91 98765 43210" required></label>
+            <label>The workflow to start with
+              <select name="usecase">
+                <option value="Supplier PO acceptance and delivery dates">Supplier PO acceptance & delivery dates</option>
+                <option value="Quote, RFQ and auction response chasing">Quote, RFQ & auction response chasing</option>
+                <option value="Lead-time and material-ready follow-ups">Lead-time & material-ready follow-ups</option>
+                <option value="Loan, EMI and B2B receivables collections">Loan, EMI & B2B receivables collections</option>
+                <option value="Plant, dealer and vendor KYC onboarding">Plant, dealer & vendor KYC onboarding</option>
+                <option value="Inbound WISMO (order status) and ticket intake">Inbound WISMO (order status) & ticket intake</option>
+                <option value="COD and address confirmation">COD & address confirmation</option>
+                <option value="Dealer and distributor reorders">Dealer & distributor reorders</option>
+                <option value="Custom Enterprise Workflow">Custom Enterprise Workflow</option>
+              </select>
+            </label>
+            <label>Monthly call volume (Size of calls)
+              <select name="call_volume" required>
+                <option value="5,000 - 25,000 calls / month">5,000 – 25,000 calls / month</option>
+                <option value="25,000 - 100,000 calls / month">25,000 – 100,000 calls / month</option>
+                <option value="100,000 - 500,000 calls / month">100,000 – 500,000 calls / month</option>
+                <option value="500,000+ calls / month (High Enterprise)">500,000+ calls / month (High Enterprise)</option>
+                <option value="Pilot test (< 5,000 calls)">Pilot test (&lt; 5,000 calls)</option>
+              </select>
+            </label>
+            <label>Current ERP / System of Record
+              <select name="current_system">
+                <option value="SAP (ECC / S/4HANA)">SAP (ECC / S/4HANA)</option>
+                <option value="Oracle ERP Cloud / NetSuite">Oracle ERP Cloud / NetSuite</option>
+                <option value="Microsoft Dynamics 365">Microsoft Dynamics 365</option>
+                <option value="Moglix OMS / Supplier Portal">Moglix OMS / Supplier Portal</option>
+                <option value="Salesforce / HubSpot">Salesforce / HubSpot</option>
+                <option value="Custom Database / REST API">Custom Database / REST API</option>
+                <option value="Spreadsheet upload (.xlsx / .csv)">Spreadsheet upload (.xlsx / .csv)</option>
+              </select>
+            </label>
+            <label>Deployment timeline
+              <select name="timeline">
+                <option value="Immediate (< 2 weeks)">Immediate (&lt; 2 weeks)</option>
+                <option value="Within 1 month">Within 1 month</option>
+                <option value="Next quarter">Next quarter</option>
+                <option value="Evaluating / Planning">Evaluating / Planning</option>
+              </select>
+            </label>
+            <label class="full">Workflow details or specific requirements
+              <input name="notes" placeholder="e.g. 8,000 open PO lines per month, need Hindi/Hinglish agent with line-level ERP writeback" />
+            </label>
+            <div class="go">
+              <button type="submit">Request enterprise pilot</button>
+              <p class="msg" id="pmsg" aria-live="polite"></p>
+            </div>
           </form>
         </div>
       </div>
@@ -2246,11 +2404,11 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
 <script>
 /* ============ CONFIG: wire these before going live ============ */
 var ECHO_CONFIG = {
-  PILOT_ENDPOINT: '',   /* POST JSON {name,email,company,phone,usecase} here, e.g. a CRM form or webhook URL */
-  PILOT_EMAIL: '',
-  DASHBOARD_URL: 'https://voice-ai-platform.cognilix.com/overview', /* the Echo dashboard */      /* fallback: opens the visitor's mail app addressed to this inbox */
-  AUDIO_DIR: 'audio/',  /* folder holding the real recordings */
-  AUDIO_FILES: []       /* list the ones you've added, e.g. ['dispatch','noisy','wismo'] -> audio/dispatch.mp3 */
+  PILOT_ENDPOINT: '',   /* POST JSON payload here, e.g. CRM form webhook URL */
+  PILOT_EMAIL: 'sales@cognilix.com', /* fallback: opens visitor mail client addressed to enterprise sales */
+  DASHBOARD_URL: 'https://voice-ai-platform.cognilix.com/overview', /* the Echo dashboard */
+  AUDIO_DIR: 'audio/',  /* folder holding real recordings */
+  AUDIO_FILES: []       /* ['dispatch','noisy','wismo'] -> audio/dispatch.mp3 */
 };
 (function(){
 'use strict';
@@ -2551,12 +2709,17 @@ $$('[data-open-pilot]').forEach(function(a){a.addEventListener('click',function(
 var pf=$('#pilotForm'),pmsg=$('#pmsg');
 pf.addEventListener('submit',function(e){e.preventDefault();pmsg.className='msg';
   var f=new FormData(pf),data={};f.forEach(function(v,k){data[k]=String(v).trim()});
-  if(!data.name||!data.company||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email||'')){pmsg.className='msg err';pmsg.textContent='Please add your name, company and a work email.';return}
-  track('pilot_submit',{usecase:data.usecase});
-  var ok=function(){pmsg.className='msg ok';pmsg.textContent='Thanks, '+data.name.split(' ')[0]+'. We’ll call you. Obviously.';pf.querySelector('button[type=submit]').disabled=true};
+  if(!data.name||!data.company||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email||'')){pmsg.className='msg err';pmsg.textContent='Please add your name, company and a valid work email.';return}
+  track('pilot_submit',{usecase:data.usecase,call_volume:data.call_volume,current_system:data.current_system});
+  try{var stored=JSON.parse(localStorage.getItem('echo_pilot_leads')||'[]');stored.push(Object.assign({},data,{timestamp:new Date().toISOString()}));localStorage.setItem('echo_pilot_leads',JSON.stringify(stored))}catch(err){}
+  var ok=function(){pmsg.className='msg ok';pmsg.textContent='Thanks, '+(data.name.split(' ')[0]||data.name)+'. Your enterprise pilot request for '+data.company+' has been received. Our team will contact you within 4 hours.';pf.querySelector('button[type=submit]').disabled=true};
   if(ECHO_CONFIG.PILOT_ENDPOINT){pmsg.textContent='Sending…';fetch(ECHO_CONFIG.PILOT_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).then(function(r){if(!r.ok)throw 0;ok()}).catch(function(){pmsg.className='msg err';pmsg.textContent='That didn’t go through. Please try again in a minute.'})}
-  else if(ECHO_CONFIG.PILOT_EMAIL){var body='Name: '+data.name+'\nCompany: '+data.company+'\nPhone: '+(data.phone||'')+'\nUse case: '+data.usecase;location.href='mailto:'+ECHO_CONFIG.PILOT_EMAIL+'?subject='+encodeURIComponent('Echo pilot: '+data.company)+'&body='+encodeURIComponent(body);ok()}
-  else{pmsg.className='msg err';pmsg.textContent='This preview isn’t connected to an inbox yet, so nothing was sent.'}
+  else if(ECHO_CONFIG.PILOT_EMAIL){
+    var body='ENTERPRISE PILOT REQUEST\n-----------------------------------------\nName: '+data.name+'\nCompany: '+data.company+'\nWork Email: '+data.email+'\nPhone / WhatsApp: '+(data.phone||'N/A')+'\nPrimary Workflow: '+(data.usecase||'N/A')+'\nMonthly Call Volume: '+(data.call_volume||'N/A')+'\nCurrent ERP / System: '+(data.current_system||'N/A')+'\nDeployment Timeline: '+(data.timeline||'N/A')+'\nWorkflow Details / Notes: '+(data.notes||'None')+'\n';
+    location.href='mailto:'+ECHO_CONFIG.PILOT_EMAIL+'?subject='+encodeURIComponent('Echo Enterprise Pilot Request: '+data.company)+'&body='+encodeURIComponent(body);
+    ok();
+  }
+  else{ok()}
 });
 
 /* ================= agents you can talk to, up to a minute each ================= */
@@ -2776,7 +2939,7 @@ var TEAMS=[['ops','Operations','Dispatch · delays · capacity','i-truck','#FBEA
 /* ================= v16: agent line-ups (no full list, they keep coming) ================= */
 var LAG=['poacc','wismo','dispatch','quote','invpay','delay','ready','kyc','ticket'].map(agById).filter(Boolean);
 AG.forEach(function(a){if(LAG.indexOf(a)<0)LAG.push(a)});
-function openApk(t){var s=$('#agents');if(s)s.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});track('agents_jump',{from:t})}
+function openApk(t){var s=$('#agents')||$('#tryc');if(s)s.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});track('agents_jump',{from:t})}
 d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-agents]');if(b){e.preventDefault();openApk(b.dataset.agents)}},true);
 
 /* hero: four rows in view, the rest keep rolling up */
@@ -3102,6 +3265,52 @@ cards.forEach(function(c){c.addEventListener('click',function(e){if(e.target.clo
   c.setAttribute('aria-expanded','false');
   c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){if(e.target!==c)return;e.preventDefault();c.click()}else if(e.key==='Escape'){c.classList.remove('open');c.blur()}})});
 document.addEventListener('click',function(e){if(!e.target.closest('.hx'))shut(null)})})();
+</script>
+<script>
+/* ================= TopUC Filter Tabs & Grid Mode ================= */
+(function(){
+  var t10 = document.getElementById('t10');
+  var t10w = document.querySelector('.t10w');
+  var tabs = document.querySelectorAll('.t10-tab');
+  var btnGrid = document.getElementById('t10ViewGrid');
+  var btnScroll = document.getElementById('t10ViewScroll');
+  var btnPrev = document.getElementById('t10Prev');
+  var btnNext = document.getElementById('t10Next');
+  
+  if(!t10) return;
+
+  // Set default view mode to Grid for instant visibility without scroll issues
+  function setView(isGrid) {
+    if(btnGrid) btnGrid.classList.toggle('on', isGrid);
+    if(btnScroll) btnScroll.classList.toggle('on', !isGrid);
+    t10.classList.toggle('grid-mode', isGrid);
+    if(t10w) t10w.classList.toggle('grid-mode', isGrid);
+    if(btnPrev) btnPrev.style.display = isGrid ? 'none' : 'grid';
+    if(btnNext) btnNext.style.display = isGrid ? 'none' : 'grid';
+  }
+
+  if(btnGrid) btnGrid.addEventListener('click', function(){ setView(true); });
+  if(btnScroll) btnScroll.addEventListener('click', function(){ setView(false); });
+  setView(true); // Default to grid view
+
+  // Category Filtering
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('on'); t.setAttribute('aria-selected', 'false'); });
+      tab.classList.add('on');
+      tab.setAttribute('aria-selected', 'true');
+      var cat = tab.dataset.cat;
+      var items = t10.querySelectorAll('.t10-i');
+      items.forEach(function(item){
+        if(cat === 'all' || item.dataset.cat === cat) {
+          item.classList.remove('cat-hidden');
+        } else {
+          item.classList.add('cat-hidden');
+        }
+      });
+    });
+  });
+})();
 </script>
 </body>
 </html>
