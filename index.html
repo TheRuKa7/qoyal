@@ -1913,10 +1913,7 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
 .topuc .t10-side{display:flex;flex-direction:column;gap:18px;align-items:flex-end;text-align:right}
 .topuc .lede{max-width:38ch;margin:0;font:450 16px/1.55 var(--grot);color:var(--mute)}
 
-.t10-ctrls{display:flex;align-items:center;gap:16px}
-.t10-counter{font:650 13px var(--mono);letter-spacing:.08em;color:var(--mute);display:flex;align-items:center;gap:4px;user-select:none}
-.t10-counter b{color:var(--ink);font-weight:750;font-size:15px;min-width:20px;text-align:right}
-.t10-counter small{opacity:.4;margin:0 1px}
+/* counter removed */
 .t10-nav{display:flex;gap:8px}
 .t10-b{
   width:44px;
@@ -2185,13 +2182,13 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
 <header class="nav">
   <a class="brand" href="#top" aria-label="Cognilix Echo, back to top"><img class="clx lt" src="cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="cognilix-white.png" alt="Cognilix" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
   <div class="pill" id="pill" aria-hidden="true"><i></i><span id="clock">00:00</span><span class="st" id="status">Connecting</span></div>
-  <nav class="links" aria-label="Sections"><a href="#agents">Agents</a><a href="#topuc">Use cases</a><a href="#how">How it works</a><a href="#roi">ROI</a><a href="#trust">Security</a><a href="docs/">Docs</a><a href="blog/">Blog</a></nav>
+  <nav class="links" aria-label="Sections"><a href="#topuc">Use cases</a><a href="#how">How it works</a><a href="#dev">Platform</a><a href="#roi">ROI</a><a href="#trust">Security</a><a href="#faq">FAQ</a><a href="docs/">Docs</a><a href="blog/">Blog</a></nav>
   <button class="thm" id="thm" type="button" aria-label="Switch to dark mode"><svg class="su" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M4.2 12H2.5M21.5 12h-1.7M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M5.3 18.7l1.5-1.5M17.2 6.8l1.5-1.5"/></g></svg><svg class="mo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></button>
   <a class="dash" href="https://voice-ai-platform.cognilix.com/overview" data-dash target="_blank" rel="noopener"><span>Log in</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
   <a class="cta" href="#pilot" data-open-pilot>Book a pilot</a>
 </header>
 
-<nav class="rail" id="rail" aria-label="Chapters"><button type="button" data-go="topuc" aria-label="Use cases"><span>01 · Use cases</span></button><button type="button" data-go="how" aria-label="How it works"><span>02 · How it works</span></button><button type="button" data-go="dev" aria-label="Build"><span>03 · Build</span></button><button type="button" data-go="roi" aria-label="Measure"><span>04 · Measure</span></button><button type="button" data-go="trust" aria-label="Trust"><span>05 · Trust</span></button><button type="button" data-go="faq" aria-label="Ask"><span>06 · Ask</span></button><button type="button" data-go="pilot" aria-label="Begin"><span>07 · Begin</span></button></nav>
+<nav class="rail" id="rail" aria-label="Chapters"><button type="button" data-go="topuc" aria-label="Use cases"><span>01 · Use cases</span></button><button type="button" data-go="how" aria-label="How it works"><span>02 · How it works</span></button><button type="button" data-go="dev" aria-label="Platform"><span>03 · Platform</span></button><button type="button" data-go="roi" aria-label="ROI"><span>04 · ROI</span></button><button type="button" data-go="trust" aria-label="Security"><span>05 · Security</span></button><button type="button" data-go="faq" aria-label="FAQ"><span>06 · FAQ</span></button><button type="button" data-go="pilot" aria-label="Pilot"><span>07 · Pilot</span></button></nav>
 <canvas id="tape" aria-hidden="true"></canvas>
 <div class="cap" id="cap" aria-hidden="true"></div>
 <div class="peek" id="peek" aria-hidden="true"></div>
@@ -2211,8 +2208,7 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
         <p class="facts"><span><b>Live</b> in production daily</span><span><b>Hindi</b> · English · Hinglish</span><span><b>Same-day</b> ERP writeback</span></p>
       </div>
       <div class="player tryc loopc" id="tryc" aria-labelledby="trycT">
-        <span id="agents" class="anchor" aria-hidden="true"></span>
-        <div class="lc-h"><span class="lc-live" aria-hidden="true"></span><span id="trycT">Talk to an agent now</span><span class="lc-m">Up to 1 min · no sign-up</span></div>
+                <div class="lc-h"><span class="lc-live" aria-hidden="true"></span><span id="trycT">Talk to an agent now</span><span class="lc-m">Up to 1 min · no sign-up</span></div>
         <div class="lc-v" id="lcV">
           <ul class="lc-t" id="lcT">
             <li><button type="button" data-try="poacc"><span class="av" style="--c:var(--red)">R</span><span class="at"><b>Post-PO acceptance</b><small>Riya · Supplier operations · Hinglish</small></span><span class="go"><svg aria-hidden="true"><use href="#phone"/></svg>Try</span></button></li>
@@ -2239,16 +2235,13 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
       </div>
       <div class="t10-side rv">
         <p class="lede">Ten battle-tested calls across enterprise supply chain, finance, and customer operations.</p>
-        <div class="t10-ctrls">
-          <span class="t10-counter" aria-label="Current use case"><b id="t10Cur">01</b><small>/</small><span>10</span></span>
-          <div class="t10-nav">
-            <button type="button" class="t10-b" data-d="-1" id="t10Prev" aria-label="Previous use cases">
-              <svg viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
-            </button>
-            <button type="button" class="t10-b" data-d="1" id="t10Next" aria-label="Next use cases">
-              <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-            </button>
-          </div>
+        <div class="t10-nav">
+          <button type="button" class="t10-b" data-d="-1" id="t10Prev" aria-label="Previous use case">
+            <svg viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button type="button" class="t10-b" data-d="1" id="t10Next" aria-label="Next use case">
+            <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -2531,7 +2524,7 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
     </details>
   </div>
 </section>
-<section class="sec dev duo-s" id="dev" data-sec>
+<section class="sec dev duo-s" id="dev" data-sec><span id="platform" class="anchor" aria-hidden="true"></span>
   <div class="wrap">
     <div class="head"><div><p class="kick rv"><b>03</b> Build</p><h2 class="rv">Same agents. Two ways to run them.</h2></div><p class="lede rv">Business teams click through a builder. Developers call the API. Both see the same results.</p></div>
     <div class="duo rv">
@@ -2603,7 +2596,7 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
     </div>
   </div>
 </section>
-<section class="sec trusts" id="trust" data-sec>
+<section class="sec trusts" id="trust" data-sec><span id="security" class="anchor" aria-hidden="true"></span>
   <div class="wrap">
     <div class="head"><div><p class="kick rv"><b>05</b> Trust</p><h2 class="rv">Proven in production. Governed by market.</h2></div><p class="lede rv">Runs every day on the supply chain of Moglix, one of India’s largest industrial buyers.</p></div>
     <div class="stats">
@@ -2746,10 +2739,10 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
 <footer>
   <div class="fcols">
     <div class="fb"><a class="brand" href="#top" aria-label="Cognilix Echo"><img class="clx lt" src="cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="cognilix-white.png" alt="Cognilix" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a><p>Enterprise Voice AI for the calls that move orders, deliveries and cash. Outcomes written into your ERP the same day.</p><a class="cta" href="#pilot" data-open-pilot>Book a pilot</a></div>
-    <div><h4>Product</h4><a href="#how">How it works</a><a href="#dev">Build</a><a href="#trust">Security</a><a href="docs/developers/">Developers</a><a href="https://voice-ai-platform.cognilix.com/overview" data-dash target="_blank" rel="noopener">Log in ↗</a></div>
-    <div><h4>Use cases</h4><a href="#topuc">Loan and EMI collections</a><a href="#topuc">Lead qualification</a><a href="#topuc">Supplier order confirmation</a><a href="#topuc">Quote and auction response</a><a href="#topuc">Dealer reorders</a></div>
-    <div><h4>Resources</h4><a href="docs/">Docs</a><a href="blog/">Blog</a><a href="#roi">ROI calculator</a><a href="#faq">FAQ</a><a href="docs/developers/">API reference</a></div>
-    <div><h4>Company</h4><a href="https://www.cognilix.com" target="_blank" rel="noopener">Cognilix ↗</a><a href="#pilot" data-open-pilot>Contact sales</a><a href="#pilot" data-open-pilot>Security pack under NDA</a></div>
+    <div><h4>Platform</h4><a href="#how">How it works</a><a href="#dev">Architecture & Build</a><a href="#trust">Security & Compliance</a><a href="docs/developers/">Developer API</a><a href="https://voice-ai-platform.cognilix.com/overview" data-dash target="_blank" rel="noopener">Console Login ↗</a></div>
+    <div><h4>Workflows</h4><a href="#topuc">Supplier PO confirmation</a><a href="#topuc">Quote & RFQ chasing</a><a href="#topuc">B2B receivables follow-up</a><a href="#topuc">KYC & vendor onboarding</a><a href="#topuc">Order support & WISMO</a></div>
+    <div><h4>Resources</h4><a href="docs/">Documentation</a><a href="docs/developers/">API Reference</a><a href="#roi">ROI Calculator</a><a href="#faq">Enterprise FAQ</a><a href="blog/">Insights & Blog</a></div>
+    <div><h4>Company</h4><a href="https://www.cognilix.com" target="_blank" rel="noopener">Cognilix Enterprise ↗</a><a href="#pilot" data-open-pilot>Request Enterprise Pilot</a><a href="#pilot" data-open-pilot>Security Pack (NDA)</a></div>
   </div>
   <div class="fbot"><span>Echo · A Cognilix platform · Made in India</span><span>© 2026 Cognilix</span></div>
 </footer>
@@ -3292,7 +3285,7 @@ var TEAMS=[['ops','Operations','Dispatch · delays · capacity','i-truck','#FBEA
 /* ================= v16: agent line-ups (no full list, they keep coming) ================= */
 var LAG=['poacc','wismo','dispatch','quote','invpay','delay','ready','kyc','ticket'].map(agById).filter(Boolean);
 AG.forEach(function(a){if(LAG.indexOf(a)<0)LAG.push(a)});
-function openApk(t){var s=$('#agents')||$('#tryc');if(s)s.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});track('agents_jump',{from:t})}
+function openApk(t){var s=$('#tryc')||$('#top');if(s)s.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});track('agents_jump',{from:t})}
 d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-agents]');if(b){e.preventDefault();openApk(b.dataset.agents)}},true);
 
 /* hero: four rows in view, the rest keep rolling up */
@@ -3602,8 +3595,8 @@ if('IntersectionObserver' in window)new IntersectionObserver(function(es){var v=
 /* ================= v22: sound sticker only while the hero is on screen ================= */
 (function(){var b=document.getElementById('badge'),t=document.getElementById('top');if(!b||!t||!('IntersectionObserver' in window))return;new IntersectionObserver(function(es){b.classList.toggle('away',!es[0].isIntersecting)},{threshold:.35}).observe(t)})();
 
-/* ================= v23: top 10 row arrows ================= */
-(function(){var r=document.getElementById('t10');if(!r)return;var bs=[].slice.call(document.querySelectorAll('.t10-b'));function upd(){var mx=r.scrollWidth-r.clientWidth-2;bs[0].disabled=r.scrollLeft<=2;bs[1].disabled=r.scrollLeft>=mx}bs.forEach(function(b){b.addEventListener('click',function(){var w=r.querySelector('.t10-i').getBoundingClientRect().width;r.scrollBy({left:+b.dataset.d*w*2,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})})});r.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd()})();
+/* ================= v23: top 10 kinetic reel ================= */
+(function(){var r=document.getElementById('t10');if(!r)return;var bs=[].slice.call(document.querySelectorAll('.t10-b'));function upd(){var mx=r.scrollWidth-r.clientWidth-4;if(bs[0])bs[0].disabled=r.scrollLeft<=4;if(bs[1])bs[1].disabled=r.scrollLeft>=mx}bs.forEach(function(b){b.addEventListener('click',function(){var it=r.querySelector('.t10-i');var w=it?it.getBoundingClientRect().width+18:280;r.scrollBy({left:+b.dataset.d*w,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})})});var isDown=false,startX=0,sL=0;r.addEventListener('mousedown',function(e){if(e.target.closest('button,a,input,select'))return;isDown=true;startX=e.pageX-r.offsetLeft;sL=r.scrollLeft});window.addEventListener('mouseup',function(){isDown=false});r.addEventListener('mousemove',function(e){if(!isDown)return;e.preventDefault();var x=e.pageX-r.offsetLeft;r.scrollLeft=sL-(x-startX)*1.4});r.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd()})();
 
 /* ================= v24: FAQ show more ================= */
 (function(){var b=document.getElementById('faqTg');if(!b)return;var l=b.parentNode,n=l.querySelectorAll('.faq-x').length;b.addEventListener('click',function(){var o=!l.classList.contains('all');l.classList.toggle('all',o);b.setAttribute('aria-expanded',String(o));b.textContent=o?'Show fewer questions':'Show '+n+' more questions'})})();
