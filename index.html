@@ -1854,6 +1854,61 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
   .t10w{-webkit-mask-image:none;mask-image:none}
   .t10{padding-right:16px}
 }
+
+/* ================= v24 ================= */
+/* FAQ: one list, extra questions behind a quiet button */
+.faq-list:not(.all) .faq-x{display:none}
+.faq-tg{justify-self:start;margin-top:6px;font:600 14px var(--grot);color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:99px;padding:10px 18px;cursor:pointer;transition:border-color .2s}
+.faq-tg:hover{border-color:var(--ink)}
+.faq-tg:after{content:" +";color:var(--red)}
+.faq-list.all .faq-tg:after{content:" \2212"}
+/* top 10: tighter */
+.t10{gap:6px;padding-bottom:12px}
+.t10-n{font-size:clamp(92px,7.6vw,124px);margin-right:-12px}
+.t10 .hx{width:178px;height:212px}
+.t10 .hx-f{padding:14px}
+.t10 .hx-g{width:30px;height:30px;margin:22px 0 auto}
+.t10 .hx h3{font-size:15.5px}
+.t10 .hx-s{font-size:11px}
+.t10 .hx-b{padding:14px;gap:6px}
+.t10 .hx-b h4{font-size:14px}
+.t10 .hx-d{font-size:12.5px;line-height:1.4}
+.t10 .hx-k{font-size:12px}
+.tu-more{margin-top:22px}
+/* how it works: one horizontal flow, steps light up in turn */
+.how .flow{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:8px 2px 16px;align-items:stretch}
+.how .flow::-webkit-scrollbar{display:none}
+.js .how .flow li.rv,.how .flow li{flex:1 1 0;min-width:250px;scroll-snap-align:center;padding:12px 12px 16px;opacity:.5;transform:none;transition:opacity .5s,transform .5s var(--ease),border-color .5s,box-shadow .5s}
+.js .how .flow li.rv.on,.how .flow li.on{opacity:1;transform:translateY(-4px);border-color:var(--ink)}
+.how .flow li+li{margin-left:58px}
+.how .flow li:not(:last-child):after{display:none}
+.how .flow li:not(:last-child):before{content:"";position:absolute;top:92px;right:-52px;width:46px;height:2px;background:repeating-linear-gradient(90deg,var(--red) 0 6px,transparent 6px 12px);background-size:24px 2px;animation:flowDash .7s linear infinite;opacity:.35;transition:opacity .4s}
+.how .flow li.on:not(:last-child):before{opacity:1}
+@keyframes flowDash{to{background-position:24px 0}}
+.how .fa{height:158px;padding:14px}
+.how .flow h3{font-size:18px}
+.how .flow li>p:last-child{font-size:14px;line-height:1.45}
+.fl-logos{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:10px 4px 2px}
+.fl-logos img{height:13px;width:auto;filter:grayscale(1);opacity:.55}
+.fl-logos span{font:500 11.5px var(--mono);color:var(--mute)}
+[data-theme=dark] .fl-logos img{filter:grayscale(1) invert(1);opacity:.6}
+/* build: the two ways side by side */
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:stretch}
+.duo-c{display:flex;flex-direction:column;min-width:0}
+.duo .mpanel[hidden]{display:flex!important}
+.duo-k{display:flex;align-items:center;gap:10px;font:650 16px var(--grot);color:var(--ink);margin:0 0 10px}
+.duo-k span{font:600 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--red);border:1px solid var(--line);border-radius:99px;padding:3px 9px}
+.duo .sm-win,.duo .dv-win{max-width:none;margin:0;flex:1}
+.duo .dv-win{border-radius:20px}
+@media (prefers-reduced-motion:reduce){.how .flow li:not(:last-child):before{animation:none}}
+@media (max-width:1000px){.duo{grid-template-columns:1fr}}
+@media (max-width:700px){
+  .t10-n{font-size:78px;margin-right:-8px}
+  .t10 .hx{width:152px;height:190px}
+  .how .flow li,.js .how .flow li.rv{min-width:78vw;flex:0 0 78vw}
+  .how .flow li+li{margin-left:40px}
+  .how .flow li:not(:last-child):before{right:-38px;width:34px}
+}
 </style>
 </head>
 <body>
@@ -1888,13 +1943,12 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
   <a class="brand" href="#top" aria-label="Cognilix Echo, back to top"><img class="clx lt" src="cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="cognilix-white.png" alt="Cognilix" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
   <div class="pill" id="pill" aria-hidden="true"><i></i><span id="clock">00:00</span><span class="st" id="status">Connecting</span></div>
   <nav class="links" aria-label="Sections"><a href="#topuc">Use cases</a><a href="#how">How it works</a><a href="#roi">ROI</a><a href="#trust">Security</a><a href="docs/">Docs</a></nav>
-  <button class="snd" id="snd" aria-pressed="false" aria-label="Sound" title="Sound"><svg aria-hidden="true"><use href="#qm"/></svg><span>Sound off</span></button>
   <button class="thm" id="thm" type="button" aria-label="Switch to dark mode"><svg class="su" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M4.2 12H2.5M21.5 12h-1.7M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M5.3 18.7l1.5-1.5M17.2 6.8l1.5-1.5"/></g></svg><svg class="mo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></button>
   <a class="dash" href="https://voice-ai-platform.cognilix.com/overview" data-dash target="_blank" rel="noopener"><span>Log in</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
   <a class="cta" href="#pilot" data-open-pilot>Book a pilot</a>
 </header>
 
-<nav class="rail" id="rail" aria-label="Chapters"><button type="button" data-go="topuc" aria-label="Use cases"><span>01 · Use cases</span></button><button type="button" data-go="how" aria-label="How it works"><span>02 · How it works</span></button><button type="button" data-go="roi" aria-label="Measure"><span>03 · Measure</span></button><button type="button" data-go="trust" aria-label="Trust"><span>04 · Trust</span></button><button type="button" data-go="faq" aria-label="Ask"><span>05 · Ask</span></button><button type="button" data-go="pilot" aria-label="Begin"><span>06 · Begin</span></button></nav>
+<nav class="rail" id="rail" aria-label="Chapters"><button type="button" data-go="topuc" aria-label="Use cases"><span>01 · Use cases</span></button><button type="button" data-go="how" aria-label="How it works"><span>02 · How it works</span></button><button type="button" data-go="dev" aria-label="Build"><span>03 · Build</span></button><button type="button" data-go="roi" aria-label="Measure"><span>04 · Measure</span></button><button type="button" data-go="trust" aria-label="Trust"><span>05 · Trust</span></button><button type="button" data-go="faq" aria-label="Ask"><span>06 · Ask</span></button><button type="button" data-go="pilot" aria-label="Begin"><span>07 · Begin</span></button></nav>
 <canvas id="tape" aria-hidden="true"></canvas>
 <div class="cap" id="cap" aria-hidden="true"></div>
 <div class="peek" id="peek" aria-hidden="true"></div>
@@ -1911,7 +1965,7 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
           <a class="btn pri" href="#pilot" data-open-pilot>Book a pilot</a>
           <button class="btn alt" type="button" data-agents="all"><i></i>Talk to an agent</button>
         </div>
-        <p class="facts"><span><b>240K+</b> calls a month in production</span><span><b>Hindi</b> · English · Hinglish</span><span><b>Same-day</b> ERP writeback</span></p>
+        <p class="facts"><span><b>Live</b> in production daily</span><span><b>Hindi</b> · English · Hinglish</span><span><b>Same-day</b> ERP writeback</span></p>
       </div>
       <div class="player tryc loopc" id="tryc" aria-labelledby="trycT">
         <div class="lc-h"><span class="lc-live" aria-hidden="true"></span><span id="trycT">Talk to an agent now</span><span class="lc-m">Up to 1 min · no sign-up</span></div>
@@ -1942,7 +1996,7 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
 <section class="sec how" id="how" data-sec>
   <div class="wrap">
     <span id="diff" class="anchor" aria-hidden="true"></span><div class="head"><div><p class="kick rv"><b>02</b> How it works</p><h2 class="rv">From your ERP, to a call, back to your ERP.</h2></div><p class="lede rv">Most voice AI ends with a transcript. Echo ends with an updated record.</p></div>
-    <ol class="flow">
+    <ol class="flow" id="flow" aria-label="How a record moves">
       <li>
         <div class="fa fa-sheet" aria-hidden="true">
           <div class="fs-row h"><i>Supplier</i><i>PO</i><i>Line</i></div>
@@ -1951,7 +2005,8 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
           <div class="fs-row"><i>Vijay Steel</i><i>5208</i><i>2</i></div>
           <span class="fs-tag">3 lines · 2 calls</span>
         </div>
-        <p class="fn">1</p><h3>Pull open records</h3><p>Open POs, quotes or tickets from your ERP or a sheet, cleaned and grouped into one call per contact.</p>
+        <div class="fl-logos" aria-label="Example systems"><img src="assets/logos/oracle.svg" alt="Oracle" loading="lazy" height="14"><img src="assets/logos/microsoft.svg" alt="Microsoft" loading="lazy" height="14"><img src="assets/logos/salesforce.svg" alt="Salesforce" loading="lazy" height="14"><img src="assets/logos/zoho.svg" alt="Zoho" loading="lazy" height="14"><img src="assets/logos/zendesk.svg" alt="Zendesk" loading="lazy" height="14"><img src="assets/logos/hubspot.svg" alt="HubSpot" loading="lazy" height="14"><span>or a sheet</span></div>
+        <p class="fn">1</p><h3>Pull open records</h3><p>Open records from your ERP, CRM or a sheet, cleaned and grouped into one call per contact.</p>
       </li>
       <li>
         <div class="fa fa-call" aria-hidden="true">
@@ -1986,9 +2041,49 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
     </details>
   </div>
 </section>
+<section class="sec dev duo-s" id="dev" data-sec>
+  <div class="wrap">
+    <div class="head"><div><p class="kick rv"><b>03</b> Build</p><h2 class="rv">Same agents. Two ways to run them.</h2></div><p class="lede rv">Business teams click through a builder. Developers call the API. Both see the same results.</p></div>
+    <div class="duo rv">
+      <div class="duo-c mpanel" data-p="simple"><p class="duo-k"><span>No code</span>Business user</p>
+<div class="sm-win" id="smWin">
+        <div class="sm-bar"><span class="dv-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sm-crumb">Echo · New campaign</span></div>
+        <div class="sm-steps" role="tablist" aria-label="Steps"><button type="button" role="tab" data-s="0" aria-selected="true"><i>1</i>Create an agent</button><button type="button" role="tab" data-s="1" aria-selected="false"><i>2</i>Upload a sheet</button><button type="button" role="tab" data-s="2" aria-selected="false"><i>3</i>Run the campaign</button></div>
+        <div class="sm-body">
+          <div class="sm-pane" data-s="0">
+            <div class="sm-f"><span>Agent name</span><span class="sm-in" data-type="Dispatch follow-up"></span></div>
+            <div class="sm-f"><span>Languages</span><span class="sm-chips"><i>Hindi</i><i class="on">Hinglish</i><i>English</i></span></div>
+            <div class="sm-f"><span>What should it do?</span><span class="sm-in ta" data-type="Confirm the dispatch date and quantity for each open PO line. Read both back before saving."></span></div>
+            <div class="sm-f"><span>Save results to</span><span class="sm-chips"><i class="on">ERP</i><i>Sheet</i><i>Webhook</i></span></div>
+            <span class="sm-btn">Save agent</span>
+          </div>
+          <div class="sm-pane" data-s="1" hidden>
+            <div class="sm-drop"><span class="sm-xl" aria-hidden="true">XLSX</span><span class="sm-file"><b>open_pos.xlsx</b><small class="sm-st">Uploading</small><i class="sm-pb"><i></i></i></span></div>
+            <div class="sm-map"><p><span>Column in your sheet</span><span>Echo uses it as</span></p><p><span>Supplier</span><span>Name</span></p><p><span>Contact no.</span><span>Phone</span></p><p><span>PO / line</span><span>Reference</span></p><p><span>Promised date</span><span>Date to confirm</span></p></div>
+          </div>
+          <div class="sm-pane" data-s="2" hidden>
+            <div class="sm-run"><div><small>Calling window</small><b>10:00 to 18:00</b></div><div><small>Retries</small><b>Up to 3</b></div><span class="sm-btn go">Start campaign</span></div>
+            <div class="sm-kpis"><div><b data-n="148">0</b><small>calls placed</small></div><div><b data-n="71" data-suf="%">0%</b><small>reached</small></div><div><b data-n="96">0</b><small>outcomes saved</small></div></div>
+            <div class="sm-pbar"><i></i></div>
+            <ul class="sm-feed"><li>Mehta Packaging<em class="ok">Confirmed · 28 Sep</em></li><li>Vijay Steel<em class="p">Partial · 10 of 14</em></li><li>R K Castings<em class="r">Call back · 4 pm</em></li></ul>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="duo-c mpanel" data-p="dev"><p class="duo-k"><span>API</span>Developer</p>
+<div class="dv-win">
+          <div class="dv-bar"><span class="dv-dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="dv-tabs" role="tablist" aria-label="Examples"><button class="dv-tab" role="tab" data-c="call" aria-selected="true">Start a call</button><button class="dv-tab" role="tab" data-c="campaign" aria-selected="false">Run a campaign</button><button class="dv-tab" role="tab" data-c="result" aria-selected="false">Read outcomes</button></div></div>
+          <div class="dv-sub"><div class="dv-lang" aria-label="Language"><button data-l="curl" aria-pressed="true">cURL</button><button data-l="node" aria-pressed="false">Node</button><button data-l="py" aria-pressed="false">Python</button></div><button class="dv-copy" id="dvCopy" type="button">Copy</button></div>
+          <pre class="dv-pre"><code id="dvCode"></code></pre>
+          <div class="dv-log"><div class="dv-logh"><span>Event stream</span><span class="lv">live</span></div><div id="dvLog" aria-hidden="true"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="sec roi" id="roi" data-sec>
   <div class="wrap">
-    <div class="head"><div><p class="kick rv"><b>03</b> Measure</p><h2 class="rv">Do the math on revenue and cost.</h2></div><p class="lede rv">Move three sliders. See the revenue kept and the hours freed.</p></div>
+    <div class="head"><div><p class="kick rv"><b>04</b> Measure</p><h2 class="rv">Do the math on revenue and cost.</h2></div><p class="lede rv">Move three sliders. See the revenue kept and the hours freed.</p></div>
     <div class="roi-g rv">
       <form class="roi-in" id="roiF" novalidate>
         <label class="roi-cur">Currency <select id="rCur" aria-label="Currency"><option value="INR">₹ INR</option><option value="USD">$ USD</option><option value="AED">AED</option><option value="SGD">S$ SGD</option><option value="EUR">€ EUR</option><option value="GBP">£ GBP</option></select></label>
@@ -2020,12 +2115,12 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
 </section>
 <section class="sec trusts" id="trust" data-sec>
   <div class="wrap">
-    <div class="head"><div><p class="kick rv"><b>04</b> Trust</p><h2 class="rv">Proven in production. Governed by market.</h2></div><p class="lede rv">Runs every day on the supply chain of Moglix, one of India’s largest industrial buyers.</p></div>
+    <div class="head"><div><p class="kick rv"><b>05</b> Trust</p><h2 class="rv">Proven in production. Governed by market.</h2></div><p class="lede rv">Runs every day on the supply chain of Moglix, one of India’s largest industrial buyers.</p></div>
     <div class="stats">
-      <div><b data-to="240" data-suf="K+">240K+</b><span>calls a month</span></div>
-      <div><b data-to="8" data-suf="K+ hrs">8K+ hrs</b><span>of talk time a month</span></div>
       <div><b data-to="83" data-suf="%">83%</b><span>fewer calls, same answers</span></div>
       <div><b data-to="64" data-suf="K+">64K+</b><span>records cleaned every day</span></div>
+      <div><b data-to="8" data-suf="K+ hrs">8K+ hrs</b><span>of talk time a month</span></div>
+      <div><b data-to="240" data-suf="K+">240K+</b><span>calls a month, and scaling</span></div>
     </div>
     <p class="note rv">Figures from Moglix operations on Cognilix Echo.</p>
     <div class="mk rv">
@@ -2046,7 +2141,7 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
 <section class="sec faq" id="faq" data-sec>
   <div class="wrap faq-g">
     <div class="faq-l">
-      <span id="dev" class="anchor" aria-hidden="true"></span><p class="kick rv"><b>05</b> Ask</p>
+      <p class="kick rv"><b>06</b> Ask</p>
       <h2 class="rv">Questions enterprises ask first.</h2>
       <p class="lede rv">Business teams build without code. Developers get the same agents over an API.</p>
       <div class="res rv">
@@ -2061,8 +2156,7 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
       <details class="rv"><summary>Which use case should we start with?</summary><p>Start where money waits on a phone call: supplier order confirmation, quote chasing, receivables or collections. Pick one plant or one book, measure the baseline for two weeks, then run Echo against it.</p></details>
       <details class="rv"><summary>How does Echo contribute to revenue?</summary><p>Each workflow is tied to a business event: POs accepted sooner, delivery dates confirmed, slipping orders rescued, more quotes returned, invoices and payment questions resolved on the first call. Echo reports on those events and on cost per resolved record.</p></details>
       <details class="rv"><summary>Which workflows does Echo run today?</summary><p>Supplier operations: post-PO acceptance, delivery-date confirmation, lead-time follow-up, material-ready checks, quote reminders and plant KYC. Customer support: order status, invoice and payment queries, and ticket intake. A new workflow is a filter and a prompt on the same engine.</p></details>
-      <details class="faq-more rv"><summary>More questions</summary><details><summary>Which systems does Echo connect to?</summary><p>Your ERP, helpdesk and sourcing tools through writeback connectors, signed webhooks and the API, or scheduled sheets for a fast start. Outcomes are written at the grain your system uses, down to the PO line.</p></details><details><summary>Which languages does Echo speak?</summary><p>Hindi, English and Hinglish today, including callers who switch between them mid sentence. More Indian languages are being added.</p></details><details><summary>Where is our data kept?</summary><p>Call audio, transcripts and lists stay in India. Recordings are kept 90 days and the audit trail 5 years. Access is isolated per tenant and controlled by role. A security pack is available under NDA.</p></details><details><summary>How do we start?</summary><p>With a paid pilot on one plant or one team, on one workflow, measured against your own baseline. We set up the agent with you and review the first calls together before you scale.</p></details><details><summary>How is Echo priced?</summary><p>Pricing depends on your volumes and the workflows you run. Talk to sales and we will share a quote for your case.</p></details><details><summary>Do you work with companies outside India?</summary><p>Yes. India runs in production today. Rule packs for the UAE, Singapore, the United States and the EU and UK roll out through 2027, starting where Cognilix already operates. Each pack covers local do-not-call registries, calling hours, consent and AI disclosure.</p></details></details>
-    </div>
+      <details class="faq-x"><summary>Which systems does Echo connect to?</summary><p>Your ERP, helpdesk and sourcing tools through writeback connectors, signed webhooks and the API, or scheduled sheets for a fast start. Outcomes are written at the grain your system uses, down to the PO line.</p></details><details class="faq-x"><summary>Which languages does Echo speak?</summary><p>Hindi, English and Hinglish today, including callers who switch between them mid sentence. More Indian languages are being added.</p></details><details class="faq-x"><summary>Where is our data kept?</summary><p>Call audio, transcripts and lists stay in India. Recordings are kept 90 days and the audit trail 5 years. Access is isolated per tenant and controlled by role. A security pack is available under NDA.</p></details><details class="faq-x"><summary>How do we start?</summary><p>With a paid pilot on one plant or one team, on one workflow, measured against your own baseline. We set up the agent with you and review the first calls together before you scale.</p></details><details class="faq-x"><summary>How is Echo priced?</summary><p>Pricing depends on your volumes and the workflows you run. Talk to sales and we will share a quote for your case.</p></details><details class="faq-x"><summary>Do you work with companies outside India?</summary><p>Yes. India runs in production today. Rule packs for the UAE, Singapore, the United States and the EU and UK roll out through 2027, starting where Cognilix already operates. Each pack covers local do-not-call registries, calling hours, consent and AI disclosure.</p></details><button type="button" class="faq-tg" id="faqTg" aria-expanded="false">Show 6 more questions</button></div>
   </div>
 </section>
 <section class="sec finale" id="pilot" data-sec>
@@ -2070,7 +2164,7 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
     <div class="fin-panel rv">
       <span class="fin-rings" aria-hidden="true"><i></i><i></i><i></i></span>
       <div class="fin-l">
-        <p class="kick"><b>06</b> Begin</p>
+        <p class="kick"><b>07</b> Begin</p>
         <h2 class="rv">Start with one plant’s open book.</h2>
         <p class="lede">A paid pilot on one workflow, measured against your own baseline.</p>
         <div class="fin-alt">
@@ -2141,7 +2235,7 @@ html body .ev-tab[aria-selected=true]{background-color:var(--ink)!important;colo
 <footer>
   <div class="fcols">
     <div class="fb"><a class="brand" href="#top" aria-label="Cognilix Echo"><img class="clx lt" src="cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="cognilix-white.png" alt="Cognilix" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a><p>Enterprise Voice AI for the calls that move orders, deliveries and cash. Outcomes written into your ERP the same day.</p><a class="cta" href="#pilot" data-open-pilot>Book a pilot</a></div>
-    <div><h4>Product</h4><a href="#how">How it works</a><a href="#trust">Security</a><a href="docs/developers/">Developers</a><a href="https://voice-ai-platform.cognilix.com/overview" data-dash target="_blank" rel="noopener">Log in ↗</a></div>
+    <div><h4>Product</h4><a href="#how">How it works</a><a href="#dev">Build</a><a href="#trust">Security</a><a href="docs/developers/">Developers</a><a href="https://voice-ai-platform.cognilix.com/overview" data-dash target="_blank" rel="noopener">Log in ↗</a></div>
     <div><h4>Use cases</h4><a href="#topuc">Loan and EMI collections</a><a href="#topuc">Lead qualification</a><a href="#topuc">Supplier order confirmation</a><a href="#topuc">Quote and auction response</a><a href="#topuc">Dealer reorders</a></div>
     <div><h4>Resources</h4><a href="docs/">Docs</a><a href="blog/">Blog</a><a href="#roi">ROI calculator</a><a href="#faq">FAQ</a><a href="docs/developers/">API reference</a></div>
     <div><h4>Company</h4><a href="https://www.cognilix.com" target="_blank" rel="noopener">Cognilix ↗</a><a href="#pilot" data-open-pilot>Contact sales</a><a href="#pilot" data-open-pilot>Security pack under NDA</a></div>
@@ -2195,8 +2289,8 @@ var SFX={
 };
 function sfx(name,arg){if(!soundOn||!audio())return;var now=performance.now();if(lastSfx[name]&&now-lastSfx[name]<70)return;lastSfx[name]=now;try{SFX[name](arg)}catch(e){}}
 var sndBtn=$('#snd');
-function setSound(on){soundOn=on;if(on)audio();sndBtn.setAttribute('aria-pressed',String(on));sndBtn.querySelector('span').textContent=on?'Sound on':'Sound off';root.classList.toggle('sound',on);var bd=$('#badge');if(bd){bd.setAttribute('aria-pressed',String(on));$('.tip',bd).textContent=on?'Sound on · tap to mute':'Tap for sound'}}
-sndBtn.addEventListener('click',function(){setSound(!soundOn);if(soundOn)sfx('koel',900);track('sound_toggle',{on:soundOn})});
+function setSound(on){soundOn=on;if(on)audio();if(sndBtn){sndBtn.setAttribute('aria-pressed',String(on));sndBtn.querySelector('span').textContent=on?'Sound on':'Sound off'}root.classList.toggle('sound',on);var bd=$('#badge');if(bd){bd.setAttribute('aria-pressed',String(on));$('.tip',bd).textContent=on?'Sound on · tap to mute':'Tap for sound'}}
+if(sndBtn)sndBtn.addEventListener('click',function(){setSound(!soundOn);if(soundOn)sfx('koel',900);track('sound_toggle',{on:soundOn})});
 
 /* ---------------- the tape: a scroll-scrubbed spectrogram, built in small chunks ---------------- */
 var B=200,SEG=700,PAD=520,NS=9,W=PAD*2+SEG*NS,E=new Float32Array(W*B),EV=[],REG=[];
@@ -2994,6 +3088,12 @@ if('IntersectionObserver' in window)new IntersectionObserver(function(es){var v=
 
 /* ================= v23: top 10 row arrows ================= */
 (function(){var r=document.getElementById('t10');if(!r)return;var bs=[].slice.call(document.querySelectorAll('.t10-b'));function upd(){var mx=r.scrollWidth-r.clientWidth-2;bs[0].disabled=r.scrollLeft<=2;bs[1].disabled=r.scrollLeft>=mx}bs.forEach(function(b){b.addEventListener('click',function(){var w=r.querySelector('.t10-i').getBoundingClientRect().width;r.scrollBy({left:+b.dataset.d*w*2,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})})});r.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd()})();
+
+/* ================= v24: FAQ show more ================= */
+(function(){var b=document.getElementById('faqTg');if(!b)return;var l=b.parentNode,n=l.querySelectorAll('.faq-x').length;b.addEventListener('click',function(){var o=!l.classList.contains('all');l.classList.toggle('all',o);b.setAttribute('aria-expanded',String(o));b.textContent=o?'Show fewer questions':'Show '+n+' more questions'})})();
+
+/* ================= v24: How it works flows step to step ================= */
+(function(){var f=document.getElementById('flow');if(!f||!('IntersectionObserver' in window))return;var li=[].slice.call(f.children),i=0,t=null,vis=false,hold=false;if(matchMedia('(prefers-reduced-motion: reduce)').matches){li.forEach(function(x){x.classList.add('on','in')});return}function go(n){i=n;li.forEach(function(x,k){x.classList.toggle('on',k===n)});var x=li[n];x.classList.remove('in');setTimeout(function(){x.classList.add('in')},380);if(f.scrollWidth>f.clientWidth+4)f.scrollTo({left:x.offsetLeft-(f.clientWidth-x.clientWidth)/2,behavior:'smooth'})}li.forEach(function(x,k){x.addEventListener('mouseenter',function(){hold=true;if(k!==i)go(k)});x.addEventListener('mouseleave',function(){hold=false})});f.addEventListener('touchstart',function(){hold=true;clearTimeout(f._h);f._h=setTimeout(function(){hold=false},6000)},{passive:true});new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis&&!t){go(0);t=setInterval(function(){if(vis&&!hold)go((i+1)%li.length)},2800)}},{threshold:.35}).observe(f)})();
 
 /* ================= v21: hover cards open on tap ================= */
 (function(){var cards=[].slice.call(document.querySelectorAll('.hx'));if(!cards.length)return;
