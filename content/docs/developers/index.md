@@ -1,60 +1,45 @@
 ---
 title: Echo for developers
-description: Place calls, run campaigns and read outcomes from your own systems. The same agents your business team builds, driven by code.
+description: Build and run Echo voice agents from your terminal, your AI coding tools and your own systems, with the Reverb CLI, the Relay MCP server, agent skills and the REST API.
 sidebarTitle: Introduction
 keywords:
-- voice AI API
-- Echo API
+- voice AI developer tools
+- voice agent CLI
 updated: '2026-09-29'
 ---
 
-<Info title="Developer preview">The API is in developer preview. Endpoints and fields may change before general availability, and keys are issued to pilot customers only, so you cannot try it without one. [Request access](/#pilot).</Info>
+Everything in this tab is <Badge tone="soon">Coming soon</Badge>. The pages show how each tool will work, so you can plan an integration now. Your business team can already build, test and run agents in the Echo console; see the [Platform guide](../platform/index.md).
 
-## What you can build
+## The tools
 
 <CardGroup cols="2">
-<Card title="Call on an event" href="guide-call" eyebrow="Guide">A new order, a late PO, an unpaid invoice: place a call the moment it happens.</Card>
-<Card title="Run a campaign from code" href="guide-campaign" eyebrow="Guide">Create a campaign, check the mapping, upload, and collect results.</Card>
-<Card title="Receive outcomes by webhook" href="webhooks" eyebrow="Guide">Receive every captured answer on a webhook and update your ERP or CRM.</Card>
-<Card title="Recordings and exports" href="guide-exports" eyebrow="Guide">Pull recordings, transcripts and analysis into your own storage.</Card>
+<Card title="Reverb CLI" href="cli" eyebrow="Command line">Log in, scaffold agents, test them and run campaigns from your terminal. The main way to build with Echo.</Card>
+<Card title="Relay MCP server" href="mcp" eyebrow="AI tools">Give Claude Code, Cursor and other MCP clients the same actions as the CLI.</Card>
+<Card title="Agent skills" href="skills" eyebrow="AI tools">Teach AI coding tools to write correct Echo prompts, variables and webhook handlers.</Card>
+<Card title="REST API" href="quickstart" eyebrow="HTTP">Calls, campaigns, results and webhooks, for any language.</Card>
 </CardGroup>
 
-## Platform or API?
+## Which one to use
 
-| Task | Dashboard | API |
-| --- | --- | --- |
-| Write and test prompts | Best here: editor, preview, call console | Read, version and replace |
-| Declare inputs and outputs | Yes | Yes |
-| Run a list | Upload a sheet | Upload a file or rows |
-| Place one call on an event | Call console, for tests | Yes |
-| Read outcomes | Dashboard, downloads | JSON, CSV, webhooks |
-| Manage people and access | Yes | Not yet |
-
-## Getting outcomes into your ERP
-
-The documented routes are the API, [webhooks](webhooks) and [exports](guide-exports): your integration receives each outcome and writes it to your ERP, CRM or helpdesk. Ask your account team what is set up for your ERP during the pilot.
+| You want to | Use |
+| --- | --- |
+| Build and test agents day to day | [Reverb CLI](cli.md) |
+| Let an AI assistant draft, test and run agents | [Relay MCP server](mcp.md) with [agent skills](skills.md) |
+| Place a call when something happens in your ERP | [REST API](guide-call.md) and [webhooks](webhooks.md) |
+| Pull results, recordings and transcripts into your storage | [Exports](guide-exports.md) |
 
 ## The object model
 
-```
+```text
 Agent ── has ──► inputs, outputs, prompt, voice, calling line
   │
   ├─► Call        one conversation   →  outputs, transcript, recording, analysis
   │
-  └─► Campaign    one list           →  Contacts  →  Calls  →  Results
+  └─► Campaign    one list           →  contacts  →  calls  →  results
 ```
 
-Read [Core objects](objects) for every field.
+Every tool works on these same objects, so an agent built in the console, the CLI or the API is the same agent. [Core objects](objects.md) lists every field.
 
-## Conventions
+## Early access
 
-- **Base URL**: shared with your API key. All paths start with `/v1`, the only version so far.
-- **Test mode**: there is no sandbox yet. Calls placed through the API dial real numbers, so test with your own phone.
-- **Auth**: `Authorization: Bearer <key>` on every request. See [Authentication](authentication).
-- **Format**: JSON in and out, UTF-8. Timestamps are ISO 8601 in UTC. Phone numbers are E.164; the API also accepts a 10-digit Indian number and adds +91.
-- **Lists** are paginated with `limit` and `cursor`; the response carries `next_cursor`, which is `null` on the last page.
-- **Errors** return a JSON `error` object with a stable `code`. See [Errors](errors).
-
-## Where to go next
-
-Once you have a key, the [API quickstart](quickstart) places your first call in a few minutes. The [API reference](agents) lists every endpoint with examples in cURL, Python and Node.js.
+Tell your account team which tool you need first and what you want to connect it to. [Talk to an expert](/#pilot).

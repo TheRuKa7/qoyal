@@ -4,7 +4,9 @@ description: Create a campaign, check the column mapping with a dry run, upload,
 keywords:
 - campaign API
 - bulk calls API
-updated: '2026-09-25'
+updated: '2026-09-29'
+status: soon
+soon_note: The public REST API is not open yet. Endpoints and fields may change before release. Ask your account team for early access.
 ---
 
 ## The flow

@@ -7,14 +7,16 @@ org_url: https://www.cognilix.com
 base_url: https://theruka7.github.io/qoyal/
 locale: en_IN
 default_image: og.png
-summary: Enterprise Voice AI for B2B operations. Echo calls suppliers and customers in Hindi, English and Hinglish, confirms POs, delivery dates, quotes and payments, and sends each outcome back to your systems.
+summary: Enterprise Voice AI for B2B operations. Echo calls suppliers and customers in Indian and international languages, confirms POs, delivery dates, quotes and payments, and sends each outcome back to your systems.
 
 # Top navigation. Keep it the same as the home page.
 nav:
   - {label: Use cases, href: "/#use-cases"}
   - {label: How it works, href: "/#how-it-works"}
   - {label: Build, href: "/#build"}
+  - {label: ROI, href: "/#roi"}
   - {label: Security, href: "/#security"}
+  - {label: FAQ, href: "/#faq"}
   - {label: Docs, href: "/docs/"}
   - {label: Blog, href: "/blog/"}
 cta: {label: Talk to an expert, href: "/#pilot"}
@@ -35,7 +37,6 @@ footer:
         - {label: Platform guide, href: "/docs/"}
         - {label: Developers, href: "/docs/developers/"}
         - {label: Changelog, href: "/docs/developers/changelog.html"}
-        - {label: llms.txt, href: "/llms.txt"}
     - title: Resources
       links:
         - {label: Blog, href: "/blog/"}

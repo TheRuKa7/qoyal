@@ -6,6 +6,8 @@ keywords:
 - voice API quickstart
 - place a call by API
 updated: '2026-09-29'
+status: soon
+soon_note: The public REST API is not open yet. Endpoints and fields may change before release. Ask your account team for early access.
 ---
 
 ## 1. Get a key

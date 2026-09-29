@@ -1,10 +1,11 @@
 ---
-title: Dashboard and call log
+title: Overview and call log
+sidebarTitle: Overview and call log
 description: See how the whole operation is doing, then drill into any call.
 keywords:
 - call log
 - voice AI dashboard
-updated: '2026-09-25'
+updated: '2026-09-29'
 ---
 
 ## The funnel

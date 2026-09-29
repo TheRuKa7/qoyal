@@ -4,7 +4,9 @@ description: Every request carries your API key as a bearer token.
 keywords:
 - API key authentication
 - bearer token
-updated: '2026-09-25'
+updated: '2026-09-29'
+status: soon
+soon_note: The public REST API is not open yet. Endpoints and fields may change before release. Ask your account team for early access.
 ---
 
 ## The header

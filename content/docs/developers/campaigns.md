@@ -5,6 +5,8 @@ sidebarTitle: Campaigns API
 keywords:
 - campaigns API
 updated: '2026-09-29'
+status: soon
+soon_note: The public REST API is not open yet. Endpoints and fields may change before release. Ask your account team for early access.
 ---
 
 <Endpoint method="POST" path="/v1/campaigns" title="Create a campaign" id="create-campaign">

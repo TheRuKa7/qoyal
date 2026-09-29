@@ -49,7 +49,7 @@ template rendered at `/docs/_preview/`.
 
 1. Copy a file from `content/docs/_templates/` into `content/docs/platform/` or `content/docs/developers/`.
    The file name becomes the URL: `sso-setup.md` → `/docs/sso-setup.html`.
-2. Fill in the frontmatter: `title`, `description` (under 155 characters), `keywords`, `updated`.
+2. Fill in the frontmatter: `title`, `description` (under 155 characters), `updated`, and optionally `keywords` (used only to plan the page; never published). Add `status: soon` (and optionally `soon_note`) for anything not in the product yet: the page gets a Coming soon tag and notice.
 3. Add the file name (without `.md`) to a group in `content/docs/docs.yml`. The order there is the sidebar order
    and the Previous / Next order. `{page: sso-setup, badge: New}` adds a badge.
 4. Run `python tools/build.py check`.
@@ -93,11 +93,11 @@ and its styles in `assets/docs.css`.
 
 ## What every page gets automatically
 
-- Title, description, keywords, canonical URL, Open Graph and Twitter tags, `og:locale`.
+- Title, description, canonical URL, Open Graph and Twitter tags, `og:locale`.
 - JSON-LD: TechArticle (docs) or BlogPosting (blog), BreadcrumbList, and FAQPage when the frontmatter has `faq:`.
 - "Updated" date, reading time, table of contents, heading anchors, previous and next links.
-- A Markdown copy next to the HTML (`quickstart.md`) for people and AI tools, plus `llms.txt` and `llms-full.txt`.
-- `sitemap.xml`, `robots.txt`, `search.json` for the built-in search (Ctrl K or /), and for the blog `feed.xml`.
+- A **Copy page** button that copies the page as plain text. No Markdown copies are published, and keywords stay out of the HTML.
+- `sitemap.xml`, `robots.txt`, `llms.txt` (titles and summaries only) and `search.json` for the built-in search (Ctrl K or /).
 - Syntax highlighting at build time, so pages ship with no highlighting library.
 
 ## Blog
@@ -105,4 +105,4 @@ and its styles in `assets/docs.css`.
 1. Copy `content/blog/_template.md` to `content/blog/posts/<post-slug>.md`.
 2. Pick `author` and `category` from `content/blog/blog.yml` (add new ones there).
 3. Keep `draft: true` while it is reviewed: drafts build with `noindex` and stay off the index, feed and sitemap.
-4. Remove `draft` to publish. The index, category pages, pagination, RSS, related posts and the home page row update.
+4. Remove `draft` to publish. The index, category pages, pagination, related posts and the home page row update.

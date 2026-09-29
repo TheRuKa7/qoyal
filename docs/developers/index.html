@@ -4,20 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Echo for developers</title>
-<meta name="description" content="Place calls, run campaigns and read outcomes from your own systems. The same agents your business team builds, driven by code.">
-<meta name="keywords" content="voice AI API, Echo API, Echo, Cognilix, enterprise voice AI, voice agents, Indian languages, multilingual voice AI">
+<meta name="description" content="Build and run Echo voice agents from your terminal, your AI coding tools and your own systems, with the Reverb CLI, the Relay MCP server, agent skills and the REST API.">
 <link rel="canonical" href="https://theruka7.github.io/qoyal/docs/developers/">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Echo by Cognilix">
 <meta property="og:locale" content="en_IN">
 <meta property="og:title" content="Echo for developers">
-<meta property="og:description" content="Place calls, run campaigns and read outcomes from your own systems. The same agents your business team builds, driven by code.">
+<meta property="og:description" content="Build and run Echo voice agents from your terminal, your AI coding tools and your own systems, with the Reverb CLI, the Relay MCP server, agent skills and the REST API.">
 <meta property="og:url" content="https://theruka7.github.io/qoyal/docs/developers/">
 <meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Echo for developers">
-<meta name="twitter:description" content="Place calls, run campaigns and read outcomes from your own systems. The same agents your business team builds, driven by code.">
+<meta name="twitter:description" content="Build and run Echo voice agents from your terminal, your AI coding tools and your own systems, with the Reverb CLI, the Relay MCP server, agent skills and the REST API.">
 <meta name="twitter:image" content="https://theruka7.github.io/qoyal/og.png">
 <meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
@@ -26,104 +25,77 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/docs.css">
 <link rel="icon" type="image/png" href="../../favicon.png">
-<link rel="alternate" type="text/markdown" href="index.md">
 <script src="../../assets/docs.js" defer></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Echo for developers", "description": "Place calls, run campaigns and read outcomes from your own systems. The same agents your business team builds, driven by code.", "keywords": "voice AI API, Echo API, Echo, Cognilix, enterprise voice AI, voice agents, Indian languages, multilingual voice AI", "dateModified": "2026-09-29", "inLanguage": "en-IN", "url": "https://theruka7.github.io/qoyal/docs/developers/index.html", "author": {"@type": "Organization", "name": "Cognilix"}, "publisher": {"@type": "Organization", "name": "Cognilix", "url": "https://www.cognilix.com"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "Developers", "item": "https://theruka7.github.io/qoyal/docs/developers/"}, {"@type": "ListItem", "position": 4, "name": "Echo for developers", "item": "https://theruka7.github.io/qoyal/docs/developers/index.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Echo for developers", "description": "Build and run Echo voice agents from your terminal, your AI coding tools and your own systems, with the Reverb CLI, the Relay MCP server, agent skills and the REST API.", "dateModified": "2026-09-29", "inLanguage": "en-IN", "url": "https://theruka7.github.io/qoyal/docs/developers/index.html", "author": {"@type": "Organization", "name": "Cognilix"}, "publisher": {"@type": "Organization", "name": "Cognilix", "url": "https://www.cognilix.com"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "Developers", "item": "https://theruka7.github.io/qoyal/docs/developers/"}, {"@type": "ListItem", "position": 4, "name": "Echo for developers", "item": "https://theruka7.github.io/qoyal/docs/developers/index.html"}]}</script>
 </head>
 <body class="d-body">
 <a class="skip" href="#content">Skip to content</a>
 <header class="nav">
   <a class="brand" href="../../" aria-label="Echo by Cognilix home"><img class="clx lt" src="../../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../../cognilix-white.png" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
-  <nav class="links" aria-label="Site"><a href="../../#use-cases">Use cases</a><a href="../../#how-it-works">How it works</a><a href="../../#build">Build</a><a href="../../#security">Security</a><a href="../" aria-current="page">Docs</a><a href="../../blog/">Blog</a></nav>
+  <nav class="links" aria-label="Site"><a href="../../#use-cases">Use cases</a><a href="../../#how-it-works">How it works</a><a href="../../#build">Build</a><a href="../../#roi">ROI</a><a href="../../#security">Security</a><a href="../../#faq">FAQ</a><a href="../" aria-current="page">Docs</a><a href="../../blog/">Blog</a></nav>
   <button class="d-search-b" type="button" data-search aria-label="Search the docs"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m10.5 10.5 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Search</span><kbd>Ctrl K</kbd></button>
   <button class="d-theme" type="button" data-theme-toggle aria-label="Switch colour theme"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 1 0 0 13z" fill="currentColor"/><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
   <a class="cta" href="../../#pilot">Talk to an expert</a>
   <button class="d-menu-b" type="button" data-menu aria-controls="dSide" aria-expanded="false" aria-label="Open the menu"><span></span><span></span></button>
 </header>
 <div class="d-shell">
-<aside class="d-side" id="dSide" aria-label="Documentation"><nav class="d-tabs" aria-label="Documentation sets"><a class="d-tab" href="../"><span>Platform guide</span><small>No code</small></a><a class="d-tab on" href="./" aria-current="true"><span>Developers</span><small>CLI + API</small></a></nav><nav class="d-nav" aria-label="Pages"><div class="d-grp"><h4>Get started</h4><a href="./" aria-current="page">Introduction</a><a href="cli.html">CLI, MCP and skills</a><a href="quickstart.html">API quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a></div><div class="d-grp"><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html">Run a campaign from code</a><a href="webhooks.html">Receive outcomes by webhook</a><a href="guide-exports.html">Recordings and exports</a></div><div class="d-grp"><h4>API reference</h4><a href="agents.html">Agents API</a><a href="calls.html">Calls API</a><a href="campaigns.html">Campaigns API</a><a href="analytics.html">Analytics API</a><a href="webhooks-api.html">Webhook endpoints</a></div><div class="d-grp"><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></div></nav></aside>
+<aside class="d-side" id="dSide" aria-label="Documentation"><nav class="d-tabs" aria-label="Documentation sets"><a class="d-tab" href="../"><span>Platform guide</span><small>Console</small></a><a class="d-tab on" href="./" aria-current="true"><span>Developers</span><small>Coming soon</small></a></nav><nav class="d-nav" aria-label="Pages"><div class="d-grp"><h4>Get started</h4><a href="./" aria-current="page">Introduction</a><a href="objects.html">Core objects</a></div><div class="d-grp"><h4>Tools</h4><a href="cli.html">Reverb CLI</a><a href="mcp.html">Relay MCP server</a><a href="skills.html">Agent skills</a></div><div class="d-grp"><h4>REST API</h4><a href="quickstart.html">API quickstart</a><a href="authentication.html">Authentication</a><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html">Run a campaign from code</a><a href="webhooks.html">Receive outcomes by webhook</a><a href="guide-exports.html">Recordings and exports</a></div><div class="d-grp"><h4>API reference</h4><a href="agents.html">Agents API</a><a href="calls.html">Calls API</a><a href="campaigns.html">Campaigns API</a><a href="analytics.html">Analytics API</a><a href="webhooks-api.html">Webhook endpoints</a></div><div class="d-grp"><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></div></nav></aside>
 <main class="d-main" id="content">
 <p class="crumb"><a href="../../">Home</a> / <a href="../">Docs</a> / <a href="./">Developers</a> / Get started</p>
 <p class="kick">Get started</p>
 <h1>Echo for developers</h1>
-<p class="lede">Place calls, run campaigns and read outcomes from your own systems. The same agents your business team builds, driven by code.</p>
-<p class="d-meta"><span>Updated 29 Sep 2026</span><span>2 min read</span><a href="index.md" type="text/markdown">View as Markdown</a></p>
+<p class="lede">Build and run Echo voice agents from your terminal, your AI coding tools and your own systems, with the Reverb CLI, the Relay MCP server, agent skills and the REST API.</p>
+<div class="d-meta"><span>Updated 29 Sep 2026</span><span>1 min read</span><button class="d-copy" type="button" data-copy-page><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5" y="5" width="8.5" height="8.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 10.5V3.6C3 3.3 3.3 3 3.6 3h6.9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Copy page</span></button></div>
 <article class="d-prose">
-<aside class="c-callout c-info" role="note"><p class="c-callout-t">Developer preview</p><p>The API is in developer preview. Endpoints and fields may change before general availability, and keys are issued to pilot customers only, so you cannot try it without one. <a href="../../#pilot">Request access</a>.</p></aside>
-<h2 id="what-you-can-build">What you can build<a class="h-anchor" href="#what-you-can-build" aria-label="Link to this section">#</a></h2>
-<div class="c-cards c-cols-2"><a class="c-card" href="guide-call.html"><small>Guide</small><b>Call on an event</b><div class="c-card-b"><p>A new order, a late PO, an unpaid invoice: place a call the moment it happens.</p></div></a>
-<a class="c-card" href="guide-campaign.html"><small>Guide</small><b>Run a campaign from code</b><div class="c-card-b"><p>Create a campaign, check the mapping, upload, and collect results.</p></div></a>
-<a class="c-card" href="webhooks.html"><small>Guide</small><b>Receive outcomes by webhook</b><div class="c-card-b"><p>Receive every captured answer on a webhook and update your ERP or CRM.</p></div></a>
-<a class="c-card" href="guide-exports.html"><small>Guide</small><b>Recordings and exports</b><div class="c-card-b"><p>Pull recordings, transcripts and analysis into your own storage.</p></div></a></div>
-<h2 id="platform-or-api">Platform or API?<a class="h-anchor" href="#platform-or-api" aria-label="Link to this section">#</a></h2>
+<p>Everything in this tab is <span class="c-badge c-badge-soon">Coming soon</span>. The pages show how each tool will work, so you can plan an integration now. Your business team can already build, test and run agents in the Echo console; see the <a href="../">Platform guide</a>.</p>
+<h2 id="the-tools">The tools<a class="h-anchor" href="#the-tools" aria-label="Link to this section">#</a></h2>
+<div class="c-cards c-cols-2"><a class="c-card" href="cli.html"><small>Command line</small><b>Reverb CLI</b><div class="c-card-b"><p>Log in, scaffold agents, test them and run campaigns from your terminal. The main way to build with Echo.</p></div></a>
+<a class="c-card" href="mcp.html"><small>AI tools</small><b>Relay MCP server</b><div class="c-card-b"><p>Give Claude Code, Cursor and other MCP clients the same actions as the CLI.</p></div></a>
+<a class="c-card" href="skills.html"><small>AI tools</small><b>Agent skills</b><div class="c-card-b"><p>Teach AI coding tools to write correct Echo prompts, variables and webhook handlers.</p></div></a>
+<a class="c-card" href="quickstart.html"><small>HTTP</small><b>REST API</b><div class="c-card-b"><p>Calls, campaigns, results and webhooks, for any language.</p></div></a></div>
+<h2 id="which-one-to-use">Which one to use<a class="h-anchor" href="#which-one-to-use" aria-label="Link to this section">#</a></h2>
 <div class="c-table"><table>
 <thead>
 <tr>
-<th>Task</th>
-<th>Dashboard</th>
-<th>API</th>
+<th>You want to</th>
+<th>Use</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Write and test prompts</td>
-<td>Best here: editor, preview, call console</td>
-<td>Read, version and replace</td>
+<td>Build and test agents day to day</td>
+<td><a href="cli.html">Reverb CLI</a></td>
 </tr>
 <tr>
-<td>Declare inputs and outputs</td>
-<td>Yes</td>
-<td>Yes</td>
+<td>Let an AI assistant draft, test and run agents</td>
+<td><a href="mcp.html">Relay MCP server</a> with <a href="skills.html">agent skills</a></td>
 </tr>
 <tr>
-<td>Run a list</td>
-<td>Upload a sheet</td>
-<td>Upload a file or rows</td>
+<td>Place a call when something happens in your ERP</td>
+<td><a href="guide-call.html">REST API</a> and <a href="webhooks.html">webhooks</a></td>
 </tr>
 <tr>
-<td>Place one call on an event</td>
-<td>Call console, for tests</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>Read outcomes</td>
-<td>Dashboard, downloads</td>
-<td>JSON, CSV, webhooks</td>
-</tr>
-<tr>
-<td>Manage people and access</td>
-<td>Yes</td>
-<td>Not yet</td>
+<td>Pull results, recordings and transcripts into your storage</td>
+<td><a href="guide-exports.html">Exports</a></td>
 </tr>
 </tbody>
 </table></div>
-<h2 id="getting-outcomes-into-your-erp">Getting outcomes into your ERP<a class="h-anchor" href="#getting-outcomes-into-your-erp" aria-label="Link to this section">#</a></h2>
-<p>The documented routes are the API, <a href="webhooks.html">webhooks</a> and <a href="guide-exports.html">exports</a>: your integration receives each outcome and writes it to your ERP, CRM or helpdesk. Ask your account team what is set up for your ERP during the pilot.</p>
 <h2 id="the-object-model">The object model<a class="h-anchor" href="#the-object-model" aria-label="Link to this section">#</a></h2>
-<div class="c-code" data-title="Text"><div class="c-code-h"><span>Text</span><button class="c-copy" type="button" aria-label="Copy code">Copy</button></div><pre class="hl"><code>Agent ── has ──► inputs, outputs, prompt, voice, calling line
+<div class="c-code" data-title="TEXT"><div class="c-code-h"><span>TEXT</span><button class="c-copy" type="button" aria-label="Copy code">Copy</button></div><pre class="hl"><code class="language-text">Agent ── has ──► inputs, outputs, prompt, voice, calling line
   │
   ├─► Call        one conversation   →  outputs, transcript, recording, analysis
   │
-  └─► Campaign    one list           →  Contacts  →  Calls  →  Results
+  └─► Campaign    one list           →  contacts  →  calls  →  results
 </code></pre></div>
-<p>Read <a href="objects.html">Core objects</a> for every field.</p>
-<h2 id="conventions">Conventions<a class="h-anchor" href="#conventions" aria-label="Link to this section">#</a></h2>
-<ul>
-<li><strong>Base URL</strong>: shared with your API key. All paths start with <code>/v1</code>, the only version so far.</li>
-<li><strong>Test mode</strong>: there is no sandbox yet. Calls placed through the API dial real numbers, so test with your own phone.</li>
-<li><strong>Auth</strong>: <code>Authorization: Bearer &lt;key&gt;</code> on every request. See <a href="authentication.html">Authentication</a>.</li>
-<li><strong>Format</strong>: JSON in and out, UTF-8. Timestamps are ISO 8601 in UTC. Phone numbers are E.164; the API also accepts a 10-digit Indian number and adds +91.</li>
-<li><strong>Lists</strong> are paginated with <code>limit</code> and <code>cursor</code>; the response carries <code>next_cursor</code>, which is <code>null</code> on the last page.</li>
-<li><strong>Errors</strong> return a JSON <code>error</code> object with a stable <code>code</code>. See <a href="errors.html">Errors</a>.</li>
-</ul>
-<h2 id="where-to-go-next">Where to go next<a class="h-anchor" href="#where-to-go-next" aria-label="Link to this section">#</a></h2>
-<p>Once you have a key, the <a href="quickstart.html">API quickstart</a> places your first call in a few minutes. The <a href="agents.html">API reference</a> lists every endpoint with examples in cURL, Python and Node.js.</p>
+<p>Every tool works on these same objects, so an agent built in the console, the CLI or the API is the same agent. <a href="objects.html">Core objects</a> lists every field.</p>
+<h2 id="early-access">Early access<a class="h-anchor" href="#early-access" aria-label="Link to this section">#</a></h2>
+<p>Tell your account team which tool you need first and what you want to connect it to. <a href="../../#pilot">Talk to an expert</a>.</p>
 </article>
-<nav class="d-pager" aria-label="Previous and next"><span></span><a class="nx" href="cli.html"><small>Next</small><b>CLI, MCP and skills</b></a></nav>
+<nav class="d-pager" aria-label="Previous and next"><span></span><a class="nx" href="objects.html"><small>Next</small><b>Core objects</b></a></nav>
 </main>
-<aside class="d-toc" aria-label="On this page"><b>On this page</b><a class="l2" href="#what-you-can-build">What you can build</a><a class="l2" href="#platform-or-api">Platform or API?</a><a class="l2" href="#getting-outcomes-into-your-erp">Getting outcomes into your ERP</a><a class="l2" href="#the-object-model">The object model</a><a class="l2" href="#conventions">Conventions</a><a class="l2" href="#where-to-go-next">Where to go next</a></aside>
+<aside class="d-toc" aria-label="On this page"><b>On this page</b><a class="l2" href="#the-tools">The tools</a><a class="l2" href="#which-one-to-use">Which one to use</a><a class="l2" href="#the-object-model">The object model</a><a class="l2" href="#early-access">Early access</a></aside>
 </div>
-<footer class="d-foot"><div class="d-foot-in"><div class="d-foot-b"><a class="brand" href="../../" aria-label="Echo by Cognilix home"><img class="clx lt" src="../../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../../cognilix-white.png" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a><p>Enterprise Voice AI by Cognilix for the calls that move orders, deliveries and cash.</p></div><div><h4>Product</h4><a href="../../#use-cases">Use cases</a><a href="../../#how-it-works">How it works</a><a href="../../#security">Security</a><a href="../../#roi">ROI calculator</a></div><div><h4>Docs</h4><a href="../">Platform guide</a><a href="./">Developers</a><a href="changelog.html">Changelog</a><a href="../../llms.txt">llms.txt</a></div><div><h4>Resources</h4><a href="../../blog/">Blog</a><a href="../../#faq">FAQ</a><a href="../../#pilot">Talk to an expert</a></div><div><h4>Company</h4><a href="https://www.cognilix.com" rel="noopener" target="_blank">Cognilix</a><a href="https://www.cognilix.com/contact-us" rel="noopener" target="_blank">Contact</a><a href="https://www.cognilix.com/privacy-policy" rel="noopener" target="_blank">Privacy policy</a></div></div><div class="d-foot-bot"><span>Echo · A Cognilix platform · Made in India</span><span>© 2026 Cognilix</span></div></footer>
+<footer class="d-foot"><div class="d-foot-in"><div class="d-foot-b"><a class="brand" href="../../" aria-label="Echo by Cognilix home"><img class="clx lt" src="../../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../../cognilix-white.png" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a><p>Enterprise Voice AI by Cognilix for the calls that move orders, deliveries and cash.</p></div><div><h4>Product</h4><a href="../../#use-cases">Use cases</a><a href="../../#how-it-works">How it works</a><a href="../../#security">Security</a><a href="../../#roi">ROI calculator</a></div><div><h4>Docs</h4><a href="../">Platform guide</a><a href="./">Developers</a><a href="changelog.html">Changelog</a></div><div><h4>Resources</h4><a href="../../blog/">Blog</a><a href="../../#faq">FAQ</a><a href="../../#pilot">Talk to an expert</a></div><div><h4>Company</h4><a href="https://www.cognilix.com" rel="noopener" target="_blank">Cognilix</a><a href="https://www.cognilix.com/contact-us" rel="noopener" target="_blank">Contact</a><a href="https://www.cognilix.com/privacy-policy" rel="noopener" target="_blank">Privacy policy</a></div></div><div class="d-foot-bot"><span>Echo · A Cognilix platform · Made in India</span><span>© 2026 Cognilix</span></div></footer>
 <div class="d-search" id="dSearch" role="dialog" aria-modal="true" aria-label="Search" hidden><div class="d-search-bg" data-search-close></div><div class="d-search-box"><input type="search" placeholder="Search docs and articles" aria-label="Search" autocomplete="off" spellcheck="false"><ul class="d-search-r" role="listbox"></ul><p class="d-search-f"><kbd>Enter</kbd> open <kbd>Esc</kbd> close</p></div></div>
 </body>
 </html>

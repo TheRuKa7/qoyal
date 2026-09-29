@@ -4,7 +4,9 @@ description: Place a single call the moment something happens in your system, an
 keywords:
 - trigger a call from an event
 - ERP event call
-updated: '2026-09-25'
+updated: '2026-09-29'
+status: soon
+soon_note: The public REST API is not open yet. Endpoints and fields may change before release. Ask your account team for early access.
 ---
 
 ## When to use it

@@ -1,78 +1,70 @@
 ---
-title: CLI, MCP and skills
-description: Build, test and run Echo voice agents from your terminal with the Echo CLI, drive them from AI coding tools over MCP, and add agent skills.
-sidebarTitle: CLI, MCP and skills
+title: Reverb CLI
+description: Reverb is the Echo command line. Log in, scaffold an agent from a template, test it in any language, run campaigns and stream outcomes to your laptop.
+sidebarTitle: Reverb CLI
+status: soon
+soon_note: Reverb is not released yet. Commands and flags may change before release. Ask your account team for early access.
 keywords:
 - voice agent CLI
-- voice AI MCP server
-- agent skills for voice agents
+- Reverb CLI
 updated: '2026-09-29'
 ---
 
-The Echo CLI is the main way developers work with Echo. It wraps the same API, so anything you do here you can also do over HTTP.
-
-<Note title="Developer preview">The CLI, the MCP server and the skills pack are in developer preview. Your account team shares the install link with your pilot access.</Note>
+Reverb wraps the Echo API in one command, `reverb`. Anything you do with it you can also do in the console or over HTTP.
 
 ## Log in
 
 ```bash
-cognilix login
-cognilix auth whoami
+reverb login
+reverb whoami
 ```
 
-`login` opens your browser and stores a key for this machine. Use `cognilix auth switch` if you work across more than one workspace.
+`login` opens your browser and stores a key for this machine. Use `reverb org switch` if you work across more than one organisation.
 
 ## Build and test an agent
 
 <Steps>
-<Step title="Scaffold">`cognilix agents init dispatch-followup --template delivery-date` creates the agent from a template.</Step>
-<Step title="Test">`cognilix agents test dispatch-followup --lang hi-IN` runs a test call in the language you pick.</Step>
-<Step title="Call yourself">`cognilix calls start --agent dispatch-followup --to <your number>` places one real call.</Step>
+<Step title="Scaffold">
+`reverb agents init dispatch-followup --template delivery-date` creates an agent from a template, with its prompt sections and variables.
+</Step>
+<Step title="Check">
+`reverb agents check dispatch-followup` lists tokens used in the prompt but not declared as inputs, and outputs with no description.
+</Step>
+<Step title="Test">
+`reverb agents test dispatch-followup --lang hi-IN` runs a test conversation in the language you pick and prints the captured outputs.
+</Step>
+<Step title="Call yourself">
+`reverb calls start --agent dispatch-followup --to <your number>` places one real call.
+</Step>
 </Steps>
 
-<Warning title="Calls are real">There is no sandbox yet. Place test calls to your own phone.</Warning>
+<Warning title="Calls are real">Calls placed with Reverb dial real numbers. Test with your own phone.</Warning>
 
 ## Run a campaign
 
 ```bash
-cognilix campaigns run \
+reverb campaigns run \
   --agent dispatch-followup \
-  --contacts open_pos.xlsx \
-  --window 10:00-18:00 --retries 3
+  --contacts open_pos.xlsx
 ```
 
-Read results as JSON with `cognilix campaigns results <campaign id> --json`, or see [Run a campaign](guide-campaign.md) for the API version.
+Reverb shows the proposed column mapping and asks you to confirm before any call goes out, the same check as the console. Read the results as JSON with `reverb campaigns results <campaign id> --json`.
 
-## Get outcomes on your laptop
+## Stream outcomes to your laptop
 
 ```bash
-cognilix listen --forward http://localhost:3000/echo
+reverb listen --forward http://localhost:3000/echo
 ```
 
 `listen` forwards [webhook events](webhooks.md) to a local server while you build, so you do not need a public URL.
 
-## MCP server
+## Command reference
 
-The MCP server gives AI tools such as Claude Code, Cursor and VS Code the same actions as the CLI: list agents, place a test call, read outcomes.
-
-```bash
-cognilix mcp install --client claude-code
-```
-
-Or add it to any MCP client by hand:
-
-```json mcp.json
-{
-  "mcpServers": {
-    "echo": { "command": "cognilix", "args": ["mcp"] }
-  }
-}
-```
-
-## Agent skills
-
-The Echo skills pack teaches AI coding tools how to write Echo agents, prompts and webhook handlers correctly. It follows the Agent Skills format, so it works in Claude Code, Cursor and other tools that support it.
-
-## Prefer HTTP?
-
-The API is open to every workspace. Start with the [API quickstart](quickstart.md).
+| Command | What it does |
+| --- | --- |
+| `reverb login`, `reverb whoami` | Sign in and check the account in use. |
+| `reverb agents list`, `init`, `check`, `test`, `pull`, `push` | Work with agents. `pull` and `push` keep prompts in your repository. |
+| `reverb calls start`, `watch`, `get` | Place a call, follow it live, read its result. |
+| `reverb campaigns run`, `status`, `results` | Run a list and read what it captured. |
+| `reverb listen` | Forward webhook events to a local URL. |
+| `reverb relay` | Start the [Relay MCP server](mcp.md). |

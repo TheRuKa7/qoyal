@@ -1,27 +1,34 @@
 # Echo by Cognilix
-> Enterprise Voice AI for B2B operations. Echo calls suppliers and customers in Hindi, English and Hinglish, confirms POs, delivery dates, quotes and payments, and sends each outcome back to your systems.
+> Enterprise Voice AI for B2B operations. Echo calls suppliers and customers in Indian and international languages, confirms POs, delivery dates, quotes and payments, and sends each outcome back to your systems.
 
 ## Platform guide
-- [Echo documentation](https://theruka7.github.io/qoyal/docs/): How to build a voice agent in Echo, test it, run it on a list of suppliers or customers, and use the outcomes. No code needed.
+- [Echo documentation](https://theruka7.github.io/qoyal/docs/): Build a voice agent in Echo, test it, run it on a list of suppliers or customers, and use every outcome. No code needed.
 - [Quickstart: your first campaign](https://theruka7.github.io/qoyal/docs/quickstart.html): Build a voice agent, test it and call your first list. About fifteen minutes once your workspace and calling line are set up.
 - [Core concepts](https://theruka7.github.io/qoyal/docs/concepts.html): The handful of ideas behind every screen in Echo.
-- [Agents](https://theruka7.github.io/qoyal/docs/agents.html): Create an agent, write its prompt in sections, choose its voice and calling line, and keep it in step with its variables.
+- [Create and manage agents](https://theruka7.github.io/qoyal/docs/agents.html): Create an agent from scratch or from a copy, find it in the agents list, sync it to a connected platform, and delete it when it is no longer used.
+- [Prompt editor](https://theruka7.github.io/qoyal/docs/prompt-editor.html): Write an agent’s instructions in sections, use tokens for values from each row, keep the automatic sections in step with the variables, and preview the full prompt.
 - [Input and output variables](https://theruka7.github.io/qoyal/docs/variables.html): Decide what the agent knows before the call and what it must report after. This is what turns a conversation into data.
+- [Voice and calling line](https://theruka7.github.io/qoyal/docs/voice.html): Choose the voice an agent speaks with, the calling line its calls use, and the primary id column that ties each call back to your records.
 - [Call console](https://theruka7.github.io/qoyal/docs/testing.html): Talk to any agent before it talks to anyone else. Test from your browser, or ring a real phone.
-- [Campaigns](https://theruka7.github.io/qoyal/docs/campaigns.html): Run an agent against a list: create the campaign, fill the template, confirm the columns, and collect results.
-- [Dashboard and call log](https://theruka7.github.io/qoyal/docs/monitoring.html): See how the whole operation is doing, then drill into any call.
+- [Create and run a campaign](https://theruka7.github.io/qoyal/docs/campaigns.html): Create a campaign for an agent, start calling, follow its status, and manage past runs.
+- [Upload and map contacts](https://theruka7.github.io/qoyal/docs/contacts.html): Download the template for an agent, fill it, upload it, and confirm which column feeds each input before any call goes out.
+- [Results, recordings and exports](https://theruka7.github.io/qoyal/docs/results.html): Follow a running campaign, open each contact’s outputs, transcript and recording, compare responses in one table, and download everything.
+- [Overview and call log](https://theruka7.github.io/qoyal/docs/monitoring.html): See how the whole operation is doing, then drill into any call.
 - [Call analysis](https://theruka7.github.io/qoyal/docs/analysis.html): Turn any call into a summary, a priority and a list of next steps.
-- [Team and access](https://theruka7.github.io/qoyal/docs/team.html): Decide who can use your workspace, what they can change, and which campaigns they can see.
+- [Team and permissions](https://theruka7.github.io/qoyal/docs/team.html): Decide who can use your workspace, what they can change, and which campaigns they can see.
+- [Workspace settings](https://theruka7.github.io/qoyal/docs/settings.html): See who you are signed in as, switch organisation, and check that Echo and the services it depends on are up.
 - [Automation and reports](https://theruka7.github.io/qoyal/docs/automation.html): For teams running calls every day: start calls from your systems and schedules, clean up messy lists, route rows to the right agent, and send reports automatically.
 - [Use-case playbooks](https://theruka7.github.io/qoyal/docs/use-cases.html): Ready-to-copy agent designs for common calls. Each lists the sheet columns, the results to capture, the call flow and what to measure.
 - [Prompt best practices](https://theruka7.github.io/qoyal/docs/best-practices.html): How to write prompts that sound human, stay on task and capture reliable data.
 
 ## Developers
-- [Echo for developers](https://theruka7.github.io/qoyal/docs/developers/): Place calls, run campaigns and read outcomes from your own systems. The same agents your business team builds, driven by code.
-- [CLI, MCP and skills](https://theruka7.github.io/qoyal/docs/developers/cli.html): Build, test and run Echo voice agents from your terminal with the Echo CLI, drive them from AI coding tools over MCP, and add agent skills.
+- [Echo for developers](https://theruka7.github.io/qoyal/docs/developers/): Build and run Echo voice agents from your terminal, your AI coding tools and your own systems, with the Reverb CLI, the Relay MCP server, agent skills and the REST API.
+- [Core objects](https://theruka7.github.io/qoyal/docs/developers/objects.html): Every object the API returns, and what each field means.
+- [Reverb CLI](https://theruka7.github.io/qoyal/docs/developers/cli.html): Reverb is the Echo command line. Log in, scaffold an agent from a template, test it in any language, run campaigns and stream outcomes to your laptop.
+- [Relay MCP server](https://theruka7.github.io/qoyal/docs/developers/mcp.html): Relay is the Echo MCP server. It gives Claude Code, Cursor, VS Code and other MCP clients the tools to list agents, place a test call and read outcomes.
+- [Agent skills](https://theruka7.github.io/qoyal/docs/developers/skills.html): Echo skills teach AI coding tools how to write Echo agents, prompt sections, variables and webhook handlers that work the first time.
 - [Quickstart](https://theruka7.github.io/qoyal/docs/developers/quickstart.html): Check your pilot API key, place a call to your own phone, and read back what the agent captured.
 - [Authentication](https://theruka7.github.io/qoyal/docs/developers/authentication.html): Every request carries your API key as a bearer token.
-- [Core objects](https://theruka7.github.io/qoyal/docs/developers/objects.html): Every object the API returns, and what each field means.
 - [Call on an event](https://theruka7.github.io/qoyal/docs/developers/guide-call.html): Place a single call the moment something happens in your system, and write the answer back.
 - [Run a campaign from code](https://theruka7.github.io/qoyal/docs/developers/guide-campaign.html): Create a campaign, check the column mapping with a dry run, upload, and collect results.
 - [Webhooks](https://theruka7.github.io/qoyal/docs/developers/webhooks.html): Receive outcomes as they happen. Verify each delivery, reply fast, and handle retries.
@@ -33,4 +40,4 @@
 - [Webhooks API](https://theruka7.github.io/qoyal/docs/developers/webhooks-api.html): Get each outcome the moment it lands instead of polling. Register an endpoint, then verify every delivery.
 - [Errors](https://theruka7.github.io/qoyal/docs/developers/errors.html): Every error has an HTTP status and a stable code you can branch on.
 - [Rate limits and pagination](https://theruka7.github.io/qoyal/docs/developers/limits.html): How much you can ask for, and how to page through long lists.
-- [Changelog](https://theruka7.github.io/qoyal/docs/developers/changelog.html): What changed in the API, newest first.
+- [Changelog](https://theruka7.github.io/qoyal/docs/developers/changelog.html): What changed in Echo’s developer tools and documentation, newest first.

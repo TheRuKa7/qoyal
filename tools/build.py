@@ -1,6 +1,6 @@
 """Echo site builder: Markdown in content/, static HTML out.
 
-    python tools/build.py            build docs, blog, sitemap, search index, llms.txt
+    python tools/build.py            build docs, blog, sitemap, search index, llms.txt (no Markdown copies, no RSS)
     python tools/build.py check      build into memory, report problems, write nothing
     python tools/build.py serve      build, serve on http://127.0.0.1:8000 and rebuild on save
 
@@ -355,8 +355,7 @@ def head(title, desc, canon_rel, out_dir, meta, kind, extra_ld, keywords):
 {ld}
 </head>'''.format(t=E(title), d=E(desc), c=E(BASE + canon_rel), r=robots, k=kind, sn=E(SITE['site_name']), loc=SITE.get('locale', 'en_IN'),
                   img=E(img), css=css, js=js, fav=relpath('favicon.png', out_dir), ld=ld,
-                  kw='<meta name="keywords" content="%s">\n' % E(kw) if kw else '',
-                  alt='<link rel="alternate" type="text/markdown" href="%s">\n' % E(meta['_md']) if meta.get('_md') else '')
+                  kw='', alt='')
 
 
 def brand(out_dir):
@@ -443,15 +442,14 @@ def build_docs():
     for i, (p, meta, pg) in enumerate(built):
         tab = p['tab']
         out_dir = os.path.dirname(p['out'])
-        md_rel = p['out'][:-5] + '.md'
-        meta['_md'] = os.path.basename(md_rel)
+        soon = str(meta.get('status', '')).lower() in ('soon', 'coming-soon', 'coming soon')
         title = meta['title']
         full_title = title if p['name'] == 'index' else '%s · %s' % (title, tab['title_suffix'])   # section home pages carry their own name
         kws = meta.get('keywords', []) + cfg.get('keywords', [])
         updated = str(meta.get('updated', TODAY))
         crumbs = [('Home', ''), ('Docs', 'docs/')] + ([(tab['label'], tab['output'])] if tab['output'] != 'docs/' else []) + [(title, p['out'])]
         ld = [{"@context": "https://schema.org", "@type": "TechArticle", "headline": title, "description": meta.get('description', ''),
-               "keywords": ', '.join(kws), "dateModified": updated, "inLanguage": "en-IN", "url": BASE + p['out'],
+               "dateModified": updated, "inLanguage": "en-IN", "url": BASE + p['out'],
                "author": {"@type": "Organization", "name": SITE['org']}, "publisher": {"@type": "Organization", "name": SITE['org'], "url": SITE['org_url']}},
               {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
                   {"@type": "ListItem", "position": k + 1, "name": n, "item": BASE + u} for k, (n, u) in enumerate(crumbs)]}]
@@ -475,11 +473,11 @@ def build_docs():
 <aside class="d-side" id="dSide" aria-label="Documentation">{side}</aside>
 <main class="d-main" id="content">
 <p class="crumb">{crumb}</p>
-<p class="kick">{group}</p>
+<p class="kick">{group}{soon_tag}</p>
 <h1>{title}</h1>
 <p class="lede">{desc}</p>
-<p class="d-meta"><span>Updated {upd}</span><span>{mins} min read</span><a href="{md}" type="text/markdown">View as Markdown</a></p>
-<article class="d-prose">
+<div class="d-meta"><span>Updated {upd}</span><span>{mins} min read</span><button class="d-copy" type="button" data-copy-page><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5" y="5" width="8.5" height="8.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 10.5V3.6C3 3.3 3.3 3 3.6 3h6.9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Copy page</span></button></div>
+{soon_note}<article class="d-prose">
 {body}
 </article>
 {pager}
@@ -491,14 +489,15 @@ def build_docs():
 </body>
 </html>
 '''.format(hdr=header(out_dir, '/docs/'), side=side, crumb=crumb, group=E(p['group']), title=E(title), desc=E(meta.get('description', '')),
-           upd=fmt_date(updated), mins=mins, md=E(meta['_md']), body=pg.html, pager=pager,
+           upd=fmt_date(updated), mins=mins, body=pg.html, pager=pager,
+           soon_tag='<span class="d-soon">Coming soon</span>' if soon else '',
+           soon_note=('<aside class="c-callout c-soon" role="note"><p class="c-callout-t">Coming soon</p><p>%s</p></aside>\n' % E(
+               meta.get('soon_note') or 'This is not in the product yet. The page shows how it will work so you can plan for it. Ask your account team for early access.')) if soon else '',
            toc='<b>On this page</b>' + toc if toc else '', foot=footer(out_dir), search=search_dialog())
         out(p['out'], page)
-        out(md_rel, rd(os.path.join(ROOT, p['src'])))
         SEARCH.extend(search_entries(pg, p['out'], title, tab['label']))
         SITEMAP.append((p['out'].replace('index.html', ''), updated))
         LLMS.setdefault(tab['label'], []).append((title, BASE + p['out'].replace('index.html', ''), meta.get('description', '')))
-        LLMS_FULL.append('# %s\n\nSource: %s\n\n%s' % (title, BASE + p['out'].replace('index.html', ''), rd(os.path.join(ROOT, p['src'])).split('\n---', 1)[-1].strip()))
     DOC_LINKS.update(link_map)
     return built
 
@@ -517,12 +516,13 @@ def sidebar(cfg, built, cur, out_dir):
         if p['group'] != last:
             groups += ('</div>' if last else '') + '<div class="d-grp"><h4>%s</h4>' % E(p['group'])
             last = p['group']
-        badge = p.get('badge') or meta.get('badge')
+        tab_soon = str(cur['tab'].get('badge', '')).lower() == 'coming soon'   # the whole tab is marked, so pages need no badge
+        badge = p.get('badge') or meta.get('badge') or ('Soon' if not tab_soon and str(meta.get('status', '')).lower() in ('soon', 'coming-soon', 'coming soon') else None)
         href = relpath(p['out'], out_dir)
         if href.endswith('index.html'):
             href = href[:-10] or './'
         groups += '<a href="%s"%s>%s%s</a>' % (href, ' aria-current="page"' if p is cur else '', E(meta.get('sidebarTitle', meta['title'])),
-                                              ' <span class="d-badge">%s</span>' % E(badge) if badge else '')
+                                              ' <span class="d-badge%s">%s</span>' % (' soon' if badge == 'Soon' else '', E(badge)) if badge else '')
     return '<nav class="d-tabs" aria-label="Documentation sets">%s</nav><nav class="d-nav" aria-label="Pages">%s</div></nav>' % (tabs, groups)
 
 
@@ -611,14 +611,13 @@ def build_blog():
 {cats}
 <div class="b-grid">{cards}</div>
 {nav}
-<p class="b-rss"><a href="{rss}">RSS feed</a></p>
 </main>
 {foot}
 {search}
 </body>
 </html>
 '''.format(hdr=header(out_dir, '/blog/'), home=relpath('', out_dir), kick=E(cfg['kicker']), h1=E(title if cat else cfg['heading']), lede=E(lede),
-           cats=cats, cards=cards, nav=nav, rss=relpath('blog/feed.xml', out_dir), foot=footer(out_dir), search=search_dialog())
+           cats=cats, cards=cards, nav=nav, foot=footer(out_dir), search=search_dialog())
     def paged(items, base, title, lede, cat=None):
         pages = max(1, math.ceil(len(items) / per))
         for n in range(1, pages + 1):
@@ -634,11 +633,6 @@ def build_blog():
         paged(items, 'blog/category/%s/' % k, '%s · %s' % (v['label'], cfg['title']), v['description'], k)
         if items:
             SITEMAP.append(('blog/category/%s/' % k, TODAY))
-    feed = ''.join('<item><title>{t}</title><link>{l}</link><guid>{l}</guid><pubDate>{d}</pubDate><description>{s}</description><category>{c}</category></item>'.format(
-        t=xesc(x[2]['title']), l=BASE + x[1], s=xesc(x[2].get('description', '')), c=xesc(x[2].get('category', '')),
-        d=datetime.datetime.combine(datetime.date.fromisoformat(str(x[2]['date'])), datetime.time(9)).strftime('%a, %d %b %Y %H:%M:%S +0530')) for x in live[:30])
-    out('blog/feed.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>{t}</title><link>{l}</link><description>{d}</description><language>en-in</language>{i}</channel></rss>\n'.format(
-        t=xesc(cfg['title']), l=BASE + 'blog/', d=xesc(cfg['description']), i=feed))
     for src, out_rel, meta, pg in live:
         SITEMAP.append((out_rel, str(meta.get('updated', meta.get('date')))))
         LLMS.setdefault('Blog', []).append((meta['title'], BASE + out_rel, meta.get('description', '')))
@@ -663,9 +657,9 @@ def write_post(cfg, authors, src, out_rel, meta, pg, related):
     au = authors.get(meta.get('author'), {})
     cat = cfg['categories'].get(meta.get('category'), {}).get('label', '')
     img = ('blog/assets/' + meta['image']) if meta.get('image') else None
-    meta = dict(meta, image_url=img, _md=os.path.basename(out_rel)[:-5] + '.md')
+    meta = dict(meta, image_url=img)
     ld = [{"@context": "https://schema.org", "@type": "BlogPosting", "headline": meta['title'], "description": meta.get('description', ''),
-           "datePublished": str(meta.get('date')), "dateModified": str(meta.get('updated', meta.get('date'))), "keywords": ', '.join(meta.get('keywords', [])),
+           "datePublished": str(meta.get('date')), "dateModified": str(meta.get('updated', meta.get('date'))),
            "author": {"@type": "Person", "name": au.get('name', '')} if au else {"@type": "Organization", "name": SITE['org']},
            "publisher": {"@type": "Organization", "name": SITE['org'], "url": SITE['org_url']}, "mainEntityOfPage": BASE + out_rel,
            **({"image": BASE + img} if img else {})}]
@@ -703,7 +697,6 @@ def write_post(cfg, authors, src, out_rel, meta, pg, related):
            ctal=E(cfg['cta']['label']), related='<section class="b-rel"><h2>Related</h2><div class="b-grid">%s</div></section>' % rel if rel else '',
            foot=footer(out_dir), search=search_dialog())
     out(out_rel, page)
-    out(out_rel[:-5] + '.md', rd(os.path.join(ROOT, src)))
 
 
 # ------------------------------------------------------------------ components gallery (internal)
@@ -767,7 +760,6 @@ def run():
     for sec, rows in LLMS.items():
         llms += ['## %s' % sec] + ['- [%s](%s): %s' % r for r in rows] + ['']
     out('llms.txt', '\n'.join(llms))
-    out('llms-full.txt', '\n\n'.join(LLMS_FULL) + '\n')
     sub = re.sub(r'^https?://[^/]+/', '', BASE)
     out('robots.txt', 'User-agent: *\nAllow: /\nDisallow: /%sdocs/_\nDisallow: /%sblog/_\nSitemap: %ssitemap.xml\n' % (sub, sub, BASE))
     for p in problems:

@@ -42,6 +42,20 @@
     }).catch(function () { b.textContent = 'Select and copy'; });
   });
 
+  /* copy the whole page as plain text: title, summary and article */
+  $$('[data-copy-page]').forEach(function (b) {
+    var label = b.querySelector('span');
+    b.addEventListener('click', function () {
+      var main = b.closest('main') || d.body, art = main.querySelector('.d-prose'), h1 = main.querySelector('h1'), lede = main.querySelector('.lede');
+      var clone = art.cloneNode(true);
+      $$('.c-copy, .c-tabbar, .h-anchor, script, style', clone).forEach(function (x) { x.remove(); });
+      var txt = [h1 && h1.innerText, lede && lede.innerText, clone.innerText].filter(Boolean).join('\n\n').replace(/\n{3,}/g, '\n\n').trim() + '\n\nSource: ' + location.href.split('#')[0];
+      (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject()).then(function () {
+        label.textContent = 'Copied'; b.classList.add('ok'); setTimeout(function () { label.textContent = 'Copy page'; b.classList.remove('ok'); }, 1600);
+      }).catch(function () { label.textContent = 'Copy failed'; });
+    });
+  });
+
   /* theme */
   $$('[data-theme-toggle]').forEach(function (b) {
     b.addEventListener('click', function () {

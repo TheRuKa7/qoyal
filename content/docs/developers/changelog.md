@@ -1,17 +1,17 @@
 ---
 title: Changelog
-description: What changed in the API, newest first.
+description: What changed in Echo’s developer tools and documentation, newest first.
 keywords:
-- API changelog
+- changelog
 updated: '2026-09-29'
 ---
 
-## Versioning
+Each entry has its date. Once the developer tools are released, breaking changes will come with a new API version and advance notice.
 
-The API is at `v1` and in developer preview. During the preview, fields and endpoints can change; every change is listed here with its date. Breaking changes after general availability will come with a new version and notice.
+<Update label="29 September 2026" date="2026-09-29" tags="Docs">
+Developer docs reorganised around the Reverb CLI, the Relay MCP server, agent skills and the REST API. Every developer page is marked Coming soon until it is released.
+</Update>
 
-## Changes
-
-<Update label="September 2026" date="2026-09-25" tags="Developer preview">
-First public reference for agents, prompts and variables, calls, campaigns with dry-run uploads, results and exports, analytics and webhooks. The no-code equivalent of a dry run is the column-mapping check before you confirm an upload.
+<Update label="25 September 2026" date="2026-09-25" tags="Docs">
+First draft of the API reference: agents, prompts and variables, calls, campaigns, results and exports, analytics and webhooks.
 </Update>

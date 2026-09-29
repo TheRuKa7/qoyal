@@ -60,11 +60,19 @@
 <html><aside class="c-callout c-check" role="note">{{#title}}<p class="c-callout-t">{{title}}</p>{{/title}}{{children}}</aside></html>
 </component>
 
+<component name="Soon">
+<doc>Marks something that is not in the product yet. Optional title (default "Coming soon"). For a whole page, set status: soon in its frontmatter instead.</doc>
+<example>
+<Soon>Event triggers start a call when a record changes in your ERP. Ask your account team for early access.</Soon>
+</example>
+<html><aside class="c-callout c-soon" role="note"><p class="c-callout-t">{{#title}}{{title}}{{/title}}{{^title}}Coming soon{{/title}}</p>{{children}}</aside></html>
+</component>
+
 <!-- ================= Inline ================= -->
 <component name="Badge" inline="true">
-<doc>A small label inside a sentence or a table. tone: new, beta, preview, enterprise, live.</doc>
+<doc>A small label inside a sentence, heading or table. tone: new, live, preview, enterprise, soon.</doc>
 <example>
-Scheduled reports <Badge tone="enterprise">Enterprise</Badge> and the API <Badge tone="preview">Developer preview</Badge>.
+Sheet automation <Badge tone="enterprise">Enterprise</Badge> and the API <Badge tone="soon">Coming soon</Badge>.
 </example>
 <html><span class="c-badge c-badge-{{tone}}">{{children}}</span></html>
 </component>

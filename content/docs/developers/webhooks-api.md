@@ -6,12 +6,13 @@ keywords:
 - webhook endpoints API
 - webhook signature
 updated: '2026-09-29'
+status: soon
+soon_note: The public REST API is not open yet. Endpoints and fields may change before release. Ask your account team for early access.
 ---
 
 <Note>
 **Preview**
 
-Part of the developer preview. Fields may change before general availability.
 </Note>
 
 <Endpoint method="POST" path="/v1/webhooks" title="Register an endpoint" id="create-webhook">

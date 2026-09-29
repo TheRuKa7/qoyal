@@ -1,21 +1,20 @@
 ---
 title: Automation and reports
+sidebarTitle: Automation and reports
 description: 'For teams running calls every day: start calls from your systems and schedules, clean up messy lists, route rows to the right agent, and send reports automatically.'
 keywords:
 - call automation
 - scheduled reports
-updated: '2026-09-25'
+updated: '2026-09-29'
 ---
 
-<Info>
-These features are available on enterprise workspaces. Your account team switches them on and sets them up with you.
-</Info>
+Features marked <Badge tone="enterprise">Enterprise</Badge> are available on enterprise workspaces; your account team switches them on and sets them up with you. Features marked <Badge tone="soon">Coming soon</Badge> are not in the product yet.
 
 ## Run agents from sheets <Badge tone="enterprise">Enterprise</Badge>
 
 A single **Run** view lists every live agent with how many calls it has run and its success rate. For each one: **Get sheet**, fill it in, **Upload and run**. Bulk uploads auto-match columns by name, show which required fields are still unmapped, and return a result sheet listing any rows that failed and why.
 
-## Event triggers <Badge tone="enterprise">Enterprise</Badge>
+## Event triggers <Badge tone="soon">Coming soon</Badge>
 
 An agent can start a call on its own when something happens in your systems, for example when a purchase order is created or updated. You choose:
 
@@ -40,11 +39,11 @@ Split one upload across several agents with **lanes**. Each lane keeps the rows 
 
 Build a report for an agent: pick its columns, filters and date format. Then schedule it by email with a subject, message, recipients and a data window, such as the last seven days on every send. Keep every send in one email thread if you prefer.
 
-## Ask your data <Badge tone="enterprise">Enterprise</Badge>
+## Ask your data <Badge tone="soon">Coming soon</Badge>
 
 Dashboards show calls, answers and commitments over time, and you can ask questions of your call data in plain English to get a table or chart back.
 
-## Multi-item calls <Badge tone="preview">Preview</Badge>
+## Multi-item calls <Badge tone="soon">Coming soon</Badge>
 
 When one person has several open items, such as many PO lines, Echo can cover them in one call instead of many. The design:
 

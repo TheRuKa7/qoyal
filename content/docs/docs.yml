@@ -7,38 +7,40 @@ keywords: [Echo, Cognilix, enterprise voice AI, voice agents, Indian languages, 
 
 tabs:
   - label: Platform guide
-    badge: No code
+    badge: Console
     folder: platform          # content/docs/platform/*.md
     output: docs/             # built to /docs/*.html
     title_suffix: Echo docs
     groups:
       - group: Get started
         pages: [index, quickstart, concepts]
-      - group: Build
-        pages: [agents, variables]
+      - group: Agents
+        pages: [agents, prompt-editor, variables, voice]
       - group: Test
         pages: [testing]
-      - group: Launch
-        pages: [campaigns]
+      - group: Campaigns
+        pages: [campaigns, contacts, results]
       - group: Monitor
         pages: [monitoring, analysis]
-      - group: Manage
-        pages: [team]
-      - group: Scale
+      - group: Workspace
+        pages: [team, settings]
+      - group: Automation
         pages: [automation]
       - group: Playbooks
         pages: [use-cases, best-practices]
 
   - label: Developers
-    badge: CLI + API
+    badge: Coming soon
     folder: developers        # content/docs/developers/*.md
     output: docs/developers/  # built to /docs/developers/*.html
-    title_suffix: Echo API docs
+    title_suffix: Echo developer docs
     groups:
       - group: Get started
-        pages: [index, cli, quickstart, authentication, objects]
-      - group: Guides
-        pages: [guide-call, guide-campaign, webhooks, guide-exports]
+        pages: [index, objects]
+      - group: Tools
+        pages: [cli, mcp, skills]
+      - group: REST API
+        pages: [quickstart, authentication, guide-call, guide-campaign, webhooks, guide-exports]
       - group: API reference
         pages: [agents, calls, campaigns, analytics, webhooks-api]
       - group: Resources

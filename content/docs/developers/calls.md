@@ -6,6 +6,8 @@ keywords:
 - calls API
 - outbound call API
 updated: '2026-09-29'
+status: soon
+soon_note: The public REST API is not open yet. Endpoints and fields may change before release. Ask your account team for early access.
 ---
 
 <Endpoint method="POST" path="/v1/calls" title="Place a call" id="create-call">

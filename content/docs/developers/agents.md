@@ -5,6 +5,8 @@ sidebarTitle: Agents API
 keywords:
 - agents API
 updated: '2026-09-29'
+status: soon
+soon_note: The public REST API is not open yet. Endpoints and fields may change before release. Ask your account team for early access.
 ---
 
 <Endpoint method="GET" path="/v1/agents" title="List agents" id="list-agents">

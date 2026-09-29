@@ -1,10 +1,11 @@
 ---
-title: Team and access
+title: Team and permissions
+sidebarTitle: Team and permissions
 description: Decide who can use your workspace, what they can change, and which campaigns they can see.
 keywords:
 - roles and access
 - team permissions
-updated: '2026-09-25'
+updated: '2026-09-29'
 ---
 
 ## Workspaces
@@ -34,7 +35,3 @@ Groups control who sees which campaigns. Create a group for each team or region,
 - **Invite** a person with their email, a temporary password and a role.
 - **Change a role**: pick the new role and press Update. Changes are never applied on a stray click.
 - **Remove** a person to end their access.
-
-## System status
-
-**Settings** shows whether Echo and the services it depends on are up. Check it first if calls stop going out.

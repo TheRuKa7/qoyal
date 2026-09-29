@@ -5,12 +5,13 @@ sidebarTitle: Analytics API
 keywords:
 - call analytics API
 updated: '2026-09-29'
+status: soon
+soon_note: The public REST API is not open yet. Endpoints and fields may change before release. Ask your account team for early access.
 ---
 
 <Note>
 **Preview**
 
-Part of the developer preview. Fields may change before general availability.
 </Note>
 
 <Endpoint method="GET" path="/v1/metrics" title="Retrieve the funnel" id="get-metrics">
