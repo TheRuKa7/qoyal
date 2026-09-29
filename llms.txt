@@ -18,6 +18,7 @@
 
 ## Developers
 - [Echo for developers](https://theruka7.github.io/qoyal/docs/developers/): Place calls, run campaigns and read outcomes from your own systems. The same agents your business team builds, driven by code.
+- [CLI, MCP and skills](https://theruka7.github.io/qoyal/docs/developers/cli.html): Build, test and run Echo voice agents from your terminal with the Echo CLI, drive them from AI coding tools over MCP, and add agent skills.
 - [Quickstart](https://theruka7.github.io/qoyal/docs/developers/quickstart.html): Check your pilot API key, place a call to your own phone, and read back what the agent captured.
 - [Authentication](https://theruka7.github.io/qoyal/docs/developers/authentication.html): Every request carries your API key as a bearer token.
 - [Core objects](https://theruka7.github.io/qoyal/docs/developers/objects.html): Every object the API returns, and what each field means.
