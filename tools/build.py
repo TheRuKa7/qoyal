@@ -446,7 +446,7 @@ def build_docs():
         md_rel = p['out'][:-5] + '.md'
         meta['_md'] = os.path.basename(md_rel)
         title = meta['title']
-        full_title = '%s · %s' % (title, tab['title_suffix'])
+        full_title = title if p['name'] == 'index' else '%s · %s' % (title, tab['title_suffix'])   # section home pages carry their own name
         kws = meta.get('keywords', []) + cfg.get('keywords', [])
         updated = str(meta.get('updated', TODAY))
         crumbs = [('Home', ''), ('Docs', 'docs/')] + ([(tab['label'], tab['output'])] if tab['output'] != 'docs/' else []) + [(title, p['out'])]
