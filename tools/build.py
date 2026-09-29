@@ -366,7 +366,7 @@ def brand(out_dir):
 
 
 def header(out_dir, current):
-    links = ''.join('<a href="%s"%s>%s</a>' % (E(site_href(l['href'], out_dir)), ' aria-current="page"' if l['href'] == current else '', E(l['label']))
+    links = ''.join('<a href="%s"%s>%s</a>' % (E(site_href(l['href'], out_dir)), ' target="_blank" rel="noopener"' if l['href'].startswith('http') else (' aria-current="page"' if l['href'] == current else ''), E(l['label']) + (' <span aria-hidden="true">↗</span>' if l['href'].startswith('http') else ''))
                     for l in SITE['nav'])
     return ('<header class="nav">\n  %s\n  <nav class="links" aria-label="Site">%s</nav>\n'
             '  <button class="d-search-b" type="button" data-search aria-label="Search the docs"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m10.5 10.5 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Search</span><kbd>Ctrl K</kbd></button>\n'
@@ -523,7 +523,10 @@ def sidebar(cfg, built, cur, out_dir):
             href = href[:-10] or './'
         groups += '<a href="%s"%s>%s%s</a>' % (href, ' aria-current="page"' if p is cur else '', E(meta.get('sidebarTitle', meta['title'])),
                                               ' <span class="d-badge%s">%s</span>' % (' soon' if badge == 'Soon' else '', E(badge)) if badge else '')
-    return '<nav class="d-tabs" aria-label="Documentation sets">%s</nav><nav class="d-nav" aria-label="Pages">%s</div></nav>' % (tabs, groups)
+    mlinks = ''.join('<a href="%s"%s>%s</a>' % (E(site_href(l['href'], out_dir)), ' target="_blank" rel="noopener"' if l['href'].startswith('http') else '', E(l['label']))
+                     for l in SITE['nav'] + [SITE['cta']])
+    return ('<nav class="d-mlinks" aria-label="Site">%s</nav><nav class="d-tabs" aria-label="Documentation sets">%s</nav>'
+            '<nav class="d-nav" aria-label="Pages">%s</div></nav>') % (mlinks, tabs, groups)
 
 
 def search_entries(pg, url, title, section):

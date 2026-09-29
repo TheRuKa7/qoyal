@@ -70,7 +70,7 @@
   if (side && mb) {
     mb.addEventListener('click', function () { var o = !side.classList.contains('open'); side.classList.toggle('open', o); mb.setAttribute('aria-expanded', String(o)); });
     d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && side.classList.contains('open')) { side.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); mb.focus(); } });
-    var cur = side.querySelector('[aria-current="page"]'); if (cur) side.scrollTop = Math.max(0, cur.offsetTop - side.clientHeight / 2);
+    var cur = side.querySelector('[aria-current="page"]'); if (cur && cur.offsetTop > side.clientHeight * 0.7) side.scrollTop = Math.max(0, cur.offsetTop - side.clientHeight / 2);
   } else if (mb) mb.hidden = true;
 
   /* table of contents follows the reader */

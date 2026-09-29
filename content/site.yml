@@ -9,17 +9,11 @@ locale: en_IN
 default_image: og.png
 summary: Enterprise Voice AI for B2B operations. Echo calls suppliers and customers in Indian and international languages, confirms POs, delivery dates, quotes and payments, and sends each outcome back to your systems.
 
-# Top navigation. Keep it the same as the home page.
+# Top navigation on docs and blog: back to the website, the product dashboard, and sales.
 nav:
-  - {label: Use cases, href: "/#use-cases"}
-  - {label: How it works, href: "/#how-it-works"}
-  - {label: Build, href: "/#build"}
-  - {label: ROI, href: "/#roi"}
-  - {label: Security, href: "/#security"}
-  - {label: FAQ, href: "/#faq"}
-  - {label: Docs, href: "/docs/"}
-  - {label: Blog, href: "/blog/"}
-cta: {label: Talk to an expert, href: "/#pilot"}
+  - {label: Website, href: "/"}
+  - {label: Dashboard, href: "https://voice-ai-platform.cognilix.com/overview"}
+cta: {label: Talk to sales, href: "/#pilot"}
 
 footer:
   blurb: Enterprise Voice AI by Cognilix for the calls that move orders, deliveries and cash.
