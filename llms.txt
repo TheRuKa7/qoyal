@@ -1,35 +1,35 @@
 # Echo by Cognilix
-> Enterprise Voice AI for B2B operations: supplier and customer calls that confirm POs, dates, quotes and payments, with outcomes written back to the ERP.
+> Enterprise Voice AI for B2B operations. Echo calls suppliers and customers in Hindi, English and Hinglish, confirms POs, delivery dates, quotes and payments, and sends each outcome back to your systems.
 
 ## Platform guide
-- [Overview](https://theruka7.github.io/qoyal/docs/)
-- [Quickstart](https://theruka7.github.io/qoyal/docs/quickstart.html)
-- [Core concepts](https://theruka7.github.io/qoyal/docs/concepts.html)
-- [Agents](https://theruka7.github.io/qoyal/docs/agents.html)
-- [Inputs and outputs](https://theruka7.github.io/qoyal/docs/variables.html)
-- [Call console](https://theruka7.github.io/qoyal/docs/testing.html)
-- [Campaigns](https://theruka7.github.io/qoyal/docs/campaigns.html)
-- [Dashboard and call log](https://theruka7.github.io/qoyal/docs/monitoring.html)
-- [Call analysis](https://theruka7.github.io/qoyal/docs/analysis.html)
-- [Team and access](https://theruka7.github.io/qoyal/docs/team.html)
-- [Automation and reports](https://theruka7.github.io/qoyal/docs/automation.html)
-- [Use-case playbooks](https://theruka7.github.io/qoyal/docs/use-cases.html)
-- [Prompt best practices](https://theruka7.github.io/qoyal/docs/best-practices.html)
+- [Echo documentation](https://theruka7.github.io/qoyal/docs/): How to build a voice agent in Echo, test it, run it on a list of suppliers or customers, and use the outcomes. No code needed.
+- [Quickstart: your first campaign](https://theruka7.github.io/qoyal/docs/quickstart.html): Build a voice agent, test it and call your first list. About fifteen minutes once your workspace and calling line are set up.
+- [Core concepts](https://theruka7.github.io/qoyal/docs/concepts.html): The handful of ideas behind every screen in Echo.
+- [Agents](https://theruka7.github.io/qoyal/docs/agents.html): Create an agent, write its prompt in sections, choose its voice and calling line, and keep it in step with its variables.
+- [Input and output variables](https://theruka7.github.io/qoyal/docs/variables.html): Decide what the agent knows before the call and what it must report after. This is what turns a conversation into data.
+- [Call console](https://theruka7.github.io/qoyal/docs/testing.html): Talk to any agent before it talks to anyone else. Test from your browser, or ring a real phone.
+- [Campaigns](https://theruka7.github.io/qoyal/docs/campaigns.html): Run an agent against a list: create the campaign, fill the template, confirm the columns, and collect results.
+- [Dashboard and call log](https://theruka7.github.io/qoyal/docs/monitoring.html): See how the whole operation is doing, then drill into any call.
+- [Call analysis](https://theruka7.github.io/qoyal/docs/analysis.html): Turn any call into a summary, a priority and a list of next steps.
+- [Team and access](https://theruka7.github.io/qoyal/docs/team.html): Decide who can use your workspace, what they can change, and which campaigns they can see.
+- [Automation and reports](https://theruka7.github.io/qoyal/docs/automation.html): For teams running calls every day: start calls from your systems and schedules, clean up messy lists, route rows to the right agent, and send reports automatically.
+- [Use-case playbooks](https://theruka7.github.io/qoyal/docs/use-cases.html): Ready-to-copy agent designs for common calls. Each lists the sheet columns, the results to capture, the call flow and what to measure.
+- [Prompt best practices](https://theruka7.github.io/qoyal/docs/best-practices.html): How to write prompts that sound human, stay on task and capture reliable data.
 
 ## Developers
-- [Introduction](https://theruka7.github.io/qoyal/docs/developers/)
-- [Quickstart](https://theruka7.github.io/qoyal/docs/developers/quickstart.html)
-- [Authentication](https://theruka7.github.io/qoyal/docs/developers/authentication.html)
-- [Core objects](https://theruka7.github.io/qoyal/docs/developers/objects.html)
-- [Call on an event](https://theruka7.github.io/qoyal/docs/developers/guide-call.html)
-- [Run a campaign from code](https://theruka7.github.io/qoyal/docs/developers/guide-campaign.html)
-- [Webhooks](https://theruka7.github.io/qoyal/docs/developers/webhooks.html)
-- [Recordings and exports](https://theruka7.github.io/qoyal/docs/developers/guide-exports.html)
-- [Agents](https://theruka7.github.io/qoyal/docs/developers/agents.html)
-- [Calls](https://theruka7.github.io/qoyal/docs/developers/calls.html)
-- [Campaigns](https://theruka7.github.io/qoyal/docs/developers/campaigns.html)
-- [Analytics](https://theruka7.github.io/qoyal/docs/developers/analytics.html)
-- [Webhooks API](https://theruka7.github.io/qoyal/docs/developers/webhooks-api.html)
-- [Errors](https://theruka7.github.io/qoyal/docs/developers/errors.html)
-- [Rate limits](https://theruka7.github.io/qoyal/docs/developers/limits.html)
-- [Changelog](https://theruka7.github.io/qoyal/docs/developers/changelog.html)
+- [Echo for developers](https://theruka7.github.io/qoyal/docs/developers/): Place calls, run campaigns and read outcomes from your own systems. The same agents your business team builds, driven by code.
+- [Quickstart](https://theruka7.github.io/qoyal/docs/developers/quickstart.html): Check your pilot API key, place a call to your own phone, and read back what the agent captured.
+- [Authentication](https://theruka7.github.io/qoyal/docs/developers/authentication.html): Every request carries your API key as a bearer token.
+- [Core objects](https://theruka7.github.io/qoyal/docs/developers/objects.html): Every object the API returns, and what each field means.
+- [Call on an event](https://theruka7.github.io/qoyal/docs/developers/guide-call.html): Place a single call the moment something happens in your system, and write the answer back.
+- [Run a campaign from code](https://theruka7.github.io/qoyal/docs/developers/guide-campaign.html): Create a campaign, check the column mapping with a dry run, upload, and collect results.
+- [Webhooks](https://theruka7.github.io/qoyal/docs/developers/webhooks.html): Receive outcomes as they happen. Verify each delivery, reply fast, and handle retries.
+- [Recordings, transcripts and exports](https://theruka7.github.io/qoyal/docs/developers/guide-exports.html): Keep the evidence for every call in your own systems.
+- [Agents](https://theruka7.github.io/qoyal/docs/developers/agents.html): Read, clone and update voice agents by API, including prompts, voice, calling line and variables, so prompts can live in version control.
+- [Calls](https://theruka7.github.io/qoyal/docs/developers/calls.html): A call is one conversation with one person. Place single calls from your own events, such as a new order, and read back transcripts, outcomes and recordings for any call.
+- [Campaigns](https://theruka7.github.io/qoyal/docs/developers/campaigns.html): A campaign is one agent run against one list. Create it, upload contacts (first as a dry run to check the column mapping), and read results as calls finish.
+- [Analytics](https://theruka7.github.io/qoyal/docs/developers/analytics.html): The same funnel you see on the dashboard, for your own reports.
+- [Webhooks API](https://theruka7.github.io/qoyal/docs/developers/webhooks-api.html): Get each outcome the moment it lands instead of polling. Register an endpoint, then verify every delivery.
+- [Errors](https://theruka7.github.io/qoyal/docs/developers/errors.html): Every error has an HTTP status and a stable code you can branch on.
+- [Rate limits and pagination](https://theruka7.github.io/qoyal/docs/developers/limits.html): How much you can ask for, and how to page through long lists.
+- [Changelog](https://theruka7.github.io/qoyal/docs/developers/changelog.html): What changed in the API, newest first.

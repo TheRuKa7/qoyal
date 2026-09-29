@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Template: workflow</title>
+<meta name="description" content="What the workflow achieves, in one sentence.">
+<link rel="canonical" href="https://theruka7.github.io/qoyal/docs/_preview-workflow.html">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Echo by Cognilix">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Template: workflow">
+<meta property="og:description" content="What the workflow achieves, in one sentence.">
+<meta property="og:url" content="https://theruka7.github.io/qoyal/docs/_preview-workflow.html">
+<meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Template: workflow">
+<meta name="twitter:description" content="What the workflow achieves, in one sentence.">
+<meta name="twitter:image" content="https://theruka7.github.io/qoyal/og.png">
+<meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/docs.css">
+<link rel="icon" type="image/png" href="../favicon.png">
+<script src="../assets/docs.js" defer></script>
+
+</head>
+<body class="d-body"><a class="skip" href="#content">Skip to content</a><header class="nav">
+  <a class="brand" href="../" aria-label="Echo by Cognilix home"><img class="clx lt" src="../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../cognilix-white.png" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
+  <nav class="links" aria-label="Site"><a href="../#use-cases">Use cases</a><a href="../#how-it-works">How it works</a><a href="../#build">Build</a><a href="../#security">Security</a><a href="./" aria-current="page">Docs</a><a href="../blog/">Blog</a></nav>
+  <button class="d-search-b" type="button" data-search aria-label="Search the docs"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m10.5 10.5 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Search</span><kbd>Ctrl K</kbd></button>
+  <button class="d-theme" type="button" data-theme-toggle aria-label="Switch colour theme"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 1 0 0 13z" fill="currentColor"/><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
+  <a class="cta" href="../#pilot">Talk to an expert</a>
+  <button class="d-menu-b" type="button" data-menu aria-controls="dSide" aria-expanded="false" aria-label="Open the menu"><span></span><span></span></button>
+</header>
+<div class="d-shell"><aside class="d-side" id="dSide"><nav class="d-nav"><div class="d-grp"><h4>Templates</h4><a href="_preview-api-reference.html">api-reference</a><a href="_preview-concept.html">concept</a><a href="_preview-guide.html">guide</a><a href="_preview-workflow.html">workflow</a><a href="_preview-blog-post.html">blog-post</a></div></nav></aside>
+<main class="d-main" id="content"><p class="kick">Template preview · content/docs/_templates/workflow.md</p><h1>Workflow name, such as Post-PO acceptance</h1><p class="lede">What the workflow achieves, in one sentence.</p>
+<article class="d-prose"><p><strong>Problem.</strong> What goes wrong today without the call.</p>
+<p><strong>What the agent does.</strong> One or two sentences.</p>
+<p><strong>Outcome.</strong> What lands in which system, and what it moves.</p>
+<h2 id="inputs-and-outputs">Inputs and outputs<a class="h-anchor" href="#inputs-and-outputs" aria-label="Link to this section">#</a></h2>
+<div class="c-cols"><div class="c-col"><h4 id="inputs-sheet-columns">Inputs (sheet columns)<a class="h-anchor" href="#inputs-sheet-columns" aria-label="Link to this section">#</a></h4>
+<div class="c-table"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>supplier_name</td>
+<td>shared</td>
+</tr>
+</tbody>
+</table></div></div>
+<div class="c-col"><h4 id="outputs-results">Outputs (results)<a class="h-anchor" href="#outputs-results" aria-label="Link to this section">#</a></h4>
+<div class="c-table"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type and options</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>choice: CONFIRMED, CALL_BACK</td>
+</tr>
+</tbody>
+</table></div></div></div>
+<h2 id="call-flow">Call flow<a class="h-anchor" href="#call-flow" aria-label="Link to this section">#</a></h2>
+<ol class="c-steps"><li class="c-step"><p class="c-step-t">Introduce and confirm the contact</p><div class="c-step-b"><p>What the agent says first.</p></div></li>
+<li class="c-step"><p class="c-step-t">Ask and read back</p><div class="c-step-b"><p>Every value is read back before it is saved.</p></div></li>
+<li class="c-step"><p class="c-step-t">Close</p><div class="c-step-b"><p>How the call ends.</p></div></li></ol>
+<div class="c-snippet"><p>Every number passes a compliance check before it can be dialled: the <abbr class="c-term" title="Telecom Commercial Communications Customer Preference Regulations, India&#x27;s rules for commercial calls">TRAI TCCCPR</abbr> number-series and <abbr class="c-term" title="Do Not Disturb registry">DND</abbr> rules, and the calling hours set on the campaign. Ask your account team which checks are switched on for your workspace.</p></div>
+<h2 id="measure">Measure<a class="h-anchor" href="#measure" aria-label="Link to this section">#</a></h2>
+<p>Which numbers to watch, and against which baseline.</p></article></main><aside class="d-toc"></aside></div><footer class="d-foot"><div class="d-foot-in"><div class="d-foot-b"><a class="brand" href="../" aria-label="Echo by Cognilix home"><img class="clx lt" src="../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../cognilix-white.png" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a><p>Enterprise Voice AI by Cognilix for the calls that move orders, deliveries and cash.</p></div><div><h4>Product</h4><a href="../#use-cases">Use cases</a><a href="../#how-it-works">How it works</a><a href="../#security">Security</a><a href="../#roi">ROI calculator</a></div><div><h4>Docs</h4><a href="./">Platform guide</a><a href="developers/">Developers</a><a href="developers/changelog.html">Changelog</a><a href="../llms.txt">llms.txt</a></div><div><h4>Resources</h4><a href="../blog/">Blog</a><a href="../#faq">FAQ</a><a href="../#pilot">Talk to an expert</a></div><div><h4>Company</h4><a href="https://www.cognilix.com" rel="noopener" target="_blank">Cognilix</a><a href="https://www.cognilix.com/contact-us" rel="noopener" target="_blank">Contact</a><a href="https://www.cognilix.com/privacy-policy" rel="noopener" target="_blank">Privacy policy</a></div></div><div class="d-foot-bot"><span>Echo · A Cognilix platform · Made in India</span><span>© 2026 Cognilix</span></div></footer><div class="d-search" id="dSearch" role="dialog" aria-modal="true" aria-label="Search" hidden><div class="d-search-bg" data-search-close></div><div class="d-search-box"><input type="search" placeholder="Search docs and articles" aria-label="Search" autocomplete="off" spellcheck="false"><ul class="d-search-r" role="listbox"></ul><p class="d-search-f"><kbd>Enter</kbd> open <kbd>Esc</kbd> close</p></div></div></body></html>

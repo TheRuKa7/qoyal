@@ -3,61 +3,85 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Docs · Cognilix Echo product guide and API</title>
-<meta name="description" content="Everything you need to build a voice agent, test it, run it on a list, and use what it hears.">
+<title>Echo documentation · Echo docs</title>
+<meta name="description" content="How to build a voice agent in Echo, test it, run it on a list of suppliers or customers, and use the outcomes. No code needed.">
+<meta name="keywords" content="voice agent platform guide, no-code voice AI, Echo, Cognilix, enterprise voice AI, voice agents, Hindi, Hinglish">
 <link rel="canonical" href="https://theruka7.github.io/qoyal/docs/">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Cognilix Echo">
-<meta property="og:title" content="Docs · Cognilix Echo product guide and API">
-<meta property="og:description" content="Everything you need to build a voice agent, test it, run it on a list, and use what it hears.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Echo by Cognilix">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Echo documentation · Echo docs">
+<meta property="og:description" content="How to build a voice agent in Echo, test it, run it on a list of suppliers or customers, and use the outcomes. No code needed.">
 <meta property="og:url" content="https://theruka7.github.io/qoyal/docs/">
 <meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Echo documentation · Echo docs">
+<meta name="twitter:description" content="How to build a voice agent in Echo, test it, run it on a list of suppliers or customers, and use the outcomes. No code needed.">
+<meta name="twitter:image" content="https://theruka7.github.io/qoyal/og.png">
 <meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
-<script>try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/page.css">
+<link rel="stylesheet" href="../assets/docs.css">
 <link rel="icon" type="image/png" href="../favicon.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Cognilix Echo documentation", "description": "Everything you need to build a voice agent, test it, run it on a list, and use what it hears.", "datePublished": "2026-09-25", "dateModified": "2026-09-25", "author": {"@type": "Organization", "name": "Cognilix Echo"}, "inLanguage": "en-IN"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}]}</script>
+<link rel="alternate" type="text/markdown" href="index.md">
+<script src="../assets/docs.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Echo documentation", "description": "How to build a voice agent in Echo, test it, run it on a list of suppliers or customers, and use the outcomes. No code needed.", "keywords": "voice agent platform guide, no-code voice AI, Echo, Cognilix, enterprise voice AI, voice agents, Hindi, Hinglish", "dateModified": "2026-09-29", "inLanguage": "en-IN", "url": "https://theruka7.github.io/qoyal/docs/index.html", "author": {"@type": "Organization", "name": "Cognilix"}, "publisher": {"@type": "Organization", "name": "Cognilix", "url": "https://www.cognilix.com"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "Echo documentation", "item": "https://theruka7.github.io/qoyal/docs/index.html"}]}</script>
 </head>
-<body>
+<body class="d-body">
+<a class="skip" href="#content">Skip to content</a>
 <header class="nav">
-  <a class="brand" href="../" aria-label="Cognilix Echo home"><img class="clx lt" src="../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../cognilix-white.png" alt="Cognilix" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
-  <nav class="links" aria-label="Site"><a href="../#topuc">Use cases</a><a href="../#how">How it works</a><a href="../#roi">ROI</a><a href="../docs/" aria-current="page">Docs</a><a href="../blog/">Blog</a></nav>
+  <a class="brand" href="../" aria-label="Echo by Cognilix home"><img class="clx lt" src="../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../cognilix-white.png" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
+  <nav class="links" aria-label="Site"><a href="../#use-cases">Use cases</a><a href="../#how-it-works">How it works</a><a href="../#build">Build</a><a href="../#security">Security</a><a href="./" aria-current="page">Docs</a><a href="../blog/">Blog</a></nav>
+  <button class="d-search-b" type="button" data-search aria-label="Search the docs"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m10.5 10.5 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Search</span><kbd>Ctrl K</kbd></button>
+  <button class="d-theme" type="button" data-theme-toggle aria-label="Switch colour theme"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 1 0 0 13z" fill="currentColor"/><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
   <a class="cta" href="../#pilot">Talk to an expert</a>
+  <button class="d-menu-b" type="button" data-menu aria-controls="dSide" aria-expanded="false" aria-label="Open the menu"><span></span><span></span></button>
 </header>
-<main class="docs">
-<nav class="dtabs" aria-label="Documentation"><a href="./" aria-current="page"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.5 6h13" stroke="currentColor" stroke-width="1.5"/></svg>Platform guide <small>no code</small></a><a href="developers/"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Developers <small>API</small></a><span class="dt-r"><a href="../llms.txt">llms.txt</a></span></nav><nav class="dside" aria-label="Docs"><h4>Get started</h4><a href="./" aria-current="page">Overview</a><a href="quickstart.html">Quickstart</a><a href="concepts.html">Core concepts</a><h4>Build</h4><a href="agents.html">Agents</a><a href="variables.html">Inputs and outputs</a><h4>Test</h4><a href="testing.html">Call console</a><h4>Launch</h4><a href="campaigns.html">Campaigns</a><h4>Monitor</h4><a href="monitoring.html">Dashboard and call log</a><a href="analysis.html">Call analysis</a><h4>Manage</h4><a href="team.html">Team and access</a><h4>Scale</h4><a href="automation.html">Automation and reports</a><h4>Playbooks</h4><a href="use-cases.html">Use-case playbooks</a><a href="best-practices.html">Prompt best practices</a></nav><div class="dmain"><details class="dmenu"><summary>Docs menu · Overview</summary><nav class="dside" aria-label="Docs"><h4>Get started</h4><a href="./" aria-current="page">Overview</a><a href="quickstart.html">Quickstart</a><a href="concepts.html">Core concepts</a><h4>Build</h4><a href="agents.html">Agents</a><a href="variables.html">Inputs and outputs</a><h4>Test</h4><a href="testing.html">Call console</a><h4>Launch</h4><a href="campaigns.html">Campaigns</a><h4>Monitor</h4><a href="monitoring.html">Dashboard and call log</a><a href="analysis.html">Call analysis</a><h4>Manage</h4><a href="team.html">Team and access</a><h4>Scale</h4><a href="automation.html">Automation and reports</a><h4>Playbooks</h4><a href="use-cases.html">Use-case playbooks</a><a href="best-practices.html">Prompt best practices</a></nav></details><header class="dhead"><p class="crumb"><a href="../">Home</a> / Docs</p><p class="kick">Overview</p><h1>Cognilix Echo documentation</h1><p class="lede">Everything you need to build a voice agent, test it, run it on a list, and use what it hears.</p></header><article class="prose card"><h2 id="five">The product in five steps</h2>
+<div class="d-shell">
+<aside class="d-side" id="dSide" aria-label="Documentation"><nav class="d-tabs" aria-label="Documentation sets"><a class="d-tab on" href="./" aria-current="true"><span>Platform guide</span><small>No code</small></a><a class="d-tab" href="developers/"><span>Developers</span><small>API</small></a></nav><nav class="d-nav" aria-label="Pages"><div class="d-grp"><h4>Get started</h4><a href="./" aria-current="page">Overview</a><a href="quickstart.html">Quickstart</a><a href="concepts.html">Core concepts</a></div><div class="d-grp"><h4>Build</h4><a href="agents.html">Agents</a><a href="variables.html">Input and output variables</a></div><div class="d-grp"><h4>Test</h4><a href="testing.html">Call console</a></div><div class="d-grp"><h4>Launch</h4><a href="campaigns.html">Campaigns</a></div><div class="d-grp"><h4>Monitor</h4><a href="monitoring.html">Dashboard and call log</a><a href="analysis.html">Call analysis</a></div><div class="d-grp"><h4>Manage</h4><a href="team.html">Team and access</a></div><div class="d-grp"><h4>Scale</h4><a href="automation.html">Automation and reports</a></div><div class="d-grp"><h4>Playbooks</h4><a href="use-cases.html">Use-case playbooks</a><a href="best-practices.html">Prompt best practices</a></div></nav></aside>
+<main class="d-main" id="content">
+<p class="crumb"><a href="../">Home</a> / <a href="./">Docs</a> / Get started</p>
+<p class="kick">Get started</p>
+<h1>Echo documentation</h1>
+<p class="lede">How to build a voice agent in Echo, test it, run it on a list of suppliers or customers, and use the outcomes. No code needed.</p>
+<p class="d-meta"><span>Updated 29 Sep 2026</span><span>1 min read</span><a href="index.md" type="text/markdown">View as Markdown</a></p>
+<article class="d-prose">
+<h2 id="the-product-in-five-steps">The product in five steps<a class="h-anchor" href="#the-product-in-five-steps" aria-label="Link to this section">#</a></h2>
 <p>Echo turns a phone call your team makes every day into an agent that makes it for you. Every agent follows the same path from idea to results.</p>
-<div class="flow5">
-<a href="agents.html"><small>1 · Build</small><b>Create an agent</b><span>Write what it should say and what it must find out.</span></a>
-<a href="testing.html"><small>2 · Test</small><b>Talk to it</b><span>From your browser or on a real phone.</span></a>
-<a href="campaigns.html"><small>3 · Launch</small><b>Run a campaign</b><span>Upload a sheet. Echo calls every row.</span></a>
-<a href="monitoring.html"><small>4 · Monitor</small><b>Watch results</b><span>Status, outcomes and recordings, live.</span></a>
-<a href="analysis.html"><small>5 · Act</small><b>Use the outcomes</b><span>Export, analyse, and write back.</span></a>
-</div>
-<h2 id="who">Two ways to work</h2>
-<div class="two"><div><h3>Business teams</h3><p>Create an agent from a template or a copy, fill in a sheet, and run it. No code. Everything on this site except the API page is for you.</p><p><a href="quickstart.html">Start with the quickstart →</a></p></div>
-<div><h3>Developers</h3><p>Run the same agents from your own systems: create campaigns, send contacts and read outcomes over an API, or receive them on a webhook.</p><p><a href="developers/">Open the developer docs →</a></p></div></div>
-<h2 id="sections">Browse the docs</h2>
-<div class="dgrid">
-<a class="dcard" href="concepts.html"><small>Get started</small><b>Core concepts</b><span>Agents, variables, campaigns, calls and outcomes, and how they fit.</span></a>
-<a class="dcard" href="agents.html"><small>Build</small><b>Agents</b><span>The prompt editor, sections, voice and calling line.</span></a>
-<a class="dcard" href="variables.html"><small>Build</small><b>Inputs and outputs</b><span>What the agent knows before the call, and what it must report after.</span></a>
-<a class="dcard" href="testing.html"><small>Test</small><b>Call console</b><span>Live test calls with transcript, events and captured values.</span></a>
-<a class="dcard" href="campaigns.html"><small>Launch</small><b>Campaigns</b><span>Templates, uploads, column mapping, statuses and exports.</span></a>
-<a class="dcard" href="monitoring.html"><small>Monitor</small><b>Dashboard and call log</b><span>The funnel, every call, filters and downloads.</span></a>
-<a class="dcard" href="analysis.html"><small>Monitor</small><b>Call analysis</b><span>Summaries, priority, action items and re-analysis.</span></a>
-<a class="dcard" href="team.html"><small>Manage</small><b>Team and access</b><span>Roles, groups and who can see which campaigns.</span></a>
-<a class="dcard" href="automation.html"><small>Scale</small><b>Automation and reports</b><span>Triggers, schedules, data clean-up, routing and scheduled reports.</span></a>
-<a class="dcard" href="use-cases.html"><small>Playbooks</small><b>Use-case playbooks</b><span>Ready-to-copy agent designs for common calls.</span></a>
-</div>
-<h2 id="help">Getting help</h2>
-<p>Your account team sets up your workspace, calling lines and first agent with you during the pilot. For anything else, <a href="../#pilot">talk to us</a>.</p></article><nav class="pager" aria-label="Pages"><a class="card nx" href="quickstart.html"><small>Next</small><b>Quickstart →</b></a></nav></div><aside class="dtoc"><b>On this page</b><a href="#five">The product in five steps</a><a href="#who">Two ways to work</a><a href="#sections">Browse the docs</a><a href="#help">Getting help</a></aside>
+<div class="c-cards c-cols-5"><a class="c-card" href="agents.html"><small>1 · Build</small><b>Create an agent</b><div class="c-card-b"><p>Write what it should say and what it must find out.</p></div></a>
+<a class="c-card" href="testing.html"><small>2 · Test</small><b>Talk to it</b><div class="c-card-b"><p>From your browser or on a real phone.</p></div></a>
+<a class="c-card" href="campaigns.html"><small>3 · Launch</small><b>Run a campaign</b><div class="c-card-b"><p>Upload a sheet. Echo calls every row.</p></div></a>
+<a class="c-card" href="monitoring.html"><small>4 · Monitor</small><b>Watch results</b><div class="c-card-b"><p>Status, outcomes and recordings, live.</p></div></a>
+<a class="c-card" href="analysis.html"><small>5 · Act</small><b>Use the outcomes</b><div class="c-card-b"><p>Export, analyse, and write back.</p></div></a></div>
+<h2 id="two-ways-to-work">Two ways to work<a class="h-anchor" href="#two-ways-to-work" aria-label="Link to this section">#</a></h2>
+<div class="c-cols"><div class="c-col"><h3 id="business-teams">Business teams<a class="h-anchor" href="#business-teams" aria-label="Link to this section">#</a></h3>
+<p>Create an agent from a template or a copy, fill in a sheet, and run it. No code. The <strong>Platform guide</strong> in this sidebar is written for you.</p>
+<p><a href="quickstart.html">Start with the quickstart →</a></p></div>
+<div class="c-col"><h3 id="developers">Developers<a class="h-anchor" href="#developers" aria-label="Link to this section">#</a></h3>
+<p>Run the same agents from your own systems: create campaigns, send contacts and read outcomes over an API, or receive them on a webhook. The API is in developer preview.</p>
+<p><a href="developers/">Open the developer docs →</a></p></div></div>
+<h2 id="browse-the-docs">Browse the docs<a class="h-anchor" href="#browse-the-docs" aria-label="Link to this section">#</a></h2>
+<div class="c-cards c-cols-2"><a class="c-card" href="concepts.html"><small>Get started</small><b>Core concepts</b><div class="c-card-b"><p>Agents, variables, campaigns, calls and outcomes, and how they fit.</p></div></a>
+<a class="c-card" href="agents.html"><small>Build</small><b>Agents</b><div class="c-card-b"><p>The prompt editor, sections, voice and calling line.</p></div></a>
+<a class="c-card" href="variables.html"><small>Build</small><b>Input and output variables</b><div class="c-card-b"><p>What the agent knows before the call, and what it must report after.</p></div></a>
+<a class="c-card" href="testing.html"><small>Test</small><b>Call console</b><div class="c-card-b"><p>Live test calls with transcript, events and captured values.</p></div></a>
+<a class="c-card" href="campaigns.html"><small>Launch</small><b>Campaigns</b><div class="c-card-b"><p>Templates, uploads, column mapping, statuses and exports.</p></div></a>
+<a class="c-card" href="monitoring.html"><small>Monitor</small><b>Dashboard and call log</b><div class="c-card-b"><p>The funnel, every call, filters and downloads.</p></div></a>
+<a class="c-card" href="analysis.html"><small>Monitor</small><b>Call analysis</b><div class="c-card-b"><p>Summaries, priority, action items and re-analysis.</p></div></a>
+<a class="c-card" href="team.html"><small>Manage</small><b>Team and access</b><div class="c-card-b"><p>Roles, groups and who can see which campaigns.</p></div></a>
+<a class="c-card" href="automation.html"><small>Scale</small><b>Automation and reports</b><div class="c-card-b"><p>Triggers, schedules, data clean-up, routing and scheduled reports.</p></div></a>
+<a class="c-card" href="use-cases.html"><small>Playbooks</small><b>Use-case playbooks</b><div class="c-card-b"><p>Ready-to-copy agent designs for common calls.</p></div></a></div>
+<h2 id="getting-help">Getting help<a class="h-anchor" href="#getting-help" aria-label="Link to this section">#</a></h2>
+<p>Your account team sets up your workspace, calling lines and first agent with you during the pilot, and is your first contact for questions and issues. Before a pilot, <a href="../#pilot">talk to an expert</a> or use the <a href="https://www.cognilix.com/contact-us">Cognilix contact page</a>.</p>
+</article>
+<nav class="d-pager" aria-label="Previous and next"><span></span><a class="nx" href="quickstart.html"><small>Next</small><b>Quickstart</b></a></nav>
 </main>
-<footer><span>Cognilix Echo · Enterprise voice AI for revenue workflows</span><nav><a href="../">Home</a><a href="../docs/">Docs</a><a href="../blog/">Blog</a><a href="../#faq">FAQ</a><a href="../#trust">Security</a></nav><span>© 2026 Cognilix</span></footer>
+<aside class="d-toc" aria-label="On this page"><b>On this page</b><a class="l2" href="#the-product-in-five-steps">The product in five steps</a><a class="l2" href="#two-ways-to-work">Two ways to work</a><a class="l3" href="#business-teams">Business teams</a><a class="l3" href="#developers">Developers</a><a class="l2" href="#browse-the-docs">Browse the docs</a><a class="l2" href="#getting-help">Getting help</a></aside>
+</div>
+<footer class="d-foot"><div class="d-foot-in"><div class="d-foot-b"><a class="brand" href="../" aria-label="Echo by Cognilix home"><img class="clx lt" src="../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../cognilix-white.png" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a><p>Enterprise Voice AI by Cognilix for the calls that move orders, deliveries and cash.</p></div><div><h4>Product</h4><a href="../#use-cases">Use cases</a><a href="../#how-it-works">How it works</a><a href="../#security">Security</a><a href="../#roi">ROI calculator</a></div><div><h4>Docs</h4><a href="./">Platform guide</a><a href="developers/">Developers</a><a href="developers/changelog.html">Changelog</a><a href="../llms.txt">llms.txt</a></div><div><h4>Resources</h4><a href="../blog/">Blog</a><a href="../#faq">FAQ</a><a href="../#pilot">Talk to an expert</a></div><div><h4>Company</h4><a href="https://www.cognilix.com" rel="noopener" target="_blank">Cognilix</a><a href="https://www.cognilix.com/contact-us" rel="noopener" target="_blank">Contact</a><a href="https://www.cognilix.com/privacy-policy" rel="noopener" target="_blank">Privacy policy</a></div></div><div class="d-foot-bot"><span>Echo · A Cognilix platform · Made in India</span><span>© 2026 Cognilix</span></div></footer>
+<div class="d-search" id="dSearch" role="dialog" aria-modal="true" aria-label="Search" hidden><div class="d-search-bg" data-search-close></div><div class="d-search-box"><input type="search" placeholder="Search docs and articles" aria-label="Search" autocomplete="off" spellcheck="false"><ul class="d-search-r" role="listbox"></ul><p class="d-search-f"><kbd>Enter</kbd> open <kbd>Esc</kbd> close</p></div></div>
 </body>
 </html>

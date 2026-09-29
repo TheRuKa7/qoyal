@@ -3,133 +3,182 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Quickstart · Cognilix Echo API</title>
-<meta name="description" content="Check your key, place a call to your own phone, and read back what the agent captured.">
+<title>Quickstart · Echo API docs</title>
+<meta name="description" content="Check your pilot API key, place a call to your own phone, and read back what the agent captured.">
+<meta name="keywords" content="voice API quickstart, place a call by API, Echo, Cognilix, enterprise voice AI, voice agents, Hindi, Hinglish">
 <link rel="canonical" href="https://theruka7.github.io/qoyal/docs/developers/quickstart.html">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Cognilix Echo">
-<meta property="og:title" content="Quickstart · Cognilix Echo API">
-<meta property="og:description" content="Check your key, place a call to your own phone, and read back what the agent captured.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Echo by Cognilix">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Quickstart · Echo API docs">
+<meta property="og:description" content="Check your pilot API key, place a call to your own phone, and read back what the agent captured.">
 <meta property="og:url" content="https://theruka7.github.io/qoyal/docs/developers/quickstart.html">
 <meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quickstart · Echo API docs">
+<meta name="twitter:description" content="Check your pilot API key, place a call to your own phone, and read back what the agent captured.">
+<meta name="twitter:image" content="https://theruka7.github.io/qoyal/og.png">
 <meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
-<script>try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/page.css">
+<link rel="stylesheet" href="../../assets/docs.css">
 <link rel="icon" type="image/png" href="../../favicon.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Quickstart", "description": "Check your key, place a call to your own phone, and read back what the agent captured.", "datePublished": "2026-09-25", "dateModified": "2026-09-25", "author": {"@type": "Organization", "name": "Cognilix Echo"}, "inLanguage": "en-IN"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "Developers", "item": "https://theruka7.github.io/qoyal/docs/developers/"}, {"@type": "ListItem", "position": 4, "name": "Quickstart", "item": "https://theruka7.github.io/qoyal/docs/developers/quickstart.html"}]}</script>
+<link rel="alternate" type="text/markdown" href="quickstart.md">
+<script src="../../assets/docs.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Quickstart", "description": "Check your pilot API key, place a call to your own phone, and read back what the agent captured.", "keywords": "voice API quickstart, place a call by API, Echo, Cognilix, enterprise voice AI, voice agents, Hindi, Hinglish", "dateModified": "2026-09-29", "inLanguage": "en-IN", "url": "https://theruka7.github.io/qoyal/docs/developers/quickstart.html", "author": {"@type": "Organization", "name": "Cognilix"}, "publisher": {"@type": "Organization", "name": "Cognilix", "url": "https://www.cognilix.com"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "Developers", "item": "https://theruka7.github.io/qoyal/docs/developers/"}, {"@type": "ListItem", "position": 4, "name": "Quickstart", "item": "https://theruka7.github.io/qoyal/docs/developers/quickstart.html"}]}</script>
 </head>
-<body>
+<body class="d-body">
+<a class="skip" href="#content">Skip to content</a>
 <header class="nav">
-  <a class="brand" href="../../" aria-label="Cognilix Echo home"><img class="clx lt" src="../../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../../cognilix-white.png" alt="Cognilix" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
-  <nav class="links" aria-label="Site"><a href="../../#topuc">Use cases</a><a href="../../#how">How it works</a><a href="../../#roi">ROI</a><a href="../../docs/" aria-current="page">Docs</a><a href="../../blog/">Blog</a></nav>
+  <a class="brand" href="../../" aria-label="Echo by Cognilix home"><img class="clx lt" src="../../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../../cognilix-white.png" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
+  <nav class="links" aria-label="Site"><a href="../../#use-cases">Use cases</a><a href="../../#how-it-works">How it works</a><a href="../../#build">Build</a><a href="../../#security">Security</a><a href="../" aria-current="page">Docs</a><a href="../../blog/">Blog</a></nav>
+  <button class="d-search-b" type="button" data-search aria-label="Search the docs"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m10.5 10.5 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Search</span><kbd>Ctrl K</kbd></button>
+  <button class="d-theme" type="button" data-theme-toggle aria-label="Switch colour theme"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 1 0 0 13z" fill="currentColor"/><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
   <a class="cta" href="../../#pilot">Talk to an expert</a>
+  <button class="d-menu-b" type="button" data-menu aria-controls="dSide" aria-expanded="false" aria-label="Open the menu"><span></span><span></span></button>
 </header>
-<main class="docs">
-<nav class="dtabs" aria-label="Documentation"><a href="../"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.5 6h13" stroke="currentColor" stroke-width="1.5"/></svg>Platform guide <small>no code</small></a><a href="../developers/" aria-current="page"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Developers <small>API</small></a><span class="dt-r"><a href="../../llms.txt">llms.txt</a></span></nav><nav class="dside" aria-label="Developer docs"><h4>Get started</h4><a href="./">Introduction</a><a href="quickstart.html" aria-current="page">Quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html">Run a campaign from code</a><a href="webhooks.html">Webhooks</a><a href="guide-exports.html">Recordings and exports</a><h4>API reference</h4><a href="agents.html">Agents</a><a href="calls.html">Calls</a><a href="campaigns.html">Campaigns</a><a href="analytics.html">Analytics</a><a href="webhooks-api.html">Webhooks API</a><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></nav><div class="dmain"><details class="dmenu"><summary>Developer menu · Quickstart</summary><nav class="dside" aria-label="Developer docs"><h4>Get started</h4><a href="./">Introduction</a><a href="quickstart.html" aria-current="page">Quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html">Run a campaign from code</a><a href="webhooks.html">Webhooks</a><a href="guide-exports.html">Recordings and exports</a><h4>API reference</h4><a href="agents.html">Agents</a><a href="calls.html">Calls</a><a href="campaigns.html">Campaigns</a><a href="analytics.html">Analytics</a><a href="webhooks-api.html">Webhooks API</a><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></nav></details><header class="dhead"><p class="crumb"><a href="../../">Home</a> / <a href="../">Docs</a> / <a href="./">Developers</a> / Get started</p><p class="kick">Get started</p><h1>Quickstart</h1><p class="lede">Check your key, place a call to your own phone, and read back what the agent captured.</p></header><article class="prose card"><h2 id="key">1. Get a key</h2><p>Your account team issues an API key and your base URL during the pilot. Keep the key on your server. Never put it in a browser, an app or a repository.</p>
-<h2 id="env">2. Set your environment</h2><div class="ct"><div class="ct-h"><span>.env</span></div><pre><code>ECHO_API=https://&lt;your base URL&gt;
-ECHO_API_KEY=ek_live_...</code></pre></div>
-<h2 id="check">3. Check the key</h2><p>List the agents your team has built. A <code>200</code> with a list means you are ready.</p><div class="ct"><div class="ct-h" role="tablist"><span>List agents</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/agents&quot; \
-  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+<div class="d-shell">
+<aside class="d-side" id="dSide" aria-label="Documentation"><nav class="d-tabs" aria-label="Documentation sets"><a class="d-tab" href="../"><span>Platform guide</span><small>No code</small></a><a class="d-tab on" href="./" aria-current="true"><span>Developers</span><small>API</small></a></nav><nav class="d-nav" aria-label="Pages"><div class="d-grp"><h4>Get started</h4><a href="./">Introduction</a><a href="quickstart.html" aria-current="page">API quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a></div><div class="d-grp"><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html">Run a campaign from code</a><a href="webhooks.html">Receive outcomes by webhook</a><a href="guide-exports.html">Recordings and exports</a></div><div class="d-grp"><h4>API reference</h4><a href="agents.html">Agents API</a><a href="calls.html">Calls API</a><a href="campaigns.html">Campaigns API</a><a href="analytics.html">Analytics API</a><a href="webhooks-api.html">Webhook endpoints</a></div><div class="d-grp"><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></div></nav></aside>
+<main class="d-main" id="content">
+<p class="crumb"><a href="../../">Home</a> / <a href="../">Docs</a> / <a href="./">Developers</a> / Get started</p>
+<p class="kick">Get started</p>
+<h1>Quickstart</h1>
+<p class="lede">Check your pilot API key, place a call to your own phone, and read back what the agent captured.</p>
+<p class="d-meta"><span>Updated 29 Sep 2026</span><span>1 min read</span><a href="quickstart.md" type="text/markdown">View as Markdown</a></p>
+<article class="d-prose">
+<h2 id="1-get-a-key">1. Get a key<a class="h-anchor" href="#1-get-a-key" aria-label="Link to this section">#</a></h2>
+<p>Your account team issues an API key and your base URL during the pilot. Keep the key on your server. Never put it in a browser, an app or a repository.</p>
+<aside class="c-callout c-warn" role="note"><p class="c-callout-t">Calls are real</p><p>There is no sandbox yet, and <code>ek_live_</code> keys dial real numbers. Place test calls to your own phone.</p></aside>
+<h2 id="2-set-your-environment">2. Set your environment<a class="h-anchor" href="#2-set-your-environment" aria-label="Link to this section">#</a></h2>
+<div class="c-code" data-title=".env"><div class="c-code-h"><span>.env</span><button class="c-copy" type="button" aria-label="Copy code">Copy</button></div><pre class="hl"><code class="language-bash"><span class="nv">ECHO_API</span><span class="o">=</span>https://&lt;your<span class="w"> </span>base<span class="w"> </span>URL&gt;
+<span class="nv">ECHO_API_KEY</span><span class="o">=</span>ek_live_...
+</code></pre></div>
+<h2 id="3-check-the-key">3. Check the key<a class="h-anchor" href="#3-check-the-key" aria-label="Link to this section">#</a></h2>
+<p>Agent ids are derived from the agent name, such as <code>dispatch-followup</code> or <code>wismo</code>. The list below shows them.</p>
+<p>List the agents your team has built. A <code>200</code> with a list means you are ready.</p>
+<div class="c-codegroup" data-tabs><p class="c-cg-t">List agents</p><div class="c-tabbar" role="tablist"><button type="button" role="tab" aria-selected="true" data-i="0" id="t779583-0">cURL</button><button type="button" role="tab" aria-selected="false" data-i="1" id="t779583-1">Python</button><button type="button" role="tab" aria-selected="false" data-i="2" id="t779583-2">Node.js</button></div><div class="c-code" data-title="cURL"><div class="c-code-h"><span>cURL</span><button class="c-copy" type="button" aria-label="Copy code">Copy</button></div><pre class="hl"><code class="language-bash">curl<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ECHO_API</span><span class="s2">/v1/agents&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$ECHO_API_KEY</span><span class="s2">&quot;</span>
+</code></pre></div>
+<div class="c-code" data-title="Python"><div class="c-code-h"><span>Python</span><button class="c-copy" type="button" aria-label="Copy code">Copy</button></div><pre class="hl"><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">requests</span>
 
-API = os.environ[&quot;ECHO_API&quot;]
-HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+<span class="n">API</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;ECHO_API&quot;</span><span class="p">]</span>
+<span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;ECHO_API_KEY&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
 
-res = requests.get(
-    f&quot;{API}/v1/agents&quot;,
-    headers=HEADERS,
-)
-res.raise_for_status()
-print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
-const KEY = process.env.ECHO_API_KEY;
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API</span><span class="si">}</span><span class="s2">/v1/agents&quot;</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<div class="c-code" data-title="Node.js"><div class="c-code-h"><span>Node.js</span><button class="c-copy" type="button" aria-label="Copy code">Copy</button></div><pre class="hl"><code class="language-javascript"><span class="kd">const</span><span class="w"> </span><span class="nx">API</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ECHO_API</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ECHO_API_KEY</span><span class="p">;</span>
 
-const res = await fetch(`${API}/v1/agents`, {
-  headers: { Authorization: `Bearer ${KEY}` },
-}});
-if (!res.ok) throw new Error(`Echo API ${res.status}`);
-console.log(await res.json());</code></pre></div>
-<h2 id="call">4. Place a call</h2><p>Pick an agent id from the list and call your own phone. <code>context</code> fills the agent’s inputs for this call.</p><div class="ct"><div class="ct-h" role="tablist"><span>Place a call</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl -X POST &quot;$ECHO_API/v1/calls&quot; \
-  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot; \
-  -H &quot;Content-Type: application/json&quot; \
-  -d &#x27;{
-    &quot;agent&quot;: &quot;wismo&quot;,
-    &quot;to&quot;: &quot;+919876543210&quot;,
-    &quot;context&quot;: {
-      &quot;customer_name&quot;: &quot;Asha&quot;,
-      &quot;order_id&quot;: &quot;88213&quot;
-    }
-  }&#x27;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+<span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">API</span><span class="si">}</span><span class="sb">/v1/agents`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="sb">`Bearer </span><span class="si">${</span><span class="nx">KEY</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="p">},</span>
+<span class="p">});</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`Echo API </span><span class="si">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+</code></pre></div></div>
+<h2 id="4-place-a-call">4. Place a call<a class="h-anchor" href="#4-place-a-call" aria-label="Link to this section">#</a></h2>
+<p>Pick an agent id from the list and call your own phone. <code>context</code> fills the agent’s inputs for this call.</p>
+<div class="c-codegroup" data-tabs><p class="c-cg-t">Place a call</p><div class="c-tabbar" role="tablist"><button type="button" role="tab" aria-selected="true" data-i="0" id="t524037-0">cURL</button><button type="button" role="tab" aria-selected="false" data-i="1" id="t524037-1">Python</button><button type="button" role="tab" aria-selected="false" data-i="2" id="t524037-2">Node.js</button></div><div class="c-code" data-title="cURL"><div class="c-code-h"><span>cURL</span><button class="c-copy" type="button" aria-label="Copy code">Copy</button></div><pre class="hl"><code class="language-bash">curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ECHO_API</span><span class="s2">/v1/calls&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$ECHO_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;agent&quot;: &quot;wismo&quot;,</span>
+<span class="s1">    &quot;to&quot;: &quot;+919876543210&quot;,</span>
+<span class="s1">    &quot;context&quot;: {</span>
+<span class="s1">      &quot;customer_name&quot;: &quot;Asha&quot;,</span>
+<span class="s1">      &quot;order_id&quot;: &quot;88213&quot;</span>
+<span class="s1">    }</span>
+<span class="s1">  }&#39;</span>
+</code></pre></div>
+<div class="c-code" data-title="Python"><div class="c-code-h"><span>Python</span><button class="c-copy" type="button" aria-label="Copy code">Copy</button></div><pre class="hl"><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">requests</span>
 
-API = os.environ[&quot;ECHO_API&quot;]
-HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+<span class="n">API</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;ECHO_API&quot;</span><span class="p">]</span>
+<span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;ECHO_API_KEY&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
 
-res = requests.post(
-    f&quot;{API}/v1/calls&quot;,
-    headers=HEADERS,
-    json={
-  &quot;agent&quot;: &quot;wismo&quot;,
-  &quot;to&quot;: &quot;+919876543210&quot;,
-  &quot;context&quot;: {
-    &quot;customer_name&quot;: &quot;Asha&quot;,
-    &quot;order_id&quot;: &quot;88213&quot;
-  }
-},
-)
-res.raise_for_status()
-print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
-const KEY = process.env.ECHO_API_KEY;
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API</span><span class="si">}</span><span class="s2">/v1/calls&quot;</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">,</span>
+    <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+  <span class="s2">&quot;agent&quot;</span><span class="p">:</span> <span class="s2">&quot;wismo&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;+919876543210&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;context&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;customer_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Asha&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;order_id&quot;</span><span class="p">:</span> <span class="s2">&quot;88213&quot;</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+<span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<div class="c-code" data-title="Node.js"><div class="c-code-h"><span>Node.js</span><button class="c-copy" type="button" aria-label="Copy code">Copy</button></div><pre class="hl"><code class="language-javascript"><span class="kd">const</span><span class="w"> </span><span class="nx">API</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ECHO_API</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ECHO_API_KEY</span><span class="p">;</span>
 
-const res = await fetch(`${API}/v1/calls`, {
-  method: &quot;POST&quot;,
-  headers: { Authorization: `Bearer ${KEY}`, &quot;Content-Type&quot;: &quot;application/json&quot; },
-  body: JSON.stringify({
-    &quot;agent&quot;: &quot;wismo&quot;,
-    &quot;to&quot;: &quot;+919876543210&quot;,
-    &quot;context&quot;: {
-      &quot;customer_name&quot;: &quot;Asha&quot;,
-      &quot;order_id&quot;: &quot;88213&quot;
-    }
-  }),
-}});
-if (!res.ok) throw new Error(`Echo API ${res.status}`);
-console.log(await res.json());</code></pre></div><div class="ct"><div class="ct-h"><span>Response</span></div><pre><code>{
-  &quot;id&quot;: &quot;call_8f2k1q&quot;,
-  &quot;status&quot;: &quot;queued&quot;
-}</code></pre></div>
-<h2 id="read">5. Read the outcome</h2><p>Answer the phone and talk to the agent. When the call ends, fetch it. <code>outputs</code> holds what the agent captured.</p><div class="ct"><div class="ct-h" role="tablist"><span>Retrieve a call</span><button type="button" role="tab" data-lang="cURL" aria-selected="true">cURL</button><button type="button" role="tab" data-lang="Python" aria-selected="false">Python</button><button type="button" role="tab" data-lang="Node.js" aria-selected="false">Node.js</button></div><pre data-lang="cURL"><code>curl &quot;$ECHO_API/v1/calls/call_8f2k1q&quot; \
-  -H &quot;Authorization: Bearer $ECHO_API_KEY&quot;</code></pre><pre data-lang="Python" hidden><code>import os, requests
+<span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">API</span><span class="si">}</span><span class="sb">/v1/calls`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="sb">`Bearer </span><span class="si">${</span><span class="nx">KEY</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+<span class="w">    </span><span class="s2">&quot;agent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;wismo&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;to&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;+919876543210&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;context&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;customer_name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Asha&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;order_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;88213&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="p">});</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`Echo API </span><span class="si">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+</code></pre></div></div>
+<div class="c-code" data-title="Response"><div class="c-code-h"><span>Response</span><button class="c-copy" type="button" aria-label="Copy code">Copy</button></div><pre class="hl"><code class="language-json"><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;call_8f2k1q&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;queued&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="5-read-the-outcome">5. Read the outcome<a class="h-anchor" href="#5-read-the-outcome" aria-label="Link to this section">#</a></h2>
+<p>Answer the phone and talk to the agent. When the call ends, fetch it. <code>outputs</code> holds what the agent captured.</p>
+<div class="c-codegroup" data-tabs><p class="c-cg-t">Retrieve a call</p><div class="c-tabbar" role="tablist"><button type="button" role="tab" aria-selected="true" data-i="0" id="tb3ebcc-0">cURL</button><button type="button" role="tab" aria-selected="false" data-i="1" id="tb3ebcc-1">Python</button><button type="button" role="tab" aria-selected="false" data-i="2" id="tb3ebcc-2">Node.js</button></div><div class="c-code" data-title="cURL"><div class="c-code-h"><span>cURL</span><button class="c-copy" type="button" aria-label="Copy code">Copy</button></div><pre class="hl"><code class="language-bash">curl<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ECHO_API</span><span class="s2">/v1/calls/call_8f2k1q&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$ECHO_API_KEY</span><span class="s2">&quot;</span>
+</code></pre></div>
+<div class="c-code" data-title="Python"><div class="c-code-h"><span>Python</span><button class="c-copy" type="button" aria-label="Copy code">Copy</button></div><pre class="hl"><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">requests</span>
 
-API = os.environ[&quot;ECHO_API&quot;]
-HEADERS = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+<span class="n">API</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;ECHO_API&quot;</span><span class="p">]</span>
+<span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;ECHO_API_KEY&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
 
-res = requests.get(
-    f&quot;{API}/v1/calls/call_8f2k1q&quot;,
-    headers=HEADERS,
-)
-res.raise_for_status()
-print(res.json())</code></pre><pre data-lang="Node.js" hidden><code>const API = process.env.ECHO_API;
-const KEY = process.env.ECHO_API_KEY;
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API</span><span class="si">}</span><span class="s2">/v1/calls/call_8f2k1q&quot;</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<div class="c-code" data-title="Node.js"><div class="c-code-h"><span>Node.js</span><button class="c-copy" type="button" aria-label="Copy code">Copy</button></div><pre class="hl"><code class="language-javascript"><span class="kd">const</span><span class="w"> </span><span class="nx">API</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ECHO_API</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ECHO_API_KEY</span><span class="p">;</span>
 
-const res = await fetch(`${API}/v1/calls/call_8f2k1q`, {
-  headers: { Authorization: `Bearer ${KEY}` },
-}});
-if (!res.ok) throw new Error(`Echo API ${res.status}`);
-console.log(await res.json());</code></pre></div>
+<span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">API</span><span class="si">}</span><span class="sb">/v1/calls/call_8f2k1q`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="sb">`Bearer </span><span class="si">${</span><span class="nx">KEY</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="p">},</span>
+<span class="p">});</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`Echo API </span><span class="si">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+</code></pre></div></div>
 <p>Polling is fine for a test. In production, <a href="webhooks.html">subscribe to webhooks</a> instead.</p>
-<h2 id="next">Next</h2><ul><li><a href="guide-campaign.html">Run a campaign from code</a></li><li><a href="objects.html">Learn the objects</a></li><li><a href="../agents.html">Build a better agent in the dashboard</a></li></ul></article><nav class="pager" aria-label="Pages"><a class="card" href="./"><small>Previous</small><b>← Introduction</b></a><a class="card nx" href="authentication.html"><small>Next</small><b>Authentication →</b></a></nav></div><aside class="dtoc"><b>On this page</b><a href="#key">1. Get a key</a><a href="#env">2. Set your environment</a><a href="#check">3. Check the key</a><a href="#call">4. Place a call</a><a href="#read">5. Read the outcome</a><a href="#next">Next</a></aside><script>
-(function(){var d=document,K='echo-lang',pref=null;try{pref=localStorage.getItem(K)}catch(e){}
-function pick(l){d.querySelectorAll('.ct').forEach(function(ct){var bs=ct.querySelectorAll('.ct-h button');if(!bs.length)return;var has=[].some.call(bs,function(b){return b.dataset.lang===l});if(!has)return;
-  bs.forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.lang===l))});ct.querySelectorAll('pre[data-lang]').forEach(function(p){p.hidden=p.dataset.lang!==l})})}
-d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.ct-h button');if(b){pick(b.dataset.lang);try{localStorage.setItem(K,b.dataset.lang)}catch(x){}}});
-if(pref)pick(pref);
-d.querySelectorAll('.prose pre').forEach(function(p){var c=d.createElement('button');c.type='button';c.className='cp';c.textContent='Copy';c.addEventListener('click',function(){var t=p.querySelector('code')?p.querySelector('code').innerText:p.innerText;
-  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){c.textContent='Copied';c.classList.add('ok');setTimeout(function(){c.textContent='Copy';c.classList.remove('ok')},1400)}).catch(function(){})});p.appendChild(c)})})();
-</script>
+<h2 id="next">Next<a class="h-anchor" href="#next" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="guide-campaign.html">Run a campaign from code</a></li>
+<li><a href="objects.html">Learn the objects</a></li>
+<li><a href="../agents.html">Build a better agent in the dashboard</a></li>
+</ul>
+</article>
+<nav class="d-pager" aria-label="Previous and next"><a href="./"><small>Previous</small><b>Introduction</b></a><a class="nx" href="authentication.html"><small>Next</small><b>Authentication</b></a></nav>
 </main>
-<footer><span>Cognilix Echo · Enterprise voice AI for revenue workflows</span><nav><a href="../../">Home</a><a href="../../docs/">Docs</a><a href="../../blog/">Blog</a><a href="../../#faq">FAQ</a><a href="../../#trust">Security</a></nav><span>© 2026 Cognilix</span></footer>
+<aside class="d-toc" aria-label="On this page"><b>On this page</b><a class="l2" href="#1-get-a-key">1. Get a key</a><a class="l2" href="#2-set-your-environment">2. Set your environment</a><a class="l2" href="#3-check-the-key">3. Check the key</a><a class="l2" href="#4-place-a-call">4. Place a call</a><a class="l2" href="#5-read-the-outcome">5. Read the outcome</a><a class="l2" href="#next">Next</a></aside>
+</div>
+<footer class="d-foot"><div class="d-foot-in"><div class="d-foot-b"><a class="brand" href="../../" aria-label="Echo by Cognilix home"><img class="clx lt" src="../../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../../cognilix-white.png" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a><p>Enterprise Voice AI by Cognilix for the calls that move orders, deliveries and cash.</p></div><div><h4>Product</h4><a href="../../#use-cases">Use cases</a><a href="../../#how-it-works">How it works</a><a href="../../#security">Security</a><a href="../../#roi">ROI calculator</a></div><div><h4>Docs</h4><a href="../">Platform guide</a><a href="./">Developers</a><a href="changelog.html">Changelog</a><a href="../../llms.txt">llms.txt</a></div><div><h4>Resources</h4><a href="../../blog/">Blog</a><a href="../../#faq">FAQ</a><a href="../../#pilot">Talk to an expert</a></div><div><h4>Company</h4><a href="https://www.cognilix.com" rel="noopener" target="_blank">Cognilix</a><a href="https://www.cognilix.com/contact-us" rel="noopener" target="_blank">Contact</a><a href="https://www.cognilix.com/privacy-policy" rel="noopener" target="_blank">Privacy policy</a></div></div><div class="d-foot-bot"><span>Echo · A Cognilix platform · Made in India</span><span>© 2026 Cognilix</span></div></footer>
+<div class="d-search" id="dSearch" role="dialog" aria-modal="true" aria-label="Search" hidden><div class="d-search-bg" data-search-close></div><div class="d-search-box"><input type="search" placeholder="Search docs and articles" aria-label="Search" autocomplete="off" spellcheck="false"><ul class="d-search-r" role="listbox"></ul><p class="d-search-f"><kbd>Enter</kbd> open <kbd>Esc</kbd> close</p></div></div>
 </body>
 </html>

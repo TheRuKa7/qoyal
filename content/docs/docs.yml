@@ -1,0 +1,45 @@
+# The docs sidebar: tabs, groups and page order. A page is the Markdown file name without .md,
+# inside the tab's folder. Order here is the order in the sidebar and in Previous / Next.
+# Add a badge to one entry:   - {page: automation, badge: New}
+# A .md file that is not listed here is not built (the build warns you).
+
+keywords: [Echo, Cognilix, enterprise voice AI, voice agents, Hindi, Hinglish]   # added to every docs page
+
+tabs:
+  - label: Platform guide
+    badge: No code
+    folder: platform          # content/docs/platform/*.md
+    output: docs/             # built to /docs/*.html
+    title_suffix: Echo docs
+    groups:
+      - group: Get started
+        pages: [index, quickstart, concepts]
+      - group: Build
+        pages: [agents, variables]
+      - group: Test
+        pages: [testing]
+      - group: Launch
+        pages: [campaigns]
+      - group: Monitor
+        pages: [monitoring, analysis]
+      - group: Manage
+        pages: [team]
+      - group: Scale
+        pages: [automation]
+      - group: Playbooks
+        pages: [use-cases, best-practices]
+
+  - label: Developers
+    badge: API
+    folder: developers        # content/docs/developers/*.md
+    output: docs/developers/  # built to /docs/developers/*.html
+    title_suffix: Echo API docs
+    groups:
+      - group: Get started
+        pages: [index, quickstart, authentication, objects]
+      - group: Guides
+        pages: [guide-call, guide-campaign, webhooks, guide-exports]
+      - group: API reference
+        pages: [agents, calls, campaigns, analytics, webhooks-api]
+      - group: Resources
+        pages: [errors, limits, changelog]

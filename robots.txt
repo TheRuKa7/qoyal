@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /qoyal/docs/_
+Disallow: /qoyal/blog/_
+Sitemap: https://theruka7.github.io/qoyal/sitemap.xml

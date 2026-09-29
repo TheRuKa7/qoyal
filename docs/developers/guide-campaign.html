@@ -3,78 +3,138 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Run a campaign from code · Cognilix Echo API</title>
+<title>Run a campaign from code · Echo API docs</title>
 <meta name="description" content="Create a campaign, check the column mapping with a dry run, upload, and collect results.">
+<meta name="keywords" content="campaign API, bulk calls API, Echo, Cognilix, enterprise voice AI, voice agents, Hindi, Hinglish">
 <link rel="canonical" href="https://theruka7.github.io/qoyal/docs/developers/guide-campaign.html">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Cognilix Echo">
-<meta property="og:title" content="Run a campaign from code · Cognilix Echo API">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Echo by Cognilix">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Run a campaign from code · Echo API docs">
 <meta property="og:description" content="Create a campaign, check the column mapping with a dry run, upload, and collect results.">
 <meta property="og:url" content="https://theruka7.github.io/qoyal/docs/developers/guide-campaign.html">
 <meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Run a campaign from code · Echo API docs">
+<meta name="twitter:description" content="Create a campaign, check the column mapping with a dry run, upload, and collect results.">
+<meta name="twitter:image" content="https://theruka7.github.io/qoyal/og.png">
 <meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
-<script>try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/page.css">
+<link rel="stylesheet" href="../../assets/docs.css">
 <link rel="icon" type="image/png" href="../../favicon.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Run a campaign from code", "description": "Create a campaign, check the column mapping with a dry run, upload, and collect results.", "datePublished": "2026-09-25", "dateModified": "2026-09-25", "author": {"@type": "Organization", "name": "Cognilix Echo"}, "inLanguage": "en-IN"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "Developers", "item": "https://theruka7.github.io/qoyal/docs/developers/"}, {"@type": "ListItem", "position": 4, "name": "Run a campaign from code", "item": "https://theruka7.github.io/qoyal/docs/developers/guide-campaign.html"}]}</script>
+<link rel="alternate" type="text/markdown" href="guide-campaign.md">
+<script src="../../assets/docs.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Run a campaign from code", "description": "Create a campaign, check the column mapping with a dry run, upload, and collect results.", "keywords": "campaign API, bulk calls API, Echo, Cognilix, enterprise voice AI, voice agents, Hindi, Hinglish", "dateModified": "2026-09-25", "inLanguage": "en-IN", "url": "https://theruka7.github.io/qoyal/docs/developers/guide-campaign.html", "author": {"@type": "Organization", "name": "Cognilix"}, "publisher": {"@type": "Organization", "name": "Cognilix", "url": "https://www.cognilix.com"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://theruka7.github.io/qoyal/"}, {"@type": "ListItem", "position": 2, "name": "Docs", "item": "https://theruka7.github.io/qoyal/docs/"}, {"@type": "ListItem", "position": 3, "name": "Developers", "item": "https://theruka7.github.io/qoyal/docs/developers/"}, {"@type": "ListItem", "position": 4, "name": "Run a campaign from code", "item": "https://theruka7.github.io/qoyal/docs/developers/guide-campaign.html"}]}</script>
 </head>
-<body>
+<body class="d-body">
+<a class="skip" href="#content">Skip to content</a>
 <header class="nav">
-  <a class="brand" href="../../" aria-label="Cognilix Echo home"><img class="clx lt" src="../../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../../cognilix-white.png" alt="Cognilix" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
-  <nav class="links" aria-label="Site"><a href="../../#topuc">Use cases</a><a href="../../#how">How it works</a><a href="../../#roi">ROI</a><a href="../../docs/" aria-current="page">Docs</a><a href="../../blog/">Blog</a></nav>
+  <a class="brand" href="../../" aria-label="Echo by Cognilix home"><img class="clx lt" src="../../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../../cognilix-white.png" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
+  <nav class="links" aria-label="Site"><a href="../../#use-cases">Use cases</a><a href="../../#how-it-works">How it works</a><a href="../../#build">Build</a><a href="../../#security">Security</a><a href="../" aria-current="page">Docs</a><a href="../../blog/">Blog</a></nav>
+  <button class="d-search-b" type="button" data-search aria-label="Search the docs"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m10.5 10.5 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Search</span><kbd>Ctrl K</kbd></button>
+  <button class="d-theme" type="button" data-theme-toggle aria-label="Switch colour theme"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 1 0 0 13z" fill="currentColor"/><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
   <a class="cta" href="../../#pilot">Talk to an expert</a>
+  <button class="d-menu-b" type="button" data-menu aria-controls="dSide" aria-expanded="false" aria-label="Open the menu"><span></span><span></span></button>
 </header>
-<main class="docs">
-<nav class="dtabs" aria-label="Documentation"><a href="../"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.5 6h13" stroke="currentColor" stroke-width="1.5"/></svg>Platform guide <small>no code</small></a><a href="../developers/" aria-current="page"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Developers <small>API</small></a><span class="dt-r"><a href="../../llms.txt">llms.txt</a></span></nav><nav class="dside" aria-label="Developer docs"><h4>Get started</h4><a href="./">Introduction</a><a href="quickstart.html">Quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html" aria-current="page">Run a campaign from code</a><a href="webhooks.html">Webhooks</a><a href="guide-exports.html">Recordings and exports</a><h4>API reference</h4><a href="agents.html">Agents</a><a href="calls.html">Calls</a><a href="campaigns.html">Campaigns</a><a href="analytics.html">Analytics</a><a href="webhooks-api.html">Webhooks API</a><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></nav><div class="dmain"><details class="dmenu"><summary>Developer menu · Run a campaign from code</summary><nav class="dside" aria-label="Developer docs"><h4>Get started</h4><a href="./">Introduction</a><a href="quickstart.html">Quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html" aria-current="page">Run a campaign from code</a><a href="webhooks.html">Webhooks</a><a href="guide-exports.html">Recordings and exports</a><h4>API reference</h4><a href="agents.html">Agents</a><a href="calls.html">Calls</a><a href="campaigns.html">Campaigns</a><a href="analytics.html">Analytics</a><a href="webhooks-api.html">Webhooks API</a><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></nav></details><header class="dhead"><p class="crumb"><a href="../../">Home</a> / <a href="../">Docs</a> / <a href="./">Developers</a> / Guides</p><p class="kick">Guides</p><h1>Run a campaign from code</h1><p class="lede">Create a campaign, check the column mapping with a dry run, upload, and collect results.</p></header><article class="prose card"><h2 id="flow">The flow</h2><ol class="steps"><li><b>Create</b><code>POST /v1/campaigns</code> with the agent.</li><li><b>Dry run</b>Upload with <code>dry_run=true</code> and check the proposed mapping.</li><li><b>Upload</b>Upload again with the confirmed <code>mapping</code>. Dialling starts.</li><li><b>Follow</b>Poll the campaign or listen for <code>contact.captured</code> and <code>campaign.completed</code>.</li><li><b>Collect</b>Read <code>/results</code>, or download CSV, XLSX or the transcripts and audio archive.</li></ol>
-<h2 id="script">A complete script</h2><div class="ct"><div class="ct-h"><span>Python</span></div><pre><code>import os, json, time, requests
+<div class="d-shell">
+<aside class="d-side" id="dSide" aria-label="Documentation"><nav class="d-tabs" aria-label="Documentation sets"><a class="d-tab" href="../"><span>Platform guide</span><small>No code</small></a><a class="d-tab on" href="./" aria-current="true"><span>Developers</span><small>API</small></a></nav><nav class="d-nav" aria-label="Pages"><div class="d-grp"><h4>Get started</h4><a href="./">Introduction</a><a href="quickstart.html">API quickstart</a><a href="authentication.html">Authentication</a><a href="objects.html">Core objects</a></div><div class="d-grp"><h4>Guides</h4><a href="guide-call.html">Call on an event</a><a href="guide-campaign.html" aria-current="page">Run a campaign from code</a><a href="webhooks.html">Receive outcomes by webhook</a><a href="guide-exports.html">Recordings and exports</a></div><div class="d-grp"><h4>API reference</h4><a href="agents.html">Agents API</a><a href="calls.html">Calls API</a><a href="campaigns.html">Campaigns API</a><a href="analytics.html">Analytics API</a><a href="webhooks-api.html">Webhook endpoints</a></div><div class="d-grp"><h4>Resources</h4><a href="errors.html">Errors</a><a href="limits.html">Rate limits</a><a href="changelog.html">Changelog</a></div></nav></aside>
+<main class="d-main" id="content">
+<p class="crumb"><a href="../../">Home</a> / <a href="../">Docs</a> / <a href="./">Developers</a> / Guides</p>
+<p class="kick">Guides</p>
+<h1>Run a campaign from code</h1>
+<p class="lede">Create a campaign, check the column mapping with a dry run, upload, and collect results.</p>
+<p class="d-meta"><span>Updated 25 Sep 2026</span><span>1 min read</span><a href="guide-campaign.md" type="text/markdown">View as Markdown</a></p>
+<article class="d-prose">
+<h2 id="the-flow">The flow<a class="h-anchor" href="#the-flow" aria-label="Link to this section">#</a></h2>
+<ol class="c-steps"><li class="c-step"><p class="c-step-t">Create</p><div class="c-step-b"><p><code>POST /v1/campaigns</code> with the agent.</p></div></li>
+<li class="c-step"><p class="c-step-t">Dry run</p><div class="c-step-b"><p>Upload with <code>dry_run=true</code> and check the proposed mapping.</p></div></li>
+<li class="c-step"><p class="c-step-t">Upload</p><div class="c-step-b"><p>Upload again with the confirmed <code>mapping</code>. Dialling starts.</p></div></li>
+<li class="c-step"><p class="c-step-t">Follow</p><div class="c-step-b"><p>Poll the campaign or listen for <code>contact.captured</code> and <code>campaign.completed</code>.</p></div></li>
+<li class="c-step"><p class="c-step-t">Collect</p><div class="c-step-b"><p>Read <code>/results</code>, or download CSV, XLSX or the transcripts and audio archive.</p></div></li></ol>
+<h2 id="a-complete-script">A complete script<a class="h-anchor" href="#a-complete-script" aria-label="Link to this section">#</a></h2>
+<div class="c-code" data-title="Python"><div class="c-code-h"><span>Python</span><button class="c-copy" type="button" aria-label="Copy code">Copy</button></div><pre class="hl"><code class="language-python"><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span><span class="o">,</span><span class="w"> </span><span class="nn">requests</span>
 
-API = os.environ[&quot;ECHO_API&quot;]
-H = {&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;ECHO_API_KEY&#x27;]}&quot;}
+<span class="n">API</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;ECHO_API&quot;</span><span class="p">]</span>
+<span class="n">H</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;ECHO_API_KEY&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
 
-# 1. Create the campaign
-c = requests.post(f&quot;{API}/v1/campaigns&quot;, headers=H, json={
-    &quot;agent&quot;: &quot;dispatch-followup&quot;,
-    &quot;description&quot;: &quot;Week 39 open POs&quot;,
-}).json()
+<span class="c1"># 1. Create the campaign</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API</span><span class="si">}</span><span class="s2">/v1/campaigns&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">H</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;agent&quot;</span><span class="p">:</span> <span class="s2">&quot;dispatch-followup&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Week 39 open POs&quot;</span><span class="p">,</span>
+<span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-# 2. Dry run: see how Echo maps your columns, without storing anything
-with open(&quot;open_pos.xlsx&quot;, &quot;rb&quot;) as f:
-    plan = requests.post(f&quot;{API}/v1/campaigns/{c[&#x27;id&#x27;]}/contacts&quot;, headers=H,
-                         files={&quot;file&quot;: f}, data={&quot;dry_run&quot;: &quot;true&quot;}).json()
-for m in plan[&quot;mapping&quot;]:
-    print(m[&quot;input&quot;], &quot;&lt;-&quot;, m[&quot;header&quot;], &quot;(by&quot;, m[&quot;matched_by&quot;] + &quot;)&quot;)
+<span class="c1"># 2. Dry run: see how Echo maps your columns, without storing anything</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;open_pos.xlsx&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">plan</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API</span><span class="si">}</span><span class="s2">/v1/campaigns/</span><span class="si">{</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/contacts&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">H</span><span class="p">,</span>
+                         <span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="n">f</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dry_run&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">plan</span><span class="p">[</span><span class="s2">&quot;mapping&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">],</span> <span class="s2">&quot;&lt;-&quot;</span><span class="p">,</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;header&quot;</span><span class="p">],</span> <span class="s2">&quot;(by&quot;</span><span class="p">,</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;matched_by&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">)</span>
 
-# 3. Upload for real with the mapping you checked. Dialling starts now.
-mapping = {m[&quot;input&quot;]: m[&quot;column&quot;] for m in plan[&quot;mapping&quot;]}
-with open(&quot;open_pos.xlsx&quot;, &quot;rb&quot;) as f:
-    requests.post(f&quot;{API}/v1/campaigns/{c[&#x27;id&#x27;]}/contacts&quot;, headers=H,
-                  files={&quot;file&quot;: f}, data={&quot;mapping&quot;: json.dumps(mapping)})
+<span class="c1"># 3. Upload for real with the mapping you checked. Dialling starts now.</span>
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="n">m</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">]:</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;column&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">plan</span><span class="p">[</span><span class="s2">&quot;mapping&quot;</span><span class="p">]}</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;open_pos.xlsx&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API</span><span class="si">}</span><span class="s2">/v1/campaigns/</span><span class="si">{</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/contacts&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">H</span><span class="p">,</span>
+                  <span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="n">f</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mapping&quot;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">mapping</span><span class="p">)})</span>
 
-# 4. Wait for the campaign to finish (or use webhooks)
-while requests.get(f&quot;{API}/v1/campaigns/{c[&#x27;id&#x27;]}&quot;, headers=H).json()[&quot;status&quot;] == &quot;running&quot;:
-    time.sleep(60)
+<span class="c1"># 4. Wait for the campaign to finish (or use webhooks)</span>
+<span class="k">while</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API</span><span class="si">}</span><span class="s2">/v1/campaigns/</span><span class="si">{</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">H</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;running&quot;</span><span class="p">:</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 
-# 5. Read the results
-rows = requests.get(f&quot;{API}/v1/campaigns/{c[&#x27;id&#x27;]}/results&quot;, headers=H).json()[&quot;data&quot;]
-for r in rows:
-    print(r[&quot;primary_id&quot;], r[&quot;status&quot;], r[&quot;outputs&quot;])</code></pre></div>
-<h2 id="mapping">Checking the mapping</h2><p>Each mapping entry says how the column was matched. <code>matched_by: "position"</code> means Echo guessed from column order because no header matched; check those. Required inputs must be mapped or the upload is rejected with <code>422 missing_required_mapping</code>.</p>
-<h2 id="status">Following progress</h2><table><thead><tr><th>Campaign status</th><th>Meaning</th></tr></thead><tbody><tr><td>created</td><td>No list yet</td></tr><tr><td>ready</td><td>List stored, not dialled</td></tr><tr><td>running</td><td>Calls going out</td></tr><tr><td>completed</td><td>Dialling finished</td></tr><tr><td>failed</td><td>Dialling could not complete; see <code>error</code></td></tr></tbody></table>
-<h2 id="rules">Rules to know</h2><ul><li>One campaign takes one upload. Create a new campaign for each list.</li><li>An agent without a calling line cannot dial: <code>422 no_calling_line</code>.</li><li>Rows with bad data are stored as <code>input_validation_failed</code> with a reason, and are not dialled.</li><li>Deleting a campaign deletes its results.</li></ul></article><nav class="pager" aria-label="Pages"><a class="card" href="guide-call.html"><small>Previous</small><b>← Call on an event</b></a><a class="card nx" href="webhooks.html"><small>Next</small><b>Webhooks →</b></a></nav></div><aside class="dtoc"><b>On this page</b><a href="#flow">The flow</a><a href="#script">A complete script</a><a href="#mapping">Checking the mapping</a><a href="#status">Following progress</a><a href="#rules">Rules to know</a></aside><script>
-(function(){var d=document,K='echo-lang',pref=null;try{pref=localStorage.getItem(K)}catch(e){}
-function pick(l){d.querySelectorAll('.ct').forEach(function(ct){var bs=ct.querySelectorAll('.ct-h button');if(!bs.length)return;var has=[].some.call(bs,function(b){return b.dataset.lang===l});if(!has)return;
-  bs.forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.lang===l))});ct.querySelectorAll('pre[data-lang]').forEach(function(p){p.hidden=p.dataset.lang!==l})})}
-d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.ct-h button');if(b){pick(b.dataset.lang);try{localStorage.setItem(K,b.dataset.lang)}catch(x){}}});
-if(pref)pick(pref);
-d.querySelectorAll('.prose pre').forEach(function(p){var c=d.createElement('button');c.type='button';c.className='cp';c.textContent='Copy';c.addEventListener('click',function(){var t=p.querySelector('code')?p.querySelector('code').innerText:p.innerText;
-  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){c.textContent='Copied';c.classList.add('ok');setTimeout(function(){c.textContent='Copy';c.classList.remove('ok')},1400)}).catch(function(){})});p.appendChild(c)})})();
-</script>
+<span class="c1"># 5. Read the results</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">API</span><span class="si">}</span><span class="s2">/v1/campaigns/</span><span class="si">{</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/results&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">H</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;primary_id&quot;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;outputs&quot;</span><span class="p">])</span>
+</code></pre></div>
+<h2 id="checking-the-mapping">Checking the mapping<a class="h-anchor" href="#checking-the-mapping" aria-label="Link to this section">#</a></h2>
+<p>Each mapping entry says how the column was matched. <code>matched_by: &quot;position&quot;</code> means Echo guessed from column order because no header matched; check those. Required inputs must be mapped or the upload is rejected with <code>422 missing_required_mapping</code>.</p>
+<h2 id="following-progress">Following progress<a class="h-anchor" href="#following-progress" aria-label="Link to this section">#</a></h2>
+<div class="c-table"><table>
+<thead>
+<tr>
+<th>Campaign status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>created</td>
+<td>No list yet</td>
+</tr>
+<tr>
+<td>ready</td>
+<td>List stored, not dialled</td>
+</tr>
+<tr>
+<td>running</td>
+<td>Calls going out</td>
+</tr>
+<tr>
+<td>completed</td>
+<td>Dialling finished</td>
+</tr>
+<tr>
+<td>failed</td>
+<td>Dialling could not complete; see <code>error</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="rules-to-know">Rules to know<a class="h-anchor" href="#rules-to-know" aria-label="Link to this section">#</a></h2>
+<ul>
+<li>One campaign takes one upload. Create a new campaign for each list.</li>
+<li>An agent without a calling line cannot dial: <code>422 no_calling_line</code>.</li>
+<li>Rows with bad data are stored as <code>input_validation_failed</code> with a reason, and are not dialled.</li>
+<li>Deleting a campaign deletes its results.</li>
+</ul>
+</article>
+<nav class="d-pager" aria-label="Previous and next"><a href="guide-call.html"><small>Previous</small><b>Call on an event</b></a><a class="nx" href="webhooks.html"><small>Next</small><b>Receive outcomes by webhook</b></a></nav>
 </main>
-<footer><span>Cognilix Echo · Enterprise voice AI for revenue workflows</span><nav><a href="../../">Home</a><a href="../../docs/">Docs</a><a href="../../blog/">Blog</a><a href="../../#faq">FAQ</a><a href="../../#trust">Security</a></nav><span>© 2026 Cognilix</span></footer>
+<aside class="d-toc" aria-label="On this page"><b>On this page</b><a class="l2" href="#the-flow">The flow</a><a class="l2" href="#a-complete-script">A complete script</a><a class="l2" href="#checking-the-mapping">Checking the mapping</a><a class="l2" href="#following-progress">Following progress</a><a class="l2" href="#rules-to-know">Rules to know</a></aside>
+</div>
+<footer class="d-foot"><div class="d-foot-in"><div class="d-foot-b"><a class="brand" href="../../" aria-label="Echo by Cognilix home"><img class="clx lt" src="../../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../../cognilix-white.png" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a><p>Enterprise Voice AI by Cognilix for the calls that move orders, deliveries and cash.</p></div><div><h4>Product</h4><a href="../../#use-cases">Use cases</a><a href="../../#how-it-works">How it works</a><a href="../../#security">Security</a><a href="../../#roi">ROI calculator</a></div><div><h4>Docs</h4><a href="../">Platform guide</a><a href="./">Developers</a><a href="changelog.html">Changelog</a><a href="../../llms.txt">llms.txt</a></div><div><h4>Resources</h4><a href="../../blog/">Blog</a><a href="../../#faq">FAQ</a><a href="../../#pilot">Talk to an expert</a></div><div><h4>Company</h4><a href="https://www.cognilix.com" rel="noopener" target="_blank">Cognilix</a><a href="https://www.cognilix.com/contact-us" rel="noopener" target="_blank">Contact</a><a href="https://www.cognilix.com/privacy-policy" rel="noopener" target="_blank">Privacy policy</a></div></div><div class="d-foot-bot"><span>Echo · A Cognilix platform · Made in India</span><span>© 2026 Cognilix</span></div></footer>
+<div class="d-search" id="dSearch" role="dialog" aria-modal="true" aria-label="Search" hidden><div class="d-search-bg" data-search-close></div><div class="d-search-box"><input type="search" placeholder="Search docs and articles" aria-label="Search" autocomplete="off" spellcheck="false"><ul class="d-search-r" role="listbox"></ul><p class="d-search-f"><kbd>Enter</kbd> open <kbd>Esc</kbd> close</p></div></div>
 </body>
 </html>

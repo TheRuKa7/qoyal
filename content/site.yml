@@ -1,0 +1,48 @@
+# Site-wide settings used by every generated page (docs and blog).
+# Links that start with / are relative to the site root, so moving to a company domain
+# only needs base_url changed here and in index.html.
+site_name: Echo by Cognilix
+org: Cognilix
+org_url: https://www.cognilix.com
+base_url: https://theruka7.github.io/qoyal/
+locale: en_IN
+default_image: og.png
+summary: Enterprise Voice AI for B2B operations. Echo calls suppliers and customers in Hindi, English and Hinglish, confirms POs, delivery dates, quotes and payments, and sends each outcome back to your systems.
+
+# Top navigation. Keep it the same as the home page.
+nav:
+  - {label: Use cases, href: "/#use-cases"}
+  - {label: How it works, href: "/#how-it-works"}
+  - {label: Build, href: "/#build"}
+  - {label: Security, href: "/#security"}
+  - {label: Docs, href: "/docs/"}
+  - {label: Blog, href: "/blog/"}
+cta: {label: Talk to an expert, href: "/#pilot"}
+
+footer:
+  blurb: Enterprise Voice AI by Cognilix for the calls that move orders, deliveries and cash.
+  note: Echo · A Cognilix platform · Made in India
+  copyright: © 2026 Cognilix
+  columns:
+    - title: Product
+      links:
+        - {label: Use cases, href: "/#use-cases"}
+        - {label: How it works, href: "/#how-it-works"}
+        - {label: Security, href: "/#security"}
+        - {label: ROI calculator, href: "/#roi"}
+    - title: Docs
+      links:
+        - {label: Platform guide, href: "/docs/"}
+        - {label: Developers, href: "/docs/developers/"}
+        - {label: Changelog, href: "/docs/developers/changelog.html"}
+        - {label: llms.txt, href: "/llms.txt"}
+    - title: Resources
+      links:
+        - {label: Blog, href: "/blog/"}
+        - {label: FAQ, href: "/#faq"}
+        - {label: Talk to an expert, href: "/#pilot"}
+    - title: Company
+      links:
+        - {label: Cognilix, href: "https://www.cognilix.com"}
+        - {label: Contact, href: "https://www.cognilix.com/contact-us"}
+        - {label: Privacy policy, href: "https://www.cognilix.com/privacy-policy"}

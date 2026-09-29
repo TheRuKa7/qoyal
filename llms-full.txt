@@ -1,0 +1,4576 @@
+# Echo documentation
+
+Source: https://theruka7.github.io/qoyal/docs/
+
+## The product in five steps
+
+Echo turns a phone call your team makes every day into an agent that makes it for you. Every agent follows the same path from idea to results.
+
+<CardGroup cols="5">
+<Card title="Create an agent" href="agents" eyebrow="1 · Build">Write what it should say and what it must find out.</Card>
+<Card title="Talk to it" href="testing" eyebrow="2 · Test">From your browser or on a real phone.</Card>
+<Card title="Run a campaign" href="campaigns" eyebrow="3 · Launch">Upload a sheet. Echo calls every row.</Card>
+<Card title="Watch results" href="monitoring" eyebrow="4 · Monitor">Status, outcomes and recordings, live.</Card>
+<Card title="Use the outcomes" href="analysis" eyebrow="5 · Act">Export, analyse, and write back.</Card>
+</CardGroup>
+
+## Two ways to work
+
+<Columns>
+<Column>
+### Business teams
+
+Create an agent from a template or a copy, fill in a sheet, and run it. No code. The **Platform guide** in this sidebar is written for you.
+
+[Start with the quickstart →](quickstart)
+</Column>
+<Column>
+### Developers
+
+Run the same agents from your own systems: create campaigns, send contacts and read outcomes over an API, or receive them on a webhook. The API is in developer preview.
+
+[Open the developer docs →](../developers/index)
+</Column>
+</Columns>
+
+## Browse the docs
+
+<CardGroup cols="2">
+<Card title="Core concepts" href="concepts" eyebrow="Get started">Agents, variables, campaigns, calls and outcomes, and how they fit.</Card>
+<Card title="Agents" href="agents" eyebrow="Build">The prompt editor, sections, voice and calling line.</Card>
+<Card title="Input and output variables" href="variables" eyebrow="Build">What the agent knows before the call, and what it must report after.</Card>
+<Card title="Call console" href="testing" eyebrow="Test">Live test calls with transcript, events and captured values.</Card>
+<Card title="Campaigns" href="campaigns" eyebrow="Launch">Templates, uploads, column mapping, statuses and exports.</Card>
+<Card title="Dashboard and call log" href="monitoring" eyebrow="Monitor">The funnel, every call, filters and downloads.</Card>
+<Card title="Call analysis" href="analysis" eyebrow="Monitor">Summaries, priority, action items and re-analysis.</Card>
+<Card title="Team and access" href="team" eyebrow="Manage">Roles, groups and who can see which campaigns.</Card>
+<Card title="Automation and reports" href="automation" eyebrow="Scale">Triggers, schedules, data clean-up, routing and scheduled reports.</Card>
+<Card title="Use-case playbooks" href="use-cases" eyebrow="Playbooks">Ready-to-copy agent designs for common calls.</Card>
+</CardGroup>
+
+## Getting help
+
+Your account team sets up your workspace, calling lines and first agent with you during the pilot, and is your first contact for questions and issues. Before a pilot, [talk to an expert](/#pilot) or use the [Cognilix contact page](https://www.cognilix.com/contact-us).
+
+# Quickstart: your first campaign
+
+Source: https://theruka7.github.io/qoyal/docs/quickstart.html
+
+## Before you start
+
+- A workspace with your team in it. Your account team creates it and invites you during onboarding, before this guide starts.
+- A **calling line** for your agent. This is the number and route Echo dials from, set up with you during onboarding.
+- A short list of people to call, in a spreadsheet, and the answers you need from each of them.
+
+## Step by step
+
+<Steps>
+<Step title="Sign in and pick your workspace">
+Sign in with the account your admin set up for you. If you belong to more than one workspace, choose the one you want to work in.
+</Step>
+<Step title="Create an agent">
+Go to **Agents → New agent**. Give it a name such as “Order payment follow-up”, a one-line description, and pick its calling line. Start from a blank agent or from a copy of one that already works.
+</Step>
+<Step title="Declare what it needs and what it must find out">
+On **Input variables**, add the columns each call needs, such as `customer_name` and `order_id`. On **Output variables**, add what the agent must report, such as `status` and `promised_date`. See [Input and output variables](variables).
+</Step>
+<Step title="Write the prompt">
+On the **Prompt** tab, add sections for the agent’s role, goal, flow and rules. Use `{{order_id}}` tokens wherever a value from the sheet belongs. Add a language rule, such as "Speak Hinglish and follow the caller if they switch" (see [Language and tone](best-practices#language-and-tone)). Press **Preview full prompt**, then **Save prompt**.
+
+<Warning>Saved changes are used from the next call, including calls in campaigns that already use this agent. Test a change in the Call console before you save it on a live agent.</Warning>
+</Step>
+<Step title="Test it">
+Open the **Call console**, pick the agent, press **Use samples**, and start a call from your browser. Try the happy path, a correction, and “call me later”. Then ring your own phone to hear it on a real line.
+</Step>
+<Step title="Create a campaign">
+Go to **Campaigns → New campaign**, pick the agent, choose outbound or inbound, and add a description of the list. Download the **Template**: it already has one column per input.
+</Step>
+<Step title="Upload your list and confirm">
+Start with 20 to 50 rows. Fill in the template and press **Upload data**. Echo proposes a column mapping and nothing is dialled yet. Check it, then confirm.
+
+<Warning title="Confirming starts real calls">Every row that passes the compliance checks is dialled within the campaign's calling hours. Listen to the first calls before you upload the full list.</Warning>
+</Step>
+<Step title="Watch the results">
+Contacts move from Pending to Dialled to Captured as calls finish. Open any contact for the transcript and recording, and download everything as a spreadsheet when you are done.
+</Step>
+</Steps>
+
+## Checklist before you go live
+
+- Every `{{token}}` in the prompt is declared as an input. The editor warns you when one is missing.
+- Values that must never be spoken, such as internal codes, are marked as internal.
+- Every output has a clear description, and status-like outputs use a fixed list of options.
+- You have tested a correction, a refusal, a busy caller and a bad line.
+- The agent has a calling line. Without one, campaigns cannot upload or dial.
+- You started with a small list, and you listened to the first calls.
+
+<Snippet file="compliance-gate.md"/>
+
+## Next steps
+
+Read the [prompt best practices](best-practices), copy a design from the [use-case playbooks](use-cases), or learn how to read the [dashboard](monitoring).
+
+# Core concepts
+
+Source: https://theruka7.github.io/qoyal/docs/concepts.html
+
+## The model in one picture
+
+An **agent** knows how to have one kind of call. A **campaign** runs that agent against one list of **contacts**. Each contact gets a **call**, and each call ends in an **outcome**: the values the agent was asked to capture, with the transcript and recording attached.
+
+```
+Agent  ──►  Campaign  ──►  Contacts  ──►  Calls  ──►  Outcomes
+(how to talk)  (one list)    (one row each)  (the conversation)  (the answers)
+```
+
+## Agent
+
+An agent owns everything about how a call sounds and what it is for: the **prompt**, the **voice**, the **calling line** it dials from, and its **variables**. Change the agent and every campaign that uses it follows on its next call, with no restart.
+
+## Inputs and outputs
+
+**Input variables** are what the agent knows before it dials: a name, an order number, an amount due. They come from the columns of your sheet and fill the `{{tokens}}` in the prompt.
+
+**Output variables** are what the agent must find out and report before it hangs up: a status, a date, a quantity, a reason. They become the columns of your results.
+
+One input can be the **primary id**, such as an order or PO number. It identifies each row in results and exports.
+
+## Campaign
+
+A campaign is **one agent run against one list**. It is named after the agent and the time it was created, and you can add a description to say which list it was. A campaign can be outbound or inbound.
+
+A campaign takes one upload. To call another list, create another campaign. This keeps every result tied to exactly the list that produced it.
+
+## Call and outcome
+
+Every call is logged with its time, number, agent, length, transcript and recording. When the agent has what it needs, it reports its output variables. Those values are saved against the contact and shown in results. Later, [call analysis](analysis) can add a summary, a priority and action items.
+
+## Workspace
+
+Everything lives in a workspace for your organisation. Admins decide who can use it, and [groups](team) decide who sees which campaigns.
+
+## Lifecycle of a contact
+
+| Status | What it means |
+| --- | --- |
+| Pending | Uploaded, not called yet. |
+| Dialled | A call has been placed. Waiting for it to finish and report. |
+| Captured | The call finished and the agent reported its outputs. |
+| No answer | The call ended without any outputs, for example nobody picked up. |
+| Disconnected, partial | The line dropped before the end. Whatever was captured is kept. |
+| Input validation failed | Something in the row was wrong, such as a missing required value. It is stored but not called. Hover the status to see why. |
+
+# Agents
+
+Source: https://theruka7.github.io/qoyal/docs/agents.html
+
+## The agents list
+
+**Agents** shows every agent in your workspace with how many inputs and outputs it has and which input is its primary id. Click a row to open it. Access to this page is given per person by an admin, because it shows and edits every prompt.
+
+## Create an agent
+
+<Steps>
+<Step title="Name and description">
+Use a name that says what the call is for, such as “COD confirmation”. The description is for your team.
+</Step>
+<Step title="Start from">
+Choose **Blank agent**, or **Copy of** an existing agent to inherit its prompt, inputs and outputs. Copying a working agent is the fastest way to a new one.
+</Step>
+<Step title="Calling line">
+Pick the line this agent’s calls go out on. Campaigns that use the agent inherit it. Until an agent has a line, its campaigns cannot upload a list or place calls.
+</Step>
+</Steps>
+
+## The prompt editor
+
+An agent’s prompt is a list of **sections**, joined in order. Each section has a title and a body, and a small toolbar:
+
+- **↑ ↓** move it up or down.
+- **On / Off** skips a section without deleting it, useful when testing a change.
+- **Copy** copies the text in use.
+- **Delete** removes it. **Add section** adds a new one at the end.
+
+<figure class="ui"><div class="ui-bar"><i></i><i></i><i></i><span>Echo · Agents · Dispatch follow-up</span></div><div class="ui-b"><div class="ui-tabs"><span class="on">Prompt</span><span>Input variables (5)</span><span>Output variables (4)</span></div><div class="ui-row"><span class="ui-kv"><b>Voice</b><span>Default · Female</span><b>Calling line</b><span>Outbound · Operations</span></span></div><div class="ui-sec"><div class="ui-sh">Role and goal<em>On · ↑ ↓ · Copy</em></div><div class="ui-code">You are Riya, calling from the purchase team of <u>{{company}}</u>. Your goal is to confirm the dispatch date and quantity for PO <u>{{po_number}}</u>.</div></div><div class="ui-sec"><div class="ui-sh">Read-back rules<em>On · ↑ ↓ · Copy</em></div><div class="ui-code">Repeat every date and quantity back. Save only on a clear yes. A filler is not a yes.</div></div><div class="ui-sec gen"><div class="ui-sh">Call details<em>auto · inputs · Refresh</em></div><div class="ui-code">- Supplier: <u>{{supplier_name}}</u>
+- PO number: <u>{{po_number}}</u>
+- Open quantity: <u>{{open_qty}}</u></div></div><div class="ui-sec gen"><div class="ui-sh">Outcome reporting<em>auto · outputs · Refresh</em></div><div class="ui-code">Before ending the call, report: dispatch_date, qty_ready, status, next_step.</div></div><div class="ui-row"><span class="ui-btn">+ Add section</span><span class="ui-btn p">Save prompt</span><span class="ui-btn">Preview full prompt</span></div></div><figcaption>The prompt is built from sections. Dashed sections are written for you from the agent’s variables.</figcaption></figure>
+
+A good agent usually has these sections: role and goal, opening line, conversation flow, read-back and confirmation rules, handling of common moments (busy, wrong person, call back, bad line), language rules, and closing. See [prompt best practices](best-practices).
+
+## Automatic sections
+
+Two sections are written for you from the agent’s variables, and marked **auto**:
+
+- **Call details** lists each input the agent may talk about, with its token.
+- **Outcome reporting** tells the agent which outputs to report before hanging up, with their types, options and descriptions.
+
+You can edit their wording. When the variables change later, **Refresh** adds lines for new variables and removes lines for deleted ones, and leaves the rest of your wording alone. **Reset** goes back to the generated text. A section you never edited keeps following the variables automatically.
+
+## Tokens and checks
+
+Write `{{order_id}}` wherever a value from the contact’s row belongs. At call time Echo replaces each token with that row’s value. If the prompt uses a token that is not declared as an input, the editor lists it as missing so you can fix it before any call goes out.
+
+## Voice and calling line
+
+Pick a voice from the list; each shows its gender. Leave it on **Default** to use the standard voice. Voice and calling line apply as soon as you change them, with no save needed, and do not disturb a prompt you are part-way through editing.
+
+## Saving, preview and changes
+
+**Preview full prompt** shows the whole prompt exactly as the agent will get it, including unsaved edits, with its length. **Save prompt** stores it. The change is live on the next call, for every campaign that uses the agent.
+
+<Info>
+Change prompts between runs where you can. A campaign that is already calling picks up the new prompt on its next call, so results from one list may come from two versions.
+</Info>
+
+## Connected platforms
+
+If your workspace has a partner platform connected, the agents list shows a **Sync** action. Syncing is permanent once it succeeds. While it is being delivered the row shows **Syncing**; if it fails after retries it shows **Failed** with the reason, and you can try again.
+
+## Deleting an agent
+
+Delete removes the agent and cannot be undone. Past campaigns keep their results and show the agent as no longer defined.
+
+# Input and output variables
+
+Source: https://theruka7.github.io/qoyal/docs/variables.html
+
+## Input variables
+
+Each input is one column of your sheet and one token in the prompt.
+
+| Field | What it does |
+| --- | --- |
+| Key | The token name, such as `order_id`. Used as `{{order_id}}` in the prompt and as the column name in the template. |
+| Type | The kind of value, such as text or a number. |
+| Transform | **Spell digits** makes the agent read a value digit by digit, right for order, PO and phone numbers. Never use it for amounts or counts. |
+| Sample value | Used in test calls and previews, so you can try the agent without a sheet. |
+| Share on call | On: the agent may say and discuss this value. Off: the value is internal (see below). |
+
+<figure class="ui"><div class="ui-bar"><i></i><i></i><i></i><span>Echo · Agents · Dispatch follow-up · Input variables</span></div><div class="ui-b"><div class="ui-t"><div style="grid-template-columns:1.3fr .8fr .9fr 1fr .8fr"><span>Key (the token)</span><span>Type</span><span>Transform</span><span>Sample value</span><span>Share on call</span></div><div style="grid-template-columns:1.3fr .8fr .9fr 1fr .8fr"><span>supplier_name</span><span>string</span><span>None</span><span>Mehta Packaging</span><span>✓</span></div><div style="grid-template-columns:1.3fr .8fr .9fr 1fr .8fr"><span>po_number</span><span>string</span><span>Spell digits</span><span>4471</span><span>✓</span></div><div style="grid-template-columns:1.3fr .8fr .9fr 1fr .8fr"><span>open_qty</span><span>number</span><span>None</span><span>14</span><span>✓</span></div><div style="grid-template-columns:1.3fr .8fr .9fr 1fr .8fr"><span>supplier_code</span><span>string</span><span>None</span><span>V-20931</span><span>internal</span></div><div style="grid-template-columns:1.3fr .8fr .9fr 1fr .8fr"><span>phone</span><span>phone</span><span>None</span><span>98765 43210</span><span>✓</span></div></div><div class="ui-row"><span class="ui-kv"><b>Primary id column</b><span>po_number</span></span></div><div class="ui-t"><div style="grid-template-columns:1fr 1fr .7fr 1.4fr .6fr"><span>Key</span><span>Label</span><span>Type</span><span>Options</span><span>Required</span></div><div style="grid-template-columns:1fr 1fr .7fr 1.4fr .6fr"><span>status</span><span>Status</span><span>enum</span><span>CONFIRMED, PARTIAL, NEW_DATE, CALL_BACK</span><span>✓</span></div><div style="grid-template-columns:1fr 1fr .7fr 1.4fr .6fr"><span>dispatch_date</span><span>Dispatch date</span><span>string</span><span></span><span>✓</span></div><div style="grid-template-columns:1fr 1fr .7fr 1.4fr .6fr"><span>qty_ready</span><span>Quantity ready</span><span>number</span><span></span><span>✓</span></div><div style="grid-template-columns:1fr 1fr .7fr 1.4fr .6fr"><span>next_step</span><span>Next step</span><span>string</span><span></span><span></span></div></div></div><figcaption>Inputs are what the agent knows before the call. Outputs are what it must report before hanging up.</figcaption></figure>
+
+## Internal values
+
+Untick **Share on call** for values the agent needs but must never say, such as a supplier code or an internal account id. The agent still receives them for matching and lookups, under an explicit instruction never to speak, confirm or reveal them.
+
+## Primary id
+
+Choose one input as the **primary id column**, usually the reference your team already uses: order id, PO number, loan number. It identifies each row in results and becomes the first column in exports.
+
+## Output variables
+
+Outputs are the fields the agent must report before it hangs up. They become the columns of your results.
+
+| Field | What it does |
+| --- | --- |
+| Key | The column name in results, such as `promised_date`. |
+| Label | A readable name shown in the dashboard. |
+| Type | Text, number, yes or no, or a **choice** from a fixed list. |
+| Options | For choice outputs: the allowed values, such as `CONFIRMED, PARTIAL, CALL_BACK`. |
+| Description | Tells the agent exactly what to capture and when. This is the most important field. |
+| Required | Whether the agent must report it on every call. |
+
+If a required output was not reported, it shows as “-” rather than disappearing. A missing answer is a result too.
+
+## A worked example
+
+A supplier follow-up agent might use:
+
+| Kind | Key | Notes |
+| --- | --- | --- |
+| Input | supplier_name | Shared on call |
+| Input | po_number | Spell digits · primary id |
+| Input | open_qty | Number |
+| Input | supplier_code | Internal, never spoken |
+| Output | status | Choice: CONFIRMED, PARTIAL, NEW_DATE, CALL_BACK, WRONG_CONTACT |
+| Output | dispatch_date | The date confirmed after read-back |
+| Output | qty_ready | Number, only after read-back |
+| Output | next_step | Free text, for example a call-back time |
+
+## Design tips
+
+- Keep outputs few. Four to six fields that someone will act on beat fifteen that nobody reads.
+- Always include one **status** output with fixed options. It is what you will filter and count by.
+- Write descriptions as instructions: “The date the supplier confirms after read-back, in DD MMM format. Leave empty if they did not commit.”
+- Add a call-back field so “call me at 4” is captured, not lost.
+- Save inputs and outputs, then press **Refresh** on the automatic prompt sections.
+
+## The upload template
+
+Every agent has a spreadsheet template with one column per input, ready to fill in. Download it from a campaign or from the new-campaign form with **Preview template**.
+
+# Call console
+
+Source: https://theruka7.github.io/qoyal/docs/testing.html
+
+## Browser or phone
+
+| Channel | Use it for |
+| --- | --- |
+| Browser mic | Fast iteration on the prompt. Use headphones: on speakers the agent hears itself and stops to listen. |
+| Phone | Hearing the agent on a real line, with real network delay and audio quality. Type a 10-digit Indian number and Echo adds +91; the call uses the agent’s own calling line. |
+
+## Set up a test call
+
+<Steps>
+<Step title="Pick a channel">
+Browser mic, or a phone channel if your workspace has one.
+</Step>
+<Step title="Pick the agent">
+The console runs agents directly, so no campaign is needed.
+</Step>
+<Step title="Pick a voice">
+Leave it on default, or try another voice for this call only. The agent’s saved voice does not change.
+</Step>
+<Step title="Start">
+Press **Start call** for the browser, or **Call** to ring the number.
+</Step>
+</Steps>
+
+<figure class="ui"><div class="ui-bar"><i></i><i></i><i></i><span>Echo · Call console</span></div><div class="ui-b"><div class="ui-row"><span class="ui-kv"><b>Channel</b><span>Browser mic</span><b>Agent</b><span>Where is my order</span><b>Voice</b><span>Default</span></span><span class="ui-tag busy" style="margin-left:auto">Live · 00:42</span></div><div class="ui-split"><div class="ui-col"><small>Transcript</small><div class="ui-turn"><small>agent</small>Hi, this is Meera from support. Could you tell me your order number?</div><div class="ui-turn me"><small>you</small>It’s 88213.</div><div class="ui-turn"><small>agent</small>Thanks. 8, 8, 2, 1, 3: it’s out for delivery, reaching you by 6 pm today.</div></div><div class="ui-col"><small>Activity</small><div class="ui-ev"><span>10:04</span><i></i><span>call started · agent ready</span></div><div class="ui-ev"><span>10:04</span><i></i><span>caller speaking</span></div><div class="ui-ev"><span>10:05</span><i class="w"></i><span>outputs reported</span></div><small style="margin-top:6px">Captured outputs</small><div class="ui-kv"><b>order</b><span>88213</span><b>status</b><span>RESOLVED</span><b>tracking_sent</b><span>yes</span></div></div></div></div><figcaption>Test an agent from your browser or on a real phone. The transcript, events and captured outputs update live.</figcaption></figure>
+
+## Call details
+
+If the agent has inputs, the console shows one field per input. **Use samples** fills them with the agent’s sample values; **Clear** empties them. Internal inputs are marked. Anything you leave empty is passed to the agent as “(not provided)”.
+
+These values are used for this call only and are discarded when it ends. Nothing is stored.
+
+## During the call
+
+- A live timer and the number of turns.
+- The **transcript**, labelled you (or caller) and agent, as it happens.
+- An **activity** panel with call events, such as the agent reporting its outputs.
+- **Captured outputs**, filled in as soon as the agent reports them. Declared outputs that were not reported show as “-”, and anything reported but not declared is listed too, so a mismatch between prompt and variables is easy to spot.
+
+## After the call
+
+The transcript stays on screen until you start the next call. Browser calls have a recording you can play and download. Every test call also appears in the [call log](monitoring), with the same analysis tools as a real one.
+
+## A test script
+
+Run each agent through these before its first campaign:
+
+- The happy path, answered fully.
+- A correction: give one value, then change it.
+- A filler: say “ok” or “hmm” when asked to confirm.
+- Busy: “I’m in a meeting, call me at 4”.
+- Wrong person, and “who is this?”.
+- A bad line: “hello? hello?”.
+- A switch between Hindi and English mid sentence.
+- A refusal, and a request for a human.
+
+After each, check the captured outputs are what your team would have written down.
+
+# Campaigns
+
+Source: https://theruka7.github.io/qoyal/docs/campaigns.html
+
+## Create a campaign
+
+Go to **Campaigns → New campaign**.
+
+- **Agent**: the agent to run. The campaign takes its voice and calling line from it.
+- **Campaign type**: outbound (Echo calls the list) or inbound (Echo answers).
+- **Description**: say which list this is, such as “Q3 open POs, chased once by email already”. Campaigns are named after the agent and the time, so this is where the run gets explained.
+
+Before you create it, the form shows the **input columns** the list needs and the fields that will be **captured per call**. If the agent has no calling line yet, it tells you here.
+
+## Fill the template
+
+On the campaign page, press **Template** to download a spreadsheet with exactly the columns this agent needs. Fill one row per person. Keep phone numbers as 10 digits or with the country code.
+
+## Upload and map columns
+
+Press **Upload data** and choose your filled sheet (.xlsx). Echo reads it and proposes which column feeds which input, using real values from your first rows so you can see it is right.
+
+<figure class="ui"><div class="ui-bar"><i></i><i></i><i></i><span>Echo · Campaigns · Dispatch follow-up · Confirm columns</span></div><div class="ui-b"><div class="ui-note">1 column matched by position, not by name: <b>open_qty</b>. Check it especially.</div><div class="ui-t"><div style="grid-template-columns:1fr 1.2fr 1.6fr"><span>Agent input</span><span>Column in your sheet</span><span>First rows</span></div><div style="grid-template-columns:1fr 1.2fr 1.6fr"><span>phone *</span><span>Contact no. (by name)</span><span>98765 43210 · 91234 56789</span></div><div style="grid-template-columns:1fr 1.2fr 1.6fr"><span>supplier_name *</span><span>Supplier (by name)</span><span>Mehta Packaging · Vijay Steel</span></div><div style="grid-template-columns:1fr 1.2fr 1.6fr"><span>po_number *</span><span>PO No (by name)</span><span>4471 · 5120</span></div><div style="grid-template-columns:1fr 1.2fr 1.6fr"><span>open_qty</span><span>Column D (by position)</span><span>14 · 20</span></div></div><div class="ui-row"><span class="ui-btn">Cancel</span><span class="ui-btn p">Confirm and start 148 calls</span></div></div><figcaption>Echo proposes a mapping using real values from your sheet. Nothing is dialled until you confirm.</figcaption></figure>
+
+- Columns matched **by position** rather than by name are flagged. Check those especially.
+- Two inputs reading the **same column** are flagged. It is allowed, but almost always a mistake.
+- **Required** inputs must be mapped before you can continue.
+
+You can use your own sheet with different headers. Map its columns here instead of renaming them.
+
+## Start calling
+
+Confirming the mapping stores the list and starts dialling. There is no separate save step, so the mapping screen is your last check. If a list was stored but not dialled, **Run campaign** starts it, after a confirmation that shows how many real numbers will be called.
+
+Rows with a problem, such as a missing required value, are stored as **Input validation failed** and are not called.
+
+<Info>
+One campaign takes one list. To call another list, create another campaign, so every result stays tied to the list that produced it.
+</Info>
+
+## Watch it run
+
+While a campaign is running, the page refreshes on its own. The tiles show contacts, captured results, output variables and status. The **Contacts** tab lists every number with its status; open one to see its captured outputs, transcript and recording.
+
+<figure class="ui"><div class="ui-bar"><i></i><i></i><i></i><span>Echo · Campaigns · Dispatch follow-up · Contacts</span></div><div class="ui-b"><div class="ui-tiles" style="grid-template-columns:repeat(4,minmax(0,1fr))"><div><small>Contacts</small><b>148</b></div><div><small>Captured</small><b>96</b></div><div><small>Output variables</small><b>4</b></div><div><small>Status</small><b>running</b></div></div><div class="ui-split"><div class="ui-col"><small>Contacts</small><div class="ui-row" style="justify-content:space-between"><span>+91 98765 43210</span><span class="ui-tag ok">Captured</span></div><div class="ui-row" style="justify-content:space-between"><span>+91 91234 56789</span><span class="ui-tag busy">Dialled</span></div><div class="ui-row" style="justify-content:space-between"><span>+91 99887 76655</span><span class="ui-tag bad">No answer</span></div><div class="ui-row" style="justify-content:space-between"><span>+91 90000 11122</span><span class="ui-tag busy">Disconnected, partial</span></div><div class="ui-row" style="justify-content:space-between"><span>+91 98111 22233</span><span class="ui-tag bad">Input validation failed</span></div><div class="ui-row" style="justify-content:space-between"><span>+91 97000 33344</span><span class="ui-tag">Pending</span></div></div><div class="ui-col"><small>Mehta Packaging · PO 4471</small><div class="ui-kv"><b>status</b><span>PARTIAL</span><b>dispatch_date</b><span>28 Sep</span><b>qty_ready</b><span>10</span><b>next_step</b><span>Follow-up 27 Sep</span></div><div class="ui-turn"><small>agent</small>PO 4471: 14 cartons. Dispatch kab tak ho jayega?</div><div class="ui-turn me"><small>contact</small>28 ko, par abhi sirf 10 ready hain.</div><div class="ui-row"><span class="ui-btn">▶ Recording 1:52</span><span class="ui-btn">Download audio</span></div></div></div></div><figcaption>Every contact shows its call status. Open one to see what was captured, the transcript and the recording.</figcaption></figure>
+
+Once the first results arrive, a **Responses** tab shows one row per contact with every output as a column. Select rows to download their audio or analyse them together.
+
+## Statuses
+
+| Campaign status | Meaning |
+| --- | --- |
+| Ready | The list is stored and ready to dial. |
+| Running | Calls are going out. |
+| Completed | Dialling has finished. |
+| Failed | Dialling could not complete. The page says why. |
+
+| Contact status | Meaning |
+| --- | --- |
+| Pending | Not called yet. |
+| Dialled | Called, waiting for the result. |
+| Captured | Outputs reported. |
+| No answer | Ended without outputs. |
+| Disconnected, partial | Dropped early; partial outputs kept. |
+| Input validation failed | Not called; hover for the reason. |
+
+## Results and exports
+
+| Download | What you get |
+| --- | --- |
+| Results | A formatted spreadsheet of every captured response. |
+| Export CSV | The same responses as CSV, for your own tools. Also available in one click from the campaigns list. |
+| Transcripts + audio | Every transcript and recording from the campaign, in one archive. |
+| Per contact | Play or download a single recording from the contact’s detail. |
+
+## Managing campaigns
+
+- The campaigns list shows each run’s agent, contacts, captured count, status and date.
+- Campaigns created from your own systems through the API carry a small tag with their source.
+- **Delete** removes the campaign, its list and every captured result. It asks first, and says how many results would be lost.
+
+# Dashboard and call log
+
+Source: https://theruka7.github.io/qoyal/docs/monitoring.html
+
+## The funnel
+
+**Overview** opens with a funnel that reads top to bottom. Each tile carries a note that says what it counted, so a percentage is never shown without its base.
+
+<figure class="ui"><div class="ui-bar"><i></i><i></i><i></i><span>Echo · Overview</span></div><div class="ui-b"><div class="ui-tiles"><div><small>Planned</small><b>2,480</b><span>uploaded across 9 campaigns</span></div><div><small>Will dial</small><b>2,410</b><span>70 blocked, no calling line</span></div><div><small>Attempted</small><b>2,390</b><span>dialled at least once</span></div><div><small>Connected rate</small><b>71%</b><span>1,697 of 2,390 answered</span></div><div><small>Goal achieved</small><b>64%</b><span>1,086 confirmed of 1,697</span></div><div><small>Inconclusive</small><b>9%</b><span>settled nothing either way</span></div><div><small>Callbacks open</small><b>112</b><span>caller asked for a call back</span></div><div><small>Tech failures</small><b>14</b><span>answered, then no audio</span></div><div><small>Avg duration</small><b>1:48</b><span>6.2 turns a call</span></div><div><small>Usage</small><b>n/a</b><span>AI usage for the period</span></div></div></div><figcaption>The funnel reads top to bottom. Every tile says what it counted, so the percentages can be checked.</figcaption></figure>
+
+| Tile | What it counts |
+| --- | --- |
+| Planned | Rows uploaded across your campaigns. |
+| Will dial | Planned rows that can be called. Rows whose agent has no calling line are counted as blocked. |
+| Attempted | Rows dialled at least once. |
+| Connected rate | Answered calls out of attempted. |
+| Goal achieved | Calls where the agent confirmed what it was for, out of connected. |
+| Inconclusive rate | Connected calls that settled nothing either way. |
+| Callbacks open | Callers who asked to be rung back. |
+| Tech failures | Calls that were answered, then had no audio either way. |
+| Avg duration | Average call length, with turns per call. |
+| Usage | AI usage for the period. |
+
+## The call log
+
+Below the funnel is every call, newest first: time, contact, number, agent, length, status, campaign, turns and a one-line summary you can expand in place.
+
+| Status | Meaning |
+| --- | --- |
+| On air | The call is live right now. |
+| Completed | The call ended with a conversation. |
+| No audio | The call was answered but nothing was said either way. This is the failure to look for. |
+
+## Filters and downloads
+
+- **Search** by name or number.
+- **Time range**: last hour, 24 hours, 7 days, 30 days or all time.
+- **Length**: under 30 seconds, 30 seconds to 2 minutes, over 2 minutes.
+
+**Download** gives you the call log as a spreadsheet with exactly the filters on screen, so the file and the table always agree.
+
+## Open a call
+
+Click a row to open the call beside the list: its transcript, the values it captured, the inputs it started with, and the recording. Download the transcript as text, or open [full call analysis](analysis).
+
+## Bulk actions
+
+Tick several calls to export them as CSV, download their audio, or re-run analysis on all of them at once.
+
+## Live calls
+
+When calls are in progress, the header shows how many are on the line, and they appear in the log as **On air** while they run.
+
+# Call analysis
+
+Source: https://theruka7.github.io/qoyal/docs/analysis.html
+
+## The analysis page
+
+Open any call from the call log or a campaign to see everything known about it on one page.
+
+<figure class="ui"><div class="ui-bar"><i></i><i></i><i></i><span>Echo · Calls · Call analysis</span></div><div class="ui-b"><div class="ui-tiles" style="grid-template-columns:repeat(4,minmax(0,1fr))"><div><small>Duration</small><b>1:52</b></div><div><small>Priority</small><b>Medium</b></div><div><small>Issue resolved</small><b>Partly</b></div><div><small>Agent</small><b>Dispatch follow-up</b></div></div><div class="ui-split"><div class="ui-col"><small>Executive summary</small><span>Supplier confirmed 10 of 14 cartons for 28 Sep. The remaining 4 depend on raw material; supplier asked for a follow-up on 27 Sep.</span><small style="margin-top:6px">Action items</small><span>· Update PO 4471 line 3 to 10 cartons, 28 Sep<br/>· Schedule a follow-up call on 27 Sep</span></div><div class="ui-col"><small>Reported outcome</small><div class="ui-kv"><b>status</b><span>PARTIAL</span><b>dispatch_date</b><span>28 Sep</span><b>qty_ready</b><span>10</span></div><div class="ui-row" style="margin-top:6px"><span class="ui-btn">Re-analyze</span><span class="ui-btn">Export</span></div></div></div></div><figcaption>One call, everything known about it: summary, priority, action items, outcome, recording and transcript.</figcaption></figure>
+
+## What analysis adds
+
+| Field | What it tells you |
+| --- | --- |
+| Executive summary | What happened on the call in a few sentences. |
+| Priority | Low, medium or high, so your team knows what to look at first. |
+| Issue resolved | Whether the purpose of the call was met. |
+| Action items | Concrete next steps for your team. |
+| Call context | The input values the call started with. |
+| Reported outcome | The output values the agent captured. |
+| Technical details | Timing and call data for troubleshooting. |
+| Recording and transcript | The full conversation, turn by turn. |
+
+A call that has not been analysed yet still shows its summary from the agent’s reported outcome.
+
+## Running and re-running analysis
+
+Press **Re-analyze** on any call with a conversation to run analysis again, for example after you change what you want to know. From the call log or a campaign’s responses, select several calls and re-analyse them together.
+
+## Exports
+
+Export a single call’s full record, download its recording, or copy its call id to share with a colleague.
+
+# Team and access
+
+Source: https://theruka7.github.io/qoyal/docs/team.html
+
+## Workspaces
+
+Your organisation has its own workspace. If you belong to more than one, you choose which to work in after signing in. Sessions expire for safety; when they do, Echo returns you to sign in.
+
+## Roles
+
+| Role | Can do | Sees |
+| --- | --- | --- |
+| Org admin | Everything, plus inviting people, changing roles and managing groups. | All campaigns in the workspace. |
+| Campaign manager | Create and run campaigns. | Campaigns they created, plus those of any group they belong to. |
+| User | Work with campaigns shared with them. | Only their group’s campaigns. |
+
+The **Team** page is visible to org admins only, and every permission is enforced on the server, not only hidden in the menu.
+
+## Agent access
+
+Seeing and editing prompts is a separate permission, **agent access**, granted per person and independent of role. It keeps prompts in the hands of the people who own them. Ask your account team to grant or remove it.
+
+## Groups
+
+Groups control who sees which campaigns. Create a group for each team or region, add members, rename or delete it as your organisation changes.
+
+## Managing users
+
+- **Invite** a person with their email, a temporary password and a role.
+- **Change a role**: pick the new role and press Update. Changes are never applied on a stray click.
+- **Remove** a person to end their access.
+
+## System status
+
+**Settings** shows whether Echo and the services it depends on are up. Check it first if calls stop going out.
+
+# Automation and reports
+
+Source: https://theruka7.github.io/qoyal/docs/automation.html
+
+<Info>
+These features are available on enterprise workspaces. Your account team switches them on and sets them up with you.
+</Info>
+
+## Run agents from sheets <Badge tone="enterprise">Enterprise</Badge>
+
+A single **Run** view lists every live agent with how many calls it has run and its success rate. For each one: **Get sheet**, fill it in, **Upload and run**. Bulk uploads auto-match columns by name, show which required fields are still unmapped, and return a result sheet listing any rows that failed and why.
+
+## Event triggers <Badge tone="enterprise">Enterprise</Badge>
+
+An agent can start a call on its own when something happens in your systems, for example when a purchase order is created or updated. You choose:
+
+- which **events** start a call;
+- where in the event to find the **contact’s phone and details**;
+- how many times to **retry** and how long to wait between attempts.
+
+## Schedules <Badge tone="enterprise">Enterprise</Badge>
+
+Run an agent on a schedule: on chosen days of the week, a day of the month, every few hours, or once on a date, at the time you pick.
+
+## Data clean-up and enrichment <Badge tone="enterprise">Enterprise</Badge>
+
+- **Enrichments** are lookups that fill blanks in an upload, such as a missing contact number or name.
+- **Transformations** turn one messy upload into clean, call-ready sheets before any call is placed.
+
+## Routing rows to agents <Badge tone="enterprise">Enterprise</Badge>
+
+Split one upload across several agents with **lanes**. Each lane keeps the rows that match its rules, sorts them, groups rows for the same person into one call, and sends them to an agent. Paste a header row to preview how well each lane’s agent inputs would be matched.
+
+## Scheduled reports <Badge tone="enterprise">Enterprise</Badge>
+
+Build a report for an agent: pick its columns, filters and date format. Then schedule it by email with a subject, message, recipients and a data window, such as the last seven days on every send. Keep every send in one email thread if you prefer.
+
+## Ask your data <Badge tone="enterprise">Enterprise</Badge>
+
+Dashboards show calls, answers and commitments over time, and you can ask questions of your call data in plain English to get a table or chart back.
+
+## Multi-item calls <Badge tone="preview">Preview</Badge>
+
+When one person has several open items, such as many PO lines, Echo can cover them in one call instead of many. The design:
+
+- group items by person and sort them into priority bands;
+- cap how many items one call covers, check in after a set number, and stop at a hard limit;
+- close an item only when its numbers add up, and re-ask inside the call when they do not;
+- end every item with exactly one outcome from a fixed list.
+
+Talk to your account team if this fits your calls.
+
+# Use-case playbooks
+
+Source: https://theruka7.github.io/qoyal/docs/use-cases.html
+
+Every playbook uses the same building blocks: [inputs and outputs](variables), a prompt written in [sections](agents), and a [campaign](campaigns) per list. Copy one, then adjust the wording and fields to your process.
+
+### Supplier dispatch follow-up
+
+*Operations · outbound · Hinglish*
+
+Confirm when each open purchase order line will ship, and how much.
+
+<Columns>
+<Column>
+#### Inputs (sheet columns)
+
+| Key | Notes |
+| --- | --- |
+| supplier_name | shared |
+| po_number | spell digits · primary id |
+| item | shared |
+| open_qty | number |
+| due_date | shared |
+| supplier_code | internal |
+</Column>
+<Column>
+#### Outputs (results)
+
+| Key | Type and options |
+| --- | --- |
+| status | choice: CONFIRMED, PARTIAL, NEW_DATE, CALL_BACK, WRONG_CONTACT |
+| dispatch_date | date after read-back |
+| qty_ready | number |
+| reason | free text, if late |
+| callback_time | free text |
+</Column>
+</Columns>
+
+**Flow:** introduce, confirm the right contact, ask the dispatch date, ask the quantity, read both back, capture a reason if late, close.
+
+**Measure:** confirmed lines, partial shipments caught, time from call to ERP update.
+
+### Cash on delivery confirmation
+
+*Retail and D2C · outbound · Hindi or English*
+
+Confirm COD orders before dispatch to cut returns.
+
+<Columns>
+<Column>
+#### Inputs (sheet columns)
+
+| Key | Notes |
+| --- | --- |
+| customer_name | shared |
+| order_id | spell digits · primary id |
+| amount | number |
+| address_short | shared |
+| delivery_window | shared |
+</Column>
+<Column>
+#### Outputs (results)
+
+| Key | Type and options |
+| --- | --- |
+| status | choice: CONFIRMED, CANCEL, CHANGE_ADDRESS, CALL_BACK |
+| address_change | free text |
+| preferred_slot | free text |
+</Column>
+</Columns>
+
+**Flow:** greet, confirm the order and amount, confirm they will be available, capture any address change, read it back.
+
+**Measure:** confirmation rate, returns avoided, cancellations caught before dispatch.
+
+### Payment reminders and promise to pay
+
+*Collections · outbound · Hindi*
+
+Remind politely and capture a clear promise to pay.
+
+<Columns>
+<Column>
+#### Inputs (sheet columns)
+
+| Key | Notes |
+| --- | --- |
+| customer_name | shared |
+| loan_id | spell digits · primary id |
+| amount_due | number |
+| due_date | shared |
+</Column>
+<Column>
+#### Outputs (results)
+
+| Key | Type and options |
+| --- | --- |
+| status | choice: PROMISE_TO_PAY, PAID, DISPUTE, CALL_BACK, REFUSED |
+| promise_date | date after read-back |
+| promise_amount | number |
+| payment_mode | choice: UPI, BANK, CASH, OTHER |
+| dispute_reason | free text |
+</Column>
+</Columns>
+
+**Flow:** identify the person, state the amount and date, ask when they will pay, read back amount and date, note disputes without arguing.
+
+**Measure:** promises captured, promises kept, disputes flagged for your team.
+
+### Lead qualification
+
+*Sales · outbound · English or Hinglish*
+
+Call new leads within minutes, qualify them and book a meeting.
+
+<Columns>
+<Column>
+#### Inputs (sheet columns)
+
+| Key | Notes |
+| --- | --- |
+| lead_name | shared |
+| lead_id | primary id |
+| source | internal |
+| interest | shared |
+</Column>
+<Column>
+#### Outputs (results)
+
+| Key | Type and options |
+| --- | --- |
+| status | choice: QUALIFIED, NOT_NOW, NOT_INTERESTED, WRONG_NUMBER |
+| need | free text |
+| budget_band | choice |
+| timeline | choice: THIS_MONTH, THIS_QUARTER, LATER |
+| meeting_slot | free text |
+</Column>
+</Columns>
+
+**Flow:** thank them for the enquiry, ask need, volume and timeline, offer a meeting slot, confirm it.
+
+**Measure:** speed to first call, qualified rate, meetings booked.
+
+### Interview scheduling
+
+*HR · outbound · English*
+
+Offer interview slots and confirm attendance.
+
+<Columns>
+<Column>
+#### Inputs (sheet columns)
+
+| Key | Notes |
+| --- | --- |
+| candidate_name | shared |
+| candidate_id | primary id |
+| role | shared |
+| slot_options | shared |
+</Column>
+<Column>
+#### Outputs (results)
+
+| Key | Type and options |
+| --- | --- |
+| status | choice: BOOKED, RESCHEDULE, NOT_INTERESTED, CALL_BACK |
+| slot | free text after read-back |
+| notice_period | free text |
+</Column>
+</Columns>
+
+**Flow:** confirm interest in the role, offer slots, read back the chosen slot, capture notice period.
+
+**Measure:** booked rate, no-shows, time to schedule.
+
+### Where is my order
+
+*Support · inbound · English*
+
+Answer order-status calls and send tracking.
+
+<Columns>
+<Column>
+#### Inputs (sheet columns)
+
+| Key | Notes |
+| --- | --- |
+| order_lookup | from your system |
+| status_text | shared |
+</Column>
+<Column>
+#### Outputs (results)
+
+| Key | Type and options |
+| --- | --- |
+| order_id | spell digits |
+| status | choice: RESOLVED, ESCALATED, CALL_BACK |
+| tracking_sent | yes or no |
+| complaint | free text |
+</Column>
+</Columns>
+
+**Flow:** ask for the order number, read it back digit by digit, share status, offer tracking, escalate with a call-back when needed.
+
+**Measure:** calls resolved without a person, escalations, repeat callers.
+
+### KYC and contact verification
+
+*Compliance · outbound · Hinglish*
+
+Confirm identity details and chase pending documents.
+
+<Columns>
+<Column>
+#### Inputs (sheet columns)
+
+| Key | Notes |
+| --- | --- |
+| customer_name | shared |
+| account_id | primary id · internal |
+| pending_doc | shared |
+</Column>
+<Column>
+#### Outputs (results)
+
+| Key | Type and options |
+| --- | --- |
+| status | choice: VERIFIED, PENDING_DOC, WRONG_PERSON, CALL_BACK |
+| doc_eta | date |
+| alternate_contact | free text |
+</Column>
+</Columns>
+
+**Flow:** confirm you are speaking to the right person without revealing details, name the pending document, capture when it will come.
+
+**Measure:** verified rate, documents received by the promised date.
+
+### Feedback and NPS
+
+*Customer experience · outbound · Hinglish*
+
+Collect a rating and one line on what to improve.
+
+<Columns>
+<Column>
+#### Inputs (sheet columns)
+
+| Key | Notes |
+| --- | --- |
+| customer_name | shared |
+| order_id | primary id |
+| delivered_on | shared |
+</Column>
+<Column>
+#### Outputs (results)
+
+| Key | Type and options |
+| --- | --- |
+| score | number 0 to 10 |
+| reason | free text |
+| issue | choice: NONE, LATE, DAMAGED, WRONG_ITEM, OTHER |
+| follow_up | yes or no |
+</Column>
+</Columns>
+
+**Flow:** ask for a 0 to 10 score, ask why in one line, offer a follow-up if there was a problem.
+
+**Measure:** response rate, score trend, issues routed to the right team.
+
+## Design your own
+
+Most teams have a call nobody has named here. Answer five questions and you have an agent:
+
+<Steps>
+<Step title="Who are you calling, and why?">
+This becomes the role and goal section.
+</Step>
+<Step title="What do you already know about them?">
+These are your inputs.
+</Step>
+<Step title="What must you know when you hang up?">
+These are your outputs. Add a status with fixed options.
+</Step>
+<Step title="What usually goes wrong on this call?">
+Write a rule for each: busy, wrong person, dispute, bad line.
+</Step>
+<Step title="Where does the answer go?">
+A download, a report, or your system through the API.
+</Step>
+</Steps>
+
+Stuck? [Describe the call to us](/#pilot) and we will build the first version with you.
+
+# Prompt best practices
+
+Source: https://theruka7.github.io/qoyal/docs/best-practices.html
+
+## A structure that works
+
+1. **Role and goal**: who the agent is, who it calls for, and the one thing the call must achieve.
+2. **Opening**: name, company and reason in the first sentence.
+3. **Flow**: the questions, in order, one at a time.
+4. **Rules**: read-back, what counts as a yes, what never to say.
+5. **Common moments**: how to handle each, briefly.
+6. **Closing**: thank them, say what happens next, end the call.
+
+Keep each section short. Several small sections are easier to test and switch off than one long one.
+
+## Confirm, don’t assume
+
+- Read back every date, amount, quantity and reference before reporting it.
+- Treat “ok”, “hmm” and similar as “go on”, never as agreement.
+- When the caller corrects a value, replace it and read it back again.
+- Read reference numbers digit by digit (use the **Spell digits** transform).
+
+## Handle the common moments
+
+| Moment | A good rule |
+| --- | --- |
+| “Who is this?” | Give name, company and reason. Offer to stop calling. |
+| Busy | Ask for a better time, capture it as a call-back, end politely. |
+| Wrong person | Ask for the right contact, capture it, do not share details. |
+| Bad line | Slow down, repeat once, shorter. |
+| Dispute or objection | Note it and the reference; do not argue. |
+| Wants a human | Offer a call back from the team, capture a time. |
+
+## Language and tone
+
+Say which languages to use and to follow the caller if they switch. Ask for short sentences and one question at a time. Use the caller’s name sparingly. Avoid jargon the caller would not use.
+
+## Iterate with evidence
+
+1. Test each change in the [call console](testing) with the test script.
+2. Run a small list first and listen to ten calls.
+3. Look at **Inconclusive** and **No audio** in the [funnel](monitoring); they show where calls go wrong.
+4. Change one section at a time so you know what helped.
+
+# Echo for developers
+
+Source: https://theruka7.github.io/qoyal/docs/developers/
+
+<Info title="Developer preview">The API is in developer preview. Endpoints and fields may change before general availability, and keys are issued to pilot customers only, so you cannot try it without one. [Request access](/#pilot).</Info>
+
+## What you can build
+
+<CardGroup cols="2">
+<Card title="Call on an event" href="guide-call" eyebrow="Guide">A new order, a late PO, an unpaid invoice: place a call the moment it happens.</Card>
+<Card title="Run a campaign from code" href="guide-campaign" eyebrow="Guide">Create a campaign, check the mapping, upload, and collect results.</Card>
+<Card title="Receive outcomes by webhook" href="webhooks" eyebrow="Guide">Receive every captured answer on a webhook and update your ERP or CRM.</Card>
+<Card title="Recordings and exports" href="guide-exports" eyebrow="Guide">Pull recordings, transcripts and analysis into your own storage.</Card>
+</CardGroup>
+
+## Platform or API?
+
+| Task | Dashboard | API |
+| --- | --- | --- |
+| Write and test prompts | Best here: editor, preview, call console | Read, version and replace |
+| Declare inputs and outputs | Yes | Yes |
+| Run a list | Upload a sheet | Upload a file or rows |
+| Place one call on an event | Call console, for tests | Yes |
+| Read outcomes | Dashboard, downloads | JSON, CSV, webhooks |
+| Manage people and access | Yes | Not yet |
+
+## Getting outcomes into your ERP
+
+The documented routes are the API, [webhooks](webhooks) and [exports](guide-exports): your integration receives each outcome and writes it to your ERP, CRM or helpdesk. Ask your account team what is set up for your ERP during the pilot.
+
+## The object model
+
+```
+Agent ── has ──► inputs, outputs, prompt, voice, calling line
+  │
+  ├─► Call        one conversation   →  outputs, transcript, recording, analysis
+  │
+  └─► Campaign    one list           →  Contacts  →  Calls  →  Results
+```
+
+Read [Core objects](objects) for every field.
+
+## Conventions
+
+- **Base URL**: shared with your API key. All paths start with `/v1`, the only version so far.
+- **Test mode**: there is no sandbox yet. Calls placed through the API dial real numbers, so test with your own phone.
+- **Auth**: `Authorization: Bearer <key>` on every request. See [Authentication](authentication).
+- **Format**: JSON in and out, UTF-8. Timestamps are ISO 8601 in UTC. Phone numbers are E.164; the API also accepts a 10-digit Indian number and adds +91.
+- **Lists** are paginated with `limit` and `cursor`; the response carries `next_cursor`, which is `null` on the last page.
+- **Errors** return a JSON `error` object with a stable `code`. See [Errors](errors).
+
+## Where to go next
+
+Once you have a key, the [API quickstart](quickstart) places your first call in a few minutes. The [API reference](agents) lists every endpoint with examples in cURL, Python and Node.js.
+
+# Quickstart
+
+Source: https://theruka7.github.io/qoyal/docs/developers/quickstart.html
+
+## 1. Get a key
+
+Your account team issues an API key and your base URL during the pilot. Keep the key on your server. Never put it in a browser, an app or a repository.
+
+<Warning title="Calls are real">There is no sandbox yet, and `ek_live_` keys dial real numbers. Place test calls to your own phone.</Warning>
+
+## 2. Set your environment
+
+```bash .env
+ECHO_API=https://<your base URL>
+ECHO_API_KEY=ek_live_...
+```
+
+## 3. Check the key
+
+Agent ids are derived from the agent name, such as `dispatch-followup` or `wismo`. The list below shows them.
+
+List the agents your team has built. A `200` with a list means you are ready.
+
+<CodeGroup title="List agents">
+```bash cURL
+curl "$ECHO_API/v1/agents" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/agents",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+
+## 4. Place a call
+
+Pick an agent id from the list and call your own phone. `context` fills the agent’s inputs for this call.
+
+<CodeGroup title="Place a call">
+```bash cURL
+curl -X POST "$ECHO_API/v1/calls" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "agent": "wismo",
+    "to": "+919876543210",
+    "context": {
+      "customer_name": "Asha",
+      "order_id": "88213"
+    }
+  }'
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.post(
+    f"{API}/v1/calls",
+    headers=HEADERS,
+    json={
+  "agent": "wismo",
+  "to": "+919876543210",
+  "context": {
+    "customer_name": "Asha",
+    "order_id": "88213"
+  }
+},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls`, {
+  method: "POST",
+  headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+  body: JSON.stringify({
+    "agent": "wismo",
+    "to": "+919876543210",
+    "context": {
+      "customer_name": "Asha",
+      "order_id": "88213"
+    }
+  }),
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+
+```json Response
+{
+  "id": "call_8f2k1q",
+  "status": "queued"
+}
+```
+
+## 5. Read the outcome
+
+Answer the phone and talk to the agent. When the call ends, fetch it. `outputs` holds what the agent captured.
+
+<CodeGroup title="Retrieve a call">
+```bash cURL
+curl "$ECHO_API/v1/calls/call_8f2k1q" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/calls/call_8f2k1q",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls/call_8f2k1q`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+
+Polling is fine for a test. In production, [subscribe to webhooks](webhooks) instead.
+
+## Next
+
+- [Run a campaign from code](guide-campaign)
+- [Learn the objects](objects)
+- [Build a better agent in the dashboard](../platform/agents)
+
+# Authentication
+
+Source: https://theruka7.github.io/qoyal/docs/developers/authentication.html
+
+## The header
+
+```text HTTP
+Authorization: Bearer ek_live_...
+Content-Type: application/json
+```
+
+Requests without a valid key return `401 unauthorized`. Keys are tied to one workspace, so every request acts on that workspace’s agents, campaigns and calls.
+
+## Managing keys
+
+- Keys are issued and revoked by your account team during the preview.
+- Use separate keys for test and production systems, so you can rotate one without touching the other.
+- To rotate: ask for a new key, deploy it, then revoke the old one.
+
+## What a key can do
+
+| Area | Access |
+| --- | --- |
+| Agents | Read, create, update, delete |
+| Calls | Place, read, analyse, download |
+| Campaigns | Create, upload, start, read, delete |
+| Analytics | Read |
+| People and access | Dashboard only |
+
+## Keeping keys safe
+
+- Store keys in a secret manager or environment variables, never in code.
+- Call Echo from your backend. Browsers and mobile apps should call your backend, not Echo.
+- If a key leaks, ask for it to be revoked immediately. Revocation takes effect on the next request.
+
+# Core objects
+
+Source: https://theruka7.github.io/qoyal/docs/developers/objects.html
+
+## Agent
+
+<Params>
+<ParamField name="id" type="string">Stable id, derived from the name.</ParamField>
+<ParamField name="name" type="string"></ParamField>
+<ParamField name="description" type="string"></ParamField>
+<ParamField name="voice" type="string | null">Null uses the default voice.</ParamField>
+<ParamField name="calling_line" type="string | null">Where calls go out. Required to dial.</ParamField>
+<ParamField name="primary_id" type="string | null">Key of the input that identifies a contact.</ParamField>
+<ParamField name="inputs" type="Input[]"></ParamField>
+<ParamField name="outputs" type="Output[]"></ParamField>
+<ParamField name="created_at, updated_at" type="timestamp"></ParamField>
+</Params>
+
+## Input variable
+
+<Params>
+<ParamField name="key" type="string">Token name, used as `{{key}}`.</ParamField>
+<ParamField name="type" type="string">See [options](agents#list-options).</ParamField>
+<ParamField name="transform" type="string | null">`spell_digits` reads digit by digit.</ParamField>
+<ParamField name="sample" type="string">Used in tests and previews.</ParamField>
+<ParamField name="share_on_call" type="boolean">False means the agent knows it but never says it.</ParamField>
+</Params>
+
+## Output variable
+
+<Params>
+<ParamField name="key" type="string">Result column.</ParamField>
+<ParamField name="label" type="string"></ParamField>
+<ParamField name="type" type="string">`string`, `number`, `boolean` or `enum`.</ParamField>
+<ParamField name="options" type="string[]">Allowed values for `enum`.</ParamField>
+<ParamField name="description" type="string">Instruction to the agent.</ParamField>
+<ParamField name="required" type="boolean"></ParamField>
+</Params>
+
+## Call
+
+<Params>
+<ParamField name="id" type="string"></ParamField>
+<ParamField name="agent" type="string"></ParamField>
+<ParamField name="campaign_id" type="string | null">Set when the call came from a campaign.</ParamField>
+<ParamField name="direction" type="string">`outbound` or `inbound`.</ParamField>
+<ParamField name="to" type="string">E.164.</ParamField>
+<ParamField name="status" type="string">`queued`, `in_progress`, `completed`.</ParamField>
+<ParamField name="started_at" type="timestamp"></ParamField>
+<ParamField name="duration_seconds" type="integer"></ParamField>
+<ParamField name="turns" type="integer">0 on a completed call means no audio.</ParamField>
+<ParamField name="context" type="object">Inputs the call started with.</ParamField>
+<ParamField name="outputs" type="object">What the agent reported.</ParamField>
+<ParamField name="summary" type="string">One line.</ParamField>
+<ParamField name="transcript" type="Turn[]">`{role, text}`, role is `agent` or `contact`.</ParamField>
+<ParamField name="recording_url" type="string"></ParamField>
+<ParamField name="analysis" type="Analysis | null"></ParamField>
+<ParamField name="metadata" type="object">Your own references.</ParamField>
+</Params>
+
+## Campaign
+
+<Params>
+<ParamField name="id" type="string"></ParamField>
+<ParamField name="name" type="string">Agent name and creation time.</ParamField>
+<ParamField name="agent" type="string"></ParamField>
+<ParamField name="direction" type="string"></ParamField>
+<ParamField name="description" type="string"></ParamField>
+<ParamField name="status" type="string">`created`, `ready`, `running`, `completed`, `failed`.</ParamField>
+<ParamField name="source" type="string">`dashboard` or `api`.</ParamField>
+<ParamField name="contacts_count, dialled_count, captured_count" type="integer"></ParamField>
+<ParamField name="created_at" type="timestamp"></ParamField>
+</Params>
+
+## Contact
+
+<Params>
+<ParamField name="primary_id" type="string">Value of the agent’s primary id input.</ParamField>
+<ParamField name="name, phone" type="string"></ParamField>
+<ParamField name="status" type="string">`pending`, `dialled`, `captured`, `no_outputs`, `disconnected_early`, `input_validation_failed`.</ParamField>
+<ParamField name="validation_error" type="string">Why a row was not dialled.</ParamField>
+<ParamField name="call_id" type="string"></ParamField>
+<ParamField name="outputs" type="object"></ParamField>
+</Params>
+
+## Analysis
+
+<Params>
+<ParamField name="executive_summary" type="string"></ParamField>
+<ParamField name="priority" type="string">`low`, `medium`, `high`.</ParamField>
+<ParamField name="issue_resolved" type="string">`yes`, `partial`, `no`.</ParamField>
+<ParamField name="action_items" type="string[]"></ParamField>
+</Params>
+
+## Event
+
+<Params>
+<ParamField name="id" type="string">Unique. Use it to ignore duplicates.</ParamField>
+<ParamField name="type" type="string">`call.completed`, `call.analyzed`, `contact.captured`, `campaign.completed`.</ParamField>
+<ParamField name="created_at" type="timestamp"></ParamField>
+<ParamField name="data" type="object">The call, contact or campaign.</ParamField>
+</Params>
+
+# Call on an event
+
+Source: https://theruka7.github.io/qoyal/docs/developers/guide-call.html
+
+## When to use it
+
+Use single calls for work that arrives one item at a time: a new cash on delivery order, a PO line that just went late, an invoice past due. For a list you already have, [run a campaign](guide-campaign).
+
+## Map your data to inputs
+
+Every key in `context` must match an input on the agent. Read the agent to see them:
+
+<CodeGroup title="Retrieve an agent">
+```bash cURL
+curl "$ECHO_API/v1/agents/cod-confirmation" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/agents/cod-confirmation",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/cod-confirmation`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+
+Values marked `share_on_call: false` are given to the agent but never spoken. Put internal ids there.
+
+## Place the call
+
+<CodeGroup title="Place a call">
+```bash cURL
+curl -X POST "$ECHO_API/v1/calls" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "agent": "cod-confirmation",
+    "to": "9876543210",
+    "context": {
+      "customer_name": "Asha",
+      "order_id": "88213",
+      "amount": 1499
+    },
+    "metadata": {
+      "order_ref": "SO-88213"
+    }
+  }'
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.post(
+    f"{API}/v1/calls",
+    headers=HEADERS,
+    json={
+  "agent": "cod-confirmation",
+  "to": "9876543210",
+  "context": {
+    "customer_name": "Asha",
+    "order_id": "88213",
+    "amount": 1499
+  },
+  "metadata": {
+    "order_ref": "SO-88213"
+  }
+},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls`, {
+  method: "POST",
+  headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+  body: JSON.stringify({
+    "agent": "cod-confirmation",
+    "to": "9876543210",
+    "context": {
+      "customer_name": "Asha",
+      "order_id": "88213",
+      "amount": 1499
+    },
+    "metadata": {
+      "order_ref": "SO-88213"
+    }
+  }),
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+
+Ten-digit Indian numbers get +91. Keep `metadata` for your own references; it comes back on the call and in every webhook.
+
+## Write the outcome back
+
+Subscribe to `call.completed` and update your system from `data.outputs`, matched by `data.metadata`. See [Webhooks](webhooks).
+
+## Tips
+
+- Respect calling windows in your own scheduler: queue events that arrive at night for the morning.
+- Check the outcome’s `status` output, not only the call status. A completed call can still end in `CALL_BACK`.
+- Test the agent in the [call console](../platform/testing) with the same context first.
+
+# Run a campaign from code
+
+Source: https://theruka7.github.io/qoyal/docs/developers/guide-campaign.html
+
+## The flow
+
+<Steps>
+<Step title="Create">
+`POST /v1/campaigns` with the agent.
+</Step>
+<Step title="Dry run">
+Upload with `dry_run=true` and check the proposed mapping.
+</Step>
+<Step title="Upload">
+Upload again with the confirmed `mapping`. Dialling starts.
+</Step>
+<Step title="Follow">
+Poll the campaign or listen for `contact.captured` and `campaign.completed`.
+</Step>
+<Step title="Collect">
+Read `/results`, or download CSV, XLSX or the transcripts and audio archive.
+</Step>
+</Steps>
+
+## A complete script
+
+```python Python
+import os, json, time, requests
+
+API = os.environ["ECHO_API"]
+H = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+# 1. Create the campaign
+c = requests.post(f"{API}/v1/campaigns", headers=H, json={
+    "agent": "dispatch-followup",
+    "description": "Week 39 open POs",
+}).json()
+
+# 2. Dry run: see how Echo maps your columns, without storing anything
+with open("open_pos.xlsx", "rb") as f:
+    plan = requests.post(f"{API}/v1/campaigns/{c['id']}/contacts", headers=H,
+                         files={"file": f}, data={"dry_run": "true"}).json()
+for m in plan["mapping"]:
+    print(m["input"], "<-", m["header"], "(by", m["matched_by"] + ")")
+
+# 3. Upload for real with the mapping you checked. Dialling starts now.
+mapping = {m["input"]: m["column"] for m in plan["mapping"]}
+with open("open_pos.xlsx", "rb") as f:
+    requests.post(f"{API}/v1/campaigns/{c['id']}/contacts", headers=H,
+                  files={"file": f}, data={"mapping": json.dumps(mapping)})
+
+# 4. Wait for the campaign to finish (or use webhooks)
+while requests.get(f"{API}/v1/campaigns/{c['id']}", headers=H).json()["status"] == "running":
+    time.sleep(60)
+
+# 5. Read the results
+rows = requests.get(f"{API}/v1/campaigns/{c['id']}/results", headers=H).json()["data"]
+for r in rows:
+    print(r["primary_id"], r["status"], r["outputs"])
+```
+
+## Checking the mapping
+
+Each mapping entry says how the column was matched. `matched_by: "position"` means Echo guessed from column order because no header matched; check those. Required inputs must be mapped or the upload is rejected with `422 missing_required_mapping`.
+
+## Following progress
+
+| Campaign status | Meaning |
+| --- | --- |
+| created | No list yet |
+| ready | List stored, not dialled |
+| running | Calls going out |
+| completed | Dialling finished |
+| failed | Dialling could not complete; see `error` |
+
+## Rules to know
+
+- One campaign takes one upload. Create a new campaign for each list.
+- An agent without a calling line cannot dial: `422 no_calling_line`.
+- Rows with bad data are stored as `input_validation_failed` with a reason, and are not dialled.
+- Deleting a campaign deletes its results.
+
+# Webhooks
+
+Source: https://theruka7.github.io/qoyal/docs/developers/webhooks.html
+
+## Events
+
+| Event | Sent when |
+| --- | --- |
+| `call.completed` | Any call ends, with its outputs. |
+| `call.analyzed` | Analysis finishes on a call. |
+| `contact.captured` | A campaign contact reports its outputs. |
+| `campaign.completed` | A campaign finishes dialling. |
+
+## Payload
+
+Each delivery is a `POST` with a JSON body and these headers:
+
+```text Headers
+Content-Type: application/json
+X-Echo-Event: contact.captured
+X-Echo-Delivery: evt_5c2
+X-Echo-Signature: t=1790330765,v1=5f2b...
+```
+
+```json Body
+{
+  "id": "evt_5c2",
+  "type": "contact.captured",
+  "created_at": "2026-09-25T10:06:05Z",
+  "data": {
+    "campaign_id": "cmp_7Hq2",
+    "primary_id": "4471",
+    "status": "captured",
+    "call_id": "call_8f2k1q",
+    "outputs": {
+      "status": "PARTIAL",
+      "dispatch_date": "2026-10-06",
+      "qty_ready": 10
+    },
+    "metadata": {}
+  }
+}
+```
+
+`data.status` is the contact's state in the campaign (see [Core objects](objects)). `data.outputs` holds the values your agent captured, so `outputs.status` is your own output field, such as `PARTIAL`. `primary_id` is the value of the agent's primary id input, here the PO number.
+
+## Verify the signature
+
+The signature is an HMAC SHA-256 of `timestamp.body` with your endpoint’s secret. Verify it on the raw body, before parsing, and reject old timestamps.
+
+<CodeGroup title="Verify">
+```python Python
+import hmac, hashlib, time
+
+def verify(secret: str, header: str, body: bytes, tolerance=300) -> bool:
+    parts = dict(p.split("=", 1) for p in header.split(","))
+    ts, sig = int(parts["t"]), parts["v1"]
+    if abs(time.time() - ts) > tolerance:
+        return False  # too old: possible replay
+    expected = hmac.new(secret.encode(), f"{ts}.".encode() + body, hashlib.sha256).hexdigest()
+    return hmac.compare_digest(expected, sig)
+```
+```javascript Node.js
+import crypto from "node:crypto";
+
+export function verify(secret, header, rawBody, tolerance = 300) {
+  const parts = Object.fromEntries(header.split(",").map((p) => p.split("=")));
+  const ts = Number(parts.t);
+  if (Math.abs(Date.now() / 1000 - ts) > tolerance) return false;
+  const expected = crypto.createHmac("sha256", secret)
+    .update(`${ts}.`).update(rawBody).digest("hex");
+  return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(parts.v1));
+}
+```
+</CodeGroup>
+
+## Respond and retry
+
+- Reply with any `2xx` within 10 seconds. Do the real work after replying.
+- Failed deliveries are retried with increasing delays. The same event can arrive more than once: use `id` to ignore duplicates. Ask your account team for the retry schedule on your workspace.
+- Events can arrive out of order. Use `created_at`, or read the latest state from the API.
+- See recent deliveries and their status codes with [List deliveries](webhooks-api#list-deliveries).
+
+## Manage endpoints
+
+Register, list and remove endpoints with the [Webhooks API](webhooks-api).
+
+# Recordings, transcripts and exports
+
+Source: https://theruka7.github.io/qoyal/docs/developers/guide-exports.html
+
+## One call
+
+[Retrieve a call](calls#get-call) returns the transcript and outputs as JSON. Download the audio with [Download a recording](calls#get-recording).
+
+<CodeGroup title="Download a recording">
+```bash cURL
+curl "$ECHO_API/v1/calls/call_8f2k1q/recording" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -o call.wav
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/calls/call_8f2k1q/recording",
+    headers=HEADERS,
+)
+res.raise_for_status()
+open("call.wav", "wb").write(res.content)
+```
+```javascript Node.js
+import fs from "node:fs";
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls/call_8f2k1q/recording`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+await fs.promises.writeFile("call.wav", Buffer.from(await res.arrayBuffer()));
+```
+</CodeGroup>
+
+## A whole campaign
+
+Results as JSON, CSV or XLSX from [Retrieve results](campaigns#get-results); every transcript and recording in one archive from [Export transcripts and audio](campaigns#export-campaign).
+
+<CodeGroup title="Export a campaign">
+```bash cURL
+curl "$ECHO_API/v1/campaigns/cmp_7Hq2/export?include=transcripts,audio" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -o campaign.zip
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/campaigns/cmp_7Hq2/export",
+    headers=HEADERS,
+    params={"include": "transcripts,audio"},
+)
+res.raise_for_status()
+open("campaign.zip", "wb").write(res.content)
+```
+```javascript Node.js
+import fs from "node:fs";
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2/export?include=transcripts,audio`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+await fs.promises.writeFile("campaign.zip", Buffer.from(await res.arrayBuffer()));
+```
+</CodeGroup>
+
+## The call log
+
+[Export the call log](calls#export-calls) gives a spreadsheet with the same filters as the dashboard.
+
+## Retention
+
+Recordings stay available for a limited period set for your workspace. Copy anything you need to keep longer into your own storage.
+
+# Agents
+
+Source: https://theruka7.github.io/qoyal/docs/developers/agents.html
+
+<Endpoint method="GET" path="/v1/agents" title="List agents" id="list-agents">
+
+Returns the agents in your workspace, newest first.
+
+<Params title="Query parameters">
+<ParamField name="limit" type="integer">1 to 100. Default 25.</ParamField>
+<ParamField name="cursor" type="string">The `next_cursor` from the previous page.</ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/agents?limit=25" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/agents",
+    headers=HEADERS,
+    params={"limit": "25"},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents?limit=25`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "data": [
+    {
+      "id": "dispatch-followup",
+      "name": "Dispatch follow-up",
+      "inputs_count": 4,
+      "outputs_count": 3,
+      "primary_id": "po_number",
+      "calling_line": "ops-outbound"
+    }
+  ],
+  "next_cursor": null
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/agents/{agent_id}" title="Retrieve an agent" id="get-agent">
+
+Returns one agent with its inputs, outputs and settings. The prompt is returned by [Retrieve the prompt](#get-prompt).
+
+<Params title="Path parameters">
+<ParamField name="agent_id" type="string" required>The agent id, such as `dispatch-followup`.</ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/agents/dispatch-followup" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/agents/dispatch-followup",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "id": "dispatch-followup",
+  "name": "Dispatch follow-up",
+  "description": "Confirms dispatch dates on open PO lines",
+  "voice": null,
+  "calling_line": "ops-outbound",
+  "primary_id": "po_number",
+  "inputs": [
+    {
+      "key": "supplier_name",
+      "type": "string",
+      "transform": null,
+      "sample": "Mehta Packaging",
+      "share_on_call": true
+    },
+    {
+      "key": "po_number",
+      "type": "string",
+      "transform": "spell_digits",
+      "sample": "4471",
+      "share_on_call": true
+    },
+    {
+      "key": "open_qty",
+      "type": "number",
+      "transform": null,
+      "sample": "14",
+      "share_on_call": true
+    },
+    {
+      "key": "supplier_code",
+      "type": "string",
+      "transform": null,
+      "sample": "V-20931",
+      "share_on_call": false
+    }
+  ],
+  "outputs": [
+    {
+      "key": "status",
+      "label": "Status",
+      "type": "enum",
+      "options": [
+        "CONFIRMED",
+        "PARTIAL",
+        "NEW_DATE",
+        "CALL_BACK"
+      ],
+      "description": "Outcome after read-back",
+      "required": true
+    },
+    {
+      "key": "dispatch_date",
+      "label": "Dispatch date",
+      "type": "string",
+      "options": [],
+      "description": "Date confirmed after read-back",
+      "required": true
+    },
+    {
+      "key": "qty_ready",
+      "label": "Quantity ready",
+      "type": "number",
+      "options": [],
+      "description": "Cartons ready on that date",
+      "required": true
+    }
+  ],
+  "created_at": "2026-09-18T10:02:11Z",
+  "updated_at": "2026-09-24T16:40:05Z"
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="POST" path="/v1/agents" title="Create an agent" id="create-agent">
+
+Creates an agent. Start blank or copy an existing agent’s prompt, inputs and outputs.
+
+<Params title="Body">
+<ParamField name="name" type="string" required>Shown to your team. The id is derived from it.</ParamField>
+<ParamField name="description" type="string">What the agent is for.</ParamField>
+<ParamField name="copy_from" type="string">Id of an agent to copy.</ParamField>
+<ParamField name="calling_line" type="string">Line the agent dials from. Campaigns cannot dial until this is set.</ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X POST "$ECHO_API/v1/agents" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "COD confirmation",
+    "description": "Confirms cash on delivery orders before dispatch",
+    "copy_from": "wismo",
+    "calling_line": "cx-outbound"
+  }'
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.post(
+    f"{API}/v1/agents",
+    headers=HEADERS,
+    json={
+  "name": "COD confirmation",
+  "description": "Confirms cash on delivery orders before dispatch",
+  "copy_from": "wismo",
+  "calling_line": "cx-outbound"
+},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents`, {
+  method: "POST",
+  headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+  body: JSON.stringify({
+    "name": "COD confirmation",
+    "description": "Confirms cash on delivery orders before dispatch",
+    "copy_from": "wismo",
+    "calling_line": "cx-outbound"
+  }),
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="201">
+```json
+{
+  "id": "cod-confirmation",
+  "name": "COD confirmation",
+  "description": "Confirms dispatch dates on open PO lines",
+  "voice": null,
+  "calling_line": "ops-outbound",
+  "primary_id": "po_number",
+  "inputs": [
+    {
+      "key": "supplier_name",
+      "type": "string",
+      "transform": null,
+      "sample": "Mehta Packaging",
+      "share_on_call": true
+    },
+    {
+      "key": "po_number",
+      "type": "string",
+      "transform": "spell_digits",
+      "sample": "4471",
+      "share_on_call": true
+    },
+    {
+      "key": "open_qty",
+      "type": "number",
+      "transform": null,
+      "sample": "14",
+      "share_on_call": true
+    },
+    {
+      "key": "supplier_code",
+      "type": "string",
+      "transform": null,
+      "sample": "V-20931",
+      "share_on_call": false
+    }
+  ],
+  "outputs": [
+    {
+      "key": "status",
+      "label": "Status",
+      "type": "enum",
+      "options": [
+        "CONFIRMED",
+        "PARTIAL",
+        "NEW_DATE",
+        "CALL_BACK"
+      ],
+      "description": "Outcome after read-back",
+      "required": true
+    },
+    {
+      "key": "dispatch_date",
+      "label": "Dispatch date",
+      "type": "string",
+      "options": [],
+      "description": "Date confirmed after read-back",
+      "required": true
+    },
+    {
+      "key": "qty_ready",
+      "label": "Quantity ready",
+      "type": "number",
+      "options": [],
+      "description": "Cartons ready on that date",
+      "required": true
+    }
+  ],
+  "created_at": "2026-09-18T10:02:11Z",
+  "updated_at": "2026-09-24T16:40:05Z"
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="PATCH" path="/v1/agents/{agent_id}" title="Update an agent" id="update-agent">
+
+Changes settings. Each change applies to the next call, with no restart.
+
+<Params title="Path parameters">
+<ParamField name="agent_id" type="string" required>The agent id.</ParamField>
+</Params>
+
+<Params title="Body">
+<ParamField name="name" type="string"></ParamField>
+<ParamField name="description" type="string"></ParamField>
+<ParamField name="voice" type="string">A voice from [options](#list-options). `null` uses the default.</ParamField>
+<ParamField name="calling_line" type="string"></ParamField>
+<ParamField name="primary_id" type="string">Key of the input that identifies each contact.</ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X PATCH "$ECHO_API/v1/agents/dispatch-followup" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "voice": "meera",
+    "primary_id": "po_number"
+  }'
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.patch(
+    f"{API}/v1/agents/dispatch-followup",
+    headers=HEADERS,
+    json={
+  "voice": "meera",
+  "primary_id": "po_number"
+},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup`, {
+  method: "PATCH",
+  headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+  body: JSON.stringify({
+    "voice": "meera",
+    "primary_id": "po_number"
+  }),
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "id": "dispatch-followup",
+  "name": "Dispatch follow-up",
+  "description": "Confirms dispatch dates on open PO lines",
+  "voice": null,
+  "calling_line": "ops-outbound",
+  "primary_id": "po_number",
+  "inputs": [
+    {
+      "key": "supplier_name",
+      "type": "string",
+      "transform": null,
+      "sample": "Mehta Packaging",
+      "share_on_call": true
+    },
+    {
+      "key": "po_number",
+      "type": "string",
+      "transform": "spell_digits",
+      "sample": "4471",
+      "share_on_call": true
+    },
+    {
+      "key": "open_qty",
+      "type": "number",
+      "transform": null,
+      "sample": "14",
+      "share_on_call": true
+    },
+    {
+      "key": "supplier_code",
+      "type": "string",
+      "transform": null,
+      "sample": "V-20931",
+      "share_on_call": false
+    }
+  ],
+  "outputs": [
+    {
+      "key": "status",
+      "label": "Status",
+      "type": "enum",
+      "options": [
+        "CONFIRMED",
+        "PARTIAL",
+        "NEW_DATE",
+        "CALL_BACK"
+      ],
+      "description": "Outcome after read-back",
+      "required": true
+    },
+    {
+      "key": "dispatch_date",
+      "label": "Dispatch date",
+      "type": "string",
+      "options": [],
+      "description": "Date confirmed after read-back",
+      "required": true
+    },
+    {
+      "key": "qty_ready",
+      "label": "Quantity ready",
+      "type": "number",
+      "options": [],
+      "description": "Cartons ready on that date",
+      "required": true
+    }
+  ],
+  "created_at": "2026-09-18T10:02:11Z",
+  "updated_at": "2026-09-24T16:40:05Z"
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/agents/{agent_id}/prompt" title="Retrieve the prompt" id="get-prompt">
+
+Returns the prompt as ordered sections. Sections of kind `inputs` and `outputs` are generated from the variables unless you have overridden their text.
+
+<Params title="Path parameters">
+<ParamField name="agent_id" type="string" required></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/agents/dispatch-followup/prompt" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/agents/dispatch-followup/prompt",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup/prompt`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "sections": [
+    {
+      "id": "sec_1",
+      "title": "Role and goal",
+      "kind": "text",
+      "enabled": true,
+      "body": "You are Riya from the purchase team. Confirm the dispatch date for PO {{po_number}}."
+    },
+    {
+      "id": "sec_2",
+      "title": "Call details",
+      "kind": "inputs",
+      "enabled": true,
+      "body": ""
+    },
+    {
+      "id": "sec_3",
+      "title": "Outcome reporting",
+      "kind": "outputs",
+      "enabled": true,
+      "body": ""
+    }
+  ],
+  "missing_tokens": []
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="PUT" path="/v1/agents/{agent_id}/prompt" title="Replace the prompt" id="update-prompt">
+
+Replaces all sections. The new prompt is live on the next call for every campaign that uses the agent.
+
+<Params title="Path parameters">
+<ParamField name="agent_id" type="string" required></ParamField>
+</Params>
+
+<Params title="Body">
+<ParamField name="sections" type="array" required>Ordered list of `{title, body, kind, enabled}`. `kind` is `text`, `inputs` or `outputs`. An empty body on a generated section keeps it following the variables.</ParamField>
+</Params>
+
+<Note>
+**Note**
+
+If a section uses a `{{token}}` that is not an input, it is listed in `missing_tokens`. Fix these before calling.
+</Note>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X PUT "$ECHO_API/v1/agents/dispatch-followup/prompt" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sections": [
+      {
+        "title": "Role and goal",
+        "kind": "text",
+        "enabled": true,
+        "body": "You are Riya from the purchase team..."
+      },
+      {
+        "title": "Read-back rules",
+        "kind": "text",
+        "enabled": true,
+        "body": "Repeat every date and quantity back. Save only on a clear yes."
+      },
+      {
+        "title": "Call details",
+        "kind": "inputs",
+        "enabled": true,
+        "body": ""
+      },
+      {
+        "title": "Outcome reporting",
+        "kind": "outputs",
+        "enabled": true,
+        "body": ""
+      }
+    ]
+  }'
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.put(
+    f"{API}/v1/agents/dispatch-followup/prompt",
+    headers=HEADERS,
+    json={
+  "sections": [
+    {
+      "title": "Role and goal",
+      "kind": "text",
+      "enabled": True,
+      "body": "You are Riya from the purchase team..."
+    },
+    {
+      "title": "Read-back rules",
+      "kind": "text",
+      "enabled": True,
+      "body": "Repeat every date and quantity back. Save only on a clear yes."
+    },
+    {
+      "title": "Call details",
+      "kind": "inputs",
+      "enabled": True,
+      "body": ""
+    },
+    {
+      "title": "Outcome reporting",
+      "kind": "outputs",
+      "enabled": True,
+      "body": ""
+    }
+  ]
+},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup/prompt`, {
+  method: "PUT",
+  headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+  body: JSON.stringify({
+    "sections": [
+      {
+        "title": "Role and goal",
+        "kind": "text",
+        "enabled": true,
+        "body": "You are Riya from the purchase team..."
+      },
+      {
+        "title": "Read-back rules",
+        "kind": "text",
+        "enabled": true,
+        "body": "Repeat every date and quantity back. Save only on a clear yes."
+      },
+      {
+        "title": "Call details",
+        "kind": "inputs",
+        "enabled": true,
+        "body": ""
+      },
+      {
+        "title": "Outcome reporting",
+        "kind": "outputs",
+        "enabled": true,
+        "body": ""
+      }
+    ]
+  }),
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "saved": true,
+  "missing_tokens": []
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="POST" path="/v1/agents/{agent_id}/prompt/preview" title="Preview the full prompt" id="preview-prompt">
+
+Returns the prompt exactly as the agent receives it, with tokens left as written. Send `sections` to preview a draft without saving it.
+
+<Params title="Path parameters">
+<ParamField name="agent_id" type="string" required></ParamField>
+</Params>
+
+<Params title="Body">
+<ParamField name="sections" type="array">Draft sections. Omit to preview the saved prompt.</ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X POST "$ECHO_API/v1/agents/dispatch-followup/prompt/preview" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.post(
+    f"{API}/v1/agents/dispatch-followup/prompt/preview",
+    headers=HEADERS,
+    json={},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup/prompt/preview`, {
+  method: "POST",
+  headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+  body: JSON.stringify({}),
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "prompt": "# ROLE AND GOAL\nYou are Riya from the purchase team...",
+  "characters": 2841,
+  "draft": false
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="PUT" path="/v1/agents/{agent_id}/inputs" title="Replace input variables" id="update-inputs">
+
+Sets what the agent knows before each call. Each input is a column in the upload template and a `{{token}}` in the prompt.
+
+<Params title="Path parameters">
+<ParamField name="agent_id" type="string" required></ParamField>
+</Params>
+
+<Params title="Body">
+<ParamField name="variables" type="array" required>List of `{key, type, transform, sample, share_on_call}`. `transform: "spell_digits"` reads a value digit by digit. `share_on_call: false` gives the value to the agent but it is never spoken.</ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X PUT "$ECHO_API/v1/agents/dispatch-followup/inputs" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "variables": [
+      {
+        "key": "supplier_name",
+        "type": "string",
+        "transform": null,
+        "sample": "Mehta Packaging",
+        "share_on_call": true
+      },
+      {
+        "key": "po_number",
+        "type": "string",
+        "transform": "spell_digits",
+        "sample": "4471",
+        "share_on_call": true
+      },
+      {
+        "key": "open_qty",
+        "type": "number",
+        "transform": null,
+        "sample": "14",
+        "share_on_call": true
+      },
+      {
+        "key": "supplier_code",
+        "type": "string",
+        "transform": null,
+        "sample": "V-20931",
+        "share_on_call": false
+      }
+    ]
+  }'
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.put(
+    f"{API}/v1/agents/dispatch-followup/inputs",
+    headers=HEADERS,
+    json={
+  "variables": [
+    {
+      "key": "supplier_name",
+      "type": "string",
+      "transform": None,
+      "sample": "Mehta Packaging",
+      "share_on_call": True
+    },
+    {
+      "key": "po_number",
+      "type": "string",
+      "transform": "spell_digits",
+      "sample": "4471",
+      "share_on_call": True
+    },
+    {
+      "key": "open_qty",
+      "type": "number",
+      "transform": None,
+      "sample": "14",
+      "share_on_call": True
+    },
+    {
+      "key": "supplier_code",
+      "type": "string",
+      "transform": None,
+      "sample": "V-20931",
+      "share_on_call": False
+    }
+  ]
+},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup/inputs`, {
+  method: "PUT",
+  headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+  body: JSON.stringify({
+    "variables": [
+      {
+        "key": "supplier_name",
+        "type": "string",
+        "transform": null,
+        "sample": "Mehta Packaging",
+        "share_on_call": true
+      },
+      {
+        "key": "po_number",
+        "type": "string",
+        "transform": "spell_digits",
+        "sample": "4471",
+        "share_on_call": true
+      },
+      {
+        "key": "open_qty",
+        "type": "number",
+        "transform": null,
+        "sample": "14",
+        "share_on_call": true
+      },
+      {
+        "key": "supplier_code",
+        "type": "string",
+        "transform": null,
+        "sample": "V-20931",
+        "share_on_call": false
+      }
+    ]
+  }),
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "saved": true,
+  "inputs": [
+    {
+      "key": "supplier_name",
+      "type": "string",
+      "transform": null,
+      "sample": "Mehta Packaging",
+      "share_on_call": true
+    },
+    {
+      "key": "po_number",
+      "type": "string",
+      "transform": "spell_digits",
+      "sample": "4471",
+      "share_on_call": true
+    },
+    {
+      "key": "open_qty",
+      "type": "number",
+      "transform": null,
+      "sample": "14",
+      "share_on_call": true
+    },
+    {
+      "key": "supplier_code",
+      "type": "string",
+      "transform": null,
+      "sample": "V-20931",
+      "share_on_call": false
+    }
+  ]
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="PUT" path="/v1/agents/{agent_id}/outputs" title="Replace output variables" id="update-outputs">
+
+Sets what the agent must report before hanging up. Outputs become the columns of campaign results.
+
+<Params title="Path parameters">
+<ParamField name="agent_id" type="string" required></ParamField>
+</Params>
+
+<Params title="Body">
+<ParamField name="variables" type="array" required>List of `{key, label, type, options, description, required}`. Use `type: "enum"` with `options` for statuses.</ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X PUT "$ECHO_API/v1/agents/dispatch-followup/outputs" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "variables": [
+      {
+        "key": "status",
+        "label": "Status",
+        "type": "enum",
+        "options": [
+          "CONFIRMED",
+          "PARTIAL",
+          "NEW_DATE",
+          "CALL_BACK"
+        ],
+        "description": "Outcome after read-back",
+        "required": true
+      },
+      {
+        "key": "dispatch_date",
+        "label": "Dispatch date",
+        "type": "string",
+        "options": [],
+        "description": "Date confirmed after read-back",
+        "required": true
+      },
+      {
+        "key": "qty_ready",
+        "label": "Quantity ready",
+        "type": "number",
+        "options": [],
+        "description": "Cartons ready on that date",
+        "required": true
+      }
+    ]
+  }'
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.put(
+    f"{API}/v1/agents/dispatch-followup/outputs",
+    headers=HEADERS,
+    json={
+  "variables": [
+    {
+      "key": "status",
+      "label": "Status",
+      "type": "enum",
+      "options": [
+        "CONFIRMED",
+        "PARTIAL",
+        "NEW_DATE",
+        "CALL_BACK"
+      ],
+      "description": "Outcome after read-back",
+      "required": True
+    },
+    {
+      "key": "dispatch_date",
+      "label": "Dispatch date",
+      "type": "string",
+      "options": [],
+      "description": "Date confirmed after read-back",
+      "required": True
+    },
+    {
+      "key": "qty_ready",
+      "label": "Quantity ready",
+      "type": "number",
+      "options": [],
+      "description": "Cartons ready on that date",
+      "required": True
+    }
+  ]
+},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup/outputs`, {
+  method: "PUT",
+  headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+  body: JSON.stringify({
+    "variables": [
+      {
+        "key": "status",
+        "label": "Status",
+        "type": "enum",
+        "options": [
+          "CONFIRMED",
+          "PARTIAL",
+          "NEW_DATE",
+          "CALL_BACK"
+        ],
+        "description": "Outcome after read-back",
+        "required": true
+      },
+      {
+        "key": "dispatch_date",
+        "label": "Dispatch date",
+        "type": "string",
+        "options": [],
+        "description": "Date confirmed after read-back",
+        "required": true
+      },
+      {
+        "key": "qty_ready",
+        "label": "Quantity ready",
+        "type": "number",
+        "options": [],
+        "description": "Cartons ready on that date",
+        "required": true
+      }
+    ]
+  }),
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "saved": true,
+  "outputs": [
+    {
+      "key": "status",
+      "label": "Status",
+      "type": "enum",
+      "options": [
+        "CONFIRMED",
+        "PARTIAL",
+        "NEW_DATE",
+        "CALL_BACK"
+      ],
+      "description": "Outcome after read-back",
+      "required": true
+    },
+    {
+      "key": "dispatch_date",
+      "label": "Dispatch date",
+      "type": "string",
+      "options": [],
+      "description": "Date confirmed after read-back",
+      "required": true
+    },
+    {
+      "key": "qty_ready",
+      "label": "Quantity ready",
+      "type": "number",
+      "options": [],
+      "description": "Cartons ready on that date",
+      "required": true
+    }
+  ]
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/agents/{agent_id}/template" title="Download the upload template" id="agent-template">
+
+A spreadsheet with one column per input, ready to fill in.
+
+<Params title="Path parameters">
+<ParamField name="agent_id" type="string" required></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/agents/dispatch-followup/template" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -o template.xlsx
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/agents/dispatch-followup/template",
+    headers=HEADERS,
+)
+res.raise_for_status()
+open("template.xlsx", "wb").write(res.content)
+```
+```javascript Node.js
+import fs from "node:fs";
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup/template`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+await fs.promises.writeFile("template.xlsx", Buffer.from(await res.arrayBuffer()));
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```text
+Binary .xlsx file
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/agents/options" title="List options" id="list-options">
+
+Voices, calling lines, variable types and transforms available to your workspace. Use it to build your own agent forms.
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/agents/options" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/agents/options",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/options`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "voices": [
+    {
+      "id": "default",
+      "gender": "female"
+    },
+    {
+      "id": "meera",
+      "gender": "female"
+    },
+    {
+      "id": "arjun",
+      "gender": "male"
+    }
+  ],
+  "calling_lines": [
+    {
+      "id": "ops-outbound",
+      "direction": "outbound"
+    }
+  ],
+  "input_types": [
+    "string",
+    "number",
+    "phone",
+    "date"
+  ],
+  "output_types": [
+    "string",
+    "number",
+    "boolean",
+    "enum"
+  ],
+  "transforms": [
+    "spell_digits"
+  ]
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="DELETE" path="/v1/agents/{agent_id}" title="Delete an agent" id="delete-agent">
+
+Deletes the agent. Past campaigns keep their results.
+
+<Params title="Path parameters">
+<ParamField name="agent_id" type="string" required></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X DELETE "$ECHO_API/v1/agents/dispatch-followup" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.delete(
+    f"{API}/v1/agents/dispatch-followup",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/agents/dispatch-followup`, {
+  method: "DELETE",
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "id": "cod-confirmation",
+  "deleted": true
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+# Calls
+
+Source: https://theruka7.github.io/qoyal/docs/developers/calls.html
+
+<Endpoint method="POST" path="/v1/calls" title="Place a call" id="create-call">
+
+Dials one number with an agent. Values in `context` fill the agent’s inputs for this call only.
+
+<Params title="Body">
+<ParamField name="agent" type="string" required>Agent id.</ParamField>
+<ParamField name="to" type="string" required>Number to call. E.164, or 10 digits for India (+91 is added).</ParamField>
+<ParamField name="context" type="object">Input values by key. Missing required inputs are passed as “(not provided)”.</ParamField>
+<ParamField name="voice" type="string">Override the agent’s voice for this call.</ParamField>
+<ParamField name="metadata" type="object">Your own references, returned on the call and in webhooks.</ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X POST "$ECHO_API/v1/calls" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "agent": "dispatch-followup",
+    "to": "+919876543210",
+    "context": {
+      "supplier_name": "Mehta Packaging",
+      "po_number": "4471",
+      "open_qty": 14
+    },
+    "metadata": {
+      "erp_line_id": "L-44713"
+    }
+  }'
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.post(
+    f"{API}/v1/calls",
+    headers=HEADERS,
+    json={
+  "agent": "dispatch-followup",
+  "to": "+919876543210",
+  "context": {
+    "supplier_name": "Mehta Packaging",
+    "po_number": "4471",
+    "open_qty": 14
+  },
+  "metadata": {
+    "erp_line_id": "L-44713"
+  }
+},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls`, {
+  method: "POST",
+  headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+  body: JSON.stringify({
+    "agent": "dispatch-followup",
+    "to": "+919876543210",
+    "context": {
+      "supplier_name": "Mehta Packaging",
+      "po_number": "4471",
+      "open_qty": 14
+    },
+    "metadata": {
+      "erp_line_id": "L-44713"
+    }
+  }),
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="202">
+```json
+{
+  "id": "call_8f2k1q",
+  "status": "queued"
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/calls/{call_id}" title="Retrieve a call" id="get-call">
+
+Returns the call with its context, reported outputs, transcript, recording link and analysis when it exists.
+
+<Params title="Path parameters">
+<ParamField name="call_id" type="string" required></ParamField>
+</Params>
+
+<Note>
+**Note**
+
+`status` is `queued`, `in_progress` or `completed`. A completed call with `turns: 0` was answered but had no audio.
+</Note>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/calls/call_8f2k1q" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/calls/call_8f2k1q",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls/call_8f2k1q`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "id": "call_8f2k1q",
+  "agent": "dispatch-followup",
+  "campaign_id": "cmp_7Hq2",
+  "direction": "outbound",
+  "to": "+919876543210",
+  "status": "completed",
+  "started_at": "2026-09-25T10:04:12Z",
+  "duration_seconds": 112,
+  "turns": 14,
+  "context": {
+    "supplier_name": "Mehta Packaging",
+    "po_number": "4471",
+    "open_qty": 14
+  },
+  "outputs": {
+    "status": "PARTIAL",
+    "dispatch_date": "2026-09-28",
+    "qty_ready": 10
+  },
+  "summary": "Supplier confirmed 10 of 14 cartons for 28 Sep.",
+  "transcript": [
+    {
+      "role": "agent",
+      "text": "Namaste, PO 4471: 14 cartons. Dispatch kab tak ho jayega?"
+    },
+    {
+      "role": "contact",
+      "text": "28 ko, par abhi sirf 10 ready hain."
+    }
+  ],
+  "recording_url": "$ECHO_API/v1/calls/call_8f2k1q/recording",
+  "analysis": null
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/calls" title="List calls" id="list-calls">
+
+The call log, newest first, with the same filters as the dashboard.
+
+<Params title="Query parameters">
+<ParamField name="agent" type="string"></ParamField>
+<ParamField name="campaign_id" type="string"></ParamField>
+<ParamField name="q" type="string">Search by name or number.</ParamField>
+<ParamField name="since" type="timestamp">ISO 8601.</ParamField>
+<ParamField name="until" type="timestamp"></ParamField>
+<ParamField name="min_duration" type="integer">Seconds.</ParamField>
+<ParamField name="max_duration" type="integer">Seconds.</ParamField>
+<ParamField name="limit" type="integer">1 to 100.</ParamField>
+<ParamField name="cursor" type="string"></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/calls?agent=dispatch-followup&since=2026-09-18T00:00:00Z&limit=50" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/calls",
+    headers=HEADERS,
+    params={"agent": "dispatch-followup", "since": "2026-09-18T00:00:00Z", "limit": "50"},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls?agent=dispatch-followup&since=2026-09-18T00:00:00Z&limit=50`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "data": [
+    {
+      "id": "call_8f2k1q",
+      "agent": "dispatch-followup",
+      "to": "+919876543210",
+      "status": "completed",
+      "started_at": "2026-09-25T10:04:12Z",
+      "duration_seconds": 112,
+      "turns": 14,
+      "summary": "Supplier confirmed 10 of 14 cartons for 28 Sep."
+    }
+  ],
+  "next_cursor": "eyJvZmZzZXQiOjUwfQ"
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/calls/live" title="List live calls" id="live-calls">
+
+Calls in progress right now, each with the transcript so far.
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/calls/live" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/calls/live",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls/live`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "data": [
+    {
+      "id": "call_9a1",
+      "agent": "wismo",
+      "to": "+919123456789",
+      "started_at": "2026-09-25T11:20:02Z",
+      "transcript": [
+        {
+          "role": "agent",
+          "text": "Hi, this is Meera from support..."
+        }
+      ]
+    }
+  ]
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/calls/{call_id}/recording" title="Download a recording" id="get-recording">
+
+The call audio.
+
+<Params title="Path parameters">
+<ParamField name="call_id" type="string" required></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/calls/call_8f2k1q/recording" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -o call.wav
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/calls/call_8f2k1q/recording",
+    headers=HEADERS,
+)
+res.raise_for_status()
+open("call.wav", "wb").write(res.content)
+```
+```javascript Node.js
+import fs from "node:fs";
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls/call_8f2k1q/recording`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+await fs.promises.writeFile("call.wav", Buffer.from(await res.arrayBuffer()));
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```text
+Binary audio file
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="POST" path="/v1/calls/{call_id}/analyze" title="Analyse a call" id="analyze-call">
+
+Runs or re-runs analysis on the transcript and saves it on the call.
+
+<Params title="Path parameters">
+<ParamField name="call_id" type="string" required></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X POST "$ECHO_API/v1/calls/call_8f2k1q/analyze" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.post(
+    f"{API}/v1/calls/call_8f2k1q/analyze",
+    headers=HEADERS,
+    json={},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls/call_8f2k1q/analyze`, {
+  method: "POST",
+  headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+  body: JSON.stringify({}),
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "call_id": "call_8f2k1q",
+  "executive_summary": "Supplier confirmed 10 of 14 cartons for 28 Sep; remaining 4 depend on raw material.",
+  "priority": "medium",
+  "issue_resolved": "partial",
+  "action_items": [
+    "Update PO 4471 line 3 to 10 cartons, 28 Sep",
+    "Follow up on 27 Sep"
+  ]
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/calls/export" title="Export the call log" id="export-calls">
+
+The filtered call log as a spreadsheet. Takes the same filters as [List calls](#list-calls).
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/calls/export?since=2026-09-01T00:00:00Z" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -o calls.xlsx
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/calls/export",
+    headers=HEADERS,
+    params={"since": "2026-09-01T00:00:00Z"},
+)
+res.raise_for_status()
+open("calls.xlsx", "wb").write(res.content)
+```
+```javascript Node.js
+import fs from "node:fs";
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/calls/export?since=2026-09-01T00:00:00Z`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+await fs.promises.writeFile("calls.xlsx", Buffer.from(await res.arrayBuffer()));
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```text
+Binary .xlsx file
+```
+</ResponseExample>
+
+</Endpoint>
+
+# Campaigns
+
+Source: https://theruka7.github.io/qoyal/docs/developers/campaigns.html
+
+<Endpoint method="POST" path="/v1/campaigns" title="Create a campaign" id="create-campaign">
+
+Creates an empty campaign for an agent. It is named after the agent and the time.
+
+<Params title="Body">
+<ParamField name="agent" type="string" required></ParamField>
+<ParamField name="direction" type="string">`outbound` (default) or `inbound`.</ParamField>
+<ParamField name="description" type="string">Which list this is.</ParamField>
+<ParamField name="metadata" type="object">Your own references.</ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X POST "$ECHO_API/v1/campaigns" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "agent": "dispatch-followup",
+    "direction": "outbound",
+    "description": "Week 39 open POs"
+  }'
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.post(
+    f"{API}/v1/campaigns",
+    headers=HEADERS,
+    json={
+  "agent": "dispatch-followup",
+  "direction": "outbound",
+  "description": "Week 39 open POs"
+},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns`, {
+  method: "POST",
+  headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+  body: JSON.stringify({
+    "agent": "dispatch-followup",
+    "direction": "outbound",
+    "description": "Week 39 open POs"
+  }),
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="201">
+```json
+{
+  "id": "cmp_7Hq2",
+  "name": "Dispatch follow-up - 2026-09-25 10:00",
+  "agent": "dispatch-followup",
+  "direction": "outbound",
+  "description": "Week 39 open POs",
+  "status": "created",
+  "source": "api",
+  "contacts_count": 0,
+  "dialled_count": 0,
+  "captured_count": 0,
+  "created_at": "2026-09-25T10:00:03Z"
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/campaigns" title="List campaigns" id="list-campaigns">
+
+Newest first.
+
+<Params title="Query parameters">
+<ParamField name="agent" type="string"></ParamField>
+<ParamField name="status" type="string">`created`, `ready`, `running`, `completed`, `failed`.</ParamField>
+<ParamField name="limit" type="integer"></ParamField>
+<ParamField name="cursor" type="string"></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/campaigns" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/campaigns",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "data": [
+    {
+      "id": "cmp_7Hq2",
+      "name": "Dispatch follow-up - 2026-09-25 10:00",
+      "agent": "dispatch-followup",
+      "direction": "outbound",
+      "description": "Week 39 open POs",
+      "status": "running",
+      "source": "api",
+      "contacts_count": 148,
+      "dialled_count": 120,
+      "captured_count": 96,
+      "created_at": "2026-09-25T10:00:03Z"
+    }
+  ],
+  "next_cursor": null
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/campaigns/{campaign_id}" title="Retrieve a campaign" id="get-campaign">
+
+Counts and status.
+
+<Params title="Path parameters">
+<ParamField name="campaign_id" type="string" required></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/campaigns/cmp_7Hq2" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/campaigns/cmp_7Hq2",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "id": "cmp_7Hq2",
+  "name": "Dispatch follow-up - 2026-09-25 10:00",
+  "agent": "dispatch-followup",
+  "direction": "outbound",
+  "description": "Week 39 open POs",
+  "status": "running",
+  "source": "api",
+  "contacts_count": 148,
+  "dialled_count": 120,
+  "captured_count": 96,
+  "created_at": "2026-09-25T10:00:03Z"
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="POST" path="/v1/campaigns/{campaign_id}/contacts" title="Upload contacts" id="upload-contacts">
+
+Uploads the list. With `dry_run=true` nothing is stored: you get the proposed column mapping and sample values to check. Without it, the list is stored and dialling starts.
+
+<Params title="Path parameters">
+<ParamField name="campaign_id" type="string" required></ParamField>
+</Params>
+
+<Params title="Body">
+<ParamField name="file" type="file" required>.xlsx or .csv, one row per contact.</ParamField>
+<ParamField name="dry_run" type="boolean">Default `false`.</ParamField>
+<ParamField name="mapping" type="object">Input key to column index, as confirmed from a dry run. Omit to accept the proposal.</ParamField>
+</Params>
+
+<Note>
+**Note**
+
+A campaign takes one upload. A second upload returns `409 contacts_exist`; create a new campaign for another list. Rows that fail validation are stored with status `input_validation_failed` and are not dialled.
+</Note>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X POST "$ECHO_API/v1/campaigns/cmp_7Hq2/contacts" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -F "file=@open_pos.xlsx" \
+  -F "dry_run=true"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.post(
+    f"{API}/v1/campaigns/cmp_7Hq2/contacts",
+    headers=HEADERS,
+    files={"file": open("open_pos.xlsx", "rb")},
+    data={"dry_run": "true"},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+import fs from "node:fs";
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const form = new FormData();
+form.append("file", new Blob([await fs.promises.readFile("open_pos.xlsx")]), "open_pos.xlsx");
+form.append("dry_run", "true");
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2/contacts`, {
+  method: "POST",
+  headers: { Authorization: `Bearer ${KEY}` },
+  body: form,
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "dry_run": true,
+  "sheet_headers": [
+    "Contact no.",
+    "Supplier",
+    "PO No",
+    "Qty"
+  ],
+  "mapping": [
+    {
+      "input": "phone",
+      "column": 0,
+      "header": "Contact no.",
+      "matched_by": "name",
+      "required": true
+    },
+    {
+      "input": "supplier_name",
+      "column": 1,
+      "header": "Supplier",
+      "matched_by": "name",
+      "required": true
+    },
+    {
+      "input": "po_number",
+      "column": 2,
+      "header": "PO No",
+      "matched_by": "name",
+      "required": true
+    },
+    {
+      "input": "open_qty",
+      "column": 3,
+      "header": "Qty",
+      "matched_by": "position",
+      "required": false
+    }
+  ],
+  "sample_rows": [
+    [
+      "9876543210",
+      "Mehta Packaging",
+      "4471",
+      "14"
+    ]
+  ],
+  "rows": 148
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="POST" path="/v1/campaigns/{campaign_id}/start" title="Start dialling" id="start-campaign">
+
+Dials a stored list that has not been dialled. Real numbers are called; this cannot be undone.
+
+<Params title="Path parameters">
+<ParamField name="campaign_id" type="string" required></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X POST "$ECHO_API/v1/campaigns/cmp_7Hq2/start" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.post(
+    f"{API}/v1/campaigns/cmp_7Hq2/start",
+    headers=HEADERS,
+    json={},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2/start`, {
+  method: "POST",
+  headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+  body: JSON.stringify({}),
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "campaign_id": "cmp_7Hq2",
+  "dialled": 148,
+  "status": "running"
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/campaigns/{campaign_id}/contacts" title="List contacts" id="list-contacts">
+
+Every row with its call status.
+
+<Params title="Path parameters">
+<ParamField name="campaign_id" type="string" required></ParamField>
+</Params>
+
+<Params title="Query parameters">
+<ParamField name="status" type="string">`pending`, `dialled`, `captured`, `no_outputs`, `disconnected_early`, `input_validation_failed`.</ParamField>
+<ParamField name="limit" type="integer"></ParamField>
+<ParamField name="cursor" type="string"></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/campaigns/cmp_7Hq2/contacts" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/campaigns/cmp_7Hq2/contacts",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2/contacts`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "data": [
+    {
+      "primary_id": "4471",
+      "name": "Mehta Packaging",
+      "phone": "+919876543210",
+      "status": "captured",
+      "call_id": "call_8f2k1q"
+    },
+    {
+      "primary_id": "5208",
+      "name": "R K Castings",
+      "phone": "+919811122233",
+      "status": "input_validation_failed",
+      "validation_error": "open_qty is not a number"
+    }
+  ],
+  "next_cursor": null
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/campaigns/{campaign_id}/contacts/{primary_id}" title="Retrieve a contact" id="get-contact">
+
+One contact’s outputs, transcript and recording availability.
+
+<Params title="Path parameters">
+<ParamField name="campaign_id" type="string" required></ParamField>
+<ParamField name="primary_id" type="string" required>The value of the agent’s primary id input.</ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/campaigns/cmp_7Hq2/contacts/4471" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/campaigns/cmp_7Hq2/contacts/4471",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2/contacts/4471`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "primary_id": "4471",
+  "status": "captured",
+  "outputs": {
+    "status": "PARTIAL",
+    "dispatch_date": "2026-09-28",
+    "qty_ready": 10
+  },
+  "call_id": "call_8f2k1q",
+  "transcript": [
+    {
+      "role": "agent",
+      "text": "Namaste, PO 4471: 14 cartons. Dispatch kab tak ho jayega?"
+    },
+    {
+      "role": "contact",
+      "text": "28 ko, par abhi sirf 10 ready hain."
+    }
+  ],
+  "recording_available": true
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/campaigns/{campaign_id}/results" title="Retrieve results" id="get-results">
+
+One row per contact with every output as a field. Ask for `format=csv` or `xlsx` to download a file.
+
+<Params title="Path parameters">
+<ParamField name="campaign_id" type="string" required></ParamField>
+</Params>
+
+<Params title="Query parameters">
+<ParamField name="format" type="string">`json` (default), `csv` or `xlsx`.</ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/campaigns/cmp_7Hq2/results" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/campaigns/cmp_7Hq2/results",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2/results`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "data": [
+    {
+      "primary_id": "4471",
+      "name": "Mehta Packaging",
+      "phone": "+919876543210",
+      "status": "captured",
+      "captured_at": "2026-09-25T10:06:04Z",
+      "call_id": "call_8f2k1q",
+      "outputs": {
+        "status": "PARTIAL",
+        "dispatch_date": "2026-09-28",
+        "qty_ready": 10
+      }
+    }
+  ]
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/campaigns/{campaign_id}/export" title="Export transcripts and audio" id="export-campaign">
+
+Every transcript and recording from the campaign in one archive.
+
+<Params title="Path parameters">
+<ParamField name="campaign_id" type="string" required></ParamField>
+</Params>
+
+<Params title="Query parameters">
+<ParamField name="include" type="string">`transcripts`, `audio` or both, comma separated.</ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/campaigns/cmp_7Hq2/export?include=transcripts,audio" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -o campaign.zip
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/campaigns/cmp_7Hq2/export",
+    headers=HEADERS,
+    params={"include": "transcripts,audio"},
+)
+res.raise_for_status()
+open("campaign.zip", "wb").write(res.content)
+```
+```javascript Node.js
+import fs from "node:fs";
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2/export?include=transcripts,audio`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+await fs.promises.writeFile("campaign.zip", Buffer.from(await res.arrayBuffer()));
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```text
+Binary .zip file
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="DELETE" path="/v1/campaigns/{campaign_id}" title="Delete a campaign" id="delete-campaign">
+
+Deletes the campaign, its contacts and every captured result. This cannot be undone.
+
+<Params title="Path parameters">
+<ParamField name="campaign_id" type="string" required></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X DELETE "$ECHO_API/v1/campaigns/cmp_7Hq2" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.delete(
+    f"{API}/v1/campaigns/cmp_7Hq2",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/campaigns/cmp_7Hq2`, {
+  method: "DELETE",
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "id": "cmp_7Hq2",
+  "deleted": true
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+# Analytics
+
+Source: https://theruka7.github.io/qoyal/docs/developers/analytics.html
+
+<Note>
+**Preview**
+
+Part of the developer preview. Fields may change before general availability.
+</Note>
+
+<Endpoint method="GET" path="/v1/metrics" title="Retrieve the funnel" id="get-metrics">
+
+Counts for a period, from uploaded rows to confirmed outcomes.
+
+<Params title="Query parameters">
+<ParamField name="days" type="integer">Look-back window. Default 30.</ParamField>
+<ParamField name="agent" type="string"></ParamField>
+<ParamField name="campaign_id" type="string"></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/metrics?days=30" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/metrics",
+    headers=HEADERS,
+    params={"days": "30"},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/metrics?days=30`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "funnel": {
+    "planned": 2480,
+    "will_dial": 2410,
+    "blocked": 70,
+    "attempted": 2390,
+    "connected": 1697,
+    "connected_rate": 0.71,
+    "achieved": 1086,
+    "achieved_rate": 0.64,
+    "inconclusive": 153,
+    "inconclusive_rate": 0.09,
+    "callbacks_open": 112,
+    "tech_failures": 14
+  },
+  "calls": {
+    "total": 2390,
+    "avg_duration_seconds": 108,
+    "avg_turns": 6.2
+  }
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+# Webhooks API
+
+Source: https://theruka7.github.io/qoyal/docs/developers/webhooks-api.html
+
+<Note>
+**Preview**
+
+Part of the developer preview. Fields may change before general availability.
+</Note>
+
+<Endpoint method="POST" path="/v1/webhooks" title="Register an endpoint" id="create-webhook">
+
+Subscribes a URL to events. The response includes the signing secret, shown once.
+
+<Params title="Body">
+<ParamField name="url" type="string" required>HTTPS endpoint.</ParamField>
+<ParamField name="events" type="array" required>Any of `call.completed`, `call.analyzed`, `contact.captured`, `campaign.completed`.</ParamField>
+<ParamField name="description" type="string"></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X POST "$ECHO_API/v1/webhooks" \
+  -H "Authorization: Bearer $ECHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://erp.example.com/echo/outcomes",
+    "events": [
+      "contact.captured",
+      "campaign.completed"
+    ]
+  }'
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.post(
+    f"{API}/v1/webhooks",
+    headers=HEADERS,
+    json={
+  "url": "https://erp.example.com/echo/outcomes",
+  "events": [
+    "contact.captured",
+    "campaign.completed"
+  ]
+},
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/webhooks`, {
+  method: "POST",
+  headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+  body: JSON.stringify({
+    "url": "https://erp.example.com/echo/outcomes",
+    "events": [
+      "contact.captured",
+      "campaign.completed"
+    ]
+  }),
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="201">
+```json
+{
+  "id": "wh_31k",
+  "url": "https://erp.example.com/echo/outcomes",
+  "events": [
+    "contact.captured",
+    "campaign.completed"
+  ],
+  "secret": "whsec_...",
+  "created_at": "2026-09-25T09:00:00Z"
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/webhooks" title="List endpoints" id="list-webhooks">
+
+Your registered endpoints. Secrets are not returned.
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/webhooks" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/webhooks",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/webhooks`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "data": [
+    {
+      "id": "wh_31k",
+      "url": "https://erp.example.com/echo/outcomes",
+      "events": [
+        "contact.captured",
+        "campaign.completed"
+      ]
+    }
+  ]
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="GET" path="/v1/webhooks/{webhook_id}/deliveries" title="List deliveries" id="list-deliveries">
+
+Recent deliveries with status codes and attempts, for debugging.
+
+<Params title="Path parameters">
+<ParamField name="webhook_id" type="string" required></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/webhooks/wh_31k/deliveries" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.get(
+    f"{API}/v1/webhooks/wh_31k/deliveries",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/webhooks/wh_31k/deliveries`, {
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "data": [
+    {
+      "event_id": "evt_5c2",
+      "type": "contact.captured",
+      "status": 200,
+      "attempts": 1,
+      "delivered_at": "2026-09-25T10:06:05Z"
+    }
+  ]
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+<Endpoint method="DELETE" path="/v1/webhooks/{webhook_id}" title="Remove an endpoint" id="delete-webhook">
+
+Stops deliveries to this URL.
+
+<Params title="Path parameters">
+<ParamField name="webhook_id" type="string" required></ParamField>
+</Params>
+
+<RequestExample>
+<CodeGroup>
+```bash cURL
+curl -X DELETE "$ECHO_API/v1/webhooks/wh_31k" \
+  -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+HEADERS = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+res = requests.delete(
+    f"{API}/v1/webhooks/wh_31k",
+    headers=HEADERS,
+)
+res.raise_for_status()
+print(res.json())
+```
+```javascript Node.js
+const API = process.env.ECHO_API;
+const KEY = process.env.ECHO_API_KEY;
+
+const res = await fetch(`${API}/v1/webhooks/wh_31k`, {
+  method: "DELETE",
+  headers: { Authorization: `Bearer ${KEY}` },
+});
+if (!res.ok) throw new Error(`Echo API ${res.status}`);
+console.log(await res.json());
+```
+</CodeGroup>
+</RequestExample>
+<ResponseExample status="200">
+```json
+{
+  "id": "wh_31k",
+  "deleted": true
+}
+```
+</ResponseExample>
+
+</Endpoint>
+
+# Errors
+
+Source: https://theruka7.github.io/qoyal/docs/developers/errors.html
+
+## The error object
+
+```json Response · 422
+{
+  "error": {
+    "code": "no_calling_line",
+    "message": "Agent dispatch-followup has no calling line, so this campaign cannot upload contacts or dial.",
+    "request_id": "req_2b9x"
+  }
+}
+```
+
+Quote `request_id` when you contact support.
+
+## Status codes
+
+| Status | Meaning |
+| --- | --- |
+| 200, 201, 202 | Success. 202 means accepted and still running, such as a queued call. |
+| 400 | The request is malformed. |
+| 401 | Missing or invalid key. |
+| 403 | The key cannot do this. |
+| 404 | Not found in this workspace. |
+| 409 | Conflicts with the current state. |
+| 422 | Understood, but cannot be done as asked. |
+| 429 | Too many requests. See [Rate limits](limits). |
+| 500, 503 | Our side. Retry with backoff. |
+
+## Common codes
+
+| Code | Status | What to do |
+| --- | --- | --- |
+| invalid_request | 400 | Check the fields named in the message. |
+| unauthorized | 401 | Check the header and the key. |
+| forbidden | 403 | Ask for access. |
+| not_found | 404 | Check the id and the workspace. |
+| contacts_exist | 409 | This campaign already has a list. Create a new campaign. |
+| already_dialled | 409 | The list has already been dialled. |
+| no_calling_line | 422 | Set a calling line on the agent. |
+| missing_required_mapping | 422 | Map every required input. |
+| undeclared_tokens | 422 | Declare the listed tokens as inputs, or remove them. |
+| invalid_phone | 422 | Use E.164 or a 10-digit Indian number. |
+| rate_limited | 429 | Wait for `Retry-After`, then retry. |
+| server_error | 500 | Retry with backoff. |
+
+## What to retry
+
+Retry `429`, `500` and `503` with exponential backoff and jitter. Do not retry other `4xx` errors without changing the request.
+
+<Warning title="Placing calls is not idempotent yet">`POST /v1/calls` has no idempotency key. If it times out, list recent calls for that number before you retry, so the same person is not called twice. Pass your own reference in `metadata` to make that lookup easy.</Warning>
+
+# Rate limits and pagination
+
+Source: https://theruka7.github.io/qoyal/docs/developers/limits.html
+
+## Rate limits
+
+Limits are set per workspace. Every response carries the current state: the limit, what is left, and when the window resets as a Unix time in seconds.
+
+```text Headers
+X-RateLimit-Limit: 600
+X-RateLimit-Remaining: 587
+X-RateLimit-Reset: 1790330820
+```
+
+Over the limit you get `429 rate_limited` with a `Retry-After` header in seconds. Your account team can raise limits for your volume.
+
+## Concurrent calls
+
+How many calls run at once depends on your calling lines. Extra calls wait in a queue and start as lines free up, so you can submit a large list at once. Queued calls are placed only within the calling hours that apply to the campaign.
+
+## Pagination
+
+List endpoints take `limit` (1 to 100) and `cursor`, and return `next_cursor`. Keep requesting until it is `null`.
+
+```python Python
+import os, requests
+
+API = os.environ["ECHO_API"]
+H = {"Authorization": f"Bearer {os.environ['ECHO_API_KEY']}"}
+
+def handle(calls):
+    for call in calls:
+        print(call["id"], call["status"])
+
+cursor = None
+while True:
+    page = requests.get(f"{API}/v1/calls", headers=H,
+                        params={"limit": 100, "cursor": cursor}).json()
+    handle(page["data"])
+    cursor = page["next_cursor"]
+    if not cursor:
+        break
+```
+
+# Changelog
+
+Source: https://theruka7.github.io/qoyal/docs/developers/changelog.html
+
+## Versioning
+
+The API is at `v1` and in developer preview. During the preview, fields and endpoints can change; every change is listed here with its date. Breaking changes after general availability will come with a new version and notice.
+
+## Changes
+
+<Update label="September 2026" date="2026-09-25" tags="Developer preview">
+First public reference for agents, prompts and variables, calls, campaigns with dry-run uploads, results and exports, analytics and webhooks. The no-code equivalent of a dry run is the column-mapping check before you confirm an upload.
+</Update>

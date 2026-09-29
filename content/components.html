@@ -1,0 +1,306 @@
+<!--
+  Every reusable component for Markdown pages lives in this one file.
+
+  Use in any .md file:     <Note title="Optional">Markdown **works** inside.</Note>
+  Self-closing:            <Method name="POST"/>
+  Flags (no value):        <ParamField name="to" type="string" required>...</ParamField>
+
+  Template language inside <html>:
+    {{prop}}          the prop, HTML-escaped
+    {{{prop}}}        the prop, raw
+    {{children}}      what sits between the tags, already rendered from Markdown
+    {{#prop}}..{{/prop}}   only when the prop is set
+    {{^prop}}..{{/prop}}   only when the prop is not set
+  Component attributes:
+    inline="true"     renders inside a sentence (no paragraph)
+    tabs="true"       builds a tab bar from the data-title of each child ({{{tablist}}})
+
+  Preview every component: python tools/build.py serve, then open /docs/_components.html
+  Styles: assets/docs.css (section "components"). Behaviour: assets/docs.js.
+-->
+
+<!-- ================= Callouts ================= -->
+<component name="Note">
+<doc>Neutral context the reader should know. Optional title.</doc>
+<example>
+<Note title="Before you start">You need a workspace and a calling line. Your account team sets both up.</Note>
+</example>
+<html><aside class="c-callout c-note" role="note">{{#title}}<p class="c-callout-t">{{title}}</p>{{/title}}{{children}}</aside></html>
+</component>
+
+<component name="Tip">
+<doc>A shortcut or good practice.</doc>
+<example>
+<Tip>Start with 20 to 50 rows and listen to the first calls before you upload the full list.</Tip>
+</example>
+<html><aside class="c-callout c-tip" role="note">{{#title}}<p class="c-callout-t">{{title}}</p>{{/title}}{{children}}</aside></html>
+</component>
+
+<component name="Info">
+<doc>Availability, plan or setup information.</doc>
+<example>
+<Info>Available on enterprise workspaces. Your account team switches it on.</Info>
+</example>
+<html><aside class="c-callout c-info" role="note">{{#title}}<p class="c-callout-t">{{title}}</p>{{/title}}{{children}}</aside></html>
+</component>
+
+<component name="Warning">
+<doc>Something that costs money, calls real people or cannot be undone.</doc>
+<example>
+<Warning title="This starts real calls">Confirming the upload dials every row that passes the compliance checks.</Warning>
+</example>
+<html><aside class="c-callout c-warn" role="note">{{#title}}<p class="c-callout-t">{{title}}</p>{{/title}}{{children}}</aside></html>
+</component>
+
+<component name="Check">
+<doc>A success state or a checklist outcome.</doc>
+<example>
+<Check>Your agent is ready to call.</Check>
+</example>
+<html><aside class="c-callout c-check" role="note">{{#title}}<p class="c-callout-t">{{title}}</p>{{/title}}{{children}}</aside></html>
+</component>
+
+<!-- ================= Inline ================= -->
+<component name="Badge" inline="true">
+<doc>A small label inside a sentence or a table. tone: new, beta, preview, enterprise, live.</doc>
+<example>
+Scheduled reports <Badge tone="enterprise">Enterprise</Badge> and the API <Badge tone="preview">Developer preview</Badge>.
+</example>
+<html><span class="c-badge c-badge-{{tone}}">{{children}}</span></html>
+</component>
+
+<component name="Method" inline="true">
+<doc>An HTTP method label. name: GET, POST, PATCH, PUT, DELETE.</doc>
+<example>
+<Method name="POST"/> creates a call, <Method name="GET"/> reads it.
+</example>
+<html><span class="c-method c-m-{{name}}">{{name}}</span></html>
+</component>
+
+<component name="Term" inline="true">
+<doc>Explains a term or abbreviation on hover and for screen readers. Good for jargon and keywords.</doc>
+<example>
+Every number is checked against the <Term tip="India's Do Not Disturb registry for commercial calls">DND</Term> list.
+</example>
+<html><abbr class="c-term" title="{{tip}}">{{children}}</abbr></html>
+</component>
+
+<!-- ================= Layout ================= -->
+<component name="CardGroup">
+<doc>A grid of Cards. cols: 1 to 4 (default 2).</doc>
+<example>
+<CardGroup cols="2">
+<Card title="Quickstart" href="quickstart" eyebrow="Get started">Your first campaign in about fifteen minutes.</Card>
+<Card title="Webhooks" href="../developers/webhooks" eyebrow="Developers">Outcomes pushed to your system.</Card>
+</CardGroup>
+</example>
+<html><div class="c-cards c-cols-{{cols}}">{{children}}</div></html>
+</component>
+
+<component name="Card">
+<doc>A linked card. title, href, optional eyebrow.</doc>
+<example>
+<Card title="Campaigns" href="campaigns" eyebrow="Launch">Upload a sheet and call every row.</Card>
+</example>
+<html>{{#href}}<a class="c-card" href="{{href}}">{{/href}}{{^href}}<div class="c-card">{{/href}}{{#eyebrow}}<small>{{eyebrow}}</small>{{/eyebrow}}<b>{{title}}</b><div class="c-card-b">{{children}}</div>{{#href}}</a>{{/href}}{{^href}}</div>{{/href}}</html>
+</component>
+
+<component name="Columns">
+<doc>Side-by-side blocks. Put each block in a Column.</doc>
+<example>
+<Columns>
+<Column>
+**Inputs.** What the agent knows before the call.
+</Column>
+<Column>
+**Outputs.** What it must report after.
+</Column>
+</Columns>
+</example>
+<html><div class="c-cols">{{children}}</div></html>
+</component>
+
+<component name="Column">
+<doc>One cell of Columns.</doc>
+<example>
+<Column>Any Markdown.</Column>
+</example>
+<html><div class="c-col">{{children}}</div></html>
+</component>
+
+<component name="Steps">
+<doc>A numbered procedure. Each Step has a title.</doc>
+<example>
+<Steps>
+<Step title="Create an agent">Go to **Agents → New agent**.</Step>
+<Step title="Test it">Open the **Call console** and start a browser call.</Step>
+</Steps>
+</example>
+<html><ol class="c-steps">{{children}}</ol></html>
+</component>
+
+<component name="Step">
+<doc>One step inside Steps.</doc>
+<example>
+<Steps><Step title="Upload the list">Press **Upload data**.</Step></Steps>
+</example>
+<html><li class="c-step"><p class="c-step-t">{{title}}</p><div class="c-step-b">{{children}}</div></li></html>
+</component>
+
+<component name="Tabs" tabs="true">
+<doc>Switchable panels. Each Tab has a title. Without JavaScript every panel shows, so search engines read all of it.</doc>
+<example>
+<Tabs>
+<Tab title="No code">Upload a sheet in **Campaigns**.</Tab>
+<Tab title="API">Call `POST /v1/campaigns`.</Tab>
+</Tabs>
+</example>
+<html><div class="c-tabs" data-tabs><div class="c-tabbar" role="tablist">{{{tablist}}}</div>{{children}}</div></html>
+</component>
+
+<component name="Tab">
+<doc>One panel inside Tabs.</doc>
+<example>
+<Tabs><Tab title="Only tab">Content.</Tab></Tabs>
+</example>
+<html><div class="c-tab" role="tabpanel" data-title="{{title}}">{{children}}</div></html>
+</component>
+
+<component name="Accordion">
+<doc>A collapsible section. title, optional open flag.</doc>
+<example>
+<Accordion title="What happens if the supplier asks for a call back?">The agent books the time and the call is retried then.</Accordion>
+</example>
+<html><details class="c-acc"{{#open}} open{{/open}}><summary>{{title}}</summary><div class="c-acc-b">{{children}}</div></details></html>
+</component>
+
+<component name="AccordionGroup">
+<doc>Stacks Accordions with shared borders.</doc>
+<example>
+<AccordionGroup>
+<Accordion title="First question">Answer.</Accordion>
+<Accordion title="Second question">Answer.</Accordion>
+</AccordionGroup>
+</example>
+<html><div class="c-accs">{{children}}</div></html>
+</component>
+
+<component name="Frame">
+<doc>Frames a screenshot, diagram or mock screen, with a caption. Plain images with a title get the same frame automatically: ![Alt](assets/x.png "Caption").</doc>
+<example>
+<Frame caption="The call console with a live transcript.">
+![Call console](assets/placeholder.svg)
+</Frame>
+</example>
+<html><figure class="c-frame">{{children}}{{#caption}}<figcaption>{{caption}}</figcaption>{{/caption}}</figure></html>
+</component>
+
+<!-- ================= Code and API (Swagger and Mintlify style) ================= -->
+<component name="CodeGroup" tabs="true">
+<doc>Several code blocks as tabs. The text after the language names the tab: ```bash cURL</doc>
+<example>
+<CodeGroup>
+```bash cURL
+curl "$ECHO_API/v1/agents" -H "Authorization: Bearer $ECHO_API_KEY"
+```
+```python Python
+requests.get(f"{API}/v1/agents", headers=HEADERS)
+```
+</CodeGroup>
+</example>
+<html><div class="c-codegroup" data-tabs>{{#title}}<p class="c-cg-t">{{title}}</p>{{/title}}<div class="c-tabbar" role="tablist">{{{tablist}}}</div>{{children}}</div></html>
+</component>
+
+<component name="Endpoint">
+<doc>An API operation. method, path, title. Put the description and Params on the left; RequestExample and ResponseExample go to the right column.</doc>
+<example>
+<Endpoint method="POST" path="/v1/calls" title="Place a call">
+Dials one number with an agent.
+
+<Params title="Body">
+<ParamField name="agent" type="string" required>Agent id.</ParamField>
+</Params>
+
+<RequestExample>
+```bash cURL
+curl -X POST "$ECHO_API/v1/calls" -H "Authorization: Bearer $ECHO_API_KEY"
+```
+</RequestExample>
+<ResponseExample status="202">
+```json
+{ "id": "call_8f2k1q", "status": "queued" }
+```
+</ResponseExample>
+</Endpoint>
+</example>
+<html><section class="c-ep" id="{{id}}"><div class="c-ep-h"><span class="c-method c-m-{{method}}">{{method}}</span><code>{{path}}</code>{{#badge}}<span class="c-badge c-badge-preview">{{badge}}</span>{{/badge}}</div>{{#title}}<h3 class="c-ep-t">{{title}}</h3>{{/title}}<div class="c-ep-g"><div class="c-ep-l">{{children}}</div>{{#examples}}<div class="c-ep-r">{{{examples}}}</div>{{/examples}}</div></section></html>
+</component>
+
+<component name="Params">
+<doc>A titled list of fields: Body, Query, Path, Headers, Response.</doc>
+<example>
+<Params title="Query">
+<ParamField name="limit" type="integer" default="50">Up to 200.</ParamField>
+</Params>
+</example>
+<html><div class="c-params">{{#title}}<h4>{{title}}</h4>{{/title}}{{children}}</div></html>
+</component>
+
+<component name="ParamField">
+<doc>One field. name, type, optional required flag and default.</doc>
+<example>
+<ParamField name="to" type="string" required>E.164 number.</ParamField>
+</example>
+<html><div class="c-param"><p class="c-param-h"><code>{{name}}</code>{{#type}}<span class="c-ty">{{type}}</span>{{/type}}{{#required}}<span class="c-rq">required</span>{{/required}}{{#default}}<span class="c-df">default {{default}}</span>{{/default}}</p><div class="c-param-b">{{children}}</div></div></html>
+</component>
+
+<component name="ResponseField">
+<doc>A field in a response object. Same props as ParamField.</doc>
+<example>
+<ResponseField name="status" type="string">queued, dialling, completed or failed.</ResponseField>
+</example>
+<html><div class="c-param"><p class="c-param-h"><code>{{name}}</code>{{#type}}<span class="c-ty">{{type}}</span>{{/type}}</p><div class="c-param-b">{{children}}</div></div></html>
+</component>
+
+<component name="RequestExample">
+<doc>The request sample, shown in the right column of an Endpoint.</doc>
+<example>
+<RequestExample>
+```bash cURL
+curl "$ECHO_API/v1/calls/call_8f2k1q" -H "Authorization: Bearer $ECHO_API_KEY"
+```
+</RequestExample>
+</example>
+<html><div class="c-ex c-ex-req">{{children}}</div></html>
+</component>
+
+<component name="ResponseExample">
+<doc>The response sample, shown in the right column of an Endpoint. Optional status.</doc>
+<example>
+<ResponseExample status="200">
+```json
+{ "id": "call_8f2k1q" }
+```
+</ResponseExample>
+</example>
+<html><div class="c-ex c-ex-res">{{#status}}<p class="c-ex-s">Response · {{status}}</p>{{/status}}{{children}}</div></html>
+</component>
+
+<!-- ================= Pages ================= -->
+<component name="Update">
+<doc>A changelog entry. label (version or month), date, optional tags.</doc>
+<example>
+<Update label="September 2026" date="2026-09-25" tags="Developer preview">
+First public version of the API reference.
+</Update>
+</example>
+<html><section class="c-upd"><div class="c-upd-h"><b>{{label}}</b>{{#date}}<time datetime="{{date}}">{{date}}</time>{{/date}}{{#tags}}<span class="c-badge c-badge-preview">{{tags}}</span>{{/tags}}</div><div class="c-upd-b">{{children}}</div></section></html>
+</component>
+
+<component name="Snippet">
+<doc>Reuses a Markdown file from content/snippets/ so shared text is written once. file: the file name.</doc>
+<example>
+<Snippet file="compliance-gate.md"/>
+</example>
+<html><div class="c-snippet">{{{children}}}</div></html>
+</component>

@@ -1,9 +1,10 @@
 # Updating the Echo site
 
-Static site, no build step. After any docs or blog change run:
+The home page (`index.html`) is edited directly. Docs and blog are written in Markdown and built:
 
-    python tools/site.py          # sidebars, previous/next, blog index, sitemap.xml, llms.txt
-    python tools/site.py --check  # report problems only
+    pip install -r tools/requirements.txt
+    python tools/build.py serve   # preview while you write
+    python tools/build.py         # build before you commit
 
 ## Use cases and demos (index.html)
 
@@ -38,25 +39,11 @@ The contract is documented at the top of `assets/echo-demo.js`. The server side 
 the 60 second cap enforced on the server) is not built yet. Add `?live=mock` to the page URL to walk through the UI
 with a silent test transport. Every step fires an `echo:demo` DOM event and a `dataLayer` push for analytics.
 
-## Docs
+## Docs and blog
 
-1. Copy `docs/_template.html` to `docs/<page>.html` (or `docs/developers/<page>.html`).
-2. Add `{"file": "<page>.html", "title": "Page title"}` to the right group in `docs/nav.json`.
-   Add `"new": true` for a New badge in the sidebar. New groups are fine too.
-3. Screenshots: `docs/img/<page>/<screen>.png`, about 1600 px wide, inside `<figure class="shot">`.
-   No screenshot yet? `<figure class="shot pending"><div class="shot-ph">Screenshot: name</div>...`
-4. Run `python tools/site.py`. It warns about missing files and missing screenshots.
-
-## Blog
-
-The blog ships empty. Marketing adds posts:
-
-1. Copy `blog/_template.html` to `blog/<slug>.html`, fill it in, set robots to `index,follow`.
-2. Images in `blog/img/<slug>/`.
-3. Add an entry to `blog/posts.json`:
-   `{"url": "<slug>.html", "title": "", "summary": "", "category": "Guide", "date": "2026-10-01", "minutes": 6, "image": "img/<slug>/cover.png"}`
-   `"draft": true` keeps it off the index and the home page.
-4. Run `python tools/site.py`. The home page shows the latest three posts once any exist.
+Docs and blog posts are written in Markdown in `content/` and built with `python tools/build.py`.
+Everything about them (file structure, sidebar order, components, templates, images, SEO, preview)
+is in [content/README.md](content/README.md).
 
 ## Forms
 

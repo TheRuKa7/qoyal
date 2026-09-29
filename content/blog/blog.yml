@@ -1,0 +1,29 @@
+# Blog settings. Posts live in content/blog/posts/*.md (copy content/blog/_template.md).
+title: Echo blog
+heading: Insights on enterprise voice AI.
+kicker: Blog
+description: Notes from running voice agents on real B2B workflows in procurement, supplier operations and customer support.
+per_page: 9
+keywords: [enterprise voice AI, voice agents India, supplier follow-up, procurement automation]
+
+# Categories: the key goes in a post's frontmatter (category: guides). Each gets its own page.
+categories:
+  guides: {label: Guides, description: How to plan, run and measure voice AI on business calls.}
+  supplier-operations: {label: Supplier operations, description: PO acceptance, delivery dates, lead times and quotes.}
+  customer-support: {label: Customer support, description: Order status, invoices, payments and tickets.}
+  product: {label: Product, description: What is new in Echo and how it works.}
+
+# Authors: the key goes in a post's frontmatter (author: echo-team).
+authors:
+  echo-team: {name: Echo team at Cognilix}
+
+empty:
+  title: First articles are on the way.
+  text: Until then, the docs explain how Echo works, from building an agent to reading outcomes.
+  label: Read the docs
+  href: /docs/
+
+cta:
+  title: Hear Echo on a real workflow.
+  label: Hear a sample call
+  href: /#use-cases
