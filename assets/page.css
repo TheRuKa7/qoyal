@@ -225,3 +225,15 @@ main.docs.ref .dtoc{display:none}
 .callout b{font:600 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--red);padding-top:3px}
 @media (max-width:1180px){.ep-g{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:860px){main.docs.ref{grid-template-columns:minmax(0,1fr)}.dtabs{margin:0 0 14px}.dtabs .dt-r{display:none}}
+
+/* ---------- v25: screenshots, New badge, blog empty state ---------- */
+figure.shot{margin:24px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:var(--shadow)}
+figure.shot img{display:block;width:100%;height:auto}
+figure.shot figcaption{padding:9px 14px;border-top:1px solid var(--line);font:500 12px var(--mono);color:var(--mute)}
+.shot-ph{display:grid;place-items:center;aspect-ratio:16/10;font:500 13px var(--mono);color:var(--mute);background:repeating-linear-gradient(135deg,transparent 0 12px,var(--line) 12px 13px)}
+.dside .new{display:inline-block;margin-left:6px;font:600 9.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--red);border:1px solid currentColor;border-radius:99px;padding:1px 6px;vertical-align:1px}
+.post img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px}
+.bempty{margin-top:40px;padding:28px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;max-width:620px}
+.bempty b{font:650 20px/1.2 var(--grot)}
+.bempty p{color:var(--ink2);margin:0}
+.posts:empty{display:none}

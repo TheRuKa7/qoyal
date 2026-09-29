@@ -1,5 +1,5 @@
-# Cognilix Echo docs
-> Enterprise voice AI for revenue workflows: build agents, run campaigns, write outcomes back to your systems.
+# Echo by Cognilix
+> Enterprise Voice AI for B2B operations: supplier and customer calls that confirm POs, dates, quotes and payments, with outcomes written back to the ERP.
 
 ## Platform guide
 - [Overview](https://theruka7.github.io/qoyal/docs/)
@@ -33,8 +33,3 @@
 - [Errors](https://theruka7.github.io/qoyal/docs/developers/errors.html)
 - [Rate limits](https://theruka7.github.io/qoyal/docs/developers/limits.html)
 - [Changelog](https://theruka7.github.io/qoyal/docs/developers/changelog.html)
-
-## Blog
-- [AI voice agents in India: a practical guide for business teams](https://theruka7.github.io/qoyal/blog/ai-voice-agents-india-guide.html)
-- [30 phone calls your team can hand to a voice agent](https://theruka7.github.io/qoyal/blog/calls-to-automate-with-voice-ai.html)
-- [Confirm, don’t assume: how voice agents get answers you can trust](https://theruka7.github.io/qoyal/blog/confirm-dont-assume-voice-agents.html)
