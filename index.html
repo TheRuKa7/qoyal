@@ -2345,8 +2345,8 @@ nav.links a[aria-current]:after{transform:scaleX(1)}
 .sec>.wrap>.head>div{max-width:none!important;width:auto}.sec>.wrap>.head h2{max-width:24ch!important}
 
 /* v31 snappier */
-#how{contain-intrinsic-size:auto 869px}#dev{contain-intrinsic-size:auto 937px}#roi{contain-intrinsic-size:auto 862px}#trust{contain-intrinsic-size:auto 796px}#faq{contain-intrinsic-size:auto 683px}#pilot{contain-intrinsic-size:auto 592px}
-@media (max-width:760px){#how{contain-intrinsic-size:auto 921px}#dev{contain-intrinsic-size:auto 1501px}#roi{contain-intrinsic-size:auto 1424px}#trust{contain-intrinsic-size:auto 1563px}#faq{contain-intrinsic-size:auto 1201px}#pilot{contain-intrinsic-size:auto 1044px}}
+#how{contain-intrinsic-size:auto 869px}#dev{contain-intrinsic-size:auto 937px}#roi{contain-intrinsic-size:auto 499px}#trust{contain-intrinsic-size:auto 796px}#faq{contain-intrinsic-size:auto 683px}#pilot{contain-intrinsic-size:auto 592px}
+@media (max-width:760px){#how{contain-intrinsic-size:auto 921px}#dev{contain-intrinsic-size:auto 1501px}#roi{contain-intrinsic-size:auto 642px}#trust{contain-intrinsic-size:auto 1563px}#faq{contain-intrinsic-size:auto 1201px}#pilot{contain-intrinsic-size:auto 1044px}}
 .ucc{contain:none}.ucx-trk{contain:layout;will-change:transform}
 .ucc-bar i{transition:none!important;will-change:transform}
 .ucc{transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s}
@@ -2355,6 +2355,13 @@ nav.links a[aria-current]:after{transform:scaleX(1)}
 .rv{transform:translateY(14px)}
 .badge .tip{white-space:nowrap}
 .sc-src{font:500 11px var(--mono);color:var(--mute);margin:10px 0 0;opacity:.8}
+.roi-t{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;background:var(--card,#fff);border:1px solid var(--line);border-radius:22px;padding:28px}
+.roi-t-k{font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:0 0 10px}
+.roi-t ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}.roi-t li{font:550 17px/1.35 var(--grot);color:var(--ink);padding-left:22px;position:relative}
+.roi-t li:before{content:"";position:absolute;left:0;top:.45em;width:10px;height:10px;border-radius:3px;background:var(--red)}
+.roi-t-a{display:grid;gap:10px;justify-items:start}.roi-t-a p{font:400 13px/1.5 var(--grot);color:var(--mute);margin:0}
+[data-theme=dark] .roi-t{background:rgba(28,26,23,.85)}
+@media (max-width:760px){.roi-t{grid-template-columns:1fr;padding:20px}}
 /* header: one spec shared with docs, blog and legal (assets/docs.css) */
 body>header.nav{height:60px;gap:12px;padding:0 clamp(16px,3vw,44px)}
 body>header.nav .brand{margin-right:auto}body>header.nav .links{margin-left:0}body>header.nav .brand .clx{height:22px;width:auto}body>header.nav .wm{font-size:22px;line-height:1}
@@ -2504,7 +2511,7 @@ main>section:not(.intro):not(.scale):not(.topuc),footer{content-visibility:auto;
         <p class="fn">3</p><h3>Outcomes land at line level</h3><p>A fixed outcome per line, with the recording, in your ERP the same day.</p>
       </li>
     </ol>
-    <div class="rev-m rv"><span>Measured on</span><b>Accepted POs</b><b>Confirmed dates</b><b>Quotes returned</b><b>Cash released</b><b>Cost per resolved record</b><a href="#roi">Estimate yours →</a></div>
+    <div class="rev-m rv"><span>Measured on</span><b>Accepted POs</b><b>Confirmed dates</b><b>Quotes returned</b><b>Cash released</b><b>Cost per resolved record</b><a href="roi/">Estimate yours →</a></div>
     <details class="cmp-d rv"><summary>Transcript-first tools compared with Echo</summary>
     <div class="cmp gl16" role="table" aria-label="Transcript-first voice tools compared with Echo">
       <div class="cmp-r cmp-h" role="row"><span role="columnheader"></span><span role="columnheader">A transcript-first setup</span><span role="columnheader">Echo</span></div>
@@ -2562,37 +2569,8 @@ main>section:not(.intro):not(.scale):not(.topuc),footer{content-visibility:auto;
 </section>
 <section class="sec roi" id="roi" data-sec>
   <div class="wrap">
-    <div class="head"><div><p class="kick rv">ROI</p><h2 class="rv">ROI in revenue kept and hours saved.</h2></div><p class="lede rv">Pick a workflow, move three sliders. A pilot swaps these for your own baseline.</p></div>
-    <div class="roi-g rv">
-      <form class="roi-in" id="roiF" novalidate>
-        <label class="roi-cur">Currency <select id="rCur" aria-label="Currency"><option value="INR">INR</option><option value="USD">USD</option><option value="AED">AED</option><option value="SGD">SGD</option><option value="EUR">EUR</option><option value="GBP">GBP</option></select></label>
-        <p class="roi-pre" role="group" aria-label="Start from a workflow"><span>Start from a workflow</span><button type="button" data-p="20000,3,25000,70,50000,15" aria-pressed="true">Supplier follow-ups</button><button type="button" data-p="8000,2.5,28000,65,200000,10" aria-pressed="false">Quote reminders</button><button type="button" data-p="15000,3,22000,75,80000,10" aria-pressed="false">Invoice and payment</button><button type="button" data-p="30000,2,20000,80,15000,5" aria-pressed="false">Order status</button></p>
-        <div class="rsl"><label for="rCalls">Calls a month</label><output id="oCalls" for="rCalls">20,000</output><input type="range" id="rCalls" min="0" max="1000" step="1" value="482"></div>
-        <div class="rsl"><label for="rVal">Average order or invoice value</label><output id="oVal" for="rVal">₹50,000</output><input type="range" id="rVal" min="0" max="1000" step="1" value="333"></div>
-        <div class="rsl"><label for="rRisk">Orders that slip without a follow-up call</label><output id="oRisk" for="rRisk">15%</output><input type="range" id="rRisk" min="2" max="40" step="1" value="15"></div>
-        <details class="roi-more"><summary>Adjust assumptions</summary><div class="roi-mg"><div class="rsl"><label for="rShare">Calls Echo handles end to end</label><output id="oShare" for="rShare">70%</output><input type="range" id="rShare" min="20" max="95" step="5" value="70"></div>
-        <div class="rsl"><label for="rMin">Average call length</label><output id="oMin" for="rMin">3 min</output><input type="range" id="rMin" min="1" max="12" step="0.5" value="3"></div>
-        <div class="rsl"><label for="rCost">Monthly cost of one calling agent</label><output id="oCost" for="rCost">₹25,000</output><input type="range" id="rCost" min="12000" max="80000" step="1000" value="25000"></div>
-        <div class="rsl"><label for="rOut">Handled calls that reach an outcome</label><output id="oOut" for="rOut">60%</output><input type="range" id="rOut" min="20" max="95" step="5" value="60"></div>
-        <div class="rsl"><label for="rWrap">Dialling and notes per call, by a person</label><output id="oWrap" for="rWrap">2 min</output><input type="range" id="rWrap" min="0" max="6" step="0.5" value="2"></div>
-        <label class="roi-echo">Echo cost per minute, from your quote (optional)<input type="number" id="rEcho" min="0" step="0.1" inputmode="decimal" placeholder="Leave empty to see gross figures"></label></div></details>
-      </form>
-      <div class="roi-out">
-        <p class="ro-k">Revenue kept on schedule each month</p>
-        <p class="ro-big" aria-live="polite"><b id="vRev">₹6.3 crore</b></p>
-        <div class="ro-grid">
-          <div><b id="vYear">₹22.4 lakh</b><small id="vYearL">team cost freed a year, before Echo’s cost</small></div>
-          <div><b id="vHrs">1,167</b><small>hours of calling a month</small></div>
-          <div><b id="vFte">7.5</b><small>people free for harder work</small></div>
-        </div>
-        <div class="ro-bars" aria-hidden="true">
-          <div><span>Team hours today</span><i><em id="bT"></em></i><b id="lT">1,667 h</b></div>
-          <div><span>Team hours with Echo</span><i><em id="bE"></em></i><b id="lE">500 h</b></div>
-        </div>
-        <details class="ro-nd"><summary>How it is worked out</summary><p class="ro-n">Revenue = calls × share Echo handles × share that reach an outcome × share that would slip × order value (optimistic: one saved order per outcome). Team cost uses call length plus dialling and notes, 6.5 hours a day, 24 days a month. FX, Sep 2026: 1 USD = ₹88, 1 AED = ₹24, 1 SGD = ₹68, 1 EUR = ₹103, 1 GBP = ₹118.</p></details>
-        <a class="btn pri" href="#pilot" data-open-pilot>Test these numbers in a pilot</a>
-      </div>
-    </div>
+    <div class="head"><div><p class="kick rv">ROI</p><h2 class="rv">ROI: orders followed up and hours saved.</h2></div><p class="lede rv">Estimate what one workflow is worth with your own numbers. A pilot then measures it against your baseline.</p></div>
+    <div class="roi-t rv"><div><p class="roi-t-k">What it estimates</p><ul><li>Order value that gets a timely follow-up each month</li><li>Calling hours taken off your team</li><li>Team time you can move to other work</li></ul></div><div class="roi-t-a"><a class="btn pri" href="roi/">Open the ROI calculator</a><p>Estimates from your own inputs, limited to practical ranges. Not a quote or a guarantee.</p></div></div>
   </div>
 </section>
 <section class="sec trusts" id="trust" data-sec><span id="security" class="anchor" aria-hidden="true"></span>
@@ -2743,7 +2721,7 @@ main>section:not(.intro):not(.scale):not(.topuc),footer{content-visibility:auto;
     <div class="fb"><a class="brand" href="#top" aria-label="Cognilix Echo"><img class="clx lt" src="cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="cognilix-white.png" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a><p>Enterprise Voice AI by Cognilix for the calls that move orders, deliveries and cash. Outcomes written into your ERP the same day.</p></div>
     <div><h4>Platform</h4><a href="#how">How it works</a><a href="#dev">Build</a><a href="#trust">Security & Compliance</a><a href="docs/developers/">Developer tools</a></div>
     <div><h4>Use cases</h4><a href="#use-cases">All use cases</a><a href="#topuc" data-demo="poacc">Post-PO acceptance</a><a href="#topuc" data-demo="dispatch">Delivery-date confirm</a><a href="#topuc" data-demo="quote">Quote reminder</a></div>
-    <div><h4>Resources</h4><a href="docs/">Documentation</a><a href="#roi">ROI Calculator</a><a href="#faq">Enterprise FAQ</a><a href="blog/">Insights & Blog</a></div>
+    <div><h4>Resources</h4><a href="docs/">Documentation</a><a href="roi/">ROI Calculator</a><a href="#faq">Enterprise FAQ</a><a href="blog/">Insights & Blog</a></div>
     <div><h4>Company</h4><a href="https://www.cognilix.com" target="_blank" rel="noopener">Cognilix ↗</a><a href="https://www.cognilix.com/contact-us" target="_blank" rel="noopener">Contact ↗</a><a href="https://www.cognilix.com/privacy-policy" target="_blank" rel="noopener">Privacy policy ↗</a><a href="legal/terms.html">Terms of service</a><a href="legal/acceptable-use.html">Acceptable use</a><a href="#pilot" data-open-pilot data-intent="security">Security pack (NDA)</a></div>
   </div>
   <div class="fbot"><span>Echo · A Cognilix platform · Made in India</span><span>© 2026 Cognilix</span></div>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROI calculator · Echo by Cognilix</title>
+<meta name="description" content="Estimate the order value that gets a timely follow-up and the calling hours Echo can take off your team. An illustrative estimate from your own inputs.">
+<link rel="canonical" href="https://theruka7.github.io/qoyal/roi/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Echo by Cognilix">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="ROI calculator · Echo by Cognilix">
+<meta property="og:description" content="Estimate the order value that gets a timely follow-up and the calling hours Echo can take off your team. An illustrative estimate from your own inputs.">
+<meta property="og:url" content="https://theruka7.github.io/qoyal/roi/">
+<meta property="og:image" content="https://theruka7.github.io/qoyal/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ROI calculator · Echo by Cognilix">
+<meta name="twitter:description" content="Estimate the order value that gets a timely follow-up and the calling hours Echo can take off your team. An illustrative estimate from your own inputs.">
+<meta name="twitter:image" content="https://theruka7.github.io/qoyal/og.png">
+<meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11100F" media="(prefers-color-scheme: dark)">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('echo-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="../assets/docs.css">
+<link rel="icon" type="image/png" href="../favicon.png">
+<script src="../assets/docs.js" defer></script>
+
+</head>
+<body class="b-body">
+<a class="skip" href="#content">Skip to content</a>
+<header class="nav">
+  <a class="brand" href="../" aria-label="Echo by Cognilix home"><img class="clx lt" src="../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../cognilix-white.png" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a>
+  <nav class="links" aria-label="Site"><a href="../">Website</a><a href="https://voice-ai-platform.cognilix.com/overview" target="_blank" rel="noopener">Dashboard <span aria-hidden="true">↗</span></a></nav>
+  <button class="d-search-b" type="button" data-search aria-label="Search the docs"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m10.5 10.5 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Search</span><kbd>Ctrl K</kbd></button>
+  <button class="d-theme" type="button" data-theme-toggle aria-label="Switch colour theme"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 1 0 0 13z" fill="currentColor"/><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
+  <a class="cta" href="../#pilot">Talk to sales</a>
+  <button class="d-menu-b" type="button" data-menu aria-controls="dSide" aria-expanded="false" aria-label="Open the menu"><span></span><span></span></button>
+</header>
+<main class="b-main b-post b-wide" id="content">
+<p class="crumb"><a href="../">Home</a> / ROI calculator</p>
+<h1>ROI calculator</h1>
+<p class="lede">Pick a workflow and adjust the sliders to match your operation. Every input is limited to a practical range, and the result is an estimate, not a quote or a promise.</p>
+<style>
+.roi2{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;margin:8px 0 28px}
+.roi2-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px}
+.roi2-pre{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.roi2-pre span{width:100%;font:600 11px var(--mono,monospace);letter-spacing:.08em;text-transform:uppercase;color:var(--text-3)}
+.roi2-pre button{font:500 13.5px var(--font);padding:7px 12px;border-radius:999px;border:1px solid var(--border);background:var(--bg-soft);color:var(--text-2);cursor:pointer}
+.roi2-pre button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.roi2-row{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:baseline;margin:0 0 16px}
+.roi2-row label{font:500 14px var(--font);color:var(--text-2)}
+.roi2-row output{font:650 15px var(--font);color:var(--text);font-variant-numeric:tabular-nums}
+.roi2-row input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--accent)}
+.roi2-row small{grid-column:1/-1;font:400 12px var(--font);color:var(--text-3)}
+.roi2-cur{display:flex;align-items:center;gap:10px;margin:0 0 18px;font:500 14px var(--font);color:var(--text-2)}
+.roi2-cur select{font:500 14px var(--font);padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg-soft);color:var(--text)}
+.roi2 details{border-top:1px solid var(--border);padding-top:14px;margin-top:6px}
+.roi2 summary{cursor:pointer;font:600 14px var(--font);color:var(--text);margin-bottom:14px}
+.roi2-out{position:sticky;top:calc(var(--hdr,60px) + 16px);align-self:start}
+.roi2-k{font:600 11px var(--mono,monospace);letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin:0 0 6px}
+.roi2-big{font:750 clamp(30px,4vw,44px)/1.05 var(--font);letter-spacing:-.02em;color:var(--accent-text);margin:0 0 4px;font-variant-numeric:tabular-nums}
+.roi2-sub{font:400 13.5px var(--font);color:var(--text-3);margin:0 0 18px}
+.roi2-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 18px}
+.roi2-grid div{background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;padding:12px}
+.roi2-grid b{display:block;font:700 20px var(--font);color:var(--text);font-variant-numeric:tabular-nums}
+.roi2-grid small{font:400 12px/1.35 var(--font);color:var(--text-3)}
+.roi2-bars{display:grid;gap:8px;margin:0 0 18px}
+.roi2-bars div{display:grid;grid-template-columns:140px 1fr 70px;gap:10px;align-items:center;font:500 12.5px var(--font);color:var(--text-2)}
+.roi2-bars i{display:block;height:8px;border-radius:4px;background:var(--bg-sub);overflow:hidden}
+.roi2-bars em{display:block;height:100%;background:var(--accent);border-radius:4px;transition:width .25s}
+.roi2-bars b{text-align:right;font-variant-numeric:tabular-nums}
+.roi2-note{font:400 12.5px/1.55 var(--font);color:var(--text-3);background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin:0 0 16px}
+.roi2-note b{color:var(--text-2)}
+.roi2-cta{display:inline-flex;align-items:center;height:40px;padding:0 18px;border-radius:10px;background:var(--accent);color:#fff;font:650 14.5px var(--font);text-decoration:none}
+@media (max-width:900px){.roi2{grid-template-columns:1fr}.roi2-out{position:static}.roi2-grid{grid-template-columns:1fr 1fr 1fr}.roi2-bars div{grid-template-columns:110px 1fr 60px}}
+@media (max-width:520px){.roi2-grid{grid-template-columns:1fr}}
+</style>
+
+<div class="roi2" id="roiCalc">
+<form class="roi2-card" id="roiF2" novalidate onsubmit="return false">
+  <label class="roi2-cur">Currency
+    <select id="rCur"><option value="INR">INR</option><option value="USD">USD</option><option value="AED">AED</option><option value="SAR">SAR</option><option value="SGD">SGD</option><option value="EUR">EUR</option><option value="GBP">GBP</option></select>
+  </label>
+  <div class="roi2-pre" role="group" aria-label="Start from a workflow"><span>Start from a workflow</span>
+    <button type="button" data-p="20000,3,70,60,50000,12,2" aria-pressed="true">Supplier follow-ups</button>
+    <button type="button" data-p="8000,2.5,65,60,200000,8,2" aria-pressed="false">Quote reminders</button>
+    <button type="button" data-p="15000,3,75,60,80000,8,2" aria-pressed="false">Invoice and payment</button>
+    <button type="button" data-p="30000,2,80,70,15000,4,1.5" aria-pressed="false">Order status</button>
+  </div>
+  <div class="roi2-row"><label for="rCalls">Calls a month</label><output id="oCalls"></output><input type="range" id="rCalls" min="0" max="1000" step="1"><small>1,000 to 1,00,000 calls</small></div>
+  <div class="roi2-row"><label for="rVal">Average order or invoice value</label><output id="oVal"></output><input type="range" id="rVal" min="0" max="1000" step="1"><small id="valRange"></small></div>
+  <div class="roi2-row"><label for="rRisk">Orders that slip without a timely follow-up</label><output id="oRisk"></output><input type="range" id="rRisk" min="2" max="20" step="1"><small>2% to 20%, from your own records</small></div>
+  <details>
+    <summary>Adjust assumptions</summary>
+    <div class="roi2-row"><label for="rShare">Calls Echo handles end to end</label><output id="oShare"></output><input type="range" id="rShare" min="30" max="85" step="5"></div>
+    <div class="roi2-row"><label for="rOut">Handled calls that reach an outcome</label><output id="oOut"></output><input type="range" id="rOut" min="30" max="85" step="5"></div>
+    <div class="roi2-row"><label for="rMin">Average call length</label><output id="oMin"></output><input type="range" id="rMin" min="1" max="8" step="0.5"></div>
+    <div class="roi2-row"><label for="rWrap">Dialling and notes per call, by a person</label><output id="oWrap"></output><input type="range" id="rWrap" min="0.5" max="5" step="0.5"></div>
+    <div class="roi2-row"><label for="rCost">Monthly cost of one calling agent</label><output id="oCost"></output><input type="range" id="rCost"><small id="costRange"></small></div>
+  </details>
+</form>
+
+<div class="roi2-card roi2-out" aria-live="polite">
+  <p class="roi2-k">Order value followed up on time, each month</p>
+  <p class="roi2-big" id="vRev">–</p>
+  <p class="roi2-sub">Value of orders at risk of slipping that get a completed follow-up call.</p>
+  <p class="roi2-note" id="capNote" hidden>At this call volume, order values are usually lower. The estimate is capped at a monthly order book of 500 crore rupees; talk to us for one built on your data.</p>
+  <div class="roi2-grid">
+    <div><b id="vHrs">–</b><small>calling hours a month taken off your team</small></div>
+    <div><b id="vFte">–</b><small>people's worth of time freed for other work</small></div>
+    <div><b id="vYear">–</b><small>team time value a year, before Echo's charges</small></div>
+  </div>
+  <div class="roi2-bars" aria-hidden="true">
+    <div><span>Team hours today</span><i><em id="bT" style="width:100%"></em></i><b id="lT">–</b></div>
+    <div><span>Team hours with Echo</span><i><em id="bE"></em></i><b id="lE">–</b></div>
+  </div>
+  <p class="roi2-note"><b>An estimate, not a quote or guarantee.</b> Figures come only from the numbers you choose and the stated assumptions. They exclude Echo's charges, implementation and telephony costs, and are not a forecast, an offer or financial advice. Actual results depend on your data, contacts, processes and the calling rules that apply to you. Nothing you enter leaves your browser.</p>
+  <a class="roi2-cta" href="../#pilot">Test these numbers in a pilot</a>
+</div>
+</div>
+
+<article class="d-prose"><h2 id="how-the-estimate-is-worked-out">How the estimate is worked out<a class="h-anchor" href="#how-the-estimate-is-worked-out" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><strong>Order value followed up on time</strong> = calls a month × share Echo handles × share that reach an outcome × share of orders that slip × average order value. It counts the value of at-risk orders that get a completed follow-up. It does not assume every one of them is saved.</li>
+<li><strong>Calling hours taken off your team</strong> = calls a month × share Echo handles × (call length + dialling and notes) ÷ 60.</li>
+<li><strong>People's worth of time</strong> = those hours ÷ (6.5 productive hours × 24 working days).</li>
+<li><strong>Team time value a year</strong> = people's worth of time × monthly cost of one calling agent × 12. This is time your team can move to other work. It is not a claim that anyone's job changes.</li>
+<li><strong>Inputs are limited to practical ranges</strong>, and the monthly order book being called (calls × order value) is capped at 500 crore rupees, so the calculator cannot show results that no real operation would see.</li>
+<li><strong>Currencies</strong> use fixed rates for illustration only (September 2026): 1 USD = ₹88, 1 AED = ₹24, 1 SAR = ₹23.5, 1 SGD = ₹68, 1 EUR = ₹103, 1 GBP = ₹118.</li>
+</ul>
+<p>A pilot replaces these assumptions with your own baseline. Use of this calculator is covered by the <a href="../legal/terms.html">Terms of Service</a>.</p></article>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var FX={INR:1,USD:88,AED:24,SAR:23.5,SGD:68,EUR:103,GBP:118};
+  /* agent cost in local money: [min,max,step,default] */
+  var KR={INR:[15000,60000,1000,25000],USD:[2000,6000,100,3500],AED:[4000,15000,500,8000],SAR:[4000,15000,500,8000],SGD:[2500,7000,100,3500],EUR:[2000,5500,100,3200],GBP:[1800,5000,100,2900]};
+  var CALLS=[1000,100000],VAL=[5000,2000000],BOOK=5e9; /* INR; BOOK caps calls x order value a month at 500 crore */
+  var rC=$('rCalls'),rV=$('rVal'),rR=$('rRisk'),rS=$('rShare'),rO=$('rOut'),rM=$('rMin'),rW=$('rWrap'),rK=$('rCost'),rCur=$('rCur');
+  var IN=new Intl.NumberFormat('en-IN');
+  function clamp(x,a,b){x=+x;if(!isFinite(x))x=a;return Math.min(b,Math.max(a,x))}
+  function logv(v,r){return r[0]*Math.pow(r[1]/r[0],clamp(v,0,1000)/1000)}
+  function tolog(n,r){return Math.round(Math.log(clamp(n,r[0],r[1])/r[0])/Math.log(r[1]/r[0])*1000)}
+  function nice(n){var p=Math.pow(10,Math.max(0,Math.floor(Math.log10(n))-1));return Math.round(n/p)*p}
+  function cur(){return FX[rCur.value]?rCur.value:'INR'}
+  function money(inr,compact){var c=cur(),v=Math.max(0,inr)/FX[c];
+    if(c==='INR'){if(v>=1e7)return '₹'+(v/1e7).toFixed(v>=1e9?0:1).replace(/\.0$/,'')+' crore';if(v>=1e5)return '₹'+(v/1e5).toFixed(1).replace(/\.0$/,'')+' lakh';return '₹'+IN.format(Math.round(v))}
+    return new Intl.NumberFormat('en',{style:'currency',currency:c,notation:compact&&v>=1e5?'compact':'standard',maximumFractionDigits:compact&&v>=1e5?1:0}).format(v)}
+  function setCost(keep){var r=KR[cur()];rK.min=r[0];rK.max=r[1];rK.step=r[2];rK.value=keep!=null?clamp(keep,r[0],r[1]):r[3];$('costRange').textContent=money(r[0]*FX[cur()])+' to '+money(r[1]*FX[cur()])}
+  function calc(){
+    var n=nice(logv(rC.value,CALLS)),v=nice(logv(rV.value,VAL)),risk=clamp(rR.value,2,20)/100,sh=clamp(rS.value,30,85)/100,out=clamp(rO.value,30,85)/100,
+        m=clamp(rM.value,1,8),w=clamp(rW.value,.5,5),cost=clamp(rK.value,+rK.min,+rK.max)*FX[cur()];
+    var book=Math.min(n*v,BOOK),capped=n*v>BOOK,teamH=n*(m+w)/60,freeH=teamH*sh,fte=freeH/(6.5*24),rev=book*sh*out*risk,yr=fte*cost*12;$('capNote').hidden=!capped;
+    $('oCalls').textContent=IN.format(n);$('oVal').textContent=money(v);$('oRisk').textContent=Math.round(risk*100)+'%';
+    $('oShare').textContent=Math.round(sh*100)+'%';$('oOut').textContent=Math.round(out*100)+'%';$('oMin').textContent=m+' min';$('oWrap').textContent=w+' min';
+    $('oCost').textContent=money(cost);$('valRange').textContent=money(VAL[0])+' to '+money(VAL[1]);
+    $('vRev').textContent=money(rev,true);$('vHrs').textContent=IN.format(Math.round(freeH));$('vFte').textContent=fte<0.1?'under 0.1':fte<10?(Math.round(fte*10)/10).toString():IN.format(Math.round(fte));$('vYear').textContent=money(yr,true);
+    $('lT').textContent=IN.format(Math.round(teamH))+' h';$('lE').textContent=IN.format(Math.round(teamH-freeH))+' h';$('bE').style.width=Math.max(4,(1-sh)*100)+'%';
+  }
+  var pre=[].slice.call(document.querySelectorAll('.roi2-pre button'));
+  function apply(b){var p=b.getAttribute('data-p').split(',').map(Number);rC.value=tolog(p[0],CALLS);rM.value=p[1];rS.value=p[2];rO.value=p[3];rV.value=tolog(p[4],VAL);rR.value=p[5];rW.value=p[6];
+    pre.forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});calc()}
+  pre.forEach(function(b){b.addEventListener('click',function(){apply(b)})});
+  [rC,rV,rR,rS,rO,rM,rW,rK].forEach(function(r){r.addEventListener('input',function(){pre.forEach(function(x){x.setAttribute('aria-pressed','false')});calc()})});
+  rCur.addEventListener('change',function(){setCost();calc()});
+  setCost();apply(pre[0]);
+})();
+</script>
+
+</main>
+<footer class="d-foot"><div class="d-foot-in"><div class="d-foot-b"><a class="brand" href="../" aria-label="Echo by Cognilix home"><img class="clx lt" src="../cognilix.png" alt="Cognilix" width="99" height="22"><img class="clx dk" src="../cognilix-white.png" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span><span class="wm">echo</span></a><p>Enterprise Voice AI by Cognilix for the calls that move orders, deliveries and cash.</p></div><div><h4>Product</h4><a href="../#use-cases">Use cases</a><a href="../#how-it-works">How it works</a><a href="../#security">Security</a><a href="./">ROI calculator</a></div><div><h4>Docs</h4><a href="../docs/">Platform guide</a><a href="../docs/developers/">Developers</a><a href="../docs/developers/changelog.html">Changelog</a></div><div><h4>Resources</h4><a href="../blog/">Blog</a><a href="../#faq">FAQ</a><a href="../#pilot">Talk to an expert</a></div><div><h4>Company</h4><a href="https://www.cognilix.com" rel="noopener" target="_blank">Cognilix</a><a href="https://www.cognilix.com/contact-us" rel="noopener" target="_blank">Contact</a><a href="https://www.cognilix.com/privacy-policy" rel="noopener" target="_blank">Privacy policy</a><a href="../legal/terms.html">Terms of service</a><a href="../legal/acceptable-use.html">Acceptable use</a></div></div><div class="d-foot-bot"><span>Echo · A Cognilix platform · Made in India</span><span>© 2026 Cognilix</span></div></footer>
+<div class="d-search" id="dSearch" role="dialog" aria-modal="true" aria-label="Search" hidden><div class="d-search-bg" data-search-close></div><div class="d-search-box"><input type="search" placeholder="Search docs and articles" aria-label="Search" autocomplete="off" spellcheck="false"><ul class="d-search-r" role="listbox"></ul><p class="d-search-f"><kbd>Enter</kbd> open <kbd>Esc</kbd> close</p></div></div>
+</body>
+</html>

@@ -25,7 +25,7 @@ footer:
         - {label: Use cases, href: "/#use-cases"}
         - {label: How it works, href: "/#how-it-works"}
         - {label: Security, href: "/#security"}
-        - {label: ROI calculator, href: "/#roi"}
+        - {label: ROI calculator, href: "/roi/"}
     - title: Docs
       links:
         - {label: Platform guide, href: "/docs/"}

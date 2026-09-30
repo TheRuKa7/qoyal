@@ -429,3 +429,7 @@ a.c-card b:after{content:" →";color:var(--text-3);font-weight:500}
 .d-theme,.d-menu-b{width:var(--hc)}
 .nav .cta{padding:0 16px;font-weight:650}
 @media (max-width:760px){.nav{--hc:34px;gap:8px}.brand .clx{height:18px}.wm{font-size:19px}}
+
+/* wide standalone pages (ROI calculator) */
+.b-main.b-wide{max-width:1180px}
+.b-wide .d-prose{max-width:780px}

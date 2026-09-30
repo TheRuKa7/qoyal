@@ -105,6 +105,8 @@ Sections that by their nature should continue (including data, confidentiality, 
 
 We will provide the Service with reasonable skill and care and substantially as described in our documentation. Apart from that, and to the extent the law allows, the Service is provided "as is" and we do not promise that it will be uninterrupted or error-free, or that AI output will always be accurate.
 
+Estimates, calculators (including the ROI calculator), examples and case figures on our website are illustrative. They depend on the inputs and assumptions shown, are not forecasts, offers or guarantees of results, and do not form part of any agreement unless an order form expressly includes them.
+
 ## 15. Indemnities
 
 - **We will defend you** against third-party claims that the Service, as we provide it, infringes their intellectual property, and pay the resulting damages and costs finally awarded or agreed in settlement. This does not apply to claims caused by your data, your prompts, your changes, or combinations we did not provide.

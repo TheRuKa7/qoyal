@@ -741,6 +741,39 @@ def build_legal():
         SITEMAP.append((out_rel, str(meta.get('updated', TODAY))))
 
 
+# ------------------------------------------------------------------ standalone pages (content/pages/<name>.html -> <name>/index.html)
+def build_pages():
+    pdir = os.path.join(CONTENT, 'pages')
+    if not os.path.isdir(pdir):
+        return
+    names = [f for f in sorted(os.listdir(pdir)) if f.endswith('.html') and not f.startswith('_')]
+    ALL_OUTPUTS.update('%s/index.html' % f[:-5] for f in names)
+    for f in names:
+        src = 'content/pages/' + f
+        meta, body = frontmatter(rd(os.path.join(ROOT, src)), src)
+        name = f[:-5]
+        out_rel, out_dir = '%s/index.html' % name, name
+        def md(m):   # only the marked part is Markdown; the rest is kept as written
+            return Page(src, out_rel, meta, m.group(1), DOC_LINKS).html
+        html_body = re.sub(r'<!--md-->(.*?)<!--/md-->', lambda m: '<article class="d-prose">%s</article>' % md(m), body, flags=re.S)
+        out(out_rel, head('%s · %s' % (meta['title'], SITE['site_name']), meta.get('description', ''), '%s/' % name, out_dir, meta, 'website', [], []) + '''
+<body class="b-body">
+<a class="skip" href="#content">Skip to content</a>
+{hdr}
+<main class="b-main b-post b-wide" id="content">
+<p class="crumb"><a href="../">Home</a> / {t}</p>
+<h1>{t}</h1>
+<p class="lede">{l}</p>
+{body}
+</main>
+{foot}
+{search}
+</body>
+</html>
+'''.format(hdr=header(out_dir, '/%s/' % name), t=E(meta['title']), l=E(meta.get('lede', '')), body=html_body, foot=footer(out_dir), search=search_dialog()))
+        SITEMAP.append(('%s/' % name, str(meta.get('updated', TODAY))))
+
+
 # ------------------------------------------------------------------ components gallery (internal)
 def build_gallery():
     items = ''
@@ -794,6 +827,7 @@ def run():
     build_docs()
     build_blog()
     build_legal()
+    build_pages()
     build_gallery()
     build_previews()
     out('search.json', json.dumps(SEARCH, ensure_ascii=False, separators=(',', ':')))
