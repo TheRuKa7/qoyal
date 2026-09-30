@@ -92,6 +92,8 @@
     if (state && state.id) el.tabLive.hidden = !liveReady(state.id);
   }
   function open(id, trigger, mode) {
+    /* no recording and no live call for this flow yet: go straight to the interactive preview */
+    if (mode === 'rec' && !flowOf(id).rec && !(active && flowOf(id).live) && window.echoOpenTry && d.getElementById('try')) { window.echoOpenTry(id, trigger); return true; }
     var card = d.querySelector('li[data-demo="' + id + '"]');
     if (!card) return false;
     state.id = id; state.trigger = trigger; state.card = card;
