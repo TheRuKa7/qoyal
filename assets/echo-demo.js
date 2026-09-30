@@ -212,7 +212,7 @@
         this.stop(); src = path;
         box.classList.toggle('none', !path);
         btn.disabled = !path;
-        if (path) { audio.src = path; note.textContent = 'Sample call · ' + (el.lang.textContent || '') + ' · no transcript, just listen'; time.textContent = '0:00'; }
+        if (path) { audio.src = path; note.textContent = 'Sample call' + (el.lang.textContent ? ' · ' + el.lang.textContent : ''); time.textContent = '0:00'; }
         else { audio.removeAttribute('src'); note.textContent = 'The sample recording for this flow is on its way. Talk to an expert to hear the agent on a call today.'; time.textContent = ''; }
         var pv = $('.dm-preview', box);   /* the older scripted preview, offered only while a recording is missing */
         pv.hidden = !!path || !d.getElementById('try');
