@@ -2354,6 +2354,7 @@ nav.links a[aria-current]:after{transform:scaleX(1)}
 .ucc-p{transition:opacity .2s,transform .22s cubic-bezier(.2,.7,.2,1)}
 .rv{transform:translateY(14px)}
 .badge .tip{white-space:nowrap}
+.sc-src{font:500 11px var(--mono);color:var(--mute);margin:10px 0 0;opacity:.8}
 .fcols{grid-template-columns:1.5fr repeat(4,1fr);gap:28px}.fcols .fb p{margin-bottom:0}
 @media (max-width:1000px){.fcols{grid-template-columns:repeat(4,1fr)}.fcols .fb{grid-column:1/-1}}
 @media (max-width:760px){.fcols{grid-template-columns:1fr 1fr;gap:24px 16px}}
@@ -2451,7 +2452,7 @@ main>section:not(.intro):not(.scale):not(.topuc),footer{content-visibility:auto;
 <section class="scale" aria-labelledby="scH">
   <div class="wrap sc-w">
     <div class="sc-top"><p class="sc-k"><img class="clx lt" src="cognilix.png" alt="Cognilix" width="81" height="18" loading="lazy"><img class="clx dk" src="cognilix-white.png" alt="" aria-hidden="true" width="81" height="18" loading="lazy"><span>Why Echo works</span></p><h2 class="rv" id="scH">Built on 10+ years of B2B commerce.</h2><p class="sc-l">Cognilix is the intelligence layer powering B2B commerce. Echo carries that depth into every call: it knows POs, lead times, invoices and plant realities, so it asks the right question the first time.</p></div>
-    <ul class="sc-n"><li><b>$40B+</b><span>transactions</span></li><li><b>45K+</b><span>suppliers</span></li><li><b>1.5M+</b><span>SKUs</span></li><li><b>80+</b><span>countries</span></li><li><b>10+ yrs</b><span>of B2B domain expertise</span></li></ul>
+    <ul class="sc-n"><li><b>$40B+</b><span>transactions</span></li><li><b>45K+</b><span>suppliers</span></li><li><b>1.5M+</b><span>SKUs</span></li><li><b>80+</b><span>countries</span></li><li><b>10+ yrs</b><span>of B2B domain expertise</span></li></ul><p class="sc-src">Figures: Moglix and Cognilix, 2026.</p>
     <div class="sc-lang"><p>Speaks Indian and international languages</p><ul aria-label="Languages"><li>Hindi</li><li>English</li><li>Hinglish</li><li>Bengali</li><li>Tamil</li><li>Telugu</li><li>Marathi</li><li>Gujarati</li><li>Kannada</li><li>Malayalam</li><li>Punjabi</li><li>Odia</li><li>Assamese</li><li>Urdu</li><li class="g">Arabic</li><li class="g">Spanish</li><li class="g">French</li><li class="g">German</li><li class="g">Portuguese</li><li class="g">Italian</li><li class="g">Dutch</li><li class="g">Indonesian</li><li class="g">Malay</li><li class="g">Japanese</li><li class="g">Mandarin</li></ul></div>
   </div>
 </section>
@@ -2745,11 +2746,13 @@ main>section:not(.intro):not(.scale):not(.topuc),footer{content-visibility:auto;
 /* ============ CONFIG: wire these before going live ============ */
 var ECHO_CONFIG = {
   PILOT_ENDPOINT: '',   /* POST JSON payload here, e.g. CRM form webhook URL */
-  PILOT_EMAIL: 'sales@cognilix.com', /* fallback: opens visitor mail client addressed to enterprise sales */
+  PILOT_EMAIL: 'ai@moglix.com', /* fallback: opens visitor mail client addressed to enterprise sales */
   DASHBOARD_URL: 'https://voice-ai-platform.cognilix.com/overview', /* the Echo dashboard */
   AUDIO_DIR: 'audio/',  /* folder holding real recordings */
   AUDIO_FILES: []       /* ['dispatch','noisy','wismo'] -> audio/dispatch.mp3 */
 };
+/* map a form to the Cognilix contact-us payload */
+function toLead(d){var m=['Echo request'+(d.intent?' ('+d.intent+')':''),d.usecase&&('Workflow: '+d.usecase),d.call_volume&&('Monthly calls: '+d.call_volume),d.team&&('Team: '+d.team),d.description,d.message].filter(Boolean).join('\n');return{name:d.name,email:d.email,phoneNo:d.phone||'',source:'cognilix',company:d.company,enterpriseSolution:'Echo Voice AI',message:m,pageUrl:location.href}}
 (function(){
 'use strict';
 var d=document,root=d.documentElement;
@@ -3051,9 +3054,8 @@ pf.addEventListener('submit',function(e){e.preventDefault();pmsg.className='msg'
   var f=new FormData(pf),data={};f.forEach(function(v,k){data[k]=String(v).trim()});
   if(!data.name||!data.company||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email||'')){pmsg.className='msg err';pmsg.textContent='Please add your name, company and a valid work email.';return}
   track('pilot_submit',{usecase:data.usecase,call_volume:data.call_volume});
-  try{var stored=JSON.parse(localStorage.getItem('echo_pilot_leads')||'[]');stored.push(Object.assign({},data,{timestamp:new Date().toISOString()}));localStorage.setItem('echo_pilot_leads',JSON.stringify(stored))}catch(err){}
-  var ok=function(){pmsg.className='msg ok';pmsg.textContent='Thanks, '+(data.name.split(' ')[0]||data.name)+'. Your enterprise pilot request for '+data.company+' has been received. Our team will contact you within 4 hours.';pf.querySelector('button[type=submit]').disabled=true};
-  if(ECHO_CONFIG.PILOT_ENDPOINT){pmsg.textContent='Sending…';fetch(ECHO_CONFIG.PILOT_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).then(function(r){if(!r.ok)throw 0;ok()}).catch(function(){pmsg.className='msg err';pmsg.textContent='That didn’t go through. Please try again in a minute.'})}
+  var ok=function(){pmsg.className='msg ok';pmsg.textContent='Thanks, '+(data.name.split(' ')[0]||data.name)+'. Your enterprise pilot request for '+data.company+' has been received. Our team will get back to you shortly.';pf.querySelector('button[type=submit]').disabled=true};
+  if(ECHO_CONFIG.PILOT_ENDPOINT){pmsg.textContent='Sending…';fetch(ECHO_CONFIG.PILOT_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(toLead(data))}).then(function(r){if(!r.ok)throw 0;ok()}).catch(function(){pmsg.className='msg err';pmsg.textContent='That didn’t go through. Please try again, or email ai@moglix.com.'})}
   else if(ECHO_CONFIG.PILOT_EMAIL){
     var body='ENTERPRISE PILOT REQUEST\n-----------------------------------------\nName: '+data.name+'\nCompany: '+data.company+'\nWork Email: '+data.email+'\nPhone / WhatsApp: '+(data.phone||'N/A')+'\nPrimary Workflow: '+(data.usecase||'N/A')+'\nMonthly Call Volume: '+(data.call_volume||'N/A')+'\n';
     location.href='mailto:'+ECHO_CONFIG.PILOT_EMAIL+'?subject='+encodeURIComponent('Echo Enterprise Pilot Request: '+data.company)+'&body='+encodeURIComponent(body);
@@ -3067,7 +3069,7 @@ var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
 function sendLead(data,msg,btn,okText){msg.className='msg';
   if(!data.name||!data.company||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email||'')){msg.className='msg err';msg.textContent='Please add your name, company and a work email.';return}
   var ok=function(){msg.className='msg ok';msg.textContent=okText;if(btn)btn.disabled=true};
-  if(ECHO_CONFIG.PILOT_ENDPOINT){msg.textContent='Sending…';fetch(ECHO_CONFIG.PILOT_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).then(function(r){if(!r.ok)throw 0;ok()}).catch(function(){msg.className='msg err';msg.textContent='That didn’t go through. Please try again in a minute.'})}
+  if(ECHO_CONFIG.PILOT_ENDPOINT){msg.textContent='Sending…';fetch(ECHO_CONFIG.PILOT_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(toLead(data))}).then(function(r){if(!r.ok)throw 0;ok()}).catch(function(){msg.className='msg err';msg.textContent='That didn’t go through. Please try again, or email ai@moglix.com.'})}
   else if(ECHO_CONFIG.PILOT_EMAIL){location.href='mailto:'+ECHO_CONFIG.PILOT_EMAIL+'?subject='+encodeURIComponent('Echo demo: '+data.company)+'&body='+encodeURIComponent(Object.keys(data).map(function(k){return k+': '+data[k]}).join('\n'));ok()}
   else{msg.className='msg err';msg.textContent='This preview isn’t connected to an inbox yet, so nothing was sent.'}}
 
