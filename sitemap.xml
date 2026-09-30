@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://theruka7.github.io/qoyal/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://theruka7.github.io/qoyal/</loc><lastmod>2026-09-30</lastmod></url>
   <url><loc>https://theruka7.github.io/qoyal/docs/</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://theruka7.github.io/qoyal/docs/quickstart.html</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://theruka7.github.io/qoyal/docs/concepts.html</loc><lastmod>2026-09-25</lastmod></url>
@@ -38,5 +38,7 @@
   <url><loc>https://theruka7.github.io/qoyal/docs/developers/errors.html</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://theruka7.github.io/qoyal/docs/developers/limits.html</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://theruka7.github.io/qoyal/docs/developers/changelog.html</loc><lastmod>2026-09-29</lastmod></url>
-  <url><loc>https://theruka7.github.io/qoyal/blog/</loc><lastmod>2026-09-29</lastmod></url>
+  <url><loc>https://theruka7.github.io/qoyal/blog/</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://theruka7.github.io/qoyal/legal/acceptable-use.html</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://theruka7.github.io/qoyal/legal/terms.html</loc><lastmod>2026-09-30</lastmod></url>
 </urlset>

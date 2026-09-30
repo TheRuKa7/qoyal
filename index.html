@@ -2355,6 +2355,13 @@ nav.links a[aria-current]:after{transform:scaleX(1)}
 .rv{transform:translateY(14px)}
 .badge .tip{white-space:nowrap}
 .sc-src{font:500 11px var(--mono);color:var(--mute);margin:10px 0 0;opacity:.8}
+/* header: one spec shared with docs, blog and legal (assets/docs.css) */
+body>header.nav{height:60px;gap:12px;padding:0 clamp(16px,3vw,44px)}
+body>header.nav .brand{margin-right:auto}body>header.nav .links{margin-left:0}body>header.nav .brand .clx{height:22px;width:auto}body>header.nav .wm{font-size:22px;line-height:1}
+body>header.nav .thm{width:36px;height:36px;border-radius:10px;flex:none}
+body>header.nav .dash{height:36px;padding:0 12px;border-radius:10px;flex:none}
+body>header.nav .cta{height:36px;display:inline-flex;align-items:center;padding:0 16px;border-radius:10px;flex:none;transform:none!important}
+@media (max-width:760px){body>header.nav{gap:6px}body>header.nav .brand .clx{height:18px}body>header.nav .wm{font-size:19px}body>header.nav :is(.thm,.dash,.cta){height:34px}body>header.nav .thm{width:34px}body>header.nav .dash{width:34px;justify-content:center;padding:0}body>header.nav .cta{padding:0 11px;font-size:12.5px}}
 .fcols{grid-template-columns:1.5fr repeat(4,1fr);gap:28px}.fcols .fb p{margin-bottom:0}
 @media (max-width:1000px){.fcols{grid-template-columns:repeat(4,1fr)}.fcols .fb{grid-column:1/-1}}
 @media (max-width:760px){.fcols{grid-template-columns:1fr 1fr;gap:24px 16px}}
@@ -2591,13 +2598,6 @@ main>section:not(.intro):not(.scale):not(.topuc),footer{content-visibility:auto;
 <section class="sec trusts" id="trust" data-sec><span id="security" class="anchor" aria-hidden="true"></span>
   <div class="wrap">
     <div class="head"><div><p class="kick rv">Security</p><h2 class="rv">Security and compliance, in every market.</h2></div><p class="lede rv">Runs every day on the supply chain of Moglix, one of India’s largest industrial buyers.</p></div>
-    <div class="stats">
-      <div><b data-to="83" data-suf="%">83%</b><span>fewer calls made by people</span></div>
-      <div><b data-to="64" data-suf="K+">64K+</b><span>records cleaned every day</span></div>
-      <div><b data-to="8" data-suf="K+ hrs">8K+ hrs</b><span>of talk time a month</span></div>
-      <div><b data-to="240" data-suf="K+">240K+</b><span>calls a month, and scaling</span></div>
-    </div>
-    <p class="note rv">Source: Moglix operations on Echo, as reported in September 2026.</p>
     <div class="mk rv">
       <p class="mk-t">Compliance rule packs by country</p>
       <ul><li><b>India</b><span>TCCCPR and DND, DPDP Act, calling hours</span></li><li><b>UAE and Saudi Arabia</b><span>TDRA and CST telemarketing rules, PDPL, calling hours</span></li><li><b>Singapore</b><span>DNC Registry, PDPA, consent</span></li><li><b>United States</b><span>TCPA, National DNC, state calling hours, AI disclosure</span></li><li><b>EU and UK</b><span>GDPR and UK GDPR, TPS, consent, EU AI Act disclosure</span></li><li><b>Other markets</b><span>Rule pack built for your country during onboarding</span></li></ul>
@@ -2737,7 +2737,7 @@ main>section:not(.intro):not(.scale):not(.topuc),footer{content-visibility:auto;
     <div><h4>Platform</h4><a href="#how">How it works</a><a href="#dev">Build</a><a href="#trust">Security & Compliance</a><a href="docs/developers/">Developer tools</a></div>
     <div><h4>Use cases</h4><a href="#use-cases">All use cases</a><a href="#topuc" data-demo="poacc">Post-PO acceptance</a><a href="#topuc" data-demo="dispatch">Delivery-date confirm</a><a href="#topuc" data-demo="quote">Quote reminder</a></div>
     <div><h4>Resources</h4><a href="docs/">Documentation</a><a href="#roi">ROI Calculator</a><a href="#faq">Enterprise FAQ</a><a href="blog/">Insights & Blog</a></div>
-    <div><h4>Company</h4><a href="https://www.cognilix.com" target="_blank" rel="noopener">Cognilix ↗</a><a href="https://www.cognilix.com/contact-us" target="_blank" rel="noopener">Contact ↗</a><a href="https://www.cognilix.com/privacy-policy" target="_blank" rel="noopener">Privacy policy ↗</a><a href="#pilot" data-open-pilot data-intent="security">Security pack (NDA)</a></div>
+    <div><h4>Company</h4><a href="https://www.cognilix.com" target="_blank" rel="noopener">Cognilix ↗</a><a href="https://www.cognilix.com/contact-us" target="_blank" rel="noopener">Contact ↗</a><a href="https://www.cognilix.com/privacy-policy" target="_blank" rel="noopener">Privacy policy ↗</a><a href="legal/terms.html">Terms of service</a><a href="legal/acceptable-use.html">Acceptable use</a><a href="#pilot" data-open-pilot data-intent="security">Security pack (NDA)</a></div>
   </div>
   <div class="fbot"><span>Echo · A Cognilix platform · Made in India</span><span>© 2026 Cognilix</span></div>
 </footer>
@@ -2745,7 +2745,7 @@ main>section:not(.intro):not(.scale):not(.topuc),footer{content-visibility:auto;
 <script>
 /* ============ CONFIG: wire these before going live ============ */
 var ECHO_CONFIG = {
-  PILOT_ENDPOINT: '',   /* POST JSON payload here, e.g. CRM form webhook URL */
+  PILOT_ENDPOINT: 'https://global-internal.zoglix.com/contact-us',   /* POST JSON payload here, e.g. CRM form webhook URL */
   PILOT_EMAIL: 'ai@moglix.com', /* fallback: opens visitor mail client addressed to enterprise sales */
   DASHBOARD_URL: 'https://voice-ai-platform.cognilix.com/overview', /* the Echo dashboard */
   AUDIO_DIR: 'audio/',  /* folder holding real recordings */

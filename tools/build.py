@@ -702,6 +702,45 @@ def write_post(cfg, authors, src, out_rel, meta, pg, related):
     out(out_rel, page)
 
 
+# ------------------------------------------------------------------ legal pages (content/legal/*.md -> legal/<name>.html)
+def build_legal():
+    ldir = os.path.join(CONTENT, 'legal')
+    if not os.path.isdir(ldir):
+        return
+    names = [f for f in sorted(os.listdir(ldir)) if f.endswith('.md') and not f.startswith('_')]
+    ALL_OUTPUTS.update('legal/%s.html' % f[:-3] for f in names)   # pages link to each other
+    for f in names:
+        src = 'content/legal/' + f
+        meta, body = frontmatter(rd(os.path.join(ROOT, src)), src)
+        out_rel = 'legal/%s.html' % f[:-3]
+        pg = Page(src, out_rel, meta, body, DOC_LINKS)
+        toc = ''.join('<a class="l%d" href="#%s">%s</a>' % (lvl, hid, E(t)) for lvl, hid, t in pg.toc if lvl == 2)
+        out(out_rel, head('%s · %s' % (meta['title'], SITE['site_name']), meta.get('description', ''), out_rel, 'legal', meta, 'website', [], []) + '''
+<body class="b-body">
+<a class="skip" href="#content">Skip to content</a>
+{hdr}
+<main class="b-main b-post" id="content">
+<p class="crumb"><a href="../">Home</a> / Legal</p>
+<p class="kick">Legal</p>
+<h1>{t}</h1>
+<p class="lede">{d}</p>
+<p class="d-meta"><span>Last updated <time datetime="{iso}">{date}</time></span></p>
+<div class="b-art">
+<article class="d-prose">
+{body}
+</article>
+<aside class="d-toc b-toc" aria-label="On this page">{toc}</aside>
+</div>
+</main>
+{foot}
+{search}
+</body>
+</html>
+'''.format(hdr=header('legal', ''), t=E(meta['title']), d=E(meta.get('description', '')), iso=meta.get('updated'), date=fmt_date(meta.get('updated')),
+           body=pg.html, toc='<b>On this page</b>' + toc if toc else '', foot=footer('legal'), search=search_dialog()))
+        SITEMAP.append((out_rel, str(meta.get('updated', TODAY))))
+
+
 # ------------------------------------------------------------------ components gallery (internal)
 def build_gallery():
     items = ''
@@ -754,6 +793,7 @@ def run():
     SITEMAP.append(('', TODAY))
     build_docs()
     build_blog()
+    build_legal()
     build_gallery()
     build_previews()
     out('search.json', json.dumps(SEARCH, ensure_ascii=False, separators=(',', ':')))

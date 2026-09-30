@@ -41,3 +41,5 @@ footer:
         - {label: Cognilix, href: "https://www.cognilix.com"}
         - {label: Contact, href: "https://www.cognilix.com/contact-us"}
         - {label: Privacy policy, href: "https://www.cognilix.com/privacy-policy"}
+        - {label: Terms of service, href: "/legal/terms.html"}
+        - {label: Acceptable use, href: "/legal/acceptable-use.html"}

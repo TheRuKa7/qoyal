@@ -417,3 +417,15 @@ a.c-card b:after{content:" →";color:var(--text-3);font-weight:500}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media print{.nav,.d-side,.d-toc,.d-pager,.d-foot,.d-copy{display:none!important}.d-shell{display:block}}
+
+/* header: one spec shared with the homepage (height 60, gutter 16-44px, controls 36px / 34px on phones, radius 10px) */
+.nav{--hc:36px;gap:12px;padding:0 clamp(16px,3vw,44px)}
+.brand .clx{height:22px}
+.wm{font-size:22px}
+.nav .links{gap:4px;align-items:center}
+.nav .links a{display:inline-flex;align-items:center;gap:4px;height:var(--hc);padding:0 12px;border-radius:10px;line-height:1}
+.nav .links a span{font-size:12px;line-height:1}
+.d-search-b,.d-theme,.d-menu-b,.cta{height:var(--hc);border-radius:10px;flex:none}
+.d-theme,.d-menu-b{width:var(--hc)}
+.nav .cta{padding:0 16px;font-weight:650}
+@media (max-width:760px){.nav{--hc:34px;gap:8px}.brand .clx{height:18px}.wm{font-size:19px}}
