@@ -27,17 +27,17 @@ Pick one of four presets instead of choosing models. Each one names the model th
 
 | Preset | For | Listens | Thinks | Speaks | Turn taking | Price per call minute |
 | --- | --- | --- | --- | --- | --- | --- |
-| **Balanced** (default) | Most calls, natural Indian voice | Sarvam Saaras V4 | Claude Haiku 4.5 | Sarvam Bulbul v3 | LiveKit turn detector | about Rs 2.77 ($0.032) |
-| **High intelligence** | Disputes, negotiation, many orders on one call | Sarvam Saaras V4 | Claude Sonnet 5 | Cartesia Sonic | LiveKit turn detector | about Rs 3.99 ($0.045) |
-| **Ultra fast** | The lowest delay | ElevenLabs Scribe v2 Realtime | gpt-oss-120b on Groq | Murf Falcon | Krisp Turn v3 | about Rs 1.17 ($0.013) |
-| **Cost saver** | High volume, simple calls | Soniox | GPT-6 Luna | Murf Falcon | The model's own | about Rs 0.73 ($0.008) |
+| **Balanced** (default) | Most calls, natural Indian voice | Sarvam Saaras V4 | GPT-6 Luna | Sarvam Bulbul v3 | LiveKit turn detector | about Rs 1.76 ($0.020) |
+| **High intelligence** | Disputes, negotiation, many orders on one call | Sarvam Saaras V4 | Claude Sonnet 5 | ElevenLabs Eleven v4 | LiveKit turn detector | about Rs 5.43 ($0.062) |
+| **Ultra fast** | The lowest delay | ElevenLabs Scribe v2 Realtime | Mercury Voice | Murf Falcon 2 | Krisp Turn v3 | about Rs 1.23 ($0.014) |
+| **Cost saver** | High volume, simple calls | Soniox | GPT-6 Luna | Murf Falcon 2 | The model's own | about Rs 0.73 ($0.008) |
 
-Prices are model costs from each vendor's public price page (checked 1 October 2026), before telephony.
+Prices are model costs before telephony, from vendor price pages and public price listings (checked October 2026).
 
 ![Voice details: each stage, its backup, turn taking, delay and cost](assets/voice/agent-voice-details.webp "Details shows each stage, its backup, turn taking, delay and cost")
 
 <Note>
-Bulbul v3 ranked first for listener preference in a blind test on 8 kHz phone audio across 11 Indian languages, and Saaras V4 had the lowest average English word error rate across seven benchmark sets. Delays are being measured in pilot calls.
+Figures checked 5 October 2026. ElevenLabs Eleven v4 leads the Artificial Analysis voice arena; Bulbul v3 ranked first for listener preference on phone audio across 11 Indian languages in Sarvam's study; GPT-6 Luna scores 38 on the Artificial Analysis Intelligence Index; Mercury Voice answers in about 320 ms. Delays for each preset are being measured in pilot calls.
 </Note>
 
 Choose **Custom** to pick each model yourself. Conversation settings (who speaks first, how long a pause ends a turn, interruptions, small acknowledgements, noise filtering, voicemail, silence and length limits) are under **Advanced**.
