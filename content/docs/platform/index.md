@@ -5,10 +5,16 @@ sidebarTitle: Overview
 keywords:
 - voice agent platform guide
 - no-code voice AI
-updated: '2026-09-29'
+updated: '2026-10-05'
 ---
 
 Echo turns a call your team makes every day into an agent that makes it for you, and writes back what each call found out. This guide covers everything in the Echo console.
+
+![Echo overview: dialled, reached and completed calls with the call status bar](assets/index/overview.webp "The overview: how many calls were dialled, reached and completed, and why the rest were not")
+
+<Tip title="Try it without an account">
+The [clickable demo](https://theruka7.github.io/echo_prototype/) runs the whole console in your browser on sample data. Sign in with any email and password.
+</Tip>
 
 ## From idea to results
 
@@ -37,6 +43,7 @@ Read every response, recording and transcript, and download them for your system
 <Card title="Call console" href="testing" eyebrow="Test">Live test calls with transcript and captured values.</Card>
 <Card title="Upload and map contacts" href="contacts" eyebrow="Campaigns">Templates, uploads and column mapping.</Card>
 <Card title="Overview and call log" href="monitoring" eyebrow="Monitor">Every call, with filters and downloads.</Card>
+<Card title="Call statuses" href="statuses" eyebrow="Monitor">The exact rule behind every call and campaign status.</Card>
 <Card title="Call analysis" href="analysis" eyebrow="Monitor">Summary, priority and action items per call.</Card>
 <Card title="Team and permissions" href="team" eyebrow="Workspace">Roles, groups and agent access.</Card>
 </CardGroup>

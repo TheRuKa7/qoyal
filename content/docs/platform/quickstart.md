@@ -5,10 +5,12 @@ sidebarTitle: Quickstart
 keywords:
 - voice campaign quickstart
 - first outbound call
-updated: '2026-09-29'
+updated: '2026-10-05'
 ---
 
 ## Before you start
+
+![Echo sign in page](assets/quickstart/login.webp "Sign in with your work email")
 
 - A workspace with your team in it. Your account team creates it and invites you during onboarding, before this guide starts.
 - A **calling line** for your agent. This is the number and route Echo dials from, set up with you during onboarding.

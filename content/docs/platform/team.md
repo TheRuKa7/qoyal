@@ -5,7 +5,7 @@ description: Decide who can use your workspace, what they can change, and which 
 keywords:
 - roles and access
 - team permissions
-updated: '2026-09-29'
+updated: '2026-10-05'
 ---
 
 ## Workspaces
@@ -13,6 +13,8 @@ updated: '2026-09-29'
 Your organisation has its own workspace. If you belong to more than one, you choose which to work in after signing in. Sessions expire for safety; when they do, Echo returns you to sign in.
 
 ## Roles
+
+![Team page with members, roles and groups](assets/team/team.webp "Members, roles, agent access and groups")
 
 | Role | Can do | Sees |
 | --- | --- | --- |

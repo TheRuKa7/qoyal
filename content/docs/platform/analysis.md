@@ -4,10 +4,12 @@ description: Turn any call into a summary, a priority and a list of next steps.
 keywords:
 - call analysis
 - call summaries
-updated: '2026-09-25'
+updated: '2026-10-05'
 ---
 
 ## The analysis page
+
+![Call page with player, transcript and answers](assets/analysis/call.webp "One call on one screen: player, transcript you can click to play, answers, dials and call data")
 
 Open any call from the call log or a campaign to see everything known about it on one page.
 

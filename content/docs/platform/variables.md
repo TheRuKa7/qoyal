@@ -4,10 +4,12 @@ description: Decide what the agent knows before the call and what it must report
 keywords:
 - input and output variables
 - structured call outcomes
-updated: '2026-09-29'
+updated: '2026-10-05'
 ---
 
 ## Input variables
+
+![Call data tab listing input columns](assets/variables/agent-call-data.webp "Call data: the columns each call uses, with samples for test calls")
 
 Each input is one column of your sheet and one token in the prompt.
 
@@ -30,6 +32,8 @@ Untick **Share on call** for values the agent needs but must never say, such as 
 Choose one input as the **primary id column**, usually the reference your team already uses: order id, PO number, loan number. It identifies each row in results and becomes the first column in exports.
 
 ## Output variables
+
+![Answers tab listing what the agent reports](assets/variables/agent-answers.webp "Answers: what the agent must report after every call, including one answer per row")
 
 Outputs are the fields the agent must report before it hangs up. They become the columns of your results.
 

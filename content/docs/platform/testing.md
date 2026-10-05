@@ -4,10 +4,12 @@ description: Talk to any agent before it talks to anyone else. Test from your br
 keywords:
 - test a voice agent
 - call console
-updated: '2026-09-25'
+updated: '2026-10-05'
 ---
 
 ## Browser or phone
+
+![Call console ready to place a test call](assets/testing/console.webp "The call console: pick an agent, fill the call data, call your browser or a phone")
 
 | Channel | Use it for |
 | --- | --- |

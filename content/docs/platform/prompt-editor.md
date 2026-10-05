@@ -4,7 +4,7 @@ description: Write an agent’s instructions in sections, use tokens for values 
 keywords:
 - voice agent prompt editor
 - prompt sections
-updated: '2026-09-29'
+updated: '2026-10-05'
 ---
 
 An agent’s prompt is a list of **sections**, joined in order. Splitting it this way keeps long prompts easy to read and lets you switch one part off while you test.
@@ -14,6 +14,8 @@ An agent’s prompt is a list of **sections**, joined in order. Splitting it thi
 - Open quantity: <u>{{open_qty}}</u></div></div><div class="ui-sec gen"><div class="ui-sh">Outcome reporting<em>auto · outputs · Refresh</em></div><div class="ui-code">Before ending the call, report: dispatch_date, qty_ready, status, next_step.</div></div><div class="ui-row"><span class="ui-btn">+ Add section</span><span class="ui-btn p">Save prompt</span><span class="ui-btn">Preview full prompt</span></div></div><figcaption>The prompt is built from sections. Dashed sections are written for you from the agent’s variables.</figcaption></figure>
 
 ## Sections
+
+![Prompt editor in Blocks view](assets/prompt-editor/agent-prompt.webp "Blocks view: one card per section; switch to Full to edit the whole prompt as one document")
 
 Each section has a name and a body, and a small toolbar:
 

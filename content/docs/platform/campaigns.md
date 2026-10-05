@@ -5,12 +5,16 @@ sidebarTitle: Create and run
 keywords:
 - outbound calling campaign
 - run a voice campaign
-updated: '2026-09-29'
+updated: '2026-10-05'
 ---
 
 A **campaign** runs one agent against one list. Every call, outcome and recording stays tied to the campaign that produced it.
 
 ## Create a campaign
+
+![New campaign popup: agent, template, sheet](assets/campaigns/new-campaign.webp "New campaign in one popup: pick the agent, download its template, drop the sheet, start")
+
+![Campaigns list with progress by call status](assets/campaigns/campaigns.webp "Every campaign with its progress, run time and status")
 
 Go to **Campaigns → New campaign**.
 
@@ -36,6 +40,8 @@ One campaign takes one list. To call another list, create another campaign, so e
 
 ## Statuses
 
+Every call status and campaign status, and exactly how Echo decides it, is on [Call statuses](statuses).
+
 | Campaign status | Meaning |
 | --- | --- |
 | Ready | The list is stored and ready to dial. |
@@ -53,6 +59,8 @@ One campaign takes one list. To call another list, create another campaign, so e
 | Input validation failed | Not called; hover for the reason. |
 
 ## Follow the results
+
+![Campaign page with status chips and every call](assets/campaigns/campaign-detail.webp "The campaign page: status chips, progress, every call and its result")
 
 While it runs, the page refreshes on its own. See [Results, recordings and exports](results.md) for the contacts view, the responses table and every download.
 

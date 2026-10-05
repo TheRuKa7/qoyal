@@ -5,10 +5,12 @@ description: See how the whole operation is doing, then drill into any call.
 keywords:
 - call log
 - voice AI dashboard
-updated: '2026-09-29'
+updated: '2026-10-05'
 ---
 
 ## The funnel
+
+![Overview funnel and call status bar](assets/monitoring/overview.webp "Dialled, reached, completed, then every call status with its count")
 
 **Overview** opens with a funnel that reads top to bottom. Each tile carries a note that says what it counted, so a percentage is never shown without its base.
 

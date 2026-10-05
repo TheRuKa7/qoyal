@@ -14,6 +14,7 @@
 - [Upload and map contacts](https://theruka7.github.io/qoyal/docs/contacts.html): Download the template for an agent, fill it, upload it, and confirm which column feeds each input before any call goes out.
 - [Results, recordings and exports](https://theruka7.github.io/qoyal/docs/results.html): Follow a running campaign, open each contact’s outputs, transcript and recording, compare responses in one table, and download everything.
 - [Overview and call log](https://theruka7.github.io/qoyal/docs/monitoring.html): See how the whole operation is doing, then drill into any call.
+- [Call statuses](https://theruka7.github.io/qoyal/docs/statuses.html): Every call and campaign status in Echo, exactly how each is decided from the telephony result, and when Echo tries again.
 - [Call analysis](https://theruka7.github.io/qoyal/docs/analysis.html): Turn any call into a summary, a priority and a list of next steps.
 - [Team and permissions](https://theruka7.github.io/qoyal/docs/team.html): Decide who can use your workspace, what they can change, and which campaigns they can see.
 - [Workspace settings](https://theruka7.github.io/qoyal/docs/settings.html): See who you are signed in as, switch organisation, and check that Echo and the services it depends on are up.

@@ -5,10 +5,14 @@ sidebarTitle: Results and exports
 keywords:
 - call results export
 - call recordings download
-updated: '2026-09-29'
+updated: '2026-10-05'
 ---
 
 ## Watch it run
+
+![Campaign page while calls run](assets/results/campaign-detail.webp "Counts move as calls finish; open any row for its recording, transcript and answers")
+
+![Call page](assets/results/call.webp "Each call: recording, transcript, answers and every dial")
 
 While a campaign is running, the page refreshes on its own. The tiles show contacts, captured results, output variables and status. The **Contacts** tab lists every number with its status; open one to see its captured outputs, transcript and recording.
 

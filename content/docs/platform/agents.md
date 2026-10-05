@@ -5,12 +5,14 @@ sidebarTitle: Create and manage
 keywords:
 - create a voice agent
 - manage voice agents
-updated: '2026-09-29'
+updated: '2026-10-05'
 ---
 
 An **agent** is one kind of call: who it speaks for, what it must find out, and how it reports back. Each agent has a prompt, a voice, input variables and output variables. Campaigns run an agent against a list.
 
 ## The agents list
+
+![Agents list with status, calling flow and last update](assets/agents/agents.webp "Every agent in the workspace, with its calling flow and sync state")
 
 **Agents** shows every agent in your workspace, with how many inputs and outputs it has and which input is its primary id. Click a row to open the agent.
 
@@ -34,6 +36,12 @@ Open the new agent and fill in its [prompt](prompt-editor.md) and [variables](va
 </Steps>
 
 ## What is inside an agent
+
+![Agent page with the ready to run checklist and prompt sections](assets/agents/agent-prompt.webp "The agent page: a one line ready to run checklist, then Prompt, Call data, Answers and Settings")
+
+### Ready to run checklist <Badge tone="soon">Coming soon</Badge>
+
+One line under the agent's name ticks off what a campaign needs: a prompt, at least one call data column, at least one answer, and a calling flow that is turned on (plus an answer for each row when calls cover several rows). A missing item is amber; click it to open the tab that fixes it. When everything is ticked it reads **Ready to run**.
 
 | Tab | What you set | Page |
 | --- | --- | --- |

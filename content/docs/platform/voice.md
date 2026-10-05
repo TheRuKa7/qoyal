@@ -4,7 +4,7 @@ description: Choose the voice an agent speaks with, the calling line its calls u
 keywords:
 - voice agent voice
 - calling line
-updated: '2026-09-29'
+updated: '2026-10-05'
 ---
 
 These settings sit on the agent’s **Voice** and **Settings** areas. Campaigns that use the agent inherit all of them.
@@ -18,6 +18,29 @@ Voice changes apply as soon as you pick them, with no save needed, and do not di
 <Tip>
 Test a new voice in the [call console](testing.md) with a real number before a campaign uses it. Names, numbers and local terms are where voices differ most.
 </Tip>
+
+## Voice presets <Badge tone="soon">Coming soon</Badge>
+
+Pick one of four presets instead of choosing models. Each one names the model that listens, the model that thinks and the model that speaks, with a backup for each that takes over within 2.5 seconds if the main one fails.
+
+![Voice section: four presets with a price per minute](assets/voice/agent-voice.webp "Four presets, each with a price per call minute, and the voice picker")
+
+| Preset | For | Listens | Thinks | Speaks | Turn taking | Price per call minute |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Balanced** (default) | Most calls, natural Indian voice | Sarvam Saaras V4 | Claude Haiku 4.5 | Sarvam Bulbul v3 | LiveKit turn detector | about Rs 2.77 ($0.032) |
+| **High intelligence** | Disputes, negotiation, many orders on one call | Sarvam Saaras V4 | Claude Sonnet 5 | Cartesia Sonic | LiveKit turn detector | about Rs 3.99 ($0.045) |
+| **Ultra fast** | The lowest delay | ElevenLabs Scribe v2 Realtime | gpt-oss-120b on Groq | Murf Falcon | Krisp Turn v3 | about Rs 1.17 ($0.013) |
+| **Cost saver** | High volume, simple calls | Soniox | GPT-6 Luna | Murf Falcon | The model's own | about Rs 0.73 ($0.008) |
+
+Prices are model costs from each vendor's public price page (checked 1 October 2026), before telephony.
+
+![Voice details: each stage, its backup, turn taking, delay and cost](assets/voice/agent-voice-details.webp "Details shows each stage, its backup, turn taking, delay and cost")
+
+<Note>
+Bulbul v3 ranked first for listener preference in a blind test on 8 kHz phone audio across 11 Indian languages, and Saaras V4 had the lowest average English word error rate across seven benchmark sets. Delays are being measured in pilot calls.
+</Note>
+
+Choose **Custom** to pick each model yourself. Conversation settings (who speaks first, how long a pause ends a turn, interruptions, small acknowledgements, noise filtering, voicemail, silence and length limits) are under **Advanced**.
 
 ## Language
 

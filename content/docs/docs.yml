@@ -21,7 +21,7 @@ tabs:
       - group: Campaigns
         pages: [campaigns, contacts, results]
       - group: Monitor
-        pages: [monitoring, analysis]
+        pages: [monitoring, statuses, analysis]
       - group: Workspace
         pages: [team, settings]
       - group: Automation
