@@ -436,3 +436,5 @@ a.c-card b:after{content:" →";color:var(--text-3);font-weight:500}
 
 .vnk{display:inline-block;font-weight:800;font-size:18px;line-height:20px;letter-spacing:-.025em;color:var(--ink,currentColor);white-space:nowrap}
 .vnk svg{height:22px;width:auto;display:block}
+/* Echo e mark next to the wordmark */
+.brand .emk{display:inline-flex;flex:none}.brand .emk svg,.nav .brand .emk svg{display:block!important;width:24px;height:24px;color:inherit}.brand .emk+.wm{margin-left:-2px}@media(max-width:480px){.brand .emk{display:none}}

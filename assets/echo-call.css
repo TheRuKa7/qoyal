@@ -1,0 +1,56 @@
+/* Echo calls you: number, notice, code, call. Uses the site's own tokens; falls back to Vanik colours. */
+.ec{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:16px}
+.ec[hidden],.ec [hidden]{display:none!important}
+.ec-bg{position:absolute;inset:0;background:rgba(12,13,13,.55);backdrop-filter:blur(4px);opacity:0;transition:opacity .2s}
+.ec.on .ec-bg{opacity:1}
+.ec-box{position:relative;width:min(440px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:var(--paper,#fafaf8);color:var(--ink,#0c0d0d);border:1px solid var(--line,#e2e2dc);border-radius:20px;padding:22px 22px 16px;box-shadow:0 30px 80px -30px rgba(0,0,0,.45);transform:translateY(12px) scale(.98);opacity:0;transition:transform .28s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.ec.on .ec-box{transform:none;opacity:1}
+.ec-x{position:absolute;right:12px;top:10px;width:32px;height:32px;border:0;background:transparent;color:inherit;font-size:22px;line-height:1;border-radius:8px;cursor:pointer}
+.ec-x:hover{background:rgba(127,127,127,.12)}
+.ec-head{display:flex;gap:14px;align-items:center;margin-bottom:14px;padding-right:28px}
+.ec-head .ec-mark{width:52px;height:52px;flex:none;overflow:visible}
+.ec-k{margin:0;font:500 11px var(--mono,ui-monospace,monospace);letter-spacing:.14em;text-transform:uppercase;color:#047857}
+.ec-head h2{margin:2px 0 0;font:700 21px/1.15 var(--grot,system-ui);letter-spacing:-.02em}
+.ec-sub{margin:4px 0 0;font-size:13.5px;color:var(--mute,#5c5f59)}
+.ec-flows{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+.ec-flow{border:1px solid var(--line,#ddd);background:transparent;color:inherit;border-radius:999px;padding:6px 11px;font:500 13px var(--grot,system-ui);cursor:pointer}
+.ec-flow[aria-checked=true]{border-color:#047857;background:rgba(4,120,87,.1);color:#047857}
+.ec-step{display:grid;gap:10px}
+.ec-l{font:600 13px var(--grot,system-ui)}
+.ec-phone{display:flex;align-items:center;border:1.5px solid var(--line,#ccc);border-radius:12px;overflow:hidden;background:var(--paper,#fff)}
+.ec-phone:focus-within,.ec-otp:focus{border-color:#047857;box-shadow:0 0 0 3px rgba(4,120,87,.15)}
+.ec-cc{padding:0 10px 0 14px;font:600 16px var(--mono,monospace);color:var(--mute,#666)}
+.ec-phone input,.ec-otp{flex:1;min-width:0;border:0;background:transparent;color:inherit;font:600 18px var(--mono,monospace);letter-spacing:.04em;padding:12px 12px 12px 0;outline:0}
+.ec-otp{border:1.5px solid var(--line,#ccc);border-radius:12px;padding:12px;text-align:center;letter-spacing:.5em;font-size:22px}
+.ec-note{margin:2px 0 0;padding:12px 14px 12px 32px;border-radius:12px;background:rgba(4,120,87,.07);font-size:13.5px;line-height:1.45;display:grid;gap:4px}
+.ec-note li::marker{color:#047857}
+.ec-more{margin:0;font-size:13px}.ec-more a{color:#047857;font-weight:600}.ec-more span{color:var(--mute,#666)}
+.ec-go{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:0;border-radius:12px;background:#047857;color:#fff;font:700 15px var(--grot,system-ui);padding:13px 16px;cursor:pointer;text-decoration:none}
+.ec-go:hover{background:#065f46}.ec-go:disabled{opacity:.6;cursor:progress}
+.ec-go.busy::after{content:'';width:14px;height:14px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:ecSpin .8s linear infinite}
+.ec-fine{margin:0;font-size:12px;color:var(--mute,#666);line-height:1.4}
+.ec-row{display:flex;justify-content:space-between;margin:0}
+.ec-link{border:0;background:transparent;color:#047857;font:600 13px var(--grot,system-ui);padding:4px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.ec-link:disabled{color:var(--mute,#888);text-decoration:none;cursor:default}
+.ec-calling{justify-items:center;text-align:center;padding:6px 0 4px}
+.ec-live{width:132px;height:132px}.ec-live .ec-mark{width:100%;height:100%;overflow:visible}
+.ec-g{fill:none;stroke:#10b981;stroke-width:3;stroke-linecap:round;opacity:0;transform-box:view-box;transform-origin:35px 35px}
+.ec-live.dialling .ec-g2,.ec-live.ringing .ec-g1,.ec-live.ringing .ec-g2,.ec-live.in_progress .ec-g1,.ec-live.in_progress .ec-g2{animation:ecRip 1.2s cubic-bezier(.2,.8,.2,1) infinite}
+.ec-live.ringing .ec-g1,.ec-live.in_progress .ec-g1{animation-delay:.6s}
+.ec-live.ringing{animation:ecRing .9s ease-in-out infinite}
+.ec-state{margin:6px 0 0;font:700 19px var(--grot,system-ui)}
+.ec-time{margin:0;font:500 13px var(--mono,monospace);color:var(--mute,#666);min-height:18px}
+.ec-end{border:1.5px solid #b42318;color:#b42318;background:transparent;border-radius:12px;padding:10px 16px;font:700 14px var(--grot,system-ui);cursor:pointer;margin-top:4px}
+.ec-end:hover{background:rgba(180,35,24,.08)}
+#ecDone h3{margin:0;font:700 20px var(--grot,system-ui)}
+.ec-acts{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.ec-err{margin:10px 0 0;padding:9px 12px;border-radius:10px;background:rgba(180,35,24,.08);color:#b42318;font-size:13px}
+.ec-preview{margin:10px 0 0;font:500 12px var(--mono,monospace);color:#92400e;background:rgba(245,158,11,.12);padding:6px 10px;border-radius:8px}
+.ec-alt{margin:12px 0 0;text-align:center;border-top:1px solid var(--line,#e5e5e5);padding-top:10px}
+.ec-alt .ec-link{color:var(--mute,#666)}
+@keyframes ecRip{0%{opacity:0;transform:scale(.92)}25%{opacity:.55}100%{opacity:0;transform:scale(1.2)}}
+@keyframes ecRing{0%,100%{transform:rotate(0)}20%{transform:rotate(-4deg)}40%{transform:rotate(4deg)}60%{transform:rotate(-2deg)}}
+@keyframes ecSpin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.ec-box,.ec-bg{transition:none}.ec-g,.ec-live,.ec-go.busy::after{animation:none!important}}
+[data-theme=dark] .ec-box{background:#151816;color:#f1f2ee;border-color:#2a2e2b}
+@media(prefers-color-scheme:dark){html:not([data-theme=light]) .ec-box{background:#151816;color:#f1f2ee;border-color:#2a2e2b}}
