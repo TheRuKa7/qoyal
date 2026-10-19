@@ -8,7 +8,7 @@
   --bg:#FFFFFF;--bg-soft:#F8F7F5;--bg-sub:#F1EFEB;--surface:#FFFFFF;
   --border:#E7E4DE;--border-strong:#D5D1C9;
   --text:#17140F;--text-2:#3F3A34;--text-3:#6A645C;
-  --accent:#D62834;--accent-text:#B21E29;--accent-soft:#FCEDEE;--accent-line:#F3C5C9;
+  --accent:#047857;--accent-text:#065F46;--accent-soft:#E7F5EF;--accent-line:#B7E4CF;
   --ok:#157347;--ok-soft:#EAF6EF;--ok-line:#BFE3CE;
   --warn:#9A5B06;--warn-soft:#FDF4E5;--warn-line:#F1D6A6;
   --info:#1E5BB8;--info-soft:#EDF3FD;--info-line:#C5D8F6;
@@ -22,7 +22,7 @@
   --bg:#0E0D0C;--bg-soft:#141311;--bg-sub:#1B1917;--surface:#161412;
   --border:#2A2724;--border-strong:#3A3631;
   --text:#F3F0EB;--text-2:#CDC7BE;--text-3:#9C958B;
-  --accent:#F0444F;--accent-text:#FF858C;--accent-soft:rgba(240,68,79,.12);--accent-line:rgba(240,68,79,.35);
+  --accent:#10B981;--accent-text:#6EE7B7;--accent-soft:rgba(16,185,129,.12);--accent-line:rgba(16,185,129,.35);
   --ok:#5AC993;--ok-soft:rgba(90,201,147,.1);--ok-line:rgba(90,201,147,.3);
   --warn:#E8A948;--warn-soft:rgba(232,169,72,.1);--warn-line:rgba(232,169,72,.3);
   --info:#76A9F7;--info-soft:rgba(118,169,247,.1);--info-line:rgba(118,169,247,.3);
@@ -34,7 +34,7 @@
   --bg:#0E0D0C;--bg-soft:#141311;--bg-sub:#1B1917;--surface:#161412;
   --border:#2A2724;--border-strong:#3A3631;
   --text:#F3F0EB;--text-2:#CDC7BE;--text-3:#9C958B;
-  --accent:#F0444F;--accent-text:#FF858C;--accent-soft:rgba(240,68,79,.12);--accent-line:rgba(240,68,79,.35);
+  --accent:#10B981;--accent-text:#6EE7B7;--accent-soft:rgba(16,185,129,.12);--accent-line:rgba(16,185,129,.35);
   --ok:#5AC993;--ok-soft:rgba(90,201,147,.1);--ok-line:rgba(90,201,147,.3);
   --warn:#E8A948;--warn-soft:rgba(232,169,72,.1);--warn-line:rgba(232,169,72,.3);
   --info:#76A9F7;--info-soft:rgba(118,169,247,.1);--info-line:rgba(118,169,247,.3);
@@ -433,3 +433,6 @@ a.c-card b:after{content:" →";color:var(--text-3);font-weight:500}
 /* wide standalone pages (ROI calculator) */
 .b-main.b-wide{max-width:1180px}
 .b-wide .d-prose{max-width:780px}
+
+.vnk{display:inline-block;font-weight:800;font-size:18px;line-height:20px;letter-spacing:-.025em;color:var(--ink,currentColor);white-space:nowrap}
+.vnk svg{height:22px;width:auto;display:block}

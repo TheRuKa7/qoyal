@@ -1,4 +1,4 @@
-# Echo by Cognilix
+# Echo by Vanik
 > Enterprise Voice AI for B2B operations. Echo calls suppliers and customers in Indian and international languages, confirms POs, delivery dates, quotes and payments, and sends each outcome back to your systems.
 
 ## Platform guide

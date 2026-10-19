@@ -359,8 +359,8 @@ def head(title, desc, canon_rel, out_dir, meta, kind, extra_ld, keywords):
 
 
 def brand(out_dir):
-    return ('<a class="brand" href="{h}" aria-label="{n} home"><img class="clx lt" src="{a}" alt="Cognilix" width="99" height="22">'
-            '<img class="clx dk" src="{b}" alt="" aria-hidden="true" width="99" height="22"><span class="bdiv" aria-hidden="true"></span>'
+    return ('<a class="brand" href="{h}" aria-label="{n} home"><span class="vnk"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 122" role="img" aria-label="Vanik Edge"><rect x="2" y="6" width="110" height="110" rx="22" fill="#121212"/><rect x="21" y="38" width="13" height="50" rx="6.5" fill="#F2F2EE"/><rect x="43" y="34" width="13" height="58" rx="6.5" fill="#F2F2EE"/><rect x="65" y="24" width="13" height="72" rx="6.5" fill="#2EAD4B"/><rect x="87" y="38" width="13" height="50" rx="6.5" fill="#F2F2EE"/><g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter"><path d="M152 14 L188 72 L224 14"/><path d="M236 72 L272 14 L308 72"/><path d="M324 72 V14 L374 72 V14"/><path d="M396 14 V72"/><path d="M420 14 V72 M420 46 L466 14 M436 35 L470 72"/></g><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M343 90 H324 V116 H343 M324 103 H339"/><path d="M364 90 H372 A13 13 0 0 1 372 116 H364 Z"/><path d="M426 95 A13 13 0 1 0 427 112 V104 H417"/><path d="M466 90 H447 V116 H466 M447 103 H462"/></g></svg></span>'
+            '<span class="bdiv" aria-hidden="true"></span>'
             '<span class="wm">echo</span></a>').format(h=relpath('', out_dir), n=E(SITE['site_name']),
                                                      a=relpath('cognilix.png', out_dir), b=relpath('cognilix-white.png', out_dir))
 

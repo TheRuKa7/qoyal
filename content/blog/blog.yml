@@ -15,7 +15,7 @@ categories:
 
 # Authors: the key goes in a post's frontmatter (author: echo-team).
 authors:
-  echo-team: {name: Echo team at Cognilix}
+  echo-team: {name: Echo team at Vanik}
 
 empty:
   title: First articles are on the way.

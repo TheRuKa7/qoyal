@@ -3,7 +3,7 @@
 # Add a badge to one entry:   - {page: automation, badge: New}
 # A .md file that is not listed here is not built (the build warns you).
 
-keywords: [Echo, Cognilix, enterprise voice AI, voice agents, Indian languages, multilingual voice AI]   # added to every docs page
+keywords: [Echo, Vanik, enterprise voice AI, voice agents, Indian languages, multilingual voice AI]   # added to every docs page
 
 tabs:
   - label: Platform guide

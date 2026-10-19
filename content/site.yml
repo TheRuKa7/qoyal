@@ -1,9 +1,9 @@
 # Site-wide settings used by every generated page (docs and blog).
 # Links that start with / are relative to the site root, so moving to a company domain
 # only needs base_url changed here and in index.html.
-site_name: Echo by Cognilix
-org: Cognilix
-org_url: https://www.cognilix.com
+site_name: Echo by Vanik
+org: Vanik
+org_url: https://vanikedge.ai
 base_url: https://theruka7.github.io/qoyal/
 locale: en_IN
 default_image: og.png
@@ -16,9 +16,9 @@ nav:
 cta: {label: Talk to sales, href: "/#pilot"}
 
 footer:
-  blurb: Enterprise Voice AI by Cognilix for the calls that move orders, deliveries and cash.
-  note: Echo · A Cognilix platform · Made in India
-  copyright: © 2026 Cognilix
+  blurb: Enterprise Voice AI by Vanik for the calls that move orders, deliveries and cash.
+  note: Echo · A Vanik product · Made in India
+  copyright: © 2026 Vanik Edge
   columns:
     - title: Product
       links:
@@ -38,8 +38,8 @@ footer:
         - {label: Talk to an expert, href: "/#pilot"}
     - title: Company
       links:
-        - {label: Cognilix, href: "https://www.cognilix.com"}
-        - {label: Contact, href: "https://www.cognilix.com/contact-us"}
-        - {label: Privacy policy, href: "https://www.cognilix.com/privacy-policy"}
+        - {label: Vanik, href: "https://vanikedge.ai"}
+        - {label: Contact, href: "https://vanikedge.ai/contact-us"}
+        - {label: Privacy policy, href: "https://vanikedge.ai/privacy-policy"}
         - {label: Terms of service, href: "/legal/terms.html"}
         - {label: Acceptable use, href: "/legal/acceptable-use.html"}

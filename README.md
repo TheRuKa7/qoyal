@@ -1,6 +1,6 @@
 # Echo
 
-Landing site, docs and blog for Echo, the enterprise Voice AI platform from Cognilix.
+Landing site, docs and blog for Echo, the enterprise Voice AI platform from Vanik.
 
 Live: https://theruka7.github.io/qoyal/
 

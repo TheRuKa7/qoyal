@@ -54,4 +54,4 @@ Developer tools are <Badge tone="soon">Coming soon</Badge>: the **Reverb** comma
 
 ## Getting help
 
-Your account team sets up your workspace, calling lines and first agent with you, and is your first contact for questions. Before a pilot, [talk to an expert](/#pilot) or use the [Cognilix contact page](https://www.cognilix.com/contact-us).
+Your account team sets up your workspace, calling lines and first agent with you, and is your first contact for questions. Before a pilot, [talk to an expert](/#pilot) or use the [Vanik contact page](https://vanikedge.ai/contact-us).
