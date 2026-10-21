@@ -2610,6 +2610,8 @@ main{--glass:rgba(255,255,255,.86)}[data-theme=dark] main{--glass:rgba(32,30,27,
 .lc-live:after,.dm-tabs .dot:after{content:"";position:absolute;inset:0;border-radius:50%;background:currentColor;color:var(--red);opacity:.5;animation:livePulse 1.8s ease-out infinite;will-change:transform,opacity}
 @keyframes livePulse{0%{transform:scale(1);opacity:.5}70%,100%{transform:scale(2.4);opacity:0}}
 @media (prefers-reduced-motion:reduce){.lc-live:after,.dm-tabs .dot:after{animation:none;opacity:0}}
+
+[data-theme=dark] .ph-t small,[data-theme=dark] .rc-f span{color:#BDB6AC!important}
 </style>
 </head>
 <body>
@@ -2637,7 +2639,7 @@ main{--glass:rgba(255,255,255,.86)}[data-theme=dark] main{--glass:rgba(32,30,27,
 </svg>
 
 <div class="loader" aria-hidden="true"><small>Dialling · हेलो?</small></div>
-<button class="badge" id="badge" type="button" aria-label="Hear a sample call"><span class="disc"></span><span class="rot"><svg class="ring" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="bp" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#bp" textLength="280" lengthAdjust="spacing">HELLO? · हाँ जी · BOLO · हेलो हेलो · GO AHEAD ·</textPath></text></svg></span><span class="core"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="24" r="7" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round"><path d="M23 13.6A12 12 0 0 1 23 34.4" opacity=".72"/><path d="M28.5 7.6A20 20 0 0 1 28.5 40.4" opacity=".4"/></g></svg></span><span class="tip">Hear a sample call</span></button>
+<button class="badge" id="badge" type="button"><span class="disc"></span><span class="rot"><svg class="ring" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="bp" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#bp" textLength="280" lengthAdjust="spacing">HELLO? · हाँ जी · BOLO · हेलो हेलो · GO AHEAD ·</textPath></text></svg></span><span class="core"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="24" r="7" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round"><path d="M23 13.6A12 12 0 0 1 23 34.4" opacity=".72"/><path d="M28.5 7.6A20 20 0 0 1 28.5 40.4" opacity=".4"/></g></svg></span><span class="tip">Hear a sample call</span></button>
 <div class="grain" aria-hidden="true"></div>
 
 <header class="nav">
