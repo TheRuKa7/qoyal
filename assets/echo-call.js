@@ -65,7 +65,7 @@
   try { var saved = JSON.parse(sessionStorage.getItem('echo-call') || '{}'); if (saved.exp > Date.now()) S = saved; } catch (e) {}
   function keep() { try { sessionStorage.setItem('echo-call', JSON.stringify(S)); } catch (e) {} }
   function forget() { S = { token: '', phone: '', exp: 0 }; try { sessionStorage.removeItem('echo-call'); } catch (e) {} }
-  function masked(p) { return '+91 ' + p.slice(0, 2) + '••• ••' + p.slice(-3); }
+  function masked(p) { return p.slice(0, 4) + ' ••• ' + p.slice(-3); }
 
   /* ---------- the dialog ---------- */
   var MARK = '<svg class="ec-mark" viewBox="-16 -16 96 96" aria-hidden="true"><path class="ec-g ec-g1" d="M-4.4 57.75A45.5 45.5 0 0 1 46.78 -8.95"/><path class="ec-g ec-g2" d="M2.53 53.75A37.5 37.5 0 0 1 44.71 -1.22"/>' +
@@ -81,7 +81,7 @@
     /* step 1: number and notice */
     '<form class="ec-step" id="ecNum" novalidate>' +
     '<label class="ec-l" for="ecPhone">Your mobile number</label>' +
-    '<div class="ec-phone"><span class="ec-cc">+91</span><input id="ecPhone" inputmode="numeric" autocomplete="tel-national" maxlength="10" placeholder="98765 43210" aria-describedby="ecNote" required></div>' +
+    '<div class="ec-phone"><input id="ecPhone" inputmode="tel" autocomplete="tel" maxlength="17" placeholder="+1 415 555 0132" aria-describedby="ecNote" required></div>' +
     '<ul class="ec-note" id="ecNote"><li><b>One call, now.</b> echo calls this number once, for about a minute.</li><li><b>Nothing is recorded.</b> No audio and no transcript are kept.</li>' +
     '<li><b>Used for this call only.</b> No sales calls, messages or lists. The number is deleted within 24 hours.</li></ul>' +
     '<p class="ec-more"><a href="' + POLICY + '" target="_blank" rel="noopener">How we handle your number</a> <span>· one page, plain words</span></p>' +
@@ -156,13 +156,13 @@
   d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
 
   /* step 1 -> 2 */
-  $('#ecPhone', box).addEventListener('input', function (e) { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10); });
+  $('#ecPhone', box).addEventListener('input', function (e) { e.target.value = e.target.value.replace(/[^\d+ ]/g, '').slice(0, 17); });
   $('#ecNum', box).addEventListener('submit', function (e) {
     e.preventDefault();
-    var p = $('#ecPhone', box).value;
-    if (!/^[6-9]\d{9}$/.test(p)) { err('Enter a 10 digit Indian mobile number.'); return; }
+    var p = $('#ecPhone', box).value.replace(/\s/g, '');
+    if (!/^\+[1-9]\d{7,14}$/.test(p)) { err('Enter your number with the country code, for example +1 415 555 0132.'); return; }
     busy(e.target, true); err('');
-    api.post('/otp', { phone: '+91' + p, flow: st.flow && st.flow.id, consent: { version: CONSENT_VERSION, at: new Date().toISOString() } }).then(function (r) {
+    api.post('/otp', { phone: p, flow: st.flow && st.flow.id, consent: { version: CONSENT_VERSION, at: new Date().toISOString() } }).then(function (r) {
       st.req = r.request_id; S.phone = p; $('#ecTo', box).textContent = masked(p);
       show('ecCode'); $('#ecOtp', box).value = ''; $('#ecOtp', box).focus(); countdown(r.resend_after || 30);
       track('otp_sent', { flow: st.flow && st.flow.id });
