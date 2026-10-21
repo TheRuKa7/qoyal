@@ -350,11 +350,11 @@ def head(title, desc, canon_rel, out_dir, meta, kind, extra_ld, keywords):
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..850&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="{css}">
-<link rel="icon" type="image/png" href="{fav}">
+<link rel="icon" type="image/svg+xml" href="{favs}?v=2"><link rel="icon" type="image/png" sizes="192x192" href="{fav}?v=2"><link rel="apple-touch-icon" href="{fapple}?v=2">
 {alt}<script src="{js}" defer></script>
 {ld}
 </head>'''.format(t=E(title), d=E(desc), c=E(BASE + canon_rel), r=robots, k=kind, sn=E(SITE['site_name']), loc=SITE.get('locale', 'en_IN'),
-                  img=E(img), css=css, js=js, fav=relpath('favicon.png', out_dir), ld=ld,
+                  img=E(img), css=css, js=js, fav=relpath('favicon.png', out_dir), favs=relpath('favicon.svg', out_dir), fapple=relpath('apple-touch-icon.png', out_dir), ld=ld,
                   kw='', alt='')
 
 
