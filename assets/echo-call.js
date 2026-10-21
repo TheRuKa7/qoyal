@@ -1,5 +1,5 @@
-/* Echo calls you: the website's "Try it" and the floating Echo badge ask for a mobile number,
- * show what happens to it in plain words, confirm it with a one-time code, then Echo phones the
+/* echo calls you: the website's "Try it" and the floating echo badge ask for a mobile number,
+ * show what happens to it in plain words, confirm it with a one-time code, then echo phones the
  * person for about a minute.
  *
  * Settings, in the page before this file loads:
@@ -76,13 +76,13 @@
   box.innerHTML =
     '<div class="ec-bg" data-ec-close></div><div class="ec-box">' +
     '<button class="ec-x" type="button" data-ec-close aria-label="Close">×</button>' +
-    '<div class="ec-head">' + MARK + '<div><p class="ec-k" id="ecK">Echo calls you</p><h2 id="ecTitle">Get a call from Echo</h2><p class="ec-sub" id="ecSub"></p></div></div>' +
+    '<div class="ec-head">' + MARK + '<div><p class="ec-k" id="ecK">echo calls you</p><h2 id="ecTitle">Get a call from echo</h2><p class="ec-sub" id="ecSub"></p></div></div>' +
     '<div class="ec-flows" id="ecFlows" role="radiogroup" aria-label="Which call"></div>' +
     /* step 1: number and notice */
     '<form class="ec-step" id="ecNum" novalidate>' +
     '<label class="ec-l" for="ecPhone">Your mobile number</label>' +
     '<div class="ec-phone"><span class="ec-cc">+91</span><input id="ecPhone" inputmode="numeric" autocomplete="tel-national" maxlength="10" placeholder="98765 43210" aria-describedby="ecNote" required></div>' +
-    '<ul class="ec-note" id="ecNote"><li><b>One call, now.</b> Echo calls this number once, for about a minute.</li><li><b>Nothing is recorded.</b> No audio and no transcript are kept.</li>' +
+    '<ul class="ec-note" id="ecNote"><li><b>One call, now.</b> echo calls this number once, for about a minute.</li><li><b>Nothing is recorded.</b> No audio and no transcript are kept.</li>' +
     '<li><b>Used for this call only.</b> No sales calls, messages or lists. The number is deleted within 24 hours.</li></ul>' +
     '<p class="ec-more"><a href="' + POLICY + '" target="_blank" rel="noopener">How we handle your number</a> <span>· one page, plain words</span></p>' +
     '<button class="ec-go" type="submit">Confirm and send code</button>' +
@@ -105,7 +105,7 @@
     '</div>' +
     /* step 4: done */
     '<div class="ec-step" id="ecDone" hidden>' +
-    '<h3 id="ecDoneH">That was Echo.</h3><p class="ec-sub" id="ecDoneP">Want it on your own calls? Our team sets up a pilot on your list in two weeks.</p>' +
+    '<h3 id="ecDoneH">That was echo.</h3><p class="ec-sub" id="ecDoneP">Want it on your own calls? Our team sets up a pilot on your list in two weeks.</p>' +
     '<div class="ec-acts"><a class="ec-go" href="#pilot" data-ec-close>Talk to an expert</a><button type="button" class="ec-link" id="ecAgain">Try another call</button><button type="button" class="ec-link" id="ecErase">Delete my number now</button></div>' +
     '</div>' +
     '<p class="ec-err" id="ecErr" role="alert" hidden></p>' +
@@ -206,7 +206,7 @@
       $('#ecTime', box).textContent = c.state === 'in_progress' ? fmt(c.seconds) + ' of ' + fmt(MAX) : '';
       if (c.state === 'ended' || c.state === 'failed') {
         clearInterval(st.poll); st.callId = ''; track('call_end', { state: c.state, seconds: c.seconds });
-        show('ecDone'); $('#ecDoneH', box).textContent = c.state === 'failed' ? 'The call did not go through.' : 'That was Echo.';
+        show('ecDone'); $('#ecDoneH', box).textContent = c.state === 'failed' ? 'The call did not go through.' : 'That was echo.';
         $('#ecDoneP', box).textContent = c.state === 'failed' ? (c.reason || 'Your phone may be switched off or busy. Try again in a minute.') : 'Want it on your own calls? Our team sets up a pilot on your list in two weeks.';
         $('.ec-acts .ec-go', box).focus();
       }
@@ -218,7 +218,7 @@
   $('#ecAgain', box).addEventListener('click', function () { var pick = flows(); $('#ecFlows', box).hidden = false; $('#ecFlows', box).innerHTML = pick.map(function (f) { return '<button type="button" role="radio" class="ec-flow" data-id="' + f.id + '">' + f.title + '</button>'; }).join(''); setFlow(st.flow && st.flow.id); startCall(); });
   $('#ecErase', box).addEventListener('click', function () {
     var t = S.token; forget(); if (t) api.del('/session', t).catch(function () {});
-    $('#ecDoneP', box).textContent = 'Your number is deleted. Thanks for trying Echo.'; this.hidden = true; track('erase');
+    $('#ecDoneP', box).textContent = 'Your number is deleted. Thanks for trying echo.'; this.hidden = true; track('erase');
   });
   $('#ecBrowser', box).addEventListener('click', function () { var id = st.flow && st.flow.id, t = st.trigger; close(); if (window.echoOpenTry) window.echoOpenTry(id, t); });
 
@@ -231,6 +231,6 @@
     open(isBadge ? (flows()[0] || {}).id : (t.getAttribute('data-demo') || t.getAttribute('data-try')), t, isBadge);
   }, true);
   var badge = d.getElementById('badge');
-  if (badge) { badge.setAttribute('aria-label', 'Get a call from Echo'); var tip = $('.tip', badge); if (tip) tip.textContent = 'Get a call from Echo'; }
+  if (badge) { badge.setAttribute('aria-label', 'Get a call from echo'); var tip = $('.tip', badge); if (tip) tip.textContent = 'Get a call from echo'; }
   window.EchoCall = { open: open, close: close };
 })();

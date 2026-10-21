@@ -1,4 +1,4 @@
-/* Echo demo sheet: sample call player and a one-minute live call.
+/* echo demo sheet: sample call player and a one-minute live call.
  *
  * What is here
  *   - DemoSheet   the dialog. Opens from any element with data-demo="<flow id>".
@@ -133,7 +133,7 @@
     if (isLive) rec.stop(); else live.hangup('tab');
   }
   function finish(kind) {
-    el.endH.textContent = kind === 'live' ? 'That was a live Echo call.' : 'Put this agent on your calls.';
+    el.endH.textContent = kind === 'live' ? 'That was a live echo call.' : 'Put this agent on your calls.';
     el.body.hidden = true; el.end.hidden = false;
     $('button, a', el.end).focus({ preventScroll: true });
     emit('end', { via: kind });
