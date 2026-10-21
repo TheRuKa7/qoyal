@@ -2385,6 +2385,50 @@ main>section:not(.intro):not(.scale):not(.topuc),footer{content-visibility:auto;
 @keyframes wv{0%,100%{transform:scaleY(.22)}50%{transform:scaleY(1)}}.ph-wave i{height:90%!important;transform:scaleY(.22)}
 @keyframes uccw{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}.ucc-wave i{height:100%!important;transform:scaleY(.22)}.ucc-wave i:nth-child(3n){transform:scaleY(.4)}.ucc-wave i:nth-child(5n){transform:scaleY(.55)}
 .badge svg.ring,.badge .ring{animation:none!important}.badge .rot{display:block;position:absolute;inset:0;will-change:transform;animation:spinR 18s linear infinite}@keyframes spinR{to{rotate:360deg}}
+
+/* ================= v17: one builder, dev strip, scroll story, comparison ================= */
+.duo.one{grid-template-columns:1fr}
+.devf{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin-top:18px;padding:16px 20px;border:1px dashed var(--glass-line);border-radius:16px}
+.devf p{font:400 16px/1.45 var(--grot);color:var(--ink2);margin:0}.devf b{color:var(--ink)}
+.devf a{font:600 14px var(--grot);color:var(--red2);white-space:nowrap}
+.day{position:relative;height:340vh}
+.day-pin{position:sticky;top:0;height:100svh;display:flex;align-items:center;overflow:hidden}
+.day-w{display:grid;grid-template-columns:1.1fr .9fr;gap:5vw;align-items:center;width:100%;margin:0 auto;padding-inline:clamp(16px,3.2vw,48px);box-sizing:border-box}
+.day-h{font:700 clamp(30px,3.6vw,54px)/1.05 var(--display);letter-spacing:-.02em;margin:0 0 28px;max-width:16ch}
+.day-s{list-style:none;margin:0;padding:0;display:grid}
+.day-s li{grid-area:1/1;opacity:0;transform:translateY(-14px);transition:opacity .16s,transform .16s;pointer-events:none}
+.day-s li.on{opacity:1;transform:none;transition:opacity .45s .12s var(--ease),transform .45s .12s var(--ease)}
+.day-s li.on~li{transform:translateY(24px)}
+.day-s time{display:block;font:600 clamp(44px,6vw,92px)/1 var(--grot);letter-spacing:-.04em;background:linear-gradient(100deg,#2563EB,#10B981);-webkit-background-clip:text;background-clip:text;color:transparent}
+.day-s b{display:block;font:600 clamp(20px,1.9vw,28px)/1.3 var(--grot);margin:14px 0 10px;max-width:24ch;color:var(--ink)}
+.day-s span{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.day-s li.fix span{color:var(--red2)}
+.day-card{background:var(--glass-sec);border:1px solid var(--glass-line);border-radius:24px;padding:22px;box-shadow:var(--shadow)}
+.day-top{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 14px;font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.day-top b{font:700 40px var(--grot);letter-spacing:-.03em;color:var(--ink);text-transform:none}
+.day-q{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.day-q li{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:12px;border:1px solid var(--glass-line);font:600 15px var(--grot);color:var(--ink);transition:background .4s,border-color .4s}
+.day-q em{margin-left:auto;font:500 12px var(--mono);font-style:normal;color:var(--ink2)}
+.day-q i{width:10px;height:10px;border-radius:50%;background:#E0A93B;flex:none;transition:background .4s}
+.day-q li.done{border-color:rgba(16,185,129,.45);background:rgba(16,185,129,.08)}
+.day-q li.done i{background:#10B981}
+.day-q li.done em{color:var(--red2)}
+.day-bar{height:4px;border-radius:4px;background:var(--glass-line);margin-top:16px;overflow:hidden}
+.day-bar i{display:block;height:100%;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#2563EB,#10B981)}
+@media (max-width:900px){.day{height:300vh}.day-w{grid-template-columns:1fr;gap:20px}.day-h{margin-bottom:16px}.day-q li:nth-child(n+4){display:none}.day-top b{font-size:30px}}
+@media (prefers-reduced-motion:reduce){.day{height:auto}.day-pin{position:relative;height:auto;padding:80px 0}.day-s{gap:26px}.day-s li{grid-area:auto;opacity:1;transform:none}}
+.no-js .day{height:auto}.no-js .day-pin{position:relative;height:auto;padding:80px 0}.no-js .day-s li{grid-area:auto;opacity:1;transform:none}
+.vs-t{border:1px solid var(--glass-line);border-radius:22px;overflow:hidden}
+.vs-r{display:grid;grid-template-columns:.8fr 1.3fr 1fr;gap:20px;padding:16px 22px;border-top:1px solid var(--glass-line);font:400 16px/1.4 var(--grot);color:var(--ink2)}
+.vs-r:first-child{border-top:0}
+.vs-r [role=rowheader]{font:500 12px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.vs-r span:nth-child(2){color:var(--ink);font-weight:600;position:relative;padding-left:22px}
+.vs-r:not(.vs-hd) span:nth-child(2):before{content:"";position:absolute;left:0;top:.45em;width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#2563EB,#10B981)}
+.vs-hd{background:rgba(16,185,129,.08)}
+.vs-hd span{font:600 13px var(--mono)!important;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)!important}
+.vs-hd span:nth-child(2){color:var(--red2)!important;padding-left:0}
+.js .vs-r.rv{transform:translateX(-18px)}
+@media (max-width:760px){.vs-r{grid-template-columns:1fr 1fr;gap:6px 14px}.vs-r [role=rowheader]{grid-column:1/-1}.vs-hd span:first-child{display:none}}
 </style>
 <link rel="stylesheet" href="assets/echo-demo.css">
 <style>.vnk{display:block;font:800 19px/22px var(--grot);letter-spacing:-.025em;color:var(--ink);white-space:nowrap}.sc-k .vnk{display:inline-block;font-size:16px;line-height:18px;vertical-align:-2px}.sc-k .vnk,.fb .vnk,footer .vnk{color:#F3EFE9}.brand .vnk svg,.vnk svg{height:24px;width:auto;display:block!important;color:inherit}.nav .brand .vnk svg{display:block!important}.sc-k .vnk svg{height:16px}.brand .vnk{color:var(--ink)}.fb .brand .vnk,footer .brand .vnk,.sc-k .vnk{color:#F3EFE9}.brand .emk{display:inline-flex;flex:none}.brand .emk svg,.nav .brand .emk svg{display:block!important;width:24px;height:24px;color:inherit}.brand .emk+.wm{margin-left:-2px}@media(max-width:480px){.brand .emk{display:none}}</style>
@@ -2473,6 +2517,52 @@ main>section:not(.intro):not(.scale):not(.topuc),footer{content-visibility:auto;
   </div>
 </section>
 
+<section class="day" id="day" aria-labelledby="dayH">
+  <div class="day-pin">
+    <div class="wrap day-w">
+      <div class="day-l">
+        <p class="kick rv">Sound familiar?</p>
+        <h2 id="dayH" class="day-h rv">A normal day of calls nobody had time to make.</h2>
+        <ol class="day-s">
+          <li data-i="0"><time>9:40 am</time><b>&ldquo;Has the supplier confirmed the PO?&rdquo; Nobody knows yet.</b><span>Procurement</span></li>
+          <li data-i="1"><time>11:15 am</time><b>120 customers owe money this week. Two people to call them.</b><span>Finance</span></li>
+          <li data-i="2"><time>3:30 pm</time><b>A lead came in at 10. Nobody has called back.</b><span>Sales</span></li>
+          <li data-i="3"><time>6:45 pm</time><b>The answers are in WhatsApp threads, not in the ERP.</b><span>Operations</span></li>
+          <li data-i="4" class="fix"><time>Tomorrow</time><b>echo calls every one of them before 11 am, in their language, and writes each answer into your ERP.</b><span>With echo</span></li>
+        </ol>
+      </div>
+      <div class="day-r" aria-hidden="true">
+        <div class="day-card">
+          <p class="day-top"><span>Calls waiting</span><b class="day-n">0</b></p>
+          <ul class="day-q">
+            <li><i></i>Mehta Packaging<em>PO 4471 · date?</em></li>
+            <li><i></i>Sharma Traders<em>Invoice overdue</em></li>
+            <li><i></i>New lead, Pune<em>Asked for a demo</em></li>
+            <li><i></i>R K Castings<em>Dispatch · qty?</em></li>
+            <li><i></i>Vijay Steel<em>Quote pending</em></li>
+          </ul>
+          <div class="day-bar"><i></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec vs" id="vs" aria-labelledby="vsH">
+  <div class="wrap">
+    <div class="head"><div><p class="kick rv">Why echo</p><h2 class="rv" id="vsH">Not another sales bot. The calls your whole business runs on.</h2></div><p class="lede rv">Most voice AI is built to sell loans and cards. echo is built for the work after the sale: orders, dates, payments and follow-ups, with every answer saved where your team works.</p></div>
+    <div class="vs-t" role="table" aria-label="echo compared with a typical voice AI vendor">
+      <div class="vs-r vs-hd" role="row"><span role="columnheader"></span><span role="columnheader">echo</span><span role="columnheader">Typical voice AI vendor</span></div>
+      <div class="vs-r rv" role="row"><span role="rowheader">Built for</span><span role="cell">Any team: procurement, finance, sales, logistics, support</span><span role="cell">Mostly sales and lending</span></div>
+      <div class="vs-r rv" role="row"><span role="rowheader">Where answers go</span><span role="cell">Read back on the call, then written into your ERP, CRM or sheet</span><span role="cell">A recording and a dashboard</span></div>
+      <div class="vs-r rv" role="row"><span role="rowheader">Phone line</span><span role="cell">Yours or ours, your choice</span><span role="cell">Theirs, bundled in</span></div>
+      <div class="vs-r rv" role="row"><span role="rowheader">Where it runs</span><span role="cell">Our cloud or inside your building</span><span role="cell">Their cloud</span></div>
+      <div class="vs-r rv" role="row"><span role="rowheader">Time to first calls</span><span role="cell">About two weeks, then a short paid trial on your own data</span><span role="cell">Weeks of setup, then a long pilot</span></div>
+      <div class="vs-r rv" role="row"><span role="rowheader">Proof</span><span role="cell">Runs every day on Moglix operations</span><span role="cell">Case studies</span></div>
+    </div>
+  </div>
+</section>
+
 <section class="sec topuc" id="topuc" data-sec><span id="use-cases" class="anchor" aria-hidden="true"></span>
   <div class="wrap">
     <div class="head"><div><p class="kick rv">Use cases</p><h2 class="rv">Use cases with the fastest payback.</h2></div><p class="lede rv">The calls that return the most, from cash collection to supplier follow-up. Flows marked Live run every day on Moglix operations.</p></div>
@@ -2530,8 +2620,8 @@ main>section:not(.intro):not(.scale):not(.topuc),footer{content-visibility:auto;
 </section>
 <section class="sec dev duo-s" id="dev" data-sec><span id="build" class="anchor" aria-hidden="true"></span>
   <div class="wrap">
-    <div class="head"><div><p class="kick rv">Build</p><h2 class="rv">Build in the builder or from your terminal.</h2></div><p class="lede rv">Business teams click through a builder. Developers get the Reverb CLI, the Relay MCP server for AI tools and an open API, coming soon. Same agents, same results.</p></div>
-    <div class="duo rv">
+    <div class="head"><div><p class="kick rv">Build</p><h2 class="rv">Set up an agent in minutes. No code.</h2></div><p class="lede rv">Describe the call, drop in your sheet, press start. Your operations team runs it; nobody waits on IT.</p></div>
+    <div class="duo one rv">
       <div class="duo-c mpanel" data-p="simple"><p class="duo-k"><span>No code</span>Business user</p>
 <div class="sm-win" id="smWin">
         <div class="sm-bar"><span class="dv-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sm-crumb">Echo · New campaign</span></div>
@@ -2557,16 +2647,8 @@ main>section:not(.intro):not(.scale):not(.topuc),footer{content-visibility:auto;
         </div>
       </div>
       </div>
-      <div class="duo-c mpanel" data-p="dev"><p class="duo-k"><span>Coming soon</span>Developer</p>
-<div class="dv-win">
-          <div class="dv-bar"><span class="dv-dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="dv-tabs" role="tablist" aria-label="Examples"><button class="dv-tab" role="tab" data-c="call" aria-selected="true">Start a call</button><button class="dv-tab" role="tab" data-c="campaign" aria-selected="false">Run a campaign</button><button class="dv-tab" role="tab" data-c="result" aria-selected="false">Read outcomes</button></div></div>
-          <div class="dv-sub"><div class="dv-lang" aria-label="Language"><button data-l="cli" aria-pressed="true">CLI</button><button data-l="curl" aria-pressed="false">cURL</button><button data-l="node" aria-pressed="false">Node</button><button data-l="py" aria-pressed="false">Python</button></div><button class="dv-copy" id="dvCopy" type="button">Copy</button></div>
-          <pre class="dv-pre"><code id="dvCode"></code></pre>
-          <p class="dv-docs">Coming soon. Docs: <a href="docs/developers/cli.html">Reverb CLI</a> · <a href="docs/developers/mcp.html">Relay MCP</a> · <a href="docs/developers/calls.html#place-a-call">Start a call</a> · <a href="docs/developers/guide-campaign.html">Run a campaign</a> · <a href="docs/developers/webhooks.html">Read outcomes</a></p>
-          <div class="dv-log"><div class="dv-logh"><span>Event stream</span><span class="lv">live</span></div><div id="dvLog" aria-hidden="true"></div></div>
-        </div>
-      </div>
     </div>
+    <div class="devf rv"><p><b>Developer friendly too.</b> Plug echo into anything: an open API (in preview), signed webhooks, sheets and exports.</p><a href="docs/developers/">Docs for developers →</a></div>
   </div>
 </section>
 <section class="sec roi" id="roi" data-sec>
@@ -3742,6 +3824,18 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
   window.addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-sx;if(Math.abs(dx)>4){moved=true;t.classList.add('drag')}t.scrollLeft=sl-dx});
   window.addEventListener('pointerup',function(){if(!down)return;down=false;if(!moved){t.classList.remove('drag');return}var W=w(),to=Math.max(0,Math.min(t.scrollWidth-t.clientWidth,Math.round(t.scrollLeft/W)*W));t.scrollTo({left:to,behavior:RM?'auto':'smooth'});setTimeout(function(){t.classList.remove('drag')},RM?0:420)});
   t.addEventListener('click',function(e){if(moved){e.stopPropagation();e.preventDefault();moved=false}},true)})();
+
+/* ================= v17: scroll story, driven by scroll position ================= */
+(function(){var sec=document.getElementById('day');if(!sec)return;
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){[].forEach.call(sec.querySelectorAll('.day-s li,.day-q li'),function(x){x.classList.add('on','done')});return}
+var st=[].slice.call(sec.querySelectorAll('.day-s li')),q=[].slice.call(sec.querySelectorAll('.day-q li')),n=sec.querySelector('.day-n'),bar=sec.querySelector('.day-bar i'),cur=-1,on=false,tk=false,lastN=-1;
+function upd(){tk=false;var r=sec.getBoundingClientRect(),h=sec.offsetHeight-innerHeight,p=Math.min(1,Math.max(0,-r.top/Math.max(1,h)));
+  var k=Math.min(st.length-1,Math.floor(p*st.length*1.02));if(k!==cur){cur=k;st.forEach(function(x,i){x.classList.toggle('on',i===k)})}
+  var fix=Math.min(1,Math.max(0,(p-.8)/.13)),wait=k<4?Math.round(12+p/.78*136):Math.round(148*(1-fix));if(wait!==lastN){lastN=wait;n.textContent=wait}
+  q.forEach(function(x,i){x.classList.toggle('done',k===4&&fix>i/q.length)});bar.style.transform='scaleX('+p.toFixed(3)+')'}
+function kick(){if(on&&!tk){tk=true;requestAnimationFrame(upd)}}
+new IntersectionObserver(function(es){on=es[0].isIntersecting;if(on)kick()},{threshold:0}).observe(sec);
+addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);upd()})();
 </script>
 </body>
 </html>
