@@ -1,4 +1,5 @@
 ---
+seo_title: "Voice agent API, CLI and MCP server for developers · Echo by Vanik"
 title: Echo for developers
 description: Build and run Echo voice agents from your terminal, your AI coding tools and your own systems, with the Reverb CLI, the Relay MCP server, agent skills and the REST API.
 sidebarTitle: Introduction

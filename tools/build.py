@@ -325,7 +325,7 @@ def head(title, desc, canon_rel, out_dir, meta, kind, extra_ld, keywords):
     js = relpath('assets/docs.js', out_dir)
     ld = ''.join('<script type="application/ld+json">%s</script>' % json.dumps(x, ensure_ascii=False) for x in extra_ld)
     return '''<!doctype html>
-<html lang="en-IN">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -365,9 +365,26 @@ def brand(out_dir):
                                                      a=relpath('cognilix.png', out_dir), b=relpath('cognilix-white.png', out_dir))
 
 
+def has_posts():
+    """True once a blog post is published; until then the blog is not linked from the nav or footer, nor listed in the sitemap."""
+    folder = os.path.join(CONTENT, 'blog', 'posts')
+    if not os.path.isdir(folder):
+        return False
+    for f in os.listdir(folder):
+        if f.endswith('.md') and not f.startswith('_'):
+            meta, _ = frontmatter(rd(os.path.join(folder, f)), f)
+            if not meta.get('draft'):
+                return True
+    return False
+
+
+def shown(l):
+    return has_posts() or not l['href'].startswith('/blog')
+
+
 def header(out_dir, current):
     links = ''.join('<a href="%s"%s>%s</a>' % (E(site_href(l['href'], out_dir)), ' target="_blank" rel="noopener"' if l['href'].startswith('http') else (' aria-current="page"' if l['href'] == current else ''), E(l['label']) + (' <span aria-hidden="true">↗</span>' if l['href'].startswith('http') else ''))
-                    for l in SITE['nav'])
+                    for l in SITE['nav'] if shown(l))
     return ('<header class="nav">\n  %s\n  <nav class="links" aria-label="Site">%s</nav>\n'
             '  <button class="d-search-b" type="button" data-search aria-label="Search the docs"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m10.5 10.5 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Search</span><kbd>Ctrl K</kbd></button>\n'
             '  <button class="d-theme" type="button" data-theme-toggle aria-label="Switch colour theme"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 1 0 0 13z" fill="currentColor"/><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>\n'
@@ -379,7 +396,7 @@ def header(out_dir, current):
 def footer(out_dir):
     cols = ''.join('<div><h4>%s</h4>%s</div>' % (E(c['title']), ''.join(
         '<a href="%s"%s>%s</a>' % (E(site_href(l['href'], out_dir)), ' rel="noopener" target="_blank"' if l['href'].startswith('http') else '', E(l['label']))
-        for l in c['links'])) for c in SITE['footer']['columns'])
+        for l in c['links'] if shown(l))) for c in SITE['footer']['columns'])
     return ('<footer class="d-foot"><div class="d-foot-in"><div class="d-foot-b">%s<p>%s</p></div>%s</div>'
             '<div class="d-foot-bot"><span>%s</span><span>%s</span></div></footer>') % (
         brand(out_dir), E(SITE['footer']['blurb']), cols, E(SITE['footer']['note']), E(SITE['footer']['copyright']))
@@ -444,12 +461,12 @@ def build_docs():
         out_dir = os.path.dirname(p['out'])
         soon = str(meta.get('status', '')).lower() in ('soon', 'coming-soon', 'coming soon')
         title = meta['title']
-        full_title = title if p['name'] == 'index' else '%s · %s' % (title, tab['title_suffix'])   # section home pages carry their own name
+        full_title = meta.get('seo_title') or (title if p['name'] == 'index' else '%s · %s' % (title, tab['title_suffix']))   # section home pages carry their own name
         kws = meta.get('keywords', []) + cfg.get('keywords', [])
         updated = str(meta.get('updated', TODAY))
         crumbs = [('Home', ''), ('Docs', 'docs/')] + ([(tab['label'], tab['output'])] if tab['output'] != 'docs/' else []) + [(title, p['out'])]
         ld = [{"@context": "https://schema.org", "@type": "TechArticle", "headline": title, "description": meta.get('description', ''),
-               "dateModified": updated, "inLanguage": "en-IN", "url": BASE + p['out'],
+               "dateModified": updated, "inLanguage": "en", "url": BASE + p['out'],
                "author": {"@type": "Organization", "name": SITE['org']}, "publisher": {"@type": "Organization", "name": SITE['org'], "url": SITE['org_url']}},
               {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
                   {"@type": "ListItem", "position": k + 1, "name": n, "item": BASE + u} for k, (n, u) in enumerate(crumbs)]}]
@@ -628,7 +645,8 @@ def build_blog():
             ALL_OUTPUTS.add(rel + 'index.html')
             out(rel + 'index.html', listing(items[(n - 1) * per:n * per], rel.rstrip('/'), title, lede, rel, cat, n, pages))
     paged(live, 'blog/', cfg['title'], cfg['description'])
-    SITEMAP.append(('blog/', TODAY))
+    if has_posts():   # an empty blog stays out of the sitemap
+        SITEMAP.append(('blog/', TODAY))
     for k, v in cfg.get('categories', {}).items():
         items = [x for x in live if x[2].get('category') == k]
         if not items:          # no empty category pages
@@ -756,7 +774,14 @@ def build_pages():
         def md(m):   # only the marked part is Markdown; the rest is kept as written
             return Page(src, out_rel, meta, m.group(1), DOC_LINKS).html
         html_body = re.sub(r'<!--md-->(.*?)<!--/md-->', lambda m: '<article class="d-prose">%s</article>' % md(m), body, flags=re.S)
-        out(out_rel, head('%s · %s' % (meta['title'], SITE['site_name']), meta.get('description', ''), '%s/' % name, out_dir, meta, 'website', [], []) + '''
+        ld = []
+        if meta.get('schema') == 'WebApplication':
+            ld = [{"@context": "https://schema.org", "@type": "WebApplication", "name": meta['title'], "url": BASE + '%s/' % name, "description": meta.get('description', ''),
+                   "applicationCategory": "BusinessApplication", "operatingSystem": "Any (web browser)", "inLanguage": "en", "isAccessibleForFree": True,
+                   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": SITE['org'], "url": SITE['org_url']}},
+                  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+                      {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE}, {"@type": "ListItem", "position": 2, "name": meta['title'], "item": BASE + '%s/' % name}]}]
+        out(out_rel, head(meta.get('seo_title') or '%s · %s' % (meta['title'], SITE['site_name']), meta.get('description', ''), '%s/' % name, out_dir, meta, 'website', ld, []) + '''
 <body class="b-body">
 <a class="skip" href="#content">Skip to content</a>
 {hdr}
@@ -775,6 +800,35 @@ def build_pages():
 
 
 # ------------------------------------------------------------------ components gallery (internal)
+def build_404():
+    """A branded 404. GitHub Pages serves it at any depth, so every link and asset is absolute."""
+    html = head('Page not found · %s' % SITE['site_name'], 'This page does not exist. Find what you need in the docs, use cases or ROI calculator.', '404.html', '', {'noindex': True}, 'website', [], []) + '''
+<body class="b-body">
+<a class="skip" href="#content">Skip to content</a>
+{hdr}
+<main class="b-main b-post" id="content">
+<h1>This page does not exist</h1>
+<p class="lede">The link may be old, or the page moved. Try one of these, or search.</p>
+<ul>
+<li><a href="">Home: AI voice agents for business calls</a></li>
+<li><a href="docs/quickstart.html">Quickstart: your first campaign</a></li>
+<li><a href="docs/use-cases.html">Use-case playbooks</a></li>
+<li><a href="docs/developers/">Developer docs: API, CLI and MCP server</a></li>
+<li><a href="roi/">ROI calculator</a></li>
+<li><a href="#pilot">Talk to an expert</a></li>
+</ul>
+<p><button class="d-search-b" type="button" data-search>Search the docs</button></p>
+</main>
+{foot}
+{search}
+</body>
+</html>
+'''.format(hdr=header('', '/404'), foot=footer(''), search=search_dialog())
+    html = re.sub(r'(href|src)="(?!https?:|//|#|mailto:|data:)([^"]*)"', lambda m: '%s="%s%s"' % (m.group(1), BASE, m.group(2).lstrip('./')), html)
+    html = html.replace('href="#pilot"', 'href="%s#pilot"' % BASE)
+    out('404.html', html)
+
+
 def build_gallery():
     items = ''
     for name, d in COMP.defs.items():
@@ -828,6 +882,7 @@ def run():
     build_blog()
     build_legal()
     build_pages()
+    build_404()
     build_gallery()
     build_previews()
     out('search.json', json.dumps(SEARCH, ensure_ascii=False, separators=(',', ':')))

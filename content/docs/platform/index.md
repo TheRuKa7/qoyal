@@ -1,4 +1,5 @@
 ---
+seo_title: "AI voice agent documentation: build, test and run calls · Echo by Vanik"
 title: Echo documentation
 description: Build a voice agent in Echo, test it, run it on a list of suppliers or customers, and use every outcome. No code needed.
 sidebarTitle: Overview

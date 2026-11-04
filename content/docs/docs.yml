@@ -10,7 +10,7 @@ tabs:
     badge: Console
     folder: platform          # content/docs/platform/*.md
     output: docs/             # built to /docs/*.html
-    title_suffix: Echo docs
+    title_suffix: Echo by Vanik docs
     groups:
       - group: Get started
         pages: [index, quickstart, concepts]
@@ -33,7 +33,7 @@ tabs:
     badge: Coming soon
     folder: developers        # content/docs/developers/*.md
     output: docs/developers/  # built to /docs/developers/*.html
-    title_suffix: Echo developer docs
+    title_suffix: Echo by Vanik developer docs
     groups:
       - group: Get started
         pages: [index, objects]
